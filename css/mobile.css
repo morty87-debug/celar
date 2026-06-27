@@ -130,14 +130,7 @@
     white-space: nowrap;
   }
 
-  /* ─── Back link mobile ─── */
-  .back-link {
-    position: static !important;
-    display: inline-flex;
-    margin-bottom: 0.75rem;
-    font-size: 0.75rem;
-    padding: 0.35rem 0.8rem 0.35rem 0.6rem;
-  }
+  /* ─── Back link mobile — same as desktop ─── */
 
   /* ─── General spacing tightening ─── */
   .content {

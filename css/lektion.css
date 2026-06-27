@@ -324,6 +324,6 @@
 @media (max-width: 600px) {
   .fact-list { padding-left: 0; }
   .content-section-number { display: none; }
-  .back-link { position: static; display: block; margin-bottom: 1rem; }
+  /* back-link keeps desktop style on mobile */
   .lektion-header { text-align: left; }
 }
