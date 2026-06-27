@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celar — Kartor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/druvor.css">
+  <style>
+    .kartor-intro {
+      max-width: 660px;
+      margin: 1rem auto 0;
+      padding: 0 1.5rem;
+      text-align: center;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      position: relative;
+      z-index: 1;
+    }
+    .quiz-container {
+      max-width: 660px;
+      margin: 1.5rem auto;
+      padding: 0 1.5rem 4rem;
+      position: relative;
+      z-index: 1;
+    }
+    .quiz-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+    }
+    .quiz-country-selector {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    .country-btn {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-dim);
+      background: transparent;
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.8rem;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .country-btn:hover { border-color: var(--border-hover); color: var(--text-muted); }
+    .country-btn.active { color: var(--wine); border-color: rgba(107,30,46,0.3); background: rgba(107,30,46,0.06); }
+    .quiz-question {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--sand-light);
+      margin-bottom: 0.5rem;
+    }
+    .quiz-hint {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      margin-bottom: 1.5rem;
+    }
+    .quiz-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .quiz-option {
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      color: var(--text);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .quiz-option:hover { border-color: var(--border-hover); background: var(--surface-hover); }
+    .quiz-option.correct { border-color: var(--moss); background: rgba(74,90,58,0.1); color: var(--moss); }
+    .quiz-option.wrong { border-color: #c44; background: rgba(200,60,60,0.06); color: #a33; }
+    .quiz-option:disabled { cursor: default; }
+    .quiz-score {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .score-item {
+      text-align: center;
+    }
+    .score-num {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: var(--sand-light);
+    }
+    .score-label {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .quiz-next-btn {
+      margin-top: 1.25rem;
+      padding: 0.65rem 2rem;
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      color: #fff;
+      background: var(--wine);
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .quiz-next-btn:hover { background: var(--wine-light); }
+    .quiz-feedback {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+      line-height: 1.6;
+      min-height: 1.5rem;
+    }
+    .region-list {
+      max-width: 660px;
+      margin: 0 auto;
+      padding: 0 1.5rem 2rem;
+      position: relative;
+      z-index: 1;
+    }
+    .region-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.7rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      margin-bottom: 0.4rem;
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+    .region-bullet {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--wine);
+      flex-shrink: 0;
+    }
+    .region-name { font-weight: 500; color: var(--sand-light); min-width: 120px; }
+    .region-desc { color: var(--text-muted); font-size: 0.8rem; }
+  </style>
+</head>
+<body>
+  <div class="bg-grain"></div>
+
+  <header class="druvor-header">
+    <a href="index.html" class="back-link">← Tillbaka</a>
+    <h1 class="druvor-title">Kartor</h1>
+    <p class="druvor-subtitle">Testa dina kunskaper om vinregioner</p>
+  </header>
+
+  <p class="kartor-intro">Välj ett land och svara på frågor om dess vinregioner. Lär dig var regionerna ligger och vad som odlas där.</p>
+
+  <div class="quiz-container">
+    <div class="quiz-card">
+      <div class="quiz-country-selector" id="countrySelector"></div>
+      <div class="quiz-score">
+        <div class="score-item"><div class="score-num" id="scoreCorrect">0</div><div class="score-label">Rätt</div></div>
+        <div class="score-item"><div class="score-num" id="scoreTotal">0</div><div class="score-label">Frågor</div></div>
+        <div class="score-item"><div class="score-num" id="scoreStreak">0</div><div class="score-label">I rad</div></div>
+      </div>
+      <div class="quiz-question" id="quizQuestion">Välj ett land för att börja</div>
+      <div class="quiz-hint" id="quizHint"></div>
+      <div class="quiz-options" id="quizOptions"></div>
+      <div class="quiz-feedback" id="quizFeedback"></div>
+      <button class="quiz-next-btn" id="nextBtn" style="display:none" onclick="nextQuestion()">Nästa fråga →</button>
+    </div>
+  </div>
+
+  <div class="region-list" id="regionList"></div>
+
+  <footer class="footer">
+    <div class="footer-divider"><span class="divider-vine">✦</span></div>
+    <p>Celar — Byggt för sommelierer</p>
+  </footer>
+
+  <script>
+    const quizData = {
+      "Frankrike": {
+        regions: [
+          { namn: "Champagne", druvor: "Chardonnay, Pinot Noir, Meunier", fakta: "Nordligaste vinregionen. Kalkstensmark (craie). 17 Grand Cru-byar." },
+          { namn: "Alsace", druvor: "Riesling, Gewürztraminer, Pinot Gris", fakta: "Vogeserna skyddar — torrt mikroklimat. 51 Grand Cru-lägen." },
+          { namn: "Loire", druvor: "Sauvignon Blanc, Chenin Blanc, Cabernet Franc", fakta: "Frankrikes längsta flod, 1000 km. Sancerre, Vouvray, Muscadet." },
+          { namn: "Bourgogne", druvor: "Pinot Noir, Chardonnay", fakta: "Terroir-besatt. Grand Cru → Premier Cru → Village → Régional." },
+          { namn: "Beaujolais", druvor: "Gamay", fakta: "10 Cru-byar. Kolsyremaceration. Beaujolais Nouveau tredje torsdagen i november." },
+          { namn: "Jura", druvor: "Savagnin, Chardonnay, Poulsard", fakta: "Vin Jaune (gult vin) under jästhinna. Vin de Paille." },
+          { namn: "Norra Rhône", druvor: "Syrah, Viognier", fakta: "Branta terrasser. Côte-Rôtie, Hermitage, Condrieu." },
+          { namn: "Södra Rhône", druvor: "Grenache, Syrah, Mourvèdre", fakta: "Châteauneuf-du-Pape — 13 tillåtna druvor, galets roulés." },
+          { namn: "Provence", druvor: "Grenache, Cinsault, Mourvèdre", fakta: "Frankrikes roséhuvudstad — 74% rosé. Bandol för röda." },
+          { namn: "Languedoc-Roussillon", druvor: "Grenache, Syrah, Carignan", fakta: "Störst i Frankrike. Limoux — äldsta mousserande (1531). Banyuls VDN." },
+          { namn: "Bordeaux", druvor: "Cabernet Sauvignon, Merlot, Cabernet Franc", fakta: "Vänster strand (Cab Sauv, grus) vs höger strand (Merlot, lera). 1855 klassificering." },
+          { namn: "Sydväst", druvor: "Malbec, Tannat, Gros Manseng", fakta: "Cahors (Malbec), Madiran (Tannat), Jurançon (söta vita)." }
+        ]
+      },
+      "Italien": {
+        regions: [
+          { namn: "Piemonte", druvor: "Nebbiolo, Barbera, Dolcetto", fakta: "Barolo och Barbaresco. 'Vinernas kung'. Moscato d'Asti." },
+          { namn: "Veneto", druvor: "Corvina, Glera, Garganega", fakta: "Amarone (appassimento), Prosecco (Charmat), Soave." },
+          { namn: "Toscana", druvor: "Sangiovese, Cabernet Sauvignon", fakta: "Chianti, Brunello di Montalcino, Super Toscana (Sassicaia)." },
+          { namn: "Lombardiet", druvor: "Chardonnay, Pinot Noir, Nebbiolo", fakta: "Franciacorta (méthode traditionnelle). Valtellina (Nebbiolo)." },
+          { namn: "Trentino-Alto Adige", druvor: "Pinot Grigio, Gewürztraminer", fakta: "Nordligast, tvåspråkigt. 70% vitt. Alpint klimat." },
+          { namn: "Friuli-Venezia Giulia", druvor: "Pinot Grigio, Friulano, Ribolla Gialla", fakta: "Bästa vita. Orange wine-epicentrum. Colli Orientali." },
+          { namn: "Sicilien", druvor: "Nero d'Avola, Nerello Mascalese, Grillo", fakta: "Etna (vulkan, 1000m). Marsala. Största ön." },
+          { namn: "Kampanien", druvor: "Aglianico, Fiano, Greco", fakta: "Taurasi DOCG ('söderns Barolo'). Vesuvius vulkanjord." },
+          { namn: "Apulien", druvor: "Primitivo, Negroamaro", fakta: "17% av all italiensk vin. Primitivo = Zinfandel. Salice Salentino." },
+          { namn: "Umbrien", druvor: "Sagrantino, Grechetto", fakta: "Montefalco Sagrantino — extremt tanninrikt. Orvieto (vitt)." }
+        ]
+      },
+      "Spanien": {
+        regions: [
+          { namn: "Rioja", druvor: "Tempranillo, Garnacha, Graciano", fakta: "DOCa-status. Crianza/Reserva/Gran Reserva. Alavesa, Alta, Oriental." },
+          { namn: "Ribera del Duero", druvor: "Tinto Fino (Tempranillo)", fakta: "Kraftfulla röda. 600-1000m höjd. Kontinentalt klimat." },
+          { namn: "Priorat", druvor: "Garnacha, Cariñena", fakta: "DOCa. Licorella (skiffer). Branta sluttningar. Gamla vinstockar." },
+          { namn: "Rías Baixas", druvor: "Albariño", fakta: "Atlantiskt. Salt-mineraliska vita. Pergolaträning. 0.6 ha medelstorlek." },
+          { namn: "Jerez", druvor: "Palomino, Pedro Ximénez", fakta: "Sherry-triangeln. Albariza-jord. Flor-jäst. Solera-systemet." },
+          { namn: "Penedès", druvor: "Macabeo, Xarel·lo, Parellada", fakta: "Cava-land. Corpinnat (2019). Katalonien." },
+          { namn: "Rueda", druvor: "Verdejo", fakta: "Fräscha aromatiska vita. Duerodalen." },
+          { namn: "Kanarieöarna", druvor: "Malvasía, Listán Negro", fakta: "Vulkanjord. Hoyos-odling. Phylloxera-fritt. Upp till 1700m." }
+        ]
+      },
+      "Tyskland": {
+        regions: [
+          { namn: "Mosel", druvor: "Riesling", fakta: "Branta skiffersluttningar. Kabinett-stilens hemvist. 8 800 ha." },
+          { namn: "Rheingau", druvor: "Riesling, Spätburgunder", fakta: "Sydvända sluttningar. Taunusbergen. 3 200 ha." },
+          { namn: "Pfalz", druvor: "Riesling, Grauburgunder, Dornfelder", fakta: "Många soltimmar. Haardtbergen skyddar. 24 000 ha." },
+          { namn: "Baden", druvor: "Spätburgunder, Grauburgunder", fakta: "Varmaste regionen. Kaiserstuhl (vulkanjord). 15 800 ha." },
+          { namn: "Rheinhessen", druvor: "Riesling, Müller-Thurgau, Silvaner", fakta: "Störst — 27 000 ha. 'Tusen kullar'. Många mesoklimat." },
+          { namn: "Franken", druvor: "Silvaner, Müller-Thurgau", fakta: "Main-floden. Kalla vintrar. Bocksbeutel-flaska." }
+        ]
+      },
+      "Portugal": {
+        regions: [
+          { namn: "Douro", druvor: "Touriga Nacional, Tinta Roriz", fakta: "Skifferjord. Portvin. Tre delområden. 46 000 ha." },
+          { namn: "Vinho Verde", druvor: "Alvarinho, Loureiro", fakta: "Maritimt. Fräscha vita. Monção e Melgaço bäst. 21 000 ha." },
+          { namn: "Alentejo", druvor: "Aragonez, Trincadeira", fakta: "Varmt inlandsklimat. Internationell stil. 22 000 ha." },
+          { namn: "Bairrada", druvor: "Baga, Arinto", fakta: "Lerjord ('barro'). 2/3 mousserande (Espumante). 15 000 ha." },
+          { namn: "Dão", druvor: "Touriga Nacional, Encruzado", fakta: "Granitjord. Kontinentalt. Eleganta röda." },
+          { namn: "Madeira", druvor: "Sercial, Verdelho, Bual, Malmsey", fakta: "Vulkanisk ö. Estufagem/Canteiros. 4 ädla druvor." }
+        ]
+      },
+      "Australien": {
+        regions: [
+          { namn: "Barossa Valley", druvor: "Shiraz, Grenache", fakta: "Äldsta vinstockar (1843). Old Vine Charter. Inga phylloxera." },
+          { namn: "Margaret River", druvor: "Cabernet Sauvignon, Chardonnay", fakta: "Maritimt. Regnrikast. Västra Australien. 9 200 ha." },
+          { namn: "Hunter Valley", druvor: "Sémillon, Shiraz", fakta: "Sémillon vid 10-11% alkohol. Åldras remarkabelt. Nära-tropiskt." },
+          { namn: "Coonawarra", druvor: "Cabernet Sauvignon", fakta: "Terra rossa-jord (järnrik lera över kalksten). Platt terräng." },
+          { namn: "Clare Valley", druvor: "Riesling", fakta: "Varma dagar, kalla nätter. 300-500m. Mount Lofty Ranges." },
+          { namn: "Yarra Valley", druvor: "Pinot Noir, Chardonnay", fakta: "Victoria. Svalt klimat. Upper (kallare) och Lower Yarra." }
+        ]
+      },
+      "Nya Zeeland": {
+        regions: [
+          { namn: "Marlborough", druvor: "Sauvignon Blanc, Pinot Noir", fakta: "2/3 av alla NZ-vinstockar. 28 000 ha. Sydön." },
+          { namn: "Central Otago", druvor: "Pinot Noir", fakta: "Enda kontinentala klimatet i NZ. 1 900 ha. Strukturerad Pinot." },
+          { namn: "Hawke's Bay", druvor: "Cabernet Sauvignon, Merlot, Chardonnay", fakta: "Gimblett Gravels. Bordeaux-blandningar. 5 000 ha." },
+          { namn: "Martinborough", druvor: "Pinot Noir", fakta: "Wairarapa. Jordigt, komplext. Världsberömd Pinot Noir." }
+        ]
+      }
+    };
+
+    let currentCountry = null;
+    let currentQuestion = null;
+    let score = { correct: 0, total: 0, streak: 0 };
+    let answered = false;
+
+    function initSelector() {
+      const sel = document.getElementById('countrySelector');
+      Object.keys(quizData).forEach(country => {
+        const btn = document.createElement('button');
+        btn.className = 'country-btn';
+        btn.textContent = country;
+        btn.onclick = () => selectCountry(country);
+        sel.appendChild(btn);
+      });
+    }
+
+    function selectCountry(country) {
+      currentCountry = country;
+      score = { correct: 0, total: 0, streak: 0 };
+      updateScore();
+      document.querySelectorAll('.country-btn').forEach(b =>
+        b.classList.toggle('active', b.textContent === country));
+      showRegionList(country);
+      nextQuestion();
+    }
+
+    function showRegionList(country) {
+      const list = document.getElementById('regionList');
+      const regions = quizData[country].regions;
+      list.innerHTML = `<div class="continent-header"><span class="continent-line"></span><span class="continent-name">${country} — regioner</span><span class="continent-line"></span></div>`;
+      regions.forEach(r => {
+        list.innerHTML += `<div class="region-item"><span class="region-bullet"></span><span class="region-name">${r.namn}</span><span class="region-desc">${r.druvor}</span></div>`;
+      });
+    }
+
+    function nextQuestion() {
+      answered = false;
+      document.getElementById('nextBtn').style.display = 'none';
+      document.getElementById('quizFeedback').textContent = '';
+      const regions = quizData[currentCountry].regions;
+      const target = regions[Math.floor(Math.random() * regions.length)];
+      currentQuestion = target;
+
+      const qTypes = [
+        { q: `Vilka druvor odlas i ${target.namn}?`, correct: target.druvor, makeWrong: () => regions.filter(r => r !== target).map(r => r.druvor) },
+        { q: `Vilken region passar denna beskrivning?\n"${target.fakta}"`, correct: target.namn, makeWrong: () => regions.filter(r => r !== target).map(r => r.namn) },
+        { q: `Vad är sant om ${target.namn}?`, correct: target.fakta, makeWrong: () => regions.filter(r => r !== target).map(r => r.fakta) }
+      ];
+
+      const qt = qTypes[Math.floor(Math.random() * qTypes.length)];
+      document.getElementById('quizQuestion').textContent = qt.q;
+      document.getElementById('quizHint').textContent = currentCountry;
+
+      const wrongOptions = qt.makeWrong().sort(() => Math.random() - 0.5).slice(0, 3);
+      const options = [qt.correct, ...wrongOptions].sort(() => Math.random() - 0.5);
+
+      const optDiv = document.getElementById('quizOptions');
+      optDiv.innerHTML = '';
+      options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'quiz-option';
+        btn.textContent = opt;
+        btn.onclick = () => answer(btn, opt === qt.correct, qt.correct);
+        optDiv.appendChild(btn);
+      });
+    }
+
+    function answer(btn, isCorrect, correctAnswer) {
+      if (answered) return;
+      answered = true;
+      score.total++;
+
+      document.querySelectorAll('.quiz-option').forEach(b => {
+        b.disabled = true;
+        if (b.textContent === correctAnswer) b.classList.add('correct');
+      });
+
+      if (isCorrect) {
+        score.correct++;
+        score.streak++;
+        document.getElementById('quizFeedback').textContent = '✓ Rätt! ' + currentQuestion.fakta;
+      } else {
+        btn.classList.add('wrong');
+        score.streak = 0;
+        document.getElementById('quizFeedback').textContent = '✗ Fel. Rätt svar: ' + correctAnswer;
+      }
+
+      updateScore();
+      document.getElementById('nextBtn').style.display = 'inline-block';
+    }
+
+    function updateScore() {
+      document.getElementById('scoreCorrect').textContent = score.correct;
+      document.getElementById('scoreTotal').textContent = score.total;
+      document.getElementById('scoreStreak').textContent = score.streak;
+    }
+
+    initSelector();
+  </script>
+</body>
+</html>
