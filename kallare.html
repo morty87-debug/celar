@@ -292,6 +292,7 @@
       line-height: 1.6;
     }
   </style>
+  <link rel="stylesheet" href="css/mobile.css">
 </head>
 <body>
   <div class="bg-grain"></div>
@@ -501,6 +502,15 @@
       'alvarinho': { mat: ['skaldjur', 'sushi', 'ceviche', 'grillad fisk'], stil: 'Salt-mineralisk — havets druva' }
     };
 
+    let druvDb = [];
+    async function loadDruvDb() {
+      try {
+        const res = await fetch('data/druvor.json');
+        druvDb = await res.json();
+      } catch(e) {}
+    }
+    loadDruvDb();
+
     function matchWines() {
       const dish = document.getElementById('matchInput').value.trim().toLowerCase();
       if (!dish) return;
@@ -510,9 +520,22 @@
       const matches = [];
       wines.forEach(w => {
         const druva = (w.druva || '').toLowerCase();
-        const info = grapeFood[druva];
+        let info = grapeFood[druva];
+
+        if (!info && druvDb.length) {
+          const dbMatch = druvDb.find(d => d.namn.toLowerCase() === druva);
+          if (dbMatch && dbMatch.matparning) {
+            info = { mat: dbMatch.matparning.map(m => m.toLowerCase()), stil: dbMatch.stil || '' };
+          }
+        }
+
         if (info) {
-          const relevance = info.mat.some(m => dish.includes(m) || m.split(' ').some(word => word.length > 3 && dish.includes(word)));
+          const dishWords = dish.split(/\s+/).filter(w => w.length > 3);
+          const relevance = info.mat.some(m =>
+            dish.includes(m.toLowerCase()) ||
+            m.toLowerCase().split(' ').some(word => word.length > 3 && dish.includes(word)) ||
+            dishWords.some(dw => m.toLowerCase().includes(dw))
+          );
           matches.push({ wine: w, info, relevance });
         }
       });
@@ -520,17 +543,18 @@
       matches.sort((a, b) => (b.relevance ? 1 : 0) - (a.relevance ? 1 : 0));
 
       if (matches.length === 0) {
-        results.innerHTML = '<div class="match-result-card"><h4>Inga matchningar</h4><p>Lägg till viner med druvsorter för att få matchningar.</p></div>';
+        results.innerHTML = '<div class="match-result-card"><h4>Inga matchningar</h4><p>Lägg till viner med druvsorter för att få matchningar. Matchningen fungerar med alla 77 druvor i databasen.</p></div>';
         return;
       }
 
       results.innerHTML = '';
       matches.slice(0, 5).forEach((m, i) => {
+        const matList = Array.isArray(m.info.mat) ? m.info.mat.join(', ') : '';
         results.innerHTML += `
           <div class="match-result-card" style="animation-delay:${i * 0.08}s;${m.relevance ? 'border-left-color:var(--wine);' : ''}">
             <h4>${m.wine.namn} ${m.wine.argang ? '(' + m.wine.argang + ')' : ''} ${m.relevance ? '★' : ''}</h4>
             <p><strong>${m.wine.druva}</strong> — ${m.info.stil}</p>
-            <p style="margin-top:0.3rem;font-size:0.75rem;color:var(--text-dim)">Passar till: ${m.info.mat.join(', ')}</p>
+            <p style="margin-top:0.3rem;font-size:0.75rem;color:var(--text-dim)">Passar till: ${matList}</p>
           </div>
         `;
       });
@@ -567,5 +591,6 @@
     loadDruvAutocomplete();
     render();
   </script>
+  <script src="js/mobile-nav.js"></script>
 </body>
 </html>

@@ -147,6 +147,7 @@
       color: var(--text-dim);
     }
   </style>
+  <link rel="stylesheet" href="css/mobile.css">
 </head>
 <body>
   <div class="bg-grain"></div>
@@ -210,6 +211,11 @@
       });
     }
 
+    let druvDb = [];
+    async function loadDruvDb() {
+      try { druvDb = await fetch('data/druvor.json').then(r => r.json()); } catch(e) {}
+    }
+
     function identify() {
       const input = document.getElementById('wineInput').value.trim().toLowerCase();
       if (!input) return;
@@ -222,41 +228,76 @@
       );
 
       const result = document.getElementById('result');
-      if (!match) {
+
+      if (match) {
         result.className = 'id-result show';
-        result.innerHTML = `<h3>Inget resultat</h3><p style="color:var(--text-muted)">Prova med ett av vinerna i listan, eller skriv ett känt vinnamn som "Barolo", "Chablis" eller "Rioja".</p>`;
+        result.innerHTML = `
+          <h3>${match.namn}</h3>
+          <div class="id-section">
+            <div class="id-section-title">Typ & Druvor</div>
+            <p><strong>${match.typ}</strong> — ${match.druvor}</p>
+          </div>
+          <div class="id-section">
+            <div class="id-section-title">Region</div>
+            <p>${match.region}</p>
+          </div>
+          <div class="id-section">
+            <div class="id-section-title">Aromer</div>
+            <p>${match.aromer}</p>
+          </div>
+          <div class="id-section">
+            <div class="id-section-title">Fakta</div>
+            <p>${match.fakta}</p>
+          </div>
+          <div class="id-section">
+            <div class="id-section-title">Passar till</div>
+            <div class="id-tags">${match.mat.map(m => `<span class="id-tag-brown">${m}</span>`).join('')}</div>
+          </div>
+        `;
+        result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        return;
+      }
+
+      const grapeMatch = druvDb.find(d =>
+        d.namn.toLowerCase().includes(input) ||
+        (d.synonymer || []).some(s => s.toLowerCase().includes(input))
+      );
+
+      if (grapeMatch) {
+        const k = grapeMatch.karaktar || {};
+        result.className = 'id-result show';
+        result.innerHTML = `
+          <h3>${grapeMatch.namn}</h3>
+          <div class="id-section">
+            <div class="id-section-title">Typ</div>
+            <p><strong>${grapeMatch.typ === 'vit' ? 'Vit druva' : 'Röd druva'}</strong> — ${grapeMatch.ursprung || ''}</p>
+          </div>
+          ${grapeMatch.synonymer?.length ? `<div class="id-section"><div class="id-section-title">Synonymer</div><p style="font-style:italic">${grapeMatch.synonymer.join(', ')}</p></div>` : ''}
+          <div class="id-section">
+            <div class="id-section-title">Aromer</div>
+            ${grapeMatch.aromer?.frukt ? `<p><strong>Frukt:</strong> ${grapeMatch.aromer.frukt}</p>` : ''}
+            ${grapeMatch.aromer?.ovrigt ? `<p><strong>Övrigt:</strong> ${grapeMatch.aromer.ovrigt}</p>` : ''}
+          </div>
+          <div class="id-section">
+            <div class="id-section-title">Karaktär</div>
+            <p>${k.syra ? 'Syra: ' + k.syra + ' · ' : ''}${k.tanniner ? 'Tanniner: ' + k.tanniner + ' · ' : ''}${k.kropp ? 'Kropp: ' + k.kropp + ' · ' : ''}${k.alkohol ? 'Alkohol: ' + k.alkohol : ''}</p>
+          </div>
+          ${grapeMatch.stil ? `<div class="id-section"><div class="id-section-title">Stil</div><p>${grapeMatch.stil}</p></div>` : ''}
+          ${grapeMatch.regioner?.length ? `<div class="id-section"><div class="id-section-title">Regioner</div><div class="id-tags">${grapeMatch.regioner.map(r => `<span class="id-tag-green">${r}</span>`).join('')}</div></div>` : ''}
+          ${grapeMatch.matparning?.length ? `<div class="id-section"><div class="id-section-title">Passar till</div><div class="id-tags">${grapeMatch.matparning.map(m => `<span class="id-tag-brown">${m}</span>`).join('')}</div></div>` : ''}
+        `;
+        result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         return;
       }
 
       result.className = 'id-result show';
-      result.innerHTML = `
-        <h3>${match.namn}</h3>
-        <div class="id-section">
-          <div class="id-section-title">Typ & Druvor</div>
-          <p><strong>${match.typ}</strong> — ${match.druvor}</p>
-        </div>
-        <div class="id-section">
-          <div class="id-section-title">Region</div>
-          <p>${match.region}</p>
-        </div>
-        <div class="id-section">
-          <div class="id-section-title">Aromer</div>
-          <p>${match.aromer}</p>
-        </div>
-        <div class="id-section">
-          <div class="id-section-title">Fakta</div>
-          <p>${match.fakta}</p>
-        </div>
-        <div class="id-section">
-          <div class="id-section-title">Passar till</div>
-          <div class="id-tags">${match.mat.map(m => `<span class="id-tag-brown">${m}</span>`).join('')}</div>
-        </div>
-      `;
-      result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      result.innerHTML = `<h3>Inget resultat</h3><p style="color:var(--text-muted)">Prova med ett vinnamn (t.ex. "Barolo", "Chablis") eller en druva (t.ex. "Nebbiolo", "Riesling").</p>`;
     }
 
     document.getElementById('wineInput').addEventListener('keydown', e => { if (e.key === 'Enter') identify(); });
+    loadDruvDb();
     renderQuickGrid();
   </script>
+  <script src="js/mobile-nav.js"></script>
 </body>
 </html>
