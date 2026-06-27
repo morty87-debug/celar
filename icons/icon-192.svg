@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+  <rect width="192" height="192" rx="40" fill="#f8f5f0"/>
+  <circle cx="96" cy="78" r="36" fill="none" stroke="#6b1e2e" stroke-width="3"/>
+  <path d="M78 78 Q96 110 114 78" fill="none" stroke="#6b1e2e" stroke-width="2.5"/>
+  <line x1="96" y1="114" x2="96" y2="148" stroke="#6b1e2e" stroke-width="3"/>
+  <line x1="78" y1="148" x2="114" y2="148" stroke="#6b1e2e" stroke-width="3" stroke-linecap="round"/>
+  <text x="96" y="170" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#6b1e2e" font-weight="400" letter-spacing="3">CELAR</text>
+</svg>
