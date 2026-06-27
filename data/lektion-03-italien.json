@@ -1,0 +1,210 @@
+{
+  "id": 3,
+  "titel": "Italien",
+  "undertitel": "Världens vinländer — Europa",
+  "sektioner": [
+    {
+      "rubrik": "Italien — översikt",
+      "innehall": [
+        "Italien är världens största vinproducent (tävlar med Frankrike) — vin produceras i alla 20 regioner.",
+        "Enormt stor mångfald: över 500 dokumenterade inhemska druvsorter.",
+        "Trender: Nebbiolo-viner från Piemonte och Amarone från Veneto har nått rekordhöga priser. Prosecco dominerar den mousserande marknaden. Sicilien och södra Italien i snabb kvalitetsutveckling.",
+        "Italiensk vinkultur: vin är framför allt en lunchbordsprodukt — man vill ha allt.",
+        "Vinskandaler på 1980-talet (metanol) ledde till kraftfulla kvalitetsreformer."
+      ]
+    },
+    {
+      "rubrik": "Klassificeringssystemet",
+      "innehall": [
+        "DOCG (Denominazione di Origine Controllata e Garantita): högsta nivån — strikta regler, kontrollbanderoll på flaskan. Ca 70 DOCG-klassade viner.",
+        "DOC (Denominazione di Origine Controllata): kontrollerat ursprung — ca 330 DOC-viner. Reglerar druvor, område, lagring.",
+        "IGT (Indicazione Geografica Tipica): friare regler, större områden. Motsvarar IGP. Tillåter internationella druvor och experimentell vinmakeri.",
+        "Vino d'Italia (tidigare Vino da Tavola): basvin utan ursprungskrav — men också kategorin för Super Toscana-viner som bröt reglerna.",
+        "DOP: den klass där Italien DOCG och DOC ingår — EU-harmonisering.",
+        "Superiore: vin med minst 0,5% högre volymprocent — antyder bättre kvalitet.",
+        "Riserva: vin åldrat under en viss minimiperiod beroende på vintyp.",
+        "Classico: vin producerat i den historiskt äldsta delen av ett skyddat område (ex. Chianti Classico, Soave Classico)."
+      ]
+    },
+    {
+      "rubrik": "Vinstilar",
+      "innehall": [
+        "Appassimento: druvor torkas på mattor eller hängande — koncentrerar socker och smak. Används för Amarone (torrt, kraftigt) och Recioto (sött).",
+        "Appassimento-stegen: 1. Skörd för hand → 2. Torkning 3-4 månader → 3. Avställning och pressning → 4. Maceration och jäsning ca 50 dagar → 5. Lagring i ekfat 2-4 år → 6. Filtrering och klarning → 7. Ytterligare månaders flasklagring → 8. Drickfärdigt.",
+        "Amarone: det mest kända — torrt vin på torkade druvor. Kraftigt, komplext, fylligt.",
+        "Ripasso: rödvin som refermenteras på Amarone-druvresterna — ger extra kropp och komplexitet till lägre kostnad.",
+        "Governo: äldre florentinsk metod — torkade druvor tillsätts till vin för att starta ny jäsning. Användes historiskt i Chianti.",
+        "Super Toscana: viner som medvetet bröt DOCG-reglerna genom att använda internationella druvor (Cabernet Sauvignon, Merlot). Sassicaia och Tignanello banade väg.",
+        "Prosecco: lättsamt mousserande från Veneto — Charmat-metoden (tankjäsning). Conegliano Valdobbiadene DOCG är premiumversionen.",
+        "Franciacorta: Italiens svar på Champagne — méthode traditionnelle med Pinot Noir, Chardonnay, Pinot Blanc. Från Lombardiet.",
+        "Lambrusco: mousserande rödvin från Emilia-Romagna — torrt till sött, fruktig, lättdrucket.",
+        "Vin Santo: söt dessertvin — druvor torkas, jäser långsamt i små fat (caratelli). Toscana mest känd."
+      ]
+    },
+    {
+      "rubrik": "Valle d'Aosta",
+      "innehall": [
+        "Italiens minsta vinregion — alpin, mellan Schweiz och Frankrike.",
+        "Extremt hög höjd: bland Europas högsta vingårdar.",
+        "Produktion: 40% går till det egna Petit Rouge-vinet.",
+        "Druvor: Petit Rouge, Nebbiolo, Pinot Noir (röda), Prié Blanc, Fumin (vita).",
+        "Vinodling: 450 hektar."
+      ]
+    },
+    {
+      "rubrik": "Piemonte",
+      "innehall": [
+        "Nordvästra Italien — dimhöljda kullar (Piemonte = 'vid foten av bergen').",
+        "Hem för Barolo och Barbaresco: Italiens mest prestigefyllda rödviner, båda av Nebbiolo.",
+        "Barolo: 'vinernas kung' — minst 38 månaders lagring (18 i ek). Gran Selezione-klass existerar sedan 2014. Kraftig, tanninrik, rosblad och tjärtoner.",
+        "Barbaresco: liknande stil men något elegantare och tidigare tillgängligt — minst 26 månaders lagring.",
+        "Barbera d'Asti / d'Alba: Italiens mest planterade röda druva efter Sangiovese — fruktig, hög syra, låga tanniner.",
+        "Dolcetto: lättdrucket rödvin — mjukt, fruktigt, låg syra.",
+        "Moscato d'Asti: lätt sött mousserande av Muscat — låg alkohol (5-6%), perfekt som dessertvin.",
+        "Alta Langa: traditionell metod mousserande — Chardonnay och Pinot Noir. Italiens svar på prestige-bubbel.",
+        "Gavi (Cortese di Gavi): friskt vitt vin av Cortese-druvan.",
+        "Klassificeringspyramid: DOCG → Superiore → Riserva → Classico.",
+        "Vinodling: 44 000 hektar.",
+        "Viktiga gröna druvor: Moscato, Arneis, Erbaluce, Timorasso.",
+        "Viktiga blå druvor: Nebbiolo, Barbera, Dolcetto, Brachetto."
+      ]
+    },
+    {
+      "rubrik": "Ligurien & Lombardiet",
+      "innehall": [
+        "Ligurien: liten kustregion — 70% vitt vin. Terrängvingårdar i branter. Cinque Terre är UNESCO-skyddat.",
+        "Druvor Ligurien: Pigato, Vermentino (vita), Rossese (röd). 1 400 hektar.",
+        "Lombardiet: mångsidig region kring Milano — stillastående, mousserande, röda och vita.",
+        "Franciacorta DOCG: Italiens finaste mousserande — méthode traditionnelle med Chardonnay, Pinot Noir, Pinot Blanc. Konkurrerar med Champagne.",
+        "Valtellina: smala terrasser i Alperna — Nebbiolo (kallas lokalt Chiavennasca). Kraftfulla röda, torra viner med lång lagring.",
+        "Vinodling Lombardiet: 24 700 hektar."
+      ]
+    },
+    {
+      "rubrik": "Trentino-Alto Adige & Friuli-Venezia Giulia",
+      "innehall": [
+        "Trentino-Alto Adige: nordligaste — tvåspråkig (tyska/italienska). 70% vitt vin.",
+        "Höga höjder ger friska, aromatiska vita viner — Pinot Grigio, Gewürztraminer, Chardonnay.",
+        "Få DOCG men högt anseende — nästan 95% av vinet säljs som DOC/DOCG.",
+        "Druvor: Schiava, Teroldego, Lagrein (röda), Pinot Grigio, Chardonnay (vita). 15 400 hektar.",
+        "Friuli-Venezia Giulia: känd för sina vita viner — en av Italiens bästa vitvinregioner.",
+        "Pinot Grigio från Friuli har satt druvan på kartan internationellt.",
+        "Colli Orientali del Friuli och Collio: premiumområden — komplexare vita med Friulano (tidigare Tocai), Sauvignon Blanc, Chardonnay.",
+        "Orange wine: naturlig vitvinproduktion med lång skalkontakt — Friuli är ett epicentrum för denna stil.",
+        "Druvor Friuli: Pinot Grigio, Glera, Friulano, Ribolla Gialla, Sauvignon Blanc. 27 000 hektar."
+      ]
+    },
+    {
+      "rubrik": "Veneto",
+      "innehall": [
+        "Nordöstra Italien — en av de största vinregionerna. Hem för Amarone, Valpolicella, Soave och Prosecco.",
+        "Amarone della Valpolicella DOCG: kraftigt torrt vin av appassimento-druvor (Corvina, Corvinone, Rondinella). 15-17% alkohol.",
+        "Ripasso: refermenteras på Amarone-resterna — mellanting mellan vanlig Valpolicella och Amarone.",
+        "Soave: vitt vin av Garganega — kan vara enkelt eller komplext (Soave Classico, Soave Superiore DOCG).",
+        "Prosecco: Glera-druvan — Charmat-metoden. Conegliano Valdobbiadene DOCG och Asolo DOCG är premium.",
+        "Bardolino: lätt rödvin vid Gardasjön — Corvina-baserat.",
+        "Vinodling: 93 000 hektar.",
+        "Viktiga gröna druvor: Garganega, Glera, Trebbiano.",
+        "Viktiga blå druvor: Corvina, Corvinone, Rondinella, Molinara."
+      ]
+    },
+    {
+      "rubrik": "Emilia-Romagna",
+      "innehall": [
+        "Italiens gastronomiska hjärta — Parma, Bologna, Modena. Vin görs för att komplettera maten.",
+        "Lambrusco: Italiens mest sålda mousserande rödvin — fruktig, lättdrucket. Finns från torr till söt.",
+        "Sangiovese di Romagna: rödvin från östra delen — rustikt, kan vara grovt eller elegant.",
+        "Pignoletto: pet-nat-favorit — fräscht bubbelvin, alltmer populärt internationellt.",
+        "Grechetto (lokalt kallat Albana): Italiens första vita DOCG — Albana di Romagna DOCG.",
+        "Vinodling: 53 000 hektar."
+      ]
+    },
+    {
+      "rubrik": "Toscana",
+      "innehall": [
+        "Italiens mest ikoniska vinregion — Chianti, Brunello, Vino Nobile, Super Toscana.",
+        "Sangiovese: huvuddruvan — ger allt från enkel Chianti till kraftfull Brunello di Montalcino.",
+        "Chianti Classico DOCG: hjärtat av Chianti — Sangiovese blandas med lokala eller internationella druvor. Gran Selezione sedan 2013 (minst 30 mån lagring).",
+        "Brunello di Montalcino DOCG: 100% Sangiovese (kallas lokalt Brunello) — minst 5 års lagring, varav 2 i ek. Italiens mest prestigefyllda rödvin.",
+        "Vino Nobile di Montepulciano DOCG: Sangiovese (kallas Prugnolo Gentile) — mellanting mellan Chianti och Brunello.",
+        "Super Toscana: viner som medvetet bröt reglerna — Sassicaia (Cabernet Sauvignon), Tignanello (Sangiovese + Cabernet). Först klassade som Vino da Tavola, nu ofta IGT Toscana.",
+        "Vernaccia di San Gimignano: Italiens första vita DOCG-vin — friskt, mineraliskt.",
+        "Vin Santo: traditionellt söt dessertvin — serveras med cantuccini (mandelskorpor).",
+        "Bolgheri DOC: kustområde — Bordeaux-druvor ger eleganta röda viner. Sassicaia, Ornellaia.",
+        "Vinodling: 60 000 hektar."
+      ]
+    },
+    {
+      "rubrik": "Marche & Umbrien",
+      "innehall": [
+        "Marche: Adriatiska kusten — Verdicchio är huvuddruvan. Friska vita viner med mineralitet.",
+        "Verdicchio dei Castelli di Jesi DOC: mest kända — amfora-formad flaska traditionellt. Kan vara enkel eller komplex med lagringspotential.",
+        "Rosso Conero och Rosso Piceno: Montepulciano-baserade röda viner.",
+        "Vinodling Marche: 16 000 hektar.",
+        "Umbrien: inlandet — 'Italiens gröna hjärta'. Orvieto (vitt) och Sagrantino di Montefalco (rött).",
+        "Sagrantino: extremt tanninrik druva — DOCG Montefalco Sagrantino. En av Italiens mest kraftfulla rödviner.",
+        "Orvieto: klassiskt vitt vin — Grechetto och Trebbiano. 3000 år gammal vintradition.",
+        "Torgiano: liten men viktig — första DOCG-vinet 1990 (Torgiano Rosso Riserva).",
+        "Vinodling Umbrien: 12 500 hektar."
+      ]
+    },
+    {
+      "rubrik": "Lazio, Abruzzerna & Molise",
+      "innehall": [
+        "Lazio: runt Rom — ca 200 olivsorten, vin är vardagligt. 85% vitt vin.",
+        "Frascati: mest kända — lätt, friskt vitt vin av Malvasia och Trebbiano. Populärt som karaffvin.",
+        "Est! Est!! Est!!! di Montefiascone: legendariskt namn, enklare vitt vin.",
+        "Lazio druvor: Malvasia, Trebbiano (vita), Cesanese (röd — Roms enda inhemska röda druva).",
+        "Vinodling Lazio: 20 500 hektar.",
+        "Abruzzerna: Montepulciano d'Abruzzo — Italiens mest sålda röda DOC. Ger kraftiga, fruktiga rödviner till bra pris.",
+        "Trebbiano d'Abruzzo: vitt vin — kan vara enkelt eller, från bästa producenter, remarkabelt komplext.",
+        "Cerasuolo d'Abruzzo: djupt färgad rosé av Montepulciano.",
+        "Vinodling Abruzzerna: 33 000 hektar.",
+        "Molise: Italiens minst kända vinregion — Biferno DOC. Trebbiano och Montepulciano. 3 500 hektar."
+      ]
+    },
+    {
+      "rubrik": "Kampanien & Apulien",
+      "innehall": [
+        "Kampanien: Neapel-området — vulkanjord från Vesuvius. Unika inhemska druvor.",
+        "Taurasi DOCG: 'söderns Barolo' — Aglianico-druvan. Kraftfull, tanninrik, lång lagringspotential.",
+        "Fiano di Avellino DOCG: aromatiskt vitt vin — nötiga, blommiga toner.",
+        "Greco di Tufo DOCG: mineraliskt vitt vin med citrus och stenfruktstoner.",
+        "Lacryma Christi: vin från Vesuvius sluttningar — romantiskt namn, varierande kvalitet.",
+        "Druvor Kampanien: Aglianico (röd), Fiano, Falanghina, Greco (vita). 26 000 hektar.",
+        "Apulien (Puglia): Italiens stövelklack — enormt produktiv, 17% av all italiensk vin.",
+        "Primitivo: genetiskt identisk med Zinfandel — kraftfulla, mogna röda med höga alkoholhalter.",
+        "Negroamaro: mörkfärgad druva — ger kraftfulla röda och roséer. Salice Salentino DOC.",
+        "Apulien var länge känd som bulkvinproducent men genomgår en kvalitetsrevolution.",
+        "Vinodling Apulien: 88 000 hektar."
+      ]
+    },
+    {
+      "rubrik": "Basilicata, Kalabrien & Sardinien",
+      "innehall": [
+        "Basilicata: bergigt inlandsklimat — Aglianico del Vulture DOCG. Vulkanjord ger mineraliska röda.",
+        "Vinodling Basilicata: 2 000 hektar.",
+        "Kalabrien: Italiens tå — Gaglioppo-druvan i Cirò DOC. Syditaliens äldsta vindistrikt.",
+        "Greco di Bianco: sällsynt söt vit — passito-stil. Bland Italiens äldsta vintraditioner.",
+        "Vinodling Kalabrien: 9 000 hektar.",
+        "Sardinien: medelhavsklimat — stark spansk influens (Spanien styrde ön i 400 år).",
+        "Cannonau: samma druva som Grenache — Sardiniens viktigaste röda. Ger generösa, varma rödviner.",
+        "Vermentino di Gallura DOCG: mineraliskt, friskt vitt vin — Sardiniens enda DOCG.",
+        "Bovale: lokal druva som fungerar som sammanbindande i blandningar — robust karaktär.",
+        "Carignano del Sulcis: kraftfulla röda från södra Sardinien."
+      ]
+    },
+    {
+      "rubrik": "Sicilien",
+      "innehall": [
+        "Italiens största ö och vinregion — extremt dynamisk utveckling de senaste decennierna.",
+        "Etna DOC: vulkanvingårdar på aktiva Etna — Nerello Mascalese ger eleganta, burgundiska röda. Höjd upp till 1000 m.",
+        "Marsala: historisk starkvin från västra Sicilien — torr till söt. Användes i matlagning men är nu i en revival.",
+        "Nero d'Avola: Siciliens viktigaste röda druva — mörk, fruktig, kryddig.",
+        "Grillo och Catarratto: vita druvor — Grillo används i Marsala men ger också friska torra viner.",
+        "Passito di Pantelleria: söt vin av torkade Muscat-druvor från ön Pantelleria.",
+        "Sicilien har blivit ett centrum för moderna, internationella vinstilar till konkurrenskraftiga priser."
+      ]
+    }
+  ]
+}

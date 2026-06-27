@@ -1,0 +1,246 @@
+{
+  "id": 2,
+  "titel": "Frankrike",
+  "undertitel": "Världens vinländer — Europa",
+  "sektioner": [
+    {
+      "rubrik": "Frankrike — översikt",
+      "innehall": [
+        "Frankrike är världens främsta vinland — ca 4 under de senaste hundra åren har Bordeaux och Bourgogne definierat finvinsvärlden.",
+        "Klassificeringssystemet startade redan under medeltiden via kloster i Bourgogne och utvecklades vidare i Bordeaux.",
+        "Frankrikes kvalitetssystem har blivit modell för vinländer världen över.",
+        "Trender: naturvin och orange vin är i frammarsch. Champagne-producenter satsar allt mer på kvalitet. Spännande utveckling i Languedoc med billiga kvalitetsviner."
+      ]
+    },
+    {
+      "rubrik": "Klassificeringssystemet",
+      "innehall": [
+        "AOP (Appellation d'Origine Protégée): högsta nivån — reglerar druvor, område, produktion. Ersatte AOC 2012 men båda termerna används.",
+        "IGP (Indication Géographique Protégée): friare regler, större regioner. Ersatte Vin de Pays.",
+        "Vin de France: den öppnaste kategorin — druvor från hela Frankrike kan blandas. Producenten får ange druvsort och årgång på etiketten.",
+        "VDQS (Vin Délimité de Qualité Supérieure): den gamla klassificeringen mellan AOC och Vin de Pays — fasades ut 2012.",
+        "VdP (Vin de Pays): äldre benämning, numera IGP. Vin de Pays d'Oc (Languedoc) var den mest kända."
+      ]
+    },
+    {
+      "rubrik": "Vinifiering",
+      "innehall": [
+        "Champagne: mousserande vin tillverkat på en andra jäsning i flaskan (méthode traditionnelle). Främst Bordeaux, Loire, Alsace och Bourgogne tillverkar också mousserande.",
+        "Rosé Provence: mest känd för sin ljusa, laxrosa färg — torrare stil med fruktiga och mineraliska toner.",
+        "Vin de paille: sötvin från Jura, gjort på druvor torkade på halm i några veckor.",
+        "Crémant: mousserande vin tillverkat med samma metod som Champagne men utanför Champagne-regionen — finns i Alsace, Bourgogne, Loire, Bordeaux, Jura, Limoux."
+      ]
+    },
+    {
+      "rubrik": "Loire",
+      "innehall": [
+        "Frankrikes längsta flod med vindistrikt som sträcker sig från Centralmassivet i öster till Atlanten i väster — ca 1000 km.",
+        "Västra Loire: Muscadet-regionen. Druva: Melon de Bourgogne. Lätta, fräscha, mineraliska vita viner. Sur lie-lagring ger mer textur.",
+        "Mellersta Loire delas i två: Anjou-Saumur och Touraine. Chenin Blanc som bas — från torra till söta. Vouvray och Savennières är kända appellationer.",
+        "Östra Loire: Pouilly-Fumé och Sancerre — världsberömda för Sauvignon Blanc med krispig syra och mineralitet. Menetou-Salon, Reuilly, Quincy.",
+        "Röda druvor: Cabernet Franc dominerar — Chinon, Bourgueil, Saumur-Champigny.",
+        "Viktiga gröna druvor: Muscadet, Sauvignon Blanc, Chenin Blanc.",
+        "Viktiga blå druvor: Cabernet Franc, Pinot Noir, Gamay.",
+        "Vinodling: 65 000 hektar."
+      ]
+    },
+    {
+      "rubrik": "Champagne",
+      "innehall": [
+        "Frankrikes nordligaste vinregion — kall klimat ger hög syra, perfekt för mousserande.",
+        "Kalkstensjord (craie) är avgörande — ger mineralitet och reflekterar värme.",
+        "Tre huvuddruvor: Chardonnay, Pinot Noir och Meunier.",
+        "Montagne de Reims: domineras av Pinot Noir och Meunier — ger struktur och kropp.",
+        "Vallée de la Marne: mestadels Meunier — fruktig, tidig mognad.",
+        "Côte des Blancs: domineras av Chardonnay — eleganta, mineraldrivna viner. Har flest Grand Cru-klassade byar.",
+        "Côte de Sézanne: södra delen, Chardonnay på gröna druvor.",
+        "Côte des Bar: sydligaste delen nära Chablis — Pinot Noir dominerar.",
+        "Klassificering: Grand Cru (17 byar) och Premier Cru (43 byar).",
+        "Non-vintage (NV): blandning av årgångar — husets signaturstil.",
+        "Vintage/Millésimé: enbart en årgång, görs bara exceptionella år.",
+        "Blanc de Blancs: 100% Chardonnay. Blanc de Noirs: 100% blå druvor.",
+        "Prestige Cuvée: husets toppvin (ex. Dom Pérignon, Cristal).",
+        "Rosé i Champagne tillverkas oftast genom att tillsätta rött vin — enda regionen i Frankrike där detta är tillåtet.",
+        "Vinodling: 34 000 hektar."
+      ]
+    },
+    {
+      "rubrik": "Alsace",
+      "innehall": [
+        "Ligger vid tyska gränsen — Vogeserna skyddar mot västvind och regn, ger ett torrt mikroklimat.",
+        "En av Frankrikes torraste regioner — mycket solsken.",
+        "Fokus på aromatiska vita sortviner — enda franska regionen som framhäver druvsorten på etiketten.",
+        "Fyra ädla druvor: Riesling, Gewürztraminer, Pinot Gris, Muscat.",
+        "Grand Cru: 51 klassificerade lägen — druvan måste vara en av de fyra ädla (plus Sylvaner i Zotzenberg).",
+        "Crémant d'Alsace: mousserande vin — mest sålda crémant i Frankrike.",
+        "Vendange Tardive: sen skörd, söta koncentrerade viner.",
+        "Sélection de Grains Nobles: viner gjorda på botrytisangripna druvor — extremt söta och sällsynta.",
+        "Viktiga gröna druvor: Riesling, Gewürztraminer, Pinot Gris, Muscat, Sylvaner.",
+        "Viktiga blå druvor: Pinot Noir.",
+        "Vinodling: 16 000 hektar."
+      ]
+    },
+    {
+      "rubrik": "Bourgogne",
+      "innehall": [
+        "Vinregionen som mest betonar terroir — samma druva (Pinot Noir/Chardonnay) ger helt olika viner beroende på exakt läge.",
+        "Klassificeringspyramid: Région → Kommun → Premier Cru → Grand Cru.",
+        "Grand Cru: ca 30 appellationer — topplägen med egen AOC. Endast 1-2% av produktionen.",
+        "Premier Cru: namngiven vingård inom en kommun — ca 10% av produktionen.",
+        "Chablis: nordligaste Bourgogne — kända för mineraldrivna, strama Chardonnay-viner. Kimmeridgian-kalksten (fossiler). Klassificering: Petit Chablis → Chablis → Premier Cru → Grand Cru (7 st).",
+        "Côte de Nuits: domineras av Pinot Noir — Gevrey-Chambertin, Chambolle-Musigny, Vougeot, Vosne-Romanée, Nuits-St-Georges. Världens dyraste viner.",
+        "Côte de Beaune: både Chardonnay och Pinot Noir — Aloxe-Corton, Pommard, Volnay, Meursault, Puligny-Montrachet, Chassagne-Montrachet.",
+        "Côte Chalonnaise: Mercurey, Givry, Rully — bra kvalitet, lägre priser.",
+        "Mâconnais: Pouilly-Fuissé, Saint-Véran — Chardonnay, rundare stil.",
+        "Viktiga gröna druvor: Chardonnay, Aligoté.",
+        "Viktiga blå druvor: Pinot Noir, Gamay.",
+        "Vinodling: 28 000 hektar, ca 50 hektar per domän i snitt."
+      ]
+    },
+    {
+      "rubrik": "Beaujolais",
+      "innehall": [
+        "Officiellt en del av Bourgogne men med helt egen karaktär — granit- och skifferjordar.",
+        "Druva: Gamay — ger lätta, fruktiga röda viner med låg tanninkaraktär.",
+        "Beaujolais Nouveau: släpps tredje torsdagen i november varje år — koldioxidmaceration (kolsyremaceration) ger intensiv frukt.",
+        "10 Cru-klassade byar: St-Amour, Juliénas, Chénas, Moulin-à-Vent, Fleurie, Chiroubles, Morgon, Régnié, Brouilly, Côte de Brouilly.",
+        "Moulin-à-Vent och Morgon: mest kraftfulla, kan lagras och liknar Bourgogne-viner med åren.",
+        "Kolsyremaceration: hela druvor läggs i tank med koldioxid — jäsning börjar inuti druvan. Ger intensiv frukt, låga tanniner.",
+        "Vinodling: 22 000 hektar."
+      ]
+    },
+    {
+      "rubrik": "Jura & Savoie",
+      "innehall": [
+        "Jura: liten region mellan Bourgogne och Schweiz — ca 2100 hektar. Unika vinstilar.",
+        "Vin Jaune (gult vin): gjort på Savagnin, lagras minst 6 år och 3 månader under en jästhinna (voile) — liknande sherry men utan spritning. Nöt- och currytoner.",
+        "Vin de Paille: druvor torkade på halmmattor, ger söta koncentrerade viner.",
+        "Crémant du Jura: mousserande — Chardonnay och Pinot Noir.",
+        "Château-Chalon: mest berömda Vin Jaune-appellationen.",
+        "Jura druvor: Savagnin, Chardonnay, Poulsard (Ploussard), Trousseau, Pinot Noir.",
+        "Savoie: alpin region nära Genève. Friska, lätta vita viner — Jacquère och Altesse (Roussette).",
+        "Savoie druvor: Gamay, Mondeuse, Pinot Noir, Jacquère, Altesse, Chasselas.",
+        "Bugey: liten region, mousserande och stilla viner. Appellation sedan 2009."
+      ]
+    },
+    {
+      "rubrik": "Norra Rhône",
+      "innehall": [
+        "Smal dal längs Rhônefloden — branta terrasser med granit och skiffer.",
+        "Syrah är den enda röda druvan — ger mörka, kryddiga, kraftfulla viner.",
+        "Côte-Rôtie: steilaste backarna, Syrah blandas ibland med Viognier (vit druva) — ger elegans. Två delar: Côte Brune och Côte Blonde.",
+        "Condrieu: exklusivt vitt vin av Viognier — blommiga, aromatiska. Château-Grillet är en egen liten appellation inuti Condrieu.",
+        "Hermitage: en av Frankrikes mest ikoniska appellationer — kraftfull Syrah. Vita Hermitage av Marsanne och Roussanne.",
+        "Crozes-Hermitage: största appellationen i Norra Rhône — mer tillgängliga priser.",
+        "Saint-Joseph: båda sidor av floden, Syrah-baserade röda.",
+        "Cornas: 100% Syrah — mörka, robusta viner.",
+        "Saint-Péray: mousserande och stilla vita viner av Marsanne och Roussanne.",
+        "Viktiga gröna druvor: Viognier, Marsanne, Roussanne.",
+        "Viktiga blå druvor: Syrah."
+      ]
+    },
+    {
+      "rubrik": "Södra Rhône",
+      "innehall": [
+        "Bredare landskap med medelhavsklimat — varmare, torrare.",
+        "Grenache dominerar — blandas ofta med Syrah, Mourvèdre och andra.",
+        "Châteauneuf-du-Pape: mest berömda — 13 tillåtna druvor. Runda, generösa stenar (galets roulés) håller värmen.",
+        "Gigondas och Vacqueyras: kraftfulla, värdefulla alternativ till Châteauneuf-du-Pape.",
+        "Tavel: Frankrikes mest berömda rosé-appellation — enbart rosé.",
+        "Rasteau och Beaumes-de-Venise: söta viner (Vin Doux Naturel) — Muscat respektive Grenache.",
+        "Côtes du Rhône: regionens basappellation — 71 000 hektar.",
+        "Lirac: underskattad appellation bredvid Tavel — röda, vita och roséer.",
+        "Viktiga gröna druvor: Grenache Blanc, Clairette, Viognier, Marsanne, Roussanne.",
+        "Viktiga blå druvor: Grenache, Syrah, Mourvèdre, Cinsault, Carignan."
+      ]
+    },
+    {
+      "rubrik": "Provence & Korsika",
+      "innehall": [
+        "Provence: Frankrikes roséhuvudstad — rosévin är det man gör, inte rött eller vitt.",
+        "Största appellationen: Côtes de Provence — 74% av all vin är rosé.",
+        "Bandol: viktigaste röd-appellationen — Mourvèdre-baserade kraftfulla viner som kräver lagring.",
+        "Cassis: specialiserat på vita viner av Clairette och Marsanne.",
+        "Vinodling: 44 000 hektar.",
+        "Korsika: medelhavsklimat — unika lokala druvor som Nielluccio (besläktad med Sangiovese) och Sciacarello.",
+        "Patrimonio: viktigaste appellationen — Nielluccio för röda, Vermentino för vita.",
+        "Vinodling Korsika: 6 000 hektar."
+      ]
+    },
+    {
+      "rubrik": "Languedoc-Roussillon",
+      "innehall": [
+        "Frankrikes största vinregion — tidigare massproduktion, nu kvalitetsrevolution.",
+        "Languedoc: Grenache, Syrah, Mourvèdre och Carignan — kryddiga, fruktiga röda.",
+        "Appellationer: Corbières, Minervois, Faugères, Saint-Chinian, Pic Saint-Loup, La Clape.",
+        "Limoux: en av världens äldsta mousserande traditioner — Blanquette de Limoux (1531), äldre än Champagne.",
+        "Roussillon: starkvinproducent — Banyuls, Maury, Rivesaltes (Vin Doux Naturel).",
+        "Collioure: torrare röda och roséviner från samma område som Banyuls.",
+        "IGP Pays d'Oc: enorm volym sortvinproduktion — Chardonnay, Merlot, Cabernet som internationellt tillgängliga viner.",
+        "Vinodling: 210 000 hektar."
+      ]
+    },
+    {
+      "rubrik": "Sydväst",
+      "innehall": [
+        "Region söder om Bordeaux — ofta kallad 'Occitanien'. Historiskt blockerad av Bordeaux som skyddade sin export.",
+        "Cahors: kända för Malbec (kallas lokalt Côt/Auxerrois) — mörka, kraftiga röda viner.",
+        "Madiran: Tannat-baserade röda — extremt tanninrika, kräver lagring.",
+        "Jurançon: söta och torra vita viner av Gros Manseng och Petit Manseng.",
+        "Bergerac och Monbazillac: nära Bordeaux — liknande druvor (Merlot, Cabernet). Monbazillac för söta viner.",
+        "Gaillac: en av Frankrikes äldsta vinregioner — lokala druvor som Duras, Braucol (Fer Servadou).",
+        "Irouléguy: baskisk vinregion — Tannat och Cabernet Franc.",
+        "Vinodling: 50 000 hektar."
+      ]
+    },
+    {
+      "rubrik": "Bordeaux",
+      "innehall": [
+        "Världens mest kända vinregion — Gironde-flodens mynning delar regionen i vänster och höger strand.",
+        "Vänster strand (Médoc, Graves): domineras av Cabernet Sauvignon — Pauillac, Saint-Julien, Margaux, Saint-Estèphe, Pessac-Léognan. Grusjordar (graves).",
+        "Höger strand (Saint-Émilion, Pomerol): domineras av Merlot — lera och kalksten. Mindre egendomar.",
+        "Entre-Deux-Mers: mellan floderna, främst torra vita viner.",
+        "Sauternes och Barsac: söta vita viner — Sémillon angripen av botrytis (ädelröta). Château d'Yquem är det mest berömda.",
+        "1855 års klassificering: 5 nivåer (Premier Cru → Cinquième Cru) för Médoc + Sauternes. Fortfarande i bruk.",
+        "Klassificeringspyramid: Bordeaux → Bordeaux Supérieur → Cru Bourgeois → Grand Cru Classé.",
+        "Saint-Émilion har egen klassificering som revideras — senast 2022.",
+        "Pomerol: har ingen officiell klassificering — ändå hem för Petrus och Le Pin.",
+        "Viktiga gröna druvor: Sauvignon Blanc, Sémillon, Muscadelle.",
+        "Viktiga blå druvor: Cabernet Sauvignon, Merlot, Cabernet Franc, Petit Verdot, Malbec, Carménère.",
+        "Vinodling: 111 000 hektar."
+      ]
+    },
+    {
+      "rubrik": "Viktiga producenter",
+      "innehall": [
+        "Château Mouton-Rothschild: uppgraderad från Deuxième till Premier Cru 1973 — enda ändringen i 1855 års klassificering. 'Jag är första, Mouton ändrar sig inte.'",
+        "Domaine Romanée-Conti (DRC): Bourgognes mest legendariska — Romanée-Conti, La Tâche, Richebourg. Astronomiska priser.",
+        "LVMH (Louis Vuitton Moët Hennessy): äger Moët & Chandon, Dom Pérignon, Veuve Clicquot, Krug, Château d'Yquem m.fl.",
+        "Jean-Marc Brocard: Chablis-pionjär — över 200 hektar, störst ekologisk odlare i hela Bourgogne.",
+        "Gérard Bertrand: störst i Languedoc-Roussillon — familjeföretag, startade som rugbyspelare, driver nu ekologiska och biodynamiska gårdar.",
+        "Château d'Esclans: Sacha Lichine köpte en Provence-gård 2006 och revolutionerade rosé-marknaden med premiumroséer som Garrus.",
+        "M. Chapoutier: en av Rhônedalens främsta — biodynamisk vinproduktion. 400 hektar i Hermitage, Cornas, Côteaux d'Aix.",
+        "Trimbach: Alsace-familj sedan 1626 — Riesling Clos Ste Hune är ett av världens främsta vita viner."
+      ]
+    },
+    {
+      "rubrik": "Frankrikes vinhistoria",
+      "typ": "timeline",
+      "innehall": [
+        "400: Munkarna tar kontroll över vinodlarna i landet — kloster blev kraftcentra.",
+        "1152: Eleonora av Aquitanien gifter sig med Henry Plantagenet — Bordeaux-vin exporteras massivt till England.",
+        "1232: Klostret Clos de Vougeot i Bourgogne grundas — munkarna kartlägger terroirer.",
+        "1309: Avignon i södra Frankrike blir påvens residensstad — vinodlingen ökar dramatiskt, Châteauneuf-du-Pape grundas.",
+        "1697: Dom Pérignon (enligt sägnen) utvecklar metoden för mousserande vin i Champagne.",
+        "1855: Bordeaux-klassificeringen skapas — fortfarande i bruk med en enda ändring (Mouton 1973).",
+        "1932: Frankrike inför vinlagstiftning som hänvisar till ursprung och karaktär — grunden till AOC-systemet.",
+        "1935: AOC-systemet officiellt grundat.",
+        "1945: Andra världskriget slutar — Château Mouton-Rothschild 1945 blir ikonisk, mytologiserad.",
+        "1976: Judgment of Paris — kaliforniska viner slår franska i blindprovning.",
+        "1987: Vin de Pays d'Oc införs — internationella druvor i Languedoc blir en succé.",
+        "2010: AOP ersätter AOC officiellt (men AOC används fortfarande).",
+        "2020: Frankrike skapar rekommendation för naturvin — Vin Méthode Nature."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celar — Lektioner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .lektioner-header {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 3rem 1.5rem 1.5rem;
+      animation: fadeUp 0.8s ease-out;
+    }
+    .lektioner-header .back-link {
+      position: absolute;
+      top: 2rem;
+      left: 1.5rem;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .lektioner-header .back-link:hover { color: var(--wine); }
+    .lektioner-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
+      font-weight: 300;
+      color: var(--sand-light);
+      letter-spacing: 0.1em;
+    }
+    .lektioner-list {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 2rem auto;
+      padding: 0 1.5rem 4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .lektion-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.3s;
+      animation: fadeUp 0.5s ease-out backwards;
+    }
+    .lektion-link:hover {
+      border-color: var(--border-hover);
+      background: var(--surface-hover);
+      transform: translateX(4px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+    }
+    .lektion-link.disabled {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+    .lektion-num {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--wine);
+      min-width: 2rem;
+      text-align: center;
+    }
+    .lektion-info { flex: 1; }
+    .lektion-info h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--sand-light);
+      margin-bottom: 0.15rem;
+    }
+    .lektion-info p {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+    .lektion-arrow {
+      color: var(--text-dim);
+      font-size: 1rem;
+      transition: transform 0.3s;
+    }
+    .lektion-link:hover .lektion-arrow {
+      transform: translateX(3px);
+      color: var(--wine);
+    }
+    .lektion-status {
+      font-size: 0.65rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+    }
+    .lektion-status.klar {
+      color: var(--moss);
+      background: rgba(74, 90, 58, 0.1);
+    }
+    .lektion-status.snart {
+      color: var(--text-dim);
+      background: rgba(0,0,0,0.04);
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-grain"></div>
+
+  <header class="lektioner-header">
+    <a href="index.html" class="back-link">← Tillbaka</a>
+    <h1>Lektioner</h1>
+    <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.9rem;">19 lektioner — från grunderna till examen</p>
+  </header>
+
+  <main class="lektioner-list" id="lektionerList"></main>
+
+  <footer class="footer">
+    <div class="footer-divider"><span class="divider-vine">✦</span></div>
+    <p>Celar — Byggt för sommelierer</p>
+  </footer>
+
+  <script>
+    const lektioner = [
+      { id: 1, titel: "Introduktion", desc: "Vinodling, klimat, terroir, vintillverkning, defekter", klar: true },
+      { id: 2, titel: "Frankrike", desc: "Alla regioner, druvor, klassificeringar, producenter", klar: true },
+      { id: 3, titel: "Italien", desc: "Regioner, DOCG/DOC, druvor, klassificering", klar: true },
+      { id: 4, titel: "Spanien", desc: "Rioja, Priorat, Sherry, druvor och regioner", klar: true },
+      { id: 5, titel: "Mat & dryck, alkoholfritt & sake", desc: "Mat-vin-parning, sake, alkoholfria alternativ", klar: true },
+      { id: 6, titel: "Bordeaux & Bourgogne", desc: "Fördjupning i Frankrikes två storheter", klar: true },
+      { id: 7, titel: "Portugal & starkvin", desc: "Portvin, Madeira, Douro, Alentejo", klar: true },
+      { id: 8, titel: "Tyskland, Österrike, Schweiz & Sverige", desc: "Riesling, Grüner Veltliner, nordiska viner", klar: true },
+      { id: 9, titel: "Sommelierteori & defekter", desc: "Sensorik, provningsteknik, vindefekter", klar: true },
+      { id: 10, titel: "Mousserande viner", desc: "Champagne, Cava, Prosecco, metoder", klar: true },
+      { id: 11, titel: "Öl & cider", desc: "Ölstilar, bryggprocess, cider", klar: true },
+      { id: 12, titel: "Östra Europa & provningsmetodik", desc: "Ungern, Georgien, Kroatien, provningsmetodik", klar: true },
+      { id: 13, titel: "Söta viner & desserter", desc: "Sauternes, Tokaji, Eiswein, dessertparning", klar: true },
+      { id: 14, titel: "Sprit", desc: "Destillation, cognac, whisky, cocktails", klar: true },
+      { id: 15, titel: "Nordamerika", desc: "Kalifornien, Oregon, Washington, Kanada", klar: true },
+      { id: 16, titel: "Sydamerika", desc: "Argentina, Chile, Malbec, Carmenère", klar: true },
+      { id: 17, titel: "Oceanien", desc: "Australien, Nya Zeeland, Shiraz, Sauvignon Blanc", klar: true },
+      { id: 18, titel: "Sydafrika & Asien", desc: "Stellenbosch, Pinotage, japanskt vin", klar: true },
+      { id: 19, titel: "Sommelierens praktiska kunskap", desc: "Servering, vinlista, kalkylering, karriär", klar: true }
+    ];
+
+    const list = document.getElementById('lektionerList');
+    lektioner.forEach((l, i) => {
+      const a = document.createElement('a');
+      a.href = l.klar ? `lektion.html?id=${l.id}` : '#';
+      a.className = `lektion-link${l.klar ? '' : ' disabled'}`;
+      a.style.animationDelay = `${i * 0.04}s`;
+      a.innerHTML = `
+        <span class="lektion-num">${l.id}</span>
+        <div class="lektion-info">
+          <h3>${l.titel}</h3>
+          <p>${l.desc}</p>
+        </div>
+        <span class="lektion-status ${l.klar ? 'klar' : 'snart'}">${l.klar ? 'Klar' : 'Snart'}</span>
+        <span class="lektion-arrow">→</span>
+      `;
+      list.appendChild(a);
+    });
+  </script>
+</body>
+</html>

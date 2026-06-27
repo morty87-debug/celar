@@ -1,0 +1,138 @@
+{
+  "kurs": "Sommelierutbildningen — The Wine Hub",
+  "lektioner": [
+    {
+      "id": 1,
+      "titel": "Introduktion — I vingården & i vineriet",
+      "pdf": ["2-pdf-i-vingarden-and-vineriet-1.pdf", "vinlista-introduktion (1).pdf"],
+      "kursbokSidor": "5-18",
+      "amnen": ["vinodling", "klimat", "terroir", "vintillverkning", "defekter", "vinetiketten", "vinhistoria"]
+    },
+    {
+      "id": 2,
+      "titel": "Frankrike",
+      "pdf": ["3-pdf-frankrike (1).pdf", "vinlista-frankrike.pdf", "frankrike-blindkarta-m-facit.pdf"],
+      "kursbokSidor": "19-87",
+      "amnen": ["frankrike", "regioner", "druvor", "appellationer"]
+    },
+    {
+      "id": 3,
+      "titel": "Italien",
+      "pdf": ["4-pdf-italien.pdf", "vinlista-italien.pdf", "italien-blindkarta-m-facit.pdf"],
+      "kursbokSidor": "",
+      "amnen": ["italien", "regioner", "druvor", "klassificering"]
+    },
+    {
+      "id": 4,
+      "titel": "Spanien",
+      "pdf": ["5-pdf-spanien.pdf", "5-vinlista-spanien.pdf", "spanien-blindkarta-m-facit.pdf"],
+      "kursbokSidor": "",
+      "amnen": ["spanien", "regioner", "druvor"]
+    },
+    {
+      "id": 5,
+      "titel": "Mat & dryck, alkoholfritt & sake",
+      "pdf": ["6-pdf-mat-and-dryck-and-alkoholfritt-and-sake.pdf", "6-vinlista-mat-and-vin-and-alkoholfritt-and-sake.pdf"],
+      "kursbokSidor": "",
+      "amnen": ["mat-vin-parning", "alkoholfritt", "sake"]
+    },
+    {
+      "id": 6,
+      "titel": "Bordeaux & Bourgogne",
+      "pdf": ["7-pdf-bordeaux-and-bourgogne.pdf", "vinlista-bordeaux-and-bourgogne.pdf", "bordeaux-blindkarta-m-facit.pdf", "bourgogne-blindkarta-m-facit.pdf"],
+      "kursbokSidor": "",
+      "amnen": ["bordeaux", "bourgogne", "druvor", "klassificering"]
+    },
+    {
+      "id": 7,
+      "titel": "Portugal & starkvin",
+      "pdf": ["8-pdf-portugal-and-starkvin.pdf", "vinlista-portugal-and-starkvin.pdf", "portugal-blindkarta-m-facit.pdf"],
+      "kursbokSidor": "",
+      "amnen": ["portugal", "starkvin", "portvin", "madeira"]
+    },
+    {
+      "id": 8,
+      "titel": "Tyskland, Österrike, Schweiz & Sverige",
+      "pdf": ["9-pdf-tyskland-oesterrike-sverige-and-schweiz.pdf", "vinlista-tyskland-oesterrike-schweiz-and-sverige.pdf", "tyskland-blindkarta-m-facit.pdf", "oesterrike-blindkarta-m-facit.pdf"],
+      "kursbokSidor": "",
+      "amnen": ["tyskland", "österrike", "schweiz", "sverige"]
+    },
+    {
+      "id": 9,
+      "titel": "Sommelierteori & defekter",
+      "pdf": ["10-pdf-somm-teori-and-defekter.pdf"],
+      "kursbokSidor": "",
+      "amnen": ["sensorik", "provningsteknik", "vindefekter"]
+    },
+    {
+      "id": 10,
+      "titel": "Mousserande viner",
+      "pdf": ["11-pdf-mousserande-viner.pdf", "vinlista-mousserande-viner.pdf"],
+      "kursbokSidor": "127-136",
+      "amnen": ["champagne", "cava", "prosecco", "metoder"]
+    },
+    {
+      "id": 11,
+      "titel": "Öl & cider",
+      "pdf": ["13-pdf-oel-and-cider.pdf", "oel-and-cider-lista-klar.pdf"],
+      "kursbokSidor": "157-162",
+      "amnen": ["öl", "cider", "bryggprocessen"]
+    },
+    {
+      "id": 12,
+      "titel": "Östra Europa & provningsmetodik",
+      "pdf": ["13-oestra-europa-and-provningsmetodik.pdf", "vinlista-oestra-europa-and-provningsmetodik.pdf", "oestra-europa-blindkarta-m-facit.pdf"],
+      "kursbokSidor": "",
+      "amnen": ["östra-europa", "provningsmetodik"]
+    },
+    {
+      "id": 13,
+      "titel": "Söta viner & desserter",
+      "pdf": ["14-pdf-soeta-viner-and-desserter.pdf", "vinlista-soeta-viner-and-desserter.pdf"],
+      "kursbokSidor": "143-148",
+      "amnen": ["söta-viner", "dessertviner"]
+    },
+    {
+      "id": 14,
+      "titel": "Sprit",
+      "pdf": ["15-pdf-sprit-pptx.pdf", "dryckeslista-sprit.pdf"],
+      "kursbokSidor": "163-167",
+      "amnen": ["sprit", "destillation", "cocktails"]
+    },
+    {
+      "id": 15,
+      "titel": "Nordamerika",
+      "pdf": ["16-pdf-nordamerika.pdf", "vinlista-nordamerika.pdf", "nordamerika-blindkarta-m-facit.pdf"],
+      "kursbokSidor": "88-96",
+      "amnen": ["usa", "kanada", "druvor", "regioner"]
+    },
+    {
+      "id": 16,
+      "titel": "Sydamerika",
+      "pdf": ["17-pdf-sydamerika.pdf", "vinlista-sydamerika.pdf", "sydamerika-blindkarta-m-facit.pdf"],
+      "kursbokSidor": "97-104",
+      "amnen": ["argentina", "chile", "druvor"]
+    },
+    {
+      "id": 17,
+      "titel": "Oceanien",
+      "pdf": ["18-pdf-oceanien.pdf", "vinlista-oceanien.pdf", "australien-blindkarta-m-facit.pdf", "nya-zeeland-blindkarta-m-facit.pdf"],
+      "kursbokSidor": "116-126",
+      "amnen": ["australien", "nya-zeeland", "druvor"]
+    },
+    {
+      "id": 18,
+      "titel": "Sydafrika & Asien",
+      "pdf": ["19-pdf-sydafrika-and-asien.pdf", "vinlista-sydafrika-and-asien.pdf", "sydafrika-blindkarta-m-facit.pdf", "oevriga-vaerlden-blindkarta-m-facit.pdf"],
+      "kursbokSidor": "105-115",
+      "amnen": ["sydafrika", "asien", "druvor"]
+    },
+    {
+      "id": 19,
+      "titel": "Sommelierens praktiska kunskap",
+      "pdf": ["20-pdf-somm-praktisk-kunskap.pdf"],
+      "kursbokSidor": "168-191",
+      "amnen": ["servering", "sommelierens-roll", "provning"]
+    }
+  ]
+}

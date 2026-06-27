@@ -1,0 +1,111 @@
+{
+  "id": 9,
+  "titel": "Sommelierteori & defekter",
+  "undertitel": "Sommelierens roll: teori & praktik",
+  "sektioner": [
+    {
+      "rubrik": "Sommelierens roll",
+      "innehall": [
+        "Sommelieren är restaurangens vinexpert — ansvarar för vinlista, inköp, servering och gästupplevelse.",
+        "Karriärvägar efter certifiering: restaurang, hotell, vinbar, import, utbildning, vinturism.",
+        "Arbetsgivare söker: djup vinkunskap, servicekänsla, försäljningsförmåga, stresstålighet.",
+        "En bra sommelier lyssnar på gästen, förstår budgeten och anpassar rekommendationerna."
+      ]
+    },
+    {
+      "rubrik": "Service och gästbemötande",
+      "innehall": [
+        "Briefing innan service: gå igenom kvällens meny, vinrekommendationer, eventuella allergier.",
+        "Hantera klagomål professionellt: lyssna, bekräfta, åtgärda. Byt vinet om gästen inte är nöjd.",
+        "Merförsäljning: föreslå vin till varje rätt, erbjud glas-vin eller vinpaket.",
+        "Presentera vinet: visa flaskan, bekräfta årgång och producent, öppna vid bordet, häll provsklunk."
+      ]
+    },
+    {
+      "rubrik": "Bygga en vinlista",
+      "innehall": [
+        "Struktur: organisera efter land, stil, druva eller region — beroende på restaurangens koncept.",
+        "Prissättning: täckningsgrad (coverage rate) på 65-85% är standard.",
+        "Kalkyl: inköpspris × påslag = försäljningspris. Vanligt påslag: 2,5-4x inköpspriset.",
+        "Glasvin-strategi: erbjud 8-15 viner på glas — variera prisnivåer och stilar.",
+        "Vinpaket (5-rätters): matcha varje rätt med ett vin. Beräkna totalkostnad per gäst.",
+        "Alkoholfria paket: inkludera alkoholfria alternativ — alltmer efterfrågat.",
+        "Balansera listan: blanda kända namn med upptäckarglädjen — internationellt och lokalt.",
+        "Lageromsättning: håll koll på vad som säljer och byt ut långliggare."
+      ]
+    },
+    {
+      "rubrik": "Vinpaket — kalkylexempel",
+      "innehall": [
+        "5-rättersmeny: välj ett vin per rätt. Beräkna: antal glas × inköpspris per glas × påslag.",
+        "En flaska ger ca 6 glas (à 12-15 cl). Kostnad per glas = flaskpris ÷ 6.",
+        "Påslag bör ge minst 65% täckningsgrad: (Försäljningspris - Inköpspris) ÷ Försäljningspris × 100.",
+        "10-rättersmeny: mindre portioner vin (8 cl), fler viner — beräkna 8 glas per flaska.",
+        "Inkludera alltid ett mousserande som startvin och överväg dessertalternativ.",
+        "Erbjud ett premiumpaket och ett standardpaket — låt gästen välja."
+      ]
+    },
+    {
+      "rubrik": "Personalutbildning och försäljning",
+      "innehall": [
+        "Utbilda all servispersonal i grundläggande vinkunskap — alla ska kunna rekommendera.",
+        "Provning med personalen: gör det till en vana att prova nya viner tillsammans.",
+        "Försäljningsteknik: ställ öppna frågor ('Vill du ha något lätt och fruktigt eller kraftigt och fylligt?').",
+        "Jobba med importörer: boka provningar, förhandla om priser, bygg relationer."
+      ]
+    },
+    {
+      "rubrik": "Defekter — korkfel (TCA)",
+      "innehall": [
+        "TCA (2,4,6-trikloranisol): klorföreningar reagerar med mögel i korken.",
+        "Luktar: fuktigt papper, möglig källare, våt kartong, svamp.",
+        "Förekomst: ca 2-4% av alla korkar kan vara drabbade.",
+        "Kan vara subtilt — vinet tappar frukt och smakar platt utan tydlig mögeldoft.",
+        "Åtgärd: byt flaskan. Det finns ingen räddning.",
+        "Alternativ: skruvkapsyl eliminerar risken helt — allt vanligare även för kvalitetsviner."
+      ]
+    },
+    {
+      "rubrik": "Defekter — oxidation",
+      "innehall": [
+        "För mycket syre — vinet bryts ner kemiskt.",
+        "Vita viner: mörknar till bärnsten/brunt, tappar frukt, smakar platt.",
+        "Röda viner: brunfärgad kant, torrare, biter av ättika.",
+        "Orsak: dålig kork, för lång förvaring stående, för hög temperatur.",
+        "Åtgärd: byt flaskan. Kan inte repareras.",
+        "Obs: vissa viner är medvetet oxidativa (Sherry, Vin Jaune) — det är inte en defekt."
+      ]
+    },
+    {
+      "rubrik": "Defekter — reduktion",
+      "innehall": [
+        "Motsatsen till oxidation — för lite syre.",
+        "Luktar: tändstickor, ruttna ägg, svavel, gummi.",
+        "Vanligare i viner med skruvkapsyl eller viner gjorda med minimal intervention.",
+        "Åtgärd: karaffering eller luftning löser ofta problemet. Låt vinet andas 30-60 minuter.",
+        "Om doften inte försvinner efter luftning — vinet är för skadat."
+      ]
+    },
+    {
+      "rubrik": "Defekter — Brettanomyces",
+      "innehall": [
+        "Brett: en vildjäst som kan infektera viner, framför allt röda.",
+        "Luktar: stall, hästsvett, plåster, gammalt läder, 'bondgård'.",
+        "I små mängder: kan ge komplexitet (vissa producenter i Rhône accepterar det).",
+        "I stora mängder: överskuggar frukt och terroir — anses som en defekt.",
+        "Vanligt i äldre ekfat — svårt att eliminera när vineriet är kontaminerat.",
+        "Åtgärd: inget att göra åt — det är en fråga om toleransnivå."
+      ]
+    },
+    {
+      "rubrik": "Defekter — övriga",
+      "innehall": [
+        "Sekundärjäsning (efflorpsering): oönskad jäsning i flaskan — ger bubblor i stilla vin. Inte alltid negativt (pétillant naturel).",
+        "Fällning/sediment: tartrat-kristaller (vinsyrekristaller) — helt ofarligt. Vanligt i naturviner och ofiltrerade viner.",
+        "Värmeskada (cooked wine): vin som förvarats för varmt — tappar frukt, smakar platt och 'kokt'. Korken kan vara utpressad.",
+        "Musstank (mousiness): bakteriefel — metallisk, unken eftersmak. Kan inte luktas, bara smakas. Relativt vanligt i naturviner.",
+        "Flyktiga syror (VA): ättika-doft — orsakas av ättiksyrabakterier (Acetobacter). I små mängder kan det lyfta komplexitet."
+      ]
+    }
+  ]
+}

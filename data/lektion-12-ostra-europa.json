@@ -1,0 +1,117 @@
+{
+  "id": 12,
+  "titel": "Östra Europa & provningsmetodik",
+  "undertitel": "Ungern, Kroatien, Grekland & provning",
+  "sektioner": [
+    {
+      "rubrik": "Ungern – översikt",
+      "innehall": [
+        "Ungern har cirka 65 000 hektar vinodlingar.",
+        "Landet har en lång vintradition som sträcker sig tillbaka till medeltiden.",
+        "Klimatet är kontinentalt med varma somrar och kalla vintrar.",
+        "De viktigaste vita druvorna är Furmint, Hárslevelű och Olaszrizling.",
+        "De viktigaste röda druvorna är Kékfrankos (Blaufränkisch) och Kadarka."
+      ]
+    },
+    {
+      "rubrik": "Tokaj",
+      "innehall": [
+        "Tokaj är Ungerns mest berömda vinregion och en av världens äldsta klassificerade vinregioner.",
+        "Furmint är den dominerande druvan i Tokaj och ger viner med hög syra och komplexitet.",
+        "Hárslevelű är den näst viktigaste druvan och bidrar med blommiga aromer.",
+        "Botrytis cinerea (ädelröta) är avgörande för produktionen av söta Tokaj-viner.",
+        "Aszú-viner görs genom att tillsätta botrytisangripna druvor (aszú-bär) till basvin.",
+        "Puttonyos var det traditionella sötmamåttet – ju fler puttonyos, desto sötare vin.",
+        "Sedan 2013 måste alla Tokaji Aszú ha minst 120 gram restsocker per liter, motsvarande tidigare 5 puttonyos.",
+        "Eszencia är den mest koncentrerade formen – gjord enbart av fritt rinnande juice från aszú-bär.",
+        "Eszencia har extremt hög sockerhalt (minst 450 g/L) och mycket låg alkoholhalt (ofta under 5%).",
+        "Szamorodni kan vara torr (száraz) eller söt (édes) och görs av hela klasar med blandning av friska och botrytisangripna druvor.",
+        "Tokaj fick UNESCO:s världsarvsstatus 2002."
+      ]
+    },
+    {
+      "rubrik": "Eger",
+      "innehall": [
+        "Eger är en viktig vinregion i norra Ungern.",
+        "Egri Bikavér (Tjurblod) är regionens mest kända röda vin – en blend av minst tre druvor.",
+        "Kékfrankos är ofta basen i Egri Bikavér tillsammans med Kadarka och internationella sorter.",
+        "Egri Bikavér Superior är en högre kvalitetskategori med strängare krav på lagring och koncentration.",
+        "Eger producerar även vita viner, bland annat från Olaszrizling och Leányka."
+      ]
+    },
+    {
+      "rubrik": "Villány",
+      "innehall": [
+        "Villány ligger i södra Ungern och är landets varmaste vinregion.",
+        "Cabernet Franc är Villánys paradruva och ger eleganta, kryddiga röda viner.",
+        "Regionen har ett klassificeringssystem inspirerat av Bordeaux med Classicus, Prémium och Super Prémium.",
+        "Villány producerar även framstående viner av Cabernet Sauvignon och Merlot."
+      ]
+    },
+    {
+      "rubrik": "Slovenien",
+      "innehall": [
+        "Slovenien har tre huvudsakliga vinregioner: Primorska, Podravje och Posavje.",
+        "Primorska gränsar till Italiens Friuli och producerar liknande vinstilar med druvor som Rebula (Ribolla Gialla) och Refošk.",
+        "Podravje i nordöstra Slovenien är känd för aromatiska vita viner och har den äldsta dokumenterade vinrankan i världen, över 400 år gammal, i Maribor.",
+        "Slovenien har en växande orange wine-tradition, särskilt i Primorska med lång maceration på skal."
+      ]
+    },
+    {
+      "rubrik": "Kroatien",
+      "innehall": [
+        "Kroatien har en rik vintradition med över 130 inhemska druvsorter.",
+        "Graševina (Welschriesling) är Kroatiens mest odlade druva och dominerar inlandet (Slavonien).",
+        "Plavac Mali är den viktigaste röda druvan och odlas främst längs Dalmatiens kust.",
+        "Plavac Mali ger kraftiga, tanninrika viner med hög alkoholhalt.",
+        "Tribidrag (även känd som Crljenak Kaštelanski) är Plavac Malis föräldradruva och genetiskt identisk med Zinfandel/Primitivo.",
+        "Dingač och Postup på halvön Pelješac är prestigefyllda appellationer för Plavac Mali."
+      ]
+    },
+    {
+      "rubrik": "Grekland",
+      "innehall": [
+        "Grekland är ett av vinvärldens äldsta vinproducerande länder med över 4 000 års historia.",
+        "Assyrtiko är Greklands mest ansedda vita druva, framför allt från Santorini.",
+        "På Santorini tränas vinstockarna i kouloura – en korgliknande form nära marken som skyddar druvorna mot stark vind och sol.",
+        "Santorinis vulkaniska jordar (tefra) ger Assyrtiko en distinkt mineralitet och saltet karaktär.",
+        "Xinomavro är Greklands främsta röda druva och odlas i Naoussa i norra Grekland.",
+        "Xinomavro jämförs ofta med Nebbiolo tack vare hög syra, kraftiga tanniner och förmåga att åldras.",
+        "Agiorgitiko odlas främst i Nemea på Peloponnesos och ger mjukare, fruktigare röda viner.",
+        "Nemea kallas ibland 'Herakles blod' efter den grekiska mytologin.",
+        "Retsina är ett traditionellt grekiskt vin smaksatt med kåda från aleppo-tall.",
+        "Vinsanto från Santorini är ett sött vin gjort på soltorkade Assyrtiko-druvor."
+      ]
+    },
+    {
+      "rubrik": "Serbien & Tjeckien",
+      "innehall": [
+        "Serbien har en växande vinindustri med fokus på inhemska druvor.",
+        "Prokupac är Serbiens viktigaste inhemska röda druva med potential för kvalitetsviner.",
+        "Vranac är en kraftig röd druva som även är viktig i Montenegro.",
+        "Tjeckien (Morava) producerar främst vita viner i ett svalt klimat, särskilt från Grüner Veltliner och Riesling."
+      ]
+    },
+    {
+      "rubrik": "Provningsmetodik – poängsystem",
+      "innehall": [
+        "Det systematiska provningsprotokollet använder totalt 40 poäng.",
+        "Utseende (Appearance) bedöms med maximalt 5 poäng.",
+        "Doft (Nose) bedöms med maximalt 10 poäng.",
+        "Smak (Palate) bedöms med maximalt 16 poäng och är den viktigaste kategorin.",
+        "Slutsats (Conclusion) bedöms med maximalt 9 poäng och inkluderar övergripande kvalitetsbedömning."
+      ]
+    },
+    {
+      "rubrik": "BLIK-systemet",
+      "innehall": [
+        "BLIK är en minnesregel för att bedöma ett vins kvalitet.",
+        "B står för Balans – samspelet mellan syra, tannin, alkohol, socker och frukt.",
+        "L står för Längd – hur länge smaken dröjer kvar efter att vinet svalts (avslutets längd).",
+        "I står för Intensitet – styrkan och koncentrationen av aromer och smaker.",
+        "K står för Komplexitet – antalet och variationen av smak- och doftlager i vinet.",
+        "Ett vin med hög poäng i alla BLIK-parametrar anses vara av utmärkt kvalitet."
+      ]
+    }
+  ]
+}

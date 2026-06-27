@@ -1,0 +1,58 @@
+{
+  "id": 16,
+  "titel": "Sydamerika",
+  "undertitel": "Chile, Argentina, Uruguay & Brasilien",
+  "sektioner": [
+    {
+      "rubrik": "Chile – Översikt",
+      "innehall": [
+        "Chile har cirka 140 000 hektar vinodlingar och ett medelhavsklimat idealiskt för vinodling.",
+        "Chile är ett av få länder i världen som är fritt från phylloxera (vinlus) tack vare sin naturliga isolering.",
+        "Stilla havet i väst, Anderna i öst, Atacamaöknen i norr och Antarktis i söder skyddar Chiles vinstockar från sjukdomar.",
+        "Chile använder ett DO-system (Denominación de Origen) för att klassificera sina vinregioner.",
+        "Carmenère är Chiles signaturdruva och var länge förväxlad med Merlot tills DNA-analys avslöjade sanningen 1994.",
+        "Carmenère ansågs vara utdöd i Europa efter phylloxeran men hade överlevt i Chile under ett annat namn.",
+        "Berlin Tasting 2004 var en blindprovning där chilenska viner besegrade franska och italienska toppviner och bekräftade Chiles världsklassstatus."
+      ]
+    },
+    {
+      "rubrik": "Chile – Regioner",
+      "innehall": [
+        "Casablanca Valley är en sval kustregion som producerar utmärkt Sauvignon Blanc och Chardonnay.",
+        "Maipo Valley nära Santiago är Chiles mest prestigefyllda region för Cabernet Sauvignon.",
+        "Colchagua Valley är hjärtat av chilensk Carmenère-produktion med varma, soliga förhållanden.",
+        "Maule Valley är en av Chiles största och äldsta vinregioner med stor potential för kvalitetsvin.",
+        "País (Mission-druvan) är en av Chiles äldsta druvor och upplever en revival med fokus på gamla vinstockar.",
+        "Gamla País-vinstockar ger unika, karaktärsfulla viner som speglar Chiles vinhistoria."
+      ]
+    },
+    {
+      "rubrik": "Argentina – Översikt",
+      "innehall": [
+        "Argentina har cirka 211 000 hektar vinodlingar och är Sydamerikas största vinproducent.",
+        "Argentinska vinodlingar ligger på hög höjd, ofta mellan 800 och 2000 meter över havet.",
+        "Den höga höjden ger stor temperaturskillnad mellan dag och natt, vilket gynnar syra- och aromutveckling i druvorna.",
+        "Malbec är Argentinas signaturdruva och ger djupt färgade, fruktige viner med mjuka tanniner.",
+        "Torrontés är Argentinas vita signaturdruva och ger aromatiska viner med noter av muskat och blommor."
+      ]
+    },
+    {
+      "rubrik": "Argentina – Regioner",
+      "innehall": [
+        "Mendoza är Argentinas överlägset viktigaste vinregion med cirka 153 000 hektar, vilket motsvarar 76 % av landets totala vinodling.",
+        "Valle de Uco i Mendoza är en prestigefylld subregion med vinodlingar på upp till 2000 meters höjd.",
+        "Valle de Ucos extrema höjd ger eleganta, mineraliska viner med stor komplexitet.",
+        "Patagonien i södra Argentina är en framväxande vinregion med svalt klimat och lovande potential för Pinot Noir och Malbec."
+      ]
+    },
+    {
+      "rubrik": "Uruguay & Brasilien",
+      "innehall": [
+        "Uruguay är känt för druvan Tannat, som ursprungligen kommer från sydvästra Frankrike (Madiran).",
+        "Tannat ger kraftfulla, tanninrika viner och har blivit Uruguays nationaldruva.",
+        "Brasilien har en växande vinindustri med Serra Gaúcha i södra Brasilien som den viktigaste vinregionen.",
+        "Serra Gaúcha har ett fuktigt klimat och producerar allt mer kvalitetsinriktade viner, inklusive mousserande viner."
+      ]
+    }
+  ]
+}

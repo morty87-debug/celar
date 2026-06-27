@@ -1,0 +1,86 @@
+﻿{
+  "id": 13,
+  "titel": "Söta viner & desserter",
+  "undertitel": "Produktionsmetoder, regioner och dessertparning",
+  "sektioner": [
+    {
+      "rubrik": "Sötma-klassificering",
+      "innehall": [
+        "Torrt: 0–4 g/L restsocker.",
+        "Halvtorrt: 4–18 g/L restsocker.",
+        "Halvsött: 18–45 g/L restsocker.",
+        "Sött: över 45 g/L restsocker.",
+        "Tumregel: 18 g/L restsocker motsvarar ungefär 1 % potentiell alkohol."
+      ]
+    },
+    {
+      "rubrik": "Sen skörd",
+      "innehall": [
+        "Druvorna lämnas kvar på stocken längre för att koncentrera socker och smaker.",
+        "Vendange Tardive (VT): Alsace — sen skörd, ofta halvtorr till söt.",
+        "Spätlese: Tyskland — sen skörd, elegant, fruktdriven.",
+        "Auslese: Tyskland — utvald skörd av extra mogna druvor.",
+        "Restsockernivå: typiskt 50–110 g/L."
+      ]
+    },
+    {
+      "rubrik": "Torkning / Passito",
+      "innehall": [
+        "Druvorna torkas efter skörd — förlorar 20–50 % av vatteninnehållet, koncentrerar socker.",
+        "Recioto della Valpolicella: Italien — söt röd av Corvina-druvor, torkade på halmmattor.",
+        "Vin Santo: Toskana — heliga vinet, torkade Trebbiano/Malvasia-druvor, lagring i caratelli.",
+        "Commandaria: Cypern — en av världens äldsta namngivna viner, torkade Xynisteri/Mavro-druvor.",
+        "Restsockernivå: typiskt 90–200 g/L."
+      ]
+    },
+    {
+      "rubrik": "Frysning / Eiswein",
+      "innehall": [
+        "Druvorna fryser naturligt på stocken — vatten kristalliseras, socker och syra koncentreras.",
+        "Tyskland: minimum -7 °C vid skörd.",
+        "Kanada: minimum -8 °C vid skörd — världens största eiswein-producent.",
+        "Restsockernivå: typiskt 180–250 g/L.",
+        "Extremt arbetsintensivt — skörd sker ofta nattetid för hand."
+      ]
+    },
+    {
+      "rubrik": "Botrytis / Ädelröta",
+      "innehall": [
+        "Botrytis cinerea: en svamp som under rätt förhållanden (80 % luftfuktighet, växlande fukt och torka) ger 'ädelröta'.",
+        "Svampen perforerar druvskalet — vatten avdunstar, socker och syra koncentreras.",
+        "Sauternes: Bordeaux — Sémillon-baserad, klassiskt sött. Château d'Yquem som ikon.",
+        "Tokaj Aszú: Ungern — Furmint-druva, minimum 120 g/L restsocker. Puttonyos-systemet angav sötma.",
+        "Beerenauslese (BA): Tyskland/Österrike — utvalda botrytisangripna druvor.",
+        "Trockenbeerenauslese (TBA): Tyskland/Österrike — russinlika druvor, extremt söt och sällsynt.",
+        "Sélection de Grains Nobles (SGN): Alsace — motsvarar TBA, botrytisangripna druvor."
+      ]
+    },
+    {
+      "rubrik": "Süssreserve",
+      "innehall": [
+        "Metod främst i Tyskland: ojäst druvmust sparas och tillsätts efter jäsning för att höja restsockret.",
+        "Används för att balansera sötma och syra i lägre kvalitetsklasser."
+      ]
+    },
+    {
+      "rubrik": "Regioner",
+      "innehall": [
+        "Alsace: Vendange Tardive (VT) och Sélection de Grains Nobles (SGN) — Gewürztraminer, Riesling, Pinot Gris, Muscat.",
+        "Sauternes: Bordeaux — Sémillon dominerar, Château d'Yquem producerar ofta bara 1 glas per stock.",
+        "Tokaj: Ungern — Furmint och Hárslevelű. Eszencia: fri-rinnande must med upp till 450 g/L socker. Historiskt puttonyos-system.",
+        "Jura: Vin de Paille — halmvin, druvor torkade på halm i minst 6 veckor.",
+        "Loire: Bonnezeaux och Quarts de Chaume — Chenin Blanc, botrytispåverkade, högsyra."
+      ]
+    },
+    {
+      "rubrik": "Dessertparning",
+      "innehall": [
+        "Grundregel: vinet måste vara lika sött eller sötare än desserten — annars smakar vinet platt.",
+        "Rik choklad: Recioto della Valpolicella eller Sauternes — mörk choklad behöver intensiv sötma.",
+        "Färsk frukt: Moscato d'Asti — lättare, lägre alkohol, blommig och fruktig.",
+        "Ost: blåmögelost + Sauternes/TBA, hård lagrad ost + Vin Santo, getost + Loire Chenin Blanc.",
+        "Undvik att para sött vin med för söt dessert — balansen förloras."
+      ]
+    }
+  ]
+}

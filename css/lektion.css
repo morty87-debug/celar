@@ -1,0 +1,242 @@
+/* ─── Lektion header ─── */
+.lektion-header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 2rem 1.5rem 1.5rem;
+  animation: fadeUp 0.8s ease-out;
+}
+
+.back-link {
+  position: absolute;
+  top: 2rem;
+  left: 1.5rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.back-link:hover { color: var(--gold-light); }
+
+.lektion-badge {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-muted);
+  border: 1px solid rgba(196, 153, 58, 0.2);
+  padding: 0.35rem 1rem;
+  border-radius: 100px;
+  margin-bottom: 1rem;
+}
+
+.lektion-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 300;
+  color: var(--sand-light);
+  letter-spacing: 0.1em;
+  line-height: 1.1;
+}
+
+.lektion-subtitle {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+
+/* ─── Section navigation (sticky) ─── */
+.lektion-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(248, 245, 240, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 0;
+  animation: fadeUp 0.6s ease-out 0.2s backwards;
+}
+
+.lektion-nav-inner {
+  display: flex;
+  gap: 0.25rem;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.lektion-nav-inner::-webkit-scrollbar { display: none; }
+
+.nav-pill {
+  flex-shrink: 0;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--text-dim);
+  padding: 0.4rem 0.85rem;
+  border-radius: 100px;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.nav-pill:hover {
+  color: var(--text-muted);
+  background: rgba(107, 30, 46, 0.06);
+}
+
+.nav-pill.active {
+  color: var(--wine);
+  border-color: rgba(107, 30, 46, 0.2);
+  background: rgba(107, 30, 46, 0.06);
+  font-weight: 500;
+}
+
+/* ─── Content area ─── */
+.lektion-content {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+/* ─── Content section ─── */
+.content-section {
+  margin-bottom: 3rem;
+  animation: fadeUp 0.5s ease-out backwards;
+}
+
+.content-section-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+}
+
+.content-section-number {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 300;
+  color: rgba(139, 90, 43, 0.3);
+  min-width: 2.5rem;
+  line-height: 1;
+}
+
+.content-section-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--sand-light);
+  letter-spacing: 0.03em;
+}
+
+/* ─── Fact items ─── */
+.fact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding-left: 3.5rem;
+}
+
+.fact-item {
+  position: relative;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--text);
+  padding: 0.85rem 1.1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--wine);
+  transition: all 0.3s;
+}
+
+.fact-item:hover {
+  border-left-color: var(--gold-muted);
+  background: var(--surface-hover);
+}
+
+.fact-item strong {
+  color: var(--wine);
+  font-weight: 600;
+}
+
+/* ─── Timeline variant ─── */
+.content-section[data-type="timeline"] .fact-item {
+  border-left-color: var(--moss);
+}
+
+.content-section[data-type="timeline"] .fact-item:hover {
+  border-left-color: var(--moss-light);
+}
+
+.fact-year {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--earth);
+  min-width: 3.5rem;
+  display: inline-block;
+}
+
+/* ─── Process variant ─── */
+.content-section[data-type="process"] .fact-item {
+  border-left-color: var(--earth);
+}
+
+.content-section[data-type="process"] .fact-item:hover {
+  border-left-color: var(--earth-light);
+}
+
+/* ─── Footer navigation ─── */
+.lektion-footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 720px;
+  margin: 0 auto 2rem;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.lektion-nav-btn {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--wine);
+  text-decoration: none;
+  padding: 0.7rem 1.4rem;
+  border: 1px solid var(--border-hover);
+  border-radius: 100px;
+  transition: all 0.3s;
+}
+
+.lektion-nav-btn:hover {
+  background: rgba(107, 30, 46, 0.06);
+  border-color: var(--wine);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 600px) {
+  .fact-list { padding-left: 0; }
+  .content-section-number { display: none; }
+  .back-link { position: static; display: block; margin-bottom: 1rem; }
+  .lektion-header { text-align: left; }
+}

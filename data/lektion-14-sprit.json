@@ -1,0 +1,150 @@
+﻿{
+  "id": 14,
+  "titel": "Sprit",
+  "undertitel": "Destillation, kategorier och cocktails",
+  "sektioner": [
+    {
+      "rubrik": "Destillationsmetoder",
+      "innehall": [
+        "Pot still (enkelpanna): satsbryggning — ger max ca 70 % alkohol. Bevarar mer karaktär och smak.",
+        "Column still (kolonnpanna): kontinuerlig destillation — kan nå 95–96 % alkohol. Renare, mer neutral."
+      ]
+    },
+    {
+      "rubrik": "Whisky — Skottland",
+      "innehall": [
+        "Single Malt: 100 % mältad korn, ett destilleri, pot still.",
+        "Single Grain: ett destilleri, column still, valfri spannmål.",
+        "Blended Malt: blandning av single malts från olika destillerier.",
+        "Blended Scotch: blandning av malt och grain whisky.",
+        "Torv och fenol: mäts i PPM (parts per million). Islay-whisky ofta 25–50+ PPM.",
+        "Regioner: Campbeltown (salt, rökig), Highland (bred variation), Islay (rökig, maritim), Lowland (lätt, blommig), Speyside (fruktig, elegant)."
+      ]
+    },
+    {
+      "rubrik": "Whiskey — USA",
+      "innehall": [
+        "Bourbon — ABCDEFG-reglerna: A = Anywhere in USA (produceras var som helst i USA), B = new Barrels (nya ekfat, innerbränning), C = 51 % Corn (minst 51 % majs), D = 80 % Distillation (max 80 % alkohol vid destillation), E = 62.5 % Entry (max 62,5 % alkohol vid fyllning på fat), F = 40 % Fill (minst 40 % alkohol vid buteljering), G = Genuine (inga tillsatta färg- eller smakämnen).",
+        "Rye Whiskey: minst 51 % råg — kryddigare, torrare karaktär.",
+        "Tennessee Whiskey: som bourbon men med Lincoln County Process — filtrering genom lönnträ-kol."
+      ]
+    },
+    {
+      "rubrik": "Whiskey — Irland",
+      "innehall": [
+        "Single Pot Still: unik irländsk stil — minst 30 % omältad korn och minst 30 % mältad korn.",
+        "Trippeldestillerad tradition — ger mjukare, rundare whiskey.",
+        "Stora producenter: Jameson, Redbreast, Midleton."
+      ]
+    },
+    {
+      "rubrik": "Övrig whisky",
+      "innehall": [
+        "Japan: inspirerad av skotsk tradition — Yamazaki, Hakushu, Nikka. Elegant, precis.",
+        "Sverige: Mackmyra m.fl. — nordisk karaktär, innovativa fatval.",
+        "Taiwan: Kavalan — tropiskt klimat ger snabb mognad.",
+        "Kanada: ofta blended, kan innehålla tillsatser upp till 9,09 % (regel 'the 9.09')."
+      ]
+    },
+    {
+      "rubrik": "Rom",
+      "innehall": [
+        "Tre traditioner: franska (rhum agricole, rörjuice, gräsig), spanska (melass, eklagrad, ofta sötad), brittiska (melass, komplex, funky).",
+        "Rhum Agricole: destilleras direkt från färskpressad sockerrörsjuice — AOC Martinique.",
+        "Åldringsbeteckningar varierar kraftigt mellan länder — saknar enhetlig standard."
+      ]
+    },
+    {
+      "rubrik": "Cognac",
+      "innehall": [
+        "Druva: Ugni Blanc (Trebbiano) — hög syra, låg alkohol, perfekt för destillation.",
+        "Destillation: Alambic Charentais (koppar-pot still), dubbeldestillation.",
+        "Fine Champagne: blandning av Grande och Petite Champagne, minst 50 % Grande.",
+        "Åldringsklasser (compte-system): VS (min 2 år), VSOP (min 4 år), Napoléon (min 6 år), XO (min 10 år), XXO (min 14 år)."
+      ]
+    },
+    {
+      "rubrik": "Armagnac",
+      "innehall": [
+        "Äldre tradition än Cognac — enkeldestillerad i kolonnpanna (traditionellt).",
+        "Gascogne, sydvästra Frankrike — mer rustik, fruktig karaktär.",
+        "Årgångsbeteckningar vanligare än i Cognac."
+      ]
+    },
+    {
+      "rubrik": "Brandy de Jerez",
+      "innehall": [
+        "Produceras i Sherrytriangeln — lagras i solera-system.",
+        "Ofta gjord på Airén-druvor från La Mancha, destillerad och skickad till Jerez för lagring.",
+        "Solera ger komplexitet och konsistens mellan batcher."
+      ]
+    },
+    {
+      "rubrik": "Pisco",
+      "innehall": [
+        "Sydamerikansk druv-brandy — både Chile och Peru gör anspråk på ursprunget.",
+        "Peru: ingen vattenspädning, ingen fatlagring tillåten — ren druvkaraktär.",
+        "Chile: vattenspädning och fatlagring tillåtet — mjukare stil."
+      ]
+    },
+    {
+      "rubrik": "Grappa, Marc & Orujo",
+      "innehall": [
+        "Grappa: italiensk druv-pressrestbrandy — kan vara ung eller fatlagrad.",
+        "Marc: fransk motsvarighet — Marc de Bourgogne, Marc de Champagne.",
+        "Orujo: spansk variant — Galicien."
+      ]
+    },
+    {
+      "rubrik": "Vodka",
+      "innehall": [
+        "Neutral sprit — destilleras till hög renhet, sedan spädds.",
+        "Minimum 37,5 % alkohol inom EU.",
+        "Kan tillverkas av i princip vilken stärkelserik råvara som helst: potatis, vete, råg, majs."
+      ]
+    },
+    {
+      "rubrik": "Gin",
+      "innehall": [
+        "Genever: holländsk föregångare — maltvinbas, fylligare, mindre enbärsdominant.",
+        "London Dry: torkast och renast — alla botanicals tillsätts under destillation, inga tillsatser efter.",
+        "Old Tom: något sötare stil — historiskt populär, nu i revival.",
+        "New Western: modern stil — enbär i bakgrunden, andra botanicals dominerar."
+      ]
+    },
+    {
+      "rubrik": "Akvavit",
+      "innehall": [
+        "Skandinavisk kryddsprit — dill och/eller kummin som huvudkryddor.",
+        "Tradition i Sverige, Norge, Danmark — ofta kopplad till högtider.",
+        "Linje Akvavit (Norge): lagras i sherryfat på fartyg som korsar ekvatorn."
+      ]
+    },
+    {
+      "rubrik": "Tequila",
+      "innehall": [
+        "Tillverkas av blå agave (Agave tequilana Weber azul) i Jalisco-regionen, Mexiko.",
+        "Blanco/Plata: olagrad — ren agavekaraktär.",
+        "Reposado: 2–12 månader i ek — balanserad.",
+        "Añejo: 1–3 år i ek — mjuk, komplex.",
+        "Extra Añejo: över 3 år — mörk, whiskyliknande."
+      ]
+    },
+    {
+      "rubrik": "Mezcal",
+      "innehall": [
+        "100 % agave (valfri art, inte bara blå) — bredare råvarubas än tequila.",
+        "Traditionell rökning: agavehjärtan rostas i jordgropar — ger distinkt rökig karaktär.",
+        "Oaxaca: huvudregion för mezcalproduktion."
+      ]
+    },
+    {
+      "rubrik": "Calvados",
+      "innehall": [
+        "Äppelbrandy från Normandie, Frankrike — AOC-klassificerad.",
+        "Domfrontais: kolonnpannadestillerad — lättare stil, minst 30 % päron.",
+        "Pays d'Auge: pot still, dubbeldestillerad — rikare, mer komplex."
+      ]
+    }
+  ]
+}

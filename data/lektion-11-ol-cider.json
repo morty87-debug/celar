@@ -1,0 +1,103 @@
+﻿{
+  "id": 11,
+  "titel": "Öl & cider",
+  "undertitel": "Bryggprocessen, ölstilar och cider",
+  "sektioner": [
+    {
+      "rubrik": "Ingredienser",
+      "innehall": [
+        "Malt: spannmål (oftast korn) som har mältats — ger färg, kropp och jäsbart socker.",
+        "Humle: ger beska (alfa-syra) och arom (aromaoljor). Tillsätts under vörtkoket.",
+        "Jäst: omvandlar socker till alkohol och koldioxid. Underjäst, överjäst eller spontanjäst.",
+        "Vatten: utgör 90–95 % av ölet. Mineralsammansättningen påverkar smaken avsevärt."
+      ]
+    },
+    {
+      "rubrik": "Bryggprocessen",
+      "innehall": [
+        "1. Mältning: spannmålen blötläggs och gror för att aktivera enzymer, sedan torkas.",
+        "2. Maltkross: malten krossas för att exponera stärkelsen.",
+        "3. Mäskning: maltkrossen blandas med varmt vatten — enzymer omvandlar stärkelse till socker.",
+        "4. Vörtkok: vörten kokas med humle — beska och arom extraheras, proteiner fälls ut.",
+        "5. Kylning: vörten kyls snabbt för att undvika kontaminering inför jäsning.",
+        "6. Jäsning: jäst tillsätts — socker omvandlas till alkohol och koldioxid.",
+        "7. Lagring: ölet vilar för att smaken ska mogna och rundas.",
+        "8. Filtrering: ölet filtreras för att avlägsna jästrester och partiklar.",
+        "9. Pastörisering: värmebehandling för att förlänga hållbarheten (ej alltid).",
+        "10. Buteljering: ölet tappas på flaska, burk eller fat."
+      ]
+    },
+    {
+      "rubrik": "Underjäst / Lager",
+      "innehall": [
+        "Jäser vid lägre temperatur (ca 5–12 °C) — ren, krispig smakprofil.",
+        "Pilsner: ljus, humlebetonad, fräsch. Ursprung Böhmen (1842).",
+        "Lager: bred kategori — ljusa till mörka, milda till maltiga.",
+        "Rauchbier: rökt malt ger distinkt rökig karaktär. Bamberg, Tyskland."
+      ]
+    },
+    {
+      "rubrik": "Överjäst / Ale",
+      "innehall": [
+        "Jäser vid högre temperatur (ca 15–24 °C) — fruktigare och mer komplex smak.",
+        "Wheat beer / Veteöl: fruktig, kryddig, grumlig. Tysk Weizen, belgisk Witbier.",
+        "Ale: brittisk tradition — maltbalanserad, måttlig humle.",
+        "IPA (India Pale Ale): kraftigt humlad, bitter, aromatisk.",
+        "Porter: mörk, rostad, choklad- och kaffetoner.",
+        "Stout: ännu mörkare och torrare än porter. Dry stout, Imperial stout.",
+        "Trappist: bryggs i eller under överinseende av ett trappistklosters munkar. 14 certifierade bryggerier."
+      ]
+    },
+    {
+      "rubrik": "Spontanjäst",
+      "innehall": [
+        "Jäsning sker med vilda jästsvampar och bakterier från omgivningen — ingen tillsatt jäst.",
+        "Lambic: belgisk tradition, Pajottenland/Sennedalen. Sur, komplex, ofta fruktad.",
+        "Gueuze: blandning av unga och gamla lambics — mousserande, syrlig.",
+        "Brettanomyces: vild jäst som ger karaktäristiska 'funkiga' smaker — hö, läder, bondgård."
+      ]
+    },
+    {
+      "rubrik": "IPA-stilar",
+      "innehall": [
+        "British IPA: balanserad, maltbas, jordiga/blommiga humlesorter.",
+        "American IPA: kraftigare humle, citrus, tropisk frukt, tallbarr.",
+        "DIPA (Double IPA): ännu mer humle och högre alkohol — intensiv.",
+        "NEIPA (New England IPA): grumlig, juicy, mjuk beska, tropiska frukttoner.",
+        "Session IPA: lägre alkohol (under 5 %) men bibehållen humlekaraktär.",
+        "Black IPA: mörk malt möter kraftig humle — rostad och bitter.",
+        "West Coast IPA: torr, klar, aggressivt humlad — den 'klassiska' amerikanska stilen."
+      ]
+    },
+    {
+      "rubrik": "Belgiska stilar",
+      "innehall": [
+        "Trappist: bryggs av munkar — Chimay, Westmalle, Westvleteren m.fl. Strikt certifiering.",
+        "Saison: lantlig farmhouse-ale — kryddig, fruktig, torr, hög kolsyra.",
+        "Dubbel: mörk, maltbetonad, torkad frukt, karamell. Ca 6–8 %.",
+        "Tripel: ljus men stark (8–10 %), kryddig, fruktig, torr finish."
+      ]
+    },
+    {
+      "rubrik": "Öl & mat",
+      "innehall": [
+        "Spegeln: matcha ölets intensitet med matens — lätt öl till lätt mat, kraftig till kraftig.",
+        "Beskan: bitter öl klipper igenom fett — IPA till friterad mat, burgare.",
+        "Färgen: matcha ölets färg till brödets färg i rätten — ljust öl till ljust bröd, mörkt till mörkt.",
+        "Smaknämnare: hitta gemensamma smaker mellan öl och mat — t.ex. citrus i både IPA och fiskrätt."
+      ]
+    },
+    {
+      "rubrik": "Cider",
+      "innehall": [
+        "Definition: jäst dryck gjord på äppelmust (eller päronmust = perry/poiré).",
+        "Produktion i 9 steg: skörd → tvätt → krossning → pressning → klaring → jäsning → lagring → filtrering → buteljering.",
+        "Frankrike / Normandie: cidre — ofta halvtorr till halvsöt, naturligt mousserande, AOC-klassificerad.",
+        "Spanien / Asturien: sidra — traditionellt hälld från höjd (escanciar), torr och syrlig.",
+        "England: världens största ciderproducent — står för cirka 50 % av global produktion.",
+        "Sverige: växande hantverksciderscen — fokus på lokala äppelsorter och terroir.",
+        "Iscider: koncentrerad genom frysning — söt, intensiv, dessertdryck. Jämförbar med eiswein."
+      ]
+    }
+  ]
+}
