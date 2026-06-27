@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celar — Druvor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/druvor.css">
+</head>
+<body>
+  <div class="bg-grain"></div>
+
+  <header class="druvor-header">
+    <a href="index.html" class="back-link">← Tillbaka</a>
+    <h1 class="druvor-title">Druvor</h1>
+    <p class="druvor-subtitle">Karaktär, aromer och regioner</p>
+  </header>
+
+  <div class="druvor-controls">
+    <div class="druvor-filter-row">
+      <button class="filter-btn active" data-filter="alla">Alla</button>
+      <button class="filter-btn" data-filter="vit">Vita</button>
+      <button class="filter-btn" data-filter="röd">Röda</button>
+    </div>
+    <div class="druvor-search-row">
+      <input type="text" class="druvor-search" id="druvSearch" placeholder="Sök druva, region eller arom...">
+    </div>
+    <div class="druvor-count" id="druvCount"></div>
+  </div>
+
+  <main class="druvor-grid" id="druvorGrid"></main>
+
+  <div class="druv-modal-overlay" id="druvModal">
+    <div class="druv-modal">
+      <button class="modal-close" id="modalClose">×</button>
+      <div class="modal-content" id="modalContent"></div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-divider"><span class="divider-vine">✦</span></div>
+    <p>Celar — Byggt för sommelierer</p>
+  </footer>
+
+  <script src="js/druvor.js"></script>
+</body>
+</html>
