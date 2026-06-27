@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Celar — Framsteg</title>
+  <title>Cellar — Framsteg</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -292,7 +292,7 @@
 
   <footer class="footer">
     <div class="footer-divider"><span class="divider-vine">&#10038;</span></div>
-    <p>Celar &mdash; Byggt f&ouml;r sommelierer</p>
+    <p>Cellar &mdash; Byggt f&ouml;r sommelierer</p>
   </footer>
 
   <script>
@@ -314,11 +314,11 @@
     };
 
     function getProgress() {
-      try { return JSON.parse(localStorage.getItem('celar-progress')) || {}; } catch { return {}; }
+      try { return JSON.parse(localStorage.getItem('cellar-progress')) || {}; } catch { return {}; }
     }
 
     function getQuizHistory() {
-      try { return JSON.parse(localStorage.getItem('celar-quiz-history')) || []; } catch { return []; }
+      try { return JSON.parse(localStorage.getItem('cellar-quiz-history')) || []; } catch { return []; }
     }
 
     function render() {

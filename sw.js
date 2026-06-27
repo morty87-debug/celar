@@ -1,4 +1,4 @@
-const CACHE_NAME = 'celar-v1';
+const CACHE_NAME = 'cellar-v1';
 const ASSETS = [
   './',
   './index.html',
