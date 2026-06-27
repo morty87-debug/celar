@@ -302,6 +302,13 @@ function showResults() {
   else if (pct >= 70) msg = 'Bra jobbat! Nästan där! 👏';
   else if (pct >= 50) msg = 'Halvvägs — fortsätt öva! 💪';
 
+  // Save quiz result to history
+  try {
+    const history = JSON.parse(localStorage.getItem('celar-quiz-history')) || [];
+    history.push({ mode: mode, score: score, total: questions.length, timestamp: Date.now() });
+    localStorage.setItem('celar-quiz-history', JSON.stringify(history));
+  } catch (e) {}
+
   box.innerHTML = `
     <div class="quiz-results">
       <div class="quiz-results-score">${pct}%</div>

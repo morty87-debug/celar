@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celar — Flashcards</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .fc-header {
+      position: relative; z-index: 1; text-align: center;
+      padding: 3rem 1.5rem 1rem;
+      animation: fadeUp 0.8s ease-out;
+    }
+    .fc-header .back-link {
+      position: absolute; top: 2rem; left: 1.5rem;
+      font-size: 0.85rem; color: var(--text-muted); text-decoration: none;
+    }
+    .fc-header .back-link:hover { color: var(--wine); }
+    .fc-title {
+      font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 3.5rem);
+      font-weight: 300; color: var(--sand-light); letter-spacing: 0.1em;
+    }
+    .fc-subtitle {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1rem; color: var(--text-muted); margin-top: 0.3rem;
+    }
+
+    /* Filter buttons */
+    .fc-controls {
+      display: flex; flex-direction: column; align-items: center; gap: 1rem;
+      padding: 0 1.5rem 1.5rem; position: relative; z-index: 1;
+    }
+    .fc-filter-row { display: flex; gap: 0.5rem; }
+    .fc-filter-btn {
+      font-family: var(--font-body); font-size: 0.8rem; font-weight: 500;
+      padding: 0.45rem 1.2rem; border-radius: 100px;
+      border: 1px solid var(--border); background: var(--surface);
+      color: var(--text-muted); cursor: pointer; transition: all 0.3s;
+    }
+    .fc-filter-btn:hover { border-color: var(--border-hover); color: var(--text); }
+    .fc-filter-btn.active {
+      background: var(--wine); color: #fff; border-color: var(--wine);
+    }
+
+    /* Progress */
+    .fc-progress-wrap {
+      width: 100%; max-width: 480px; text-align: center;
+    }
+    .fc-progress-bar {
+      width: 100%; height: 6px; border-radius: 3px;
+      background: var(--border); overflow: hidden;
+    }
+    .fc-progress-fill {
+      height: 100%; background: var(--wine); border-radius: 3px;
+      transition: width 0.4s ease;
+    }
+    .fc-progress-text {
+      font-size: 0.8rem; color: var(--text-muted); margin-top: 0.4rem;
+    }
+
+    /* Card scene */
+    .fc-scene {
+      perspective: 1000px;
+      display: flex; justify-content: center; align-items: center;
+      padding: 1rem 1.5rem 2rem; min-height: 380px;
+      position: relative; z-index: 1;
+    }
+    .fc-card {
+      width: 100%; max-width: 480px; min-height: 340px;
+      cursor: pointer; position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .fc-card.flipped { transform: rotateY(180deg); }
+
+    .fc-face {
+      position: absolute; inset: 0; backface-visibility: hidden;
+      border-radius: var(--radius); border: 1px solid var(--border);
+      background: var(--surface); padding: 2.5rem 2rem;
+      display: flex; flex-direction: column; box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+    .fc-back { transform: rotateY(180deg); }
+
+    /* Front */
+    .fc-front { justify-content: center; align-items: center; text-align: center; }
+    .fc-grape-name {
+      font-family: var(--font-display); font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 400; color: var(--sand-light); letter-spacing: 0.04em;
+    }
+    .fc-type-dot {
+      display: inline-block; width: 10px; height: 10px; border-radius: 50%;
+      margin-right: 0.5rem; vertical-align: middle;
+    }
+    .fc-type-dot.vit { background: var(--gold); }
+    .fc-type-dot.rod { background: var(--wine); }
+    .fc-tap-hint {
+      font-size: 0.75rem; color: var(--text-dim); margin-top: 1.5rem;
+      font-style: italic;
+    }
+
+    /* Back */
+    .fc-back { overflow-y: auto; gap: 1rem; }
+    .fc-section-title {
+      font-family: var(--font-display); font-size: 0.9rem; font-weight: 600;
+      color: var(--wine); text-transform: uppercase; letter-spacing: 0.12em;
+      margin-bottom: 0.3rem;
+    }
+    .fc-section-text {
+      font-size: 0.85rem; color: var(--text); line-height: 1.6;
+    }
+    .fc-section { margin-bottom: 0.2rem; }
+
+    /* Buttons */
+    .fc-actions {
+      display: flex; justify-content: center; gap: 1rem;
+      padding: 0 1.5rem 2rem; position: relative; z-index: 1;
+    }
+    .fc-btn {
+      font-family: var(--font-body); font-size: 0.9rem; font-weight: 500;
+      padding: 0.7rem 1.8rem; border-radius: var(--radius-sm);
+      border: 1px solid var(--border); cursor: pointer; transition: all 0.3s;
+      min-width: 140px;
+    }
+    .fc-btn-wrong {
+      background: var(--surface); color: var(--wine);
+      border-color: var(--wine);
+    }
+    .fc-btn-wrong:hover { background: var(--wine); color: #fff; }
+    .fc-btn-right {
+      background: var(--moss); color: #fff; border-color: var(--moss);
+    }
+    .fc-btn-right:hover { background: var(--moss-light); }
+
+    /* Completion */
+    .fc-done {
+      text-align: center; padding: 4rem 2rem; position: relative; z-index: 1;
+      animation: fadeUp 0.6s ease-out;
+    }
+    .fc-done-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .fc-done-title {
+      font-family: var(--font-display); font-size: 2rem; font-weight: 300;
+      color: var(--sand-light); margin-bottom: 0.5rem;
+    }
+    .fc-done-text { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem; }
+    .fc-btn-restart {
+      font-family: var(--font-body); font-size: 0.9rem; font-weight: 500;
+      padding: 0.7rem 2rem; border-radius: var(--radius-sm);
+      background: var(--wine); color: #fff; border: none; cursor: pointer;
+      transition: background 0.3s;
+    }
+    .fc-btn-restart:hover { background: var(--wine-deep); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-grain"></div>
+
+  <header class="fc-header">
+    <a href="index.html" class="back-link">&larr; Tillbaka</a>
+    <h1 class="fc-title">Flashcards</h1>
+    <p class="fc-subtitle">Lär dig druvorna med kort</p>
+  </header>
+
+  <div class="fc-controls">
+    <div class="fc-filter-row">
+      <button class="fc-filter-btn active" data-filter="alla">Alla</button>
+      <button class="fc-filter-btn" data-filter="vit">Vita</button>
+      <button class="fc-filter-btn" data-filter="röd">Röda</button>
+    </div>
+    <div class="fc-progress-wrap">
+      <div class="fc-progress-bar"><div class="fc-progress-fill" id="progressFill"></div></div>
+      <div class="fc-progress-text" id="progressText"></div>
+    </div>
+  </div>
+
+  <div id="cardArea">
+    <div class="fc-scene">
+      <div class="fc-card" id="flashcard">
+        <div class="fc-face fc-front" id="cardFront"></div>
+        <div class="fc-face fc-back" id="cardBack"></div>
+      </div>
+    </div>
+    <div class="fc-actions">
+      <button class="fc-btn fc-btn-wrong" id="btnWrong">Visste inte</button>
+      <button class="fc-btn fc-btn-right" id="btnRight">Visste</button>
+    </div>
+  </div>
+
+  <div id="doneArea" style="display:none;"></div>
+
+  <footer class="footer">
+    <div class="footer-divider"><span class="divider-vine">✦</span></div>
+    <p>Celar — Byggt för sommelierer</p>
+  </footer>
+
+  <script>
+  (async () => {
+    const res = await fetch('data/druvor.json');
+    const allGrapes = await res.json();
+
+    let filter = 'alla';
+    let deck = [];
+    let total = 0;
+    let done = 0;
+
+    const card = document.getElementById('flashcard');
+    const front = document.getElementById('cardFront');
+    const back = document.getElementById('cardBack');
+    const progressFill = document.getElementById('progressFill');
+    const progressText = document.getElementById('progressText');
+    const cardArea = document.getElementById('cardArea');
+    const doneArea = document.getElementById('doneArea');
+
+    function shuffle(arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function startDeck() {
+      const filtered = filter === 'alla' ? [...allGrapes]
+        : allGrapes.filter(g => g.typ === (filter === 'röd' ? 'röd' : 'vit'));
+      deck = shuffle(filtered);
+      total = deck.length;
+      done = 0;
+      doneArea.style.display = 'none';
+      cardArea.style.display = 'block';
+      showCard();
+    }
+
+    function updateProgress() {
+      const pct = total === 0 ? 100 : Math.round((done / total) * 100);
+      progressFill.style.width = pct + '%';
+      progressText.textContent = done + ' av ' + total + ' klara';
+    }
+
+    function showCard() {
+      if (deck.length === 0) { showDone(); return; }
+      card.classList.remove('flipped');
+      const g = deck[0];
+      const dotClass = g.typ === 'vit' ? 'vit' : 'rod';
+      front.innerHTML =
+        '<div><span class="fc-type-dot ' + dotClass + '"></span>' +
+        '<span class="fc-grape-name">' + g.namn + '</span></div>' +
+        '<div class="fc-tap-hint">Tryck för att vända</div>';
+
+      const aromer = g.aromer
+        ? (g.aromer.frukt || '') + (g.aromer.ovrigt ? ', ' + g.aromer.ovrigt : '')
+        : '';
+      const kar = g.karaktar
+        ? ['Syra: ' + (g.karaktar.syra || ''),
+           'Kropp: ' + (g.karaktar.kropp || ''),
+           'Alkohol: ' + (g.karaktar.alkohol || '')].filter(s => !s.endsWith(': ')).join(' · ')
+        : '';
+      const reg = g.regioner ? g.regioner.join(', ') : '';
+      const mat = g.matparning ? g.matparning.join(', ') : '';
+
+      back.innerHTML =
+        sec('Aromer', aromer) + sec('Karaktär', kar) +
+        sec('Regioner', reg) + sec('Matparning', mat);
+
+      updateProgress();
+    }
+
+    function sec(title, text) {
+      if (!text) return '';
+      return '<div class="fc-section"><div class="fc-section-title">' + title +
+        '</div><div class="fc-section-text">' + text + '</div></div>';
+    }
+
+    function showDone() {
+      cardArea.style.display = 'none';
+      doneArea.style.display = 'block';
+      updateProgress();
+      doneArea.innerHTML =
+        '<div class="fc-done">' +
+        '<div class="fc-done-icon">&#127942;</div>' +
+        '<h2 class="fc-done-title">Alla kort klara!</h2>' +
+        '<p class="fc-done-text">Du har gått igenom alla ' + total + ' druvor.</p>' +
+        '<button class="fc-btn-restart" id="btnRestart">Kör igen</button>' +
+        '</div>';
+      document.getElementById('btnRestart').addEventListener('click', startDeck);
+    }
+
+    card.addEventListener('click', () => card.classList.toggle('flipped'));
+
+    document.getElementById('btnWrong').addEventListener('click', () => {
+      if (deck.length === 0) return;
+      const c = deck.shift();
+      const pos = Math.floor(Math.random() * (deck.length + 1));
+      deck.splice(pos, 0, c);
+      showCard();
+    });
+
+    document.getElementById('btnRight').addEventListener('click', () => {
+      if (deck.length === 0) return;
+      deck.shift();
+      done++;
+      showCard();
+    });
+
+    document.querySelectorAll('.fc-filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.fc-filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filter = btn.dataset.filter;
+        startDeck();
+      });
+    });
+
+    startDeck();
+  })();
+  </script>
+</body>
+</html>

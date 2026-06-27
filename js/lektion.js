@@ -56,8 +56,19 @@ function linkifyGrapes(html, grapeNames) {
   }).join('');
 }
 
+function trackLessonVisit(id) {
+  try {
+    const progress = JSON.parse(localStorage.getItem('celar-progress')) || {};
+    if (!progress[id]) {
+      progress[id] = { timestamp: Date.now() };
+      localStorage.setItem('celar-progress', JSON.stringify(progress));
+    }
+  } catch (e) {}
+}
+
 async function loadLektion() {
   const id = getLektionId();
+  trackLessonVisit(id);
   const fil = lektionsFiler[id];
   if (!fil) {
     document.getElementById('lektionContent').innerHTML =

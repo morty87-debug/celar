@@ -14,13 +14,24 @@
   <div class="bg-grain"></div>
 
   <header class="hero">
+    <a href="sok.html" style="position:absolute;top:2rem;right:1.5rem;font-family:var(--font-body);font-size:0.85rem;color:var(--text-muted);text-decoration:none;transition:color 0.3s;" onmouseover="this.style.color='var(--wine)'" onmouseout="this.style.color='var(--text-muted)'">Sök 🔍</a>
     <div class="hero-badge">Sommelier Companion</div>
     <h1 class="hero-title">Celar</h1>
     <p class="hero-tagline">Ditt studieverktyg och din arbetspartner som sommelier</p>
     <div class="hero-divider">
       <span class="divider-vine">✦</span>
     </div>
+    <a href="framsteg.html" id="progressLink" style="display:inline-block;margin-top:1rem;font-family:var(--font-body);font-size:0.78rem;color:var(--text-dim);text-decoration:none;letter-spacing:0.05em;transition:color 0.3s;border-bottom:1px solid var(--border);padding-bottom:2px;">
+      <span id="progressCount">0</span>/19 lektioner
+    </a>
   </header>
+
+  <script>
+    try {
+      const p = JSON.parse(localStorage.getItem('celar-progress')) || {};
+      document.getElementById('progressCount').textContent = Object.keys(p).length;
+    } catch (e) {}
+  </script>
 
   <main class="content">
     <section class="section" style="--delay: 0">
@@ -75,7 +86,19 @@
           <h3 class="card-title">Länder</h3>
           <p class="card-desc">Fakta per land och region</p>
         </a>
-        <a href="quiz.html" class="card" style="--i: 4">
+        <a href="flashcards.html" class="card" style="--i: 4">
+          <div class="card-glow"></div>
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              <rect x="5" y="4" rx="1" width="14" height="16" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <path d="M9 8h6M9 12h6M9 16h3"/>
+            </svg>
+          </div>
+          <h3 class="card-title">Flashcards</h3>
+          <p class="card-desc">Memorera druvor med flashcards</p>
+        </a>
+        <a href="quiz.html" class="card" style="--i: 5">
           <div class="card-glow"></div>
           <div class="card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
