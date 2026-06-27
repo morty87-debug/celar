@@ -1,0 +1,145 @@
+/* ─── Mobile enhancements ─── */
+
+/* ─── Bottom nav bar (mobile only) ─── */
+.mobile-nav {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  /* Show bottom nav */
+  .mobile-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    justify-content: space-around;
+    align-items: center;
+    height: 60px;
+    padding: 4px 0 env(safe-area-inset-bottom, 4px);
+    background: rgba(248, 245, 240, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border);
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  .mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 4px 6px;
+    text-decoration: none;
+    color: var(--text-muted);
+    transition: color 0.2s;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-nav-item svg {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 2px;
+  }
+
+  .mobile-nav-item span {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .mobile-nav-item.active {
+    color: var(--wine);
+  }
+
+  /* Body padding for nav bar */
+  body {
+    padding-bottom: 68px;
+  }
+
+  /* ─── Touch targets ─── */
+  a, button, .card, .nav-pill, .tag {
+    min-height: 44px;
+    /* Ensure tappable */
+  }
+
+  .card {
+    min-height: 44px;
+    padding: 1.2rem 1rem;
+  }
+
+  .nav-pill {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  /* ─── Text size floors ─── */
+  body {
+    font-size: 14px;
+  }
+
+  .card-desc,
+  .lektion-subtitle,
+  p {
+    font-size: max(0.875rem, 14px);
+  }
+
+  .hero-tagline {
+    font-size: max(0.9rem, 14px);
+  }
+
+  .hero-badge,
+  .lektion-badge {
+    font-size: max(0.65rem, 11px);
+  }
+
+  /* ─── Hero overflow fix ─── */
+  .hero {
+    padding: 3rem 1rem 2rem;
+    overflow: hidden;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 12vw, 3.5rem);
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .hero-tagline {
+    max-width: 90vw;
+  }
+
+  /* ─── Lektion sticky nav on mobile ─── */
+  .lektion-nav-inner {
+    gap: 0.2rem;
+    padding: 0 0.5rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .lektion-nav-inner .nav-pill {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.65rem;
+    min-height: 36px;
+    white-space: nowrap;
+  }
+
+  /* ─── General spacing tightening ─── */
+  .content {
+    padding: 1rem 1rem 2rem;
+  }
+
+  .section {
+    margin-bottom: 2.5rem;
+  }
+
+  .card-grid {
+    gap: 0.75rem;
+  }
+}

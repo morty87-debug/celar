@@ -270,6 +270,67 @@
   background: var(--wine-light);
 }
 
+/* ─── Lesson grapes section ─── */
+.lesson-grapes-section {
+  margin-top: 3rem;
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1.5rem;
+}
+.lesson-grapes-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.lesson-grapes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.5rem;
+}
+.lesson-grape-card {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 0.85rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.3s;
+}
+.lesson-grape-card:hover {
+  border-color: var(--border-hover);
+  background: var(--surface-hover);
+  transform: translateY(-1px);
+}
+.lesson-grape-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.lesson-grape-dot.vit { background: #d4c87a; }
+.lesson-grape-dot.röd { background: #6b1e2e; }
+.lesson-grape-name {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--sand-light);
+}
+.lesson-grape-arom {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
+}
+
 /* ─── Responsive ─── */
 @media (max-width: 600px) {
   .fact-list { padding-left: 0; }

@@ -1,0 +1,21 @@
+{
+  "1": ["Chardonnay", "Sauvignon Blanc", "Pinot Noir", "Riesling", "Cabernet Sauvignon", "Merlot", "Muscat"],
+  "2": ["Chardonnay", "Sauvignon Blanc", "Chenin Blanc", "Pinot Noir", "Cabernet Sauvignon", "Merlot", "Syrah", "Grenache", "Viognier", "Mourvèdre", "Gamay", "Carignan", "Cinsault", "Marsanne", "Roussanne", "Savagnin", "Trousseau", "Poulsard", "Gewürztraminer", "Pinot Gris", "Muscat", "Cabernet Franc", "Malbec", "Melon de Bourgogne", "Sémillon", "Muscadelle", "Vermentino", "Tannat"],
+  "3": ["Nebbiolo", "Sangiovese", "Barbera", "Dolcetto", "Corvina", "Garganega", "Pinot Grigio", "Verdicchio", "Vermentino", "Aglianico", "Nero d'Avola", "Nerello Mascalese", "Primitivo", "Montepulciano", "Sagrantino", "Fiano", "Greco", "Falanghina", "Trebbiano", "Cortese", "Arneis", "Glera"],
+  "4": ["Tempranillo", "Garnacha", "Albariño", "Verdejo", "Mencía", "Monastrell", "Godello", "Macabeo", "Cariñena", "Palomino"],
+  "5": ["Riesling", "Sauvignon Blanc", "Chardonnay", "Pinot Noir", "Cabernet Sauvignon", "Chenin Blanc", "Gewürztraminer", "Viognier", "Grüner Veltliner", "Albariño"],
+  "6": ["Cabernet Sauvignon", "Merlot", "Cabernet Franc", "Pinot Noir", "Chardonnay", "Sémillon", "Sauvignon Blanc", "Gamay", "Aligoté"],
+  "7": ["Touriga Nacional", "Alvarinho", "Baga", "Palomino", "Arinto"],
+  "8": ["Riesling", "Silvaner", "Grüner Veltliner", "Zweigelt", "Blaufränkisch", "Chasselas", "Solaris"],
+  "9": [],
+  "10": ["Chardonnay", "Pinot Noir", "Glera", "Macabeo", "Chenin Blanc", "Riesling"],
+  "11": [],
+  "12": ["Furmint", "Assyrtiko", "Xinomavro", "Agiorgitiko", "Saperavi", "Rkatsiteli"],
+  "13": ["Riesling", "Sémillon", "Furmint", "Chenin Blanc", "Muscat", "Gewürztraminer"],
+  "14": [],
+  "15": ["Cabernet Sauvignon", "Pinot Noir", "Zinfandel", "Chardonnay", "Sauvignon Blanc", "Merlot", "Syrah"],
+  "16": ["Malbec", "Carmenère", "Torrontés", "Tannat", "Cabernet Sauvignon", "Sauvignon Blanc"],
+  "17": ["Shiraz", "Cabernet Sauvignon", "Chardonnay", "Sémillon", "Riesling", "Pinot Noir", "Sauvignon Blanc", "Grenache"],
+  "18": ["Pinotage", "Chenin Blanc", "Cabernet Sauvignon", "Saperavi", "Rkatsiteli", "Koshu"],
+  "19": []
+}

@@ -35,13 +35,30 @@ function getLektionId() {
   return parseInt(params.get('id')) || 1;
 }
 
-async function loadGrapeNames() {
+async function loadGrapeData() {
   try {
     const res = await fetch('data/druvor.json');
-    const data = await res.json();
+    return await res.json();
+  } catch (e) {
+    return [];
+  }
+}
+
+async function loadGrapeNames() {
+  try {
+    const data = await loadGrapeData();
     return data.map(d => d.namn).filter(Boolean).sort((a, b) => b.length - a.length);
   } catch (e) {
     return [];
+  }
+}
+
+async function loadLessonGrapes() {
+  try {
+    const res = await fetch('data/lektion-druvor.json');
+    return await res.json();
+  } catch (e) {
+    return {};
   }
 }
 
@@ -76,7 +93,9 @@ async function loadLektion() {
     return;
   }
 
-  const [res, grapeNames] = await Promise.all([fetch(fil), loadGrapeNames()]);
+  const [res, grapeNames, grapeData, lessonGrapeMap] = await Promise.all([
+    fetch(fil), loadGrapeNames(), loadGrapeData(), loadLessonGrapes()
+  ]);
   const data = await res.json();
 
   document.querySelector('.lektion-title').textContent = data.titel;
@@ -140,6 +159,36 @@ async function loadLektion() {
     `;
     content.insertAdjacentHTML('beforeend', sectionHtml);
   });
+
+  // Add lesson grapes section
+  const lessonGrapeNames = lessonGrapeMap[String(id)] || [];
+  if (lessonGrapeNames.length > 0) {
+    const grapesByName = {};
+    grapeData.forEach(g => { grapesByName[g.namn] = g; });
+
+    let cardsHtml = '';
+    lessonGrapeNames.forEach(name => {
+      const g = grapesByName[name];
+      const typ = g ? g.typ : 'vit';
+      const arom = g && g.aromer && g.aromer.frukt ? g.aromer.frukt.split(',')[0].trim() : '';
+      const aromHtml = arom ? `<span class="lesson-grape-arom">${arom}</span>` : '';
+      cardsHtml += `<a href="druvor.html#${encodeURIComponent(name)}" class="lesson-grape-card">
+        <span class="lesson-grape-dot ${typ}"></span>
+        <span class="lesson-grape-name">${name}</span>
+        ${aromHtml}
+      </a>`;
+    });
+
+    const grapesSection = document.createElement('div');
+    grapesSection.className = 'lesson-grapes-section';
+    grapesSection.innerHTML = `
+      <div class="lesson-grapes-header">
+        <h2 class="content-section-title">Druvor i denna lektion</h2>
+      </div>
+      <div class="lesson-grapes-grid">${cardsHtml}</div>
+    `;
+    content.appendChild(grapesSection);
+  }
 
   // Add quiz button
   const quizLink = document.createElement('div');
