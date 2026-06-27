@@ -10,6 +10,11 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/lektion.css">
   <link rel="stylesheet" href="css/mobile.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#6b1e2e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
 </head>
 <body>
 
@@ -35,5 +40,10 @@
 
   <script src="js/lektion.js"></script>
   <script src="js/mobile-nav.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+  </script>
 </body>
 </html>
