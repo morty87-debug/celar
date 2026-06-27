@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cellar-v1';
+const CACHE_NAME = 'cellar-v2';
 const ASSETS = [
   './',
   './index.html',
@@ -10,6 +10,7 @@ const ASSETS = [
   './matvin.html',
   './kallare.html',
   './identifiera.html',
+  './identifiera-foto.html',
   './quiz.html',
   './flashcards.html',
   './framsteg.html',
@@ -24,7 +25,11 @@ const ASSETS = [
   './js/quiz.js',
   './js/mobile-nav.js',
   './data/druvor.json',
-  './data/kursstruktur.json'
+  './data/kursstruktur.json',
+  './data/lektion-druvor.json',
+  './data/lektion-kartor.json',
+  './icons/icon-192.png',
+  './icons/icon-512.png'
 ];
 
 self.addEventListener('install', (event) => {

@@ -190,6 +190,29 @@ async function loadLektion() {
     content.appendChild(grapesSection);
   }
 
+  // Add lesson map section
+  try {
+    const mapRes = await fetch('data/lektion-kartor.json');
+    const mapData = await mapRes.json();
+    const mapName = mapData[String(id)];
+    if (mapName) {
+      const mapSection = document.createElement('div');
+      mapSection.className = 'lesson-grapes-section';
+      mapSection.innerHTML = `
+        <div class="lesson-grapes-header">
+          <h2 class="content-section-title">Karta</h2>
+        </div>
+        <div style="text-align:center;">
+          <img src="images/kartor/${mapName}-facit.svg" alt="Karta" style="width:100%;max-width:500px;border-radius:var(--radius-sm);border:1px solid var(--border);">
+          <div style="margin-top:0.75rem;">
+            <a href="kartor.html" style="font-family:var(--font-body);font-size:0.82rem;color:var(--wine);text-decoration:none;border-bottom:1px dotted rgba(139,26,43,0.3);">Öva med blindkartor →</a>
+          </div>
+        </div>
+      `;
+      content.appendChild(mapSection);
+    }
+  } catch(e) {}
+
   // Add quiz button
   const quizLink = document.createElement('div');
   quizLink.className = 'lesson-quiz-link';
