@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celar — Länder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/druvor.css">
+  <style>
+    .land-card {
+      position: relative;
+      padding: 1.4rem 1.25rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      color: var(--text);
+      display: block;
+    }
+    .land-card:hover {
+      border-color: var(--border-hover);
+      background: var(--surface-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+    }
+    .land-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+    .land-flag { font-size: 1.6rem; }
+    .land-name {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--sand-light);
+      flex: 1;
+    }
+    .land-area {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      font-weight: 500;
+    }
+    .land-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 0.5rem;
+    }
+    .land-grapes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+    }
+    .land-grape-tag {
+      font-size: 0.65rem;
+      font-weight: 500;
+      padding: 0.15rem 0.5rem;
+      border-radius: 100px;
+    }
+    .land-grape-tag.vit {
+      color: #6a6020;
+      background: rgba(180, 160, 60, 0.1);
+    }
+    .land-grape-tag.rod {
+      color: var(--wine);
+      background: rgba(107, 30, 46, 0.08);
+    }
+    .continent-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2rem 0 1rem;
+      padding: 0 0.25rem;
+    }
+    .continent-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+    .continent-name {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-grain"></div>
+  <header class="druvor-header">
+    <a href="index.html" class="back-link">← Tillbaka</a>
+    <h1 class="druvor-title">Länder</h1>
+    <p class="druvor-subtitle">Sammanfattad fakta per vinland</p>
+  </header>
+
+  <main style="max-width:1000px;margin:0 auto;padding:0 1.5rem 4rem;position:relative;z-index:1;" id="landerContent"></main>
+
+  <footer class="footer">
+    <div class="footer-divider"><span class="divider-vine">✦</span></div>
+    <p>Celar — Byggt för sommelierer</p>
+  </footer>
+
+  <script>
+    const lander = {
+      "Europa": [
+        { flag:"🇫🇷", namn:"Frankrike", area:"800 000 ha", desc:"Världens referensland för vin. AOC/AOP-systemet. Bordeaux, Bourgogne, Champagne, Rhône, Loire, Alsace, Languedoc.", vita:["Chardonnay","Sauvignon Blanc","Chenin Blanc","Viognier"], roda:["Cabernet Sauvignon","Merlot","Pinot Noir","Syrah","Grenache"], lektion:2 },
+        { flag:"🇮🇹", namn:"Italien", area:"715 000 ha", desc:"Störst produktion, 500+ inhemska druvor, DOCG/DOC-system. Piemonte, Toscana, Veneto, Sicilien.", vita:["Pinot Grigio","Trebbiano","Garganega","Vermentino"], roda:["Sangiovese","Nebbiolo","Corvina","Aglianico","Primitivo"], lektion:3 },
+        { flag:"🇪🇸", namn:"Spanien", area:"970 000 ha", desc:"Största vingårdsarealen. DOCa (Rioja, Priorat). Sherry, Cava. Meseta-platån.", vita:["Albariño","Verdejo","Viura","Godello"], roda:["Tempranillo","Garnacha","Mencía","Monastrell"], lektion:4 },
+        { flag:"🇵🇹", namn:"Portugal", area:"240 000 ha", desc:"Portvin, Madeira, Vinho Verde. Touriga Nacional. DOC-system.", vita:["Alvarinho","Loureiro","Arinto"], roda:["Touriga Nacional","Tinta Roriz","Baga","Trincadeira"], lektion:7 },
+        { flag:"🇩🇪", namn:"Tyskland", area:"100 000 ha", desc:"Riesling-landet. Prädikat-systemet, VDP-pyramiden. Mosel, Rheingau, Pfalz.", vita:["Riesling","Silvaner","Müller-Thurgau","Grauburgunder"], roda:["Spätburgunder","Dornfelder","Lemberger"], lektion:8 },
+        { flag:"🇦🇹", namn:"Österrike", area:"44 500 ha", desc:"Grüner Veltliner (30%). DAC-system. Wachau, Burgenland.", vita:["Grüner Veltliner","Riesling","Welschriesling"], roda:["Zweigelt","Blaufränkisch","Sankt Laurent"], lektion:8 },
+        { flag:"🇨🇭", namn:"Schweiz", area:"15 000 ha", desc:"252 druvor, bara 1% exporteras. Chasselas. Valais, Vaud.", vita:["Chasselas","Petit Arvine"], roda:["Pinot Noir","Gamay","Merlot"], lektion:8 },
+        { flag:"🇸🇪", namn:"Sverige", area:"200 ha", desc:"Vinland sedan 1999. PIWI-hybrider. Skåne, Gotland.", vita:["Solaris","Muscaris"], roda:["Rondo","Cabernet Cortis"], lektion:8 },
+        { flag:"🇭🇺", namn:"Ungern", area:"65 000 ha", desc:"Tokaj (Furmint, Aszú). Eger (Bikavér). Villány.", vita:["Furmint","Hárslevelű"], roda:["Kékfrankos","Kadarka"], lektion:12 },
+        { flag:"🇬🇷", namn:"Grekland", area:"100 000 ha", desc:"Assyrtiko (Santorini), Xinomavro (Naoussa). Kouloura-träning.", vita:["Assyrtiko","Moschofilero"], roda:["Xinomavro","Agiorgitiko"], lektion:12 },
+        { flag:"🇭🇷", namn:"Kroatien", area:"20 000 ha", desc:"Grasevina, Plavac Mali, Tribidrag. Istrien, Dalmatien.", vita:["Graševina","Malvazija Istarska"], roda:["Plavac Mali","Tribidrag"], lektion:12 },
+        { flag:"🇸🇮", namn:"Slovenien", area:"22 300 ha", desc:"Primorska, Podravje. Äldsta vinstocken (400 år). Orange wine.", vita:["Rebula","Laški Rizling"], roda:["Refošk"], lektion:12 },
+        { flag:"🇷🇸", namn:"Serbien", area:"22 000 ha", desc:"Prokupac, Vranac. Fruška Gora. 200 druvor.", vita:["Smederevka","Tamjanika"], roda:["Prokupac","Vranac"], lektion:12 },
+        { flag:"🇬🇪", namn:"Georgien", area:"50 000 ha", desc:"Vinets vagga. Kvevri (lerkar). 500 inhemska druvor. Saperavi, Rkatsiteli.", vita:["Rkatsiteli","Mtsvane"], roda:["Saperavi"], lektion:18 }
+      ],
+      "Nordamerika": [
+        { flag:"🇺🇸", namn:"USA", area:"400 000 ha", desc:"Kalifornien dominerar (81%). AVA-systemet. Judgment of Paris 1976. Napa, Sonoma, Oregon.", vita:["Chardonnay","Sauvignon Blanc","Pinot Gris"], roda:["Cabernet Sauvignon","Pinot Noir","Zinfandel","Merlot"], lektion:15 },
+        { flag:"🇨🇦", namn:"Kanada", area:"12 500 ha", desc:"VQA. Berömda Icewine. Okanagan (BC), Niagara (Ontario).", vita:["Riesling","Vidal","Chardonnay"], roda:["Merlot","Cabernet Franc","Pinot Noir"], lektion:15 }
+      ],
+      "Sydamerika": [
+        { flag:"🇦🇷", namn:"Argentina", area:"211 000 ha", desc:"Malbec-landet. Mendoza (76%). Hög höjd (upp till 2000m). Torrontés.", vita:["Torrontés","Chardonnay"], roda:["Malbec","Bonarda","Cabernet Sauvignon"], lektion:16 },
+        { flag:"🇨🇱", namn:"Chile", area:"140 000 ha", desc:"Carmenère. Phylloxera-fritt. Berlin Tasting 2004. Casablanca, Maipo, Colchagua.", vita:["Sauvignon Blanc","Chardonnay"], roda:["Cabernet Sauvignon","Carmenère","País","Syrah"], lektion:16 },
+        { flag:"🇺🇾", namn:"Uruguay", area:"6 500 ha", desc:"Tannat-landet. Maritimt klimat. Canelones.", vita:["Ugni Blanc"], roda:["Tannat","Merlot"], lektion:16 }
+      ],
+      "Oceanien": [
+        { flag:"🇦🇺", namn:"Australien", area:"146 000 ha", desc:"Shiraz-landet. GI-system. Barossa, Margaret River, Hunter Valley. Penfolds Grange.", vita:["Chardonnay","Sémillon","Riesling"], roda:["Shiraz","Cabernet Sauvignon","Grenache"], lektion:17 },
+        { flag:"🇳🇿", namn:"Nya Zeeland", area:"40 100 ha", desc:"96% hållbart. Marlborough Sauvignon Blanc. Central Otago Pinot Noir.", vita:["Sauvignon Blanc","Chardonnay","Pinot Gris"], roda:["Pinot Noir","Merlot","Syrah"], lektion:17 }
+      ],
+      "Afrika": [
+        { flag:"🇿🇦", namn:"Sydafrika", area:"95 000 ha", desc:"WO-system. Stellenbosch, Swartland, Constantia. Pinotage. Old Vine Project.", vita:["Chenin Blanc","Sauvignon Blanc","Chardonnay"], roda:["Cabernet Sauvignon","Shiraz","Pinotage","Cinsault"], lektion:18 }
+      ],
+      "Asien & Mellanöstern": [
+        { flag:"🇯🇵", namn:"Japan", area:"21 000 ha", desc:"Koshu (Yamanashi). Muscat Bailey A. Hög nederbörd.", vita:["Koshu","Chardonnay"], roda:["Muscat Bailey A","Pinot Noir"], lektion:18 },
+        { flag:"🇨🇳", namn:"Kina", area:"85 000 ha", desc:"Ningxia (1200m). Snabb utveckling. Marselan.", vita:["Chardonnay"], roda:["Cabernet Sauvignon","Marselan"], lektion:18 },
+        { flag:"🇱🇧", namn:"Libanon", area:"2 300 ha", desc:"Bekaa Valley. Château Musar. Franska influenser.", vita:["Obaideh","Merwah"], roda:["Cabernet Sauvignon","Cinsault","Carignan"], lektion:18 }
+      ]
+    };
+
+    const main = document.getElementById('landerContent');
+    Object.entries(lander).forEach(([continent, countries]) => {
+      main.innerHTML += `
+        <div class="continent-header">
+          <span class="continent-line"></span>
+          <span class="continent-name">${continent}</span>
+          <span class="continent-line"></span>
+        </div>
+      `;
+      const grid = document.createElement('div');
+      grid.style.cssText = 'display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0.75rem;';
+      countries.forEach((c, i) => {
+        const card = document.createElement('a');
+        card.href = `lektion.html?id=${c.lektion}`;
+        card.className = 'land-card';
+        card.style.animation = `fadeUp 0.4s ease-out ${i * 0.05}s backwards`;
+        card.innerHTML = `
+          <div class="land-card-header">
+            <span class="land-flag">${c.flag}</span>
+            <span class="land-name">${c.namn}</span>
+            <span class="land-area">${c.area}</span>
+          </div>
+          <div class="land-desc">${c.desc}</div>
+          <div class="land-grapes">
+            ${c.vita.map(g => `<span class="land-grape-tag vit">${g}</span>`).join('')}
+            ${c.roda.map(g => `<span class="land-grape-tag rod">${g}</span>`).join('')}
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+      main.appendChild(grid);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celar — Min vinkällare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/druvor.css">
+  <style>
+    .kallare-controls {
+      max-width: 660px;
+      margin: 1.5rem auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    .add-wine-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.85rem;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: #fff;
+      background: var(--wine);
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .add-wine-btn:hover { background: var(--wine-light); }
+    .kallare-stats {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    .stat-card {
+      flex: 1;
+      text-align: center;
+      padding: 0.75rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--sand-light);
+    }
+    .stat-label {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .kallare-list {
+      max-width: 660px;
+      margin: 1.5rem auto;
+      padding: 0 1.5rem 4rem;
+      position: relative;
+      z-index: 1;
+    }
+    .wine-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      margin-bottom: 0.5rem;
+      transition: all 0.3s;
+      animation: fadeUp 0.4s ease-out backwards;
+    }
+    .wine-item:hover {
+      border-color: var(--border-hover);
+      background: var(--surface-hover);
+    }
+    .wine-color {
+      width: 12px;
+      height: 40px;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+    .wine-color.rod { background: linear-gradient(180deg, #6b1e2e, #8c2f42); }
+    .wine-color.vit { background: linear-gradient(180deg, #d4c87a, #e8dca0); }
+    .wine-color.rose { background: linear-gradient(180deg, #d4a0a0, #e8c0b0); }
+    .wine-color.mousserande { background: linear-gradient(180deg, #c8d4a0, #e0e8c0); }
+    .wine-info { flex: 1; }
+    .wine-name {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--sand-light);
+    }
+    .wine-details {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .wine-grape {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      font-style: italic;
+    }
+    .wine-qty {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      min-width: 2rem;
+      text-align: center;
+    }
+    .wine-actions {
+      display: flex;
+      gap: 0.3rem;
+    }
+    .wine-action-btn {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .wine-action-btn:hover {
+      color: var(--wine);
+      border-color: var(--border-hover);
+    }
+    .empty-state {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--text-dim);
+    }
+    .empty-state p { font-size: 0.9rem; margin-top: 0.5rem; }
+
+    /* Form modal */
+    .form-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .form-overlay.open { display: flex; }
+    .form-modal {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      max-width: 460px;
+      width: 100%;
+      padding: 2rem;
+      animation: fadeUp 0.3s ease-out;
+    }
+    .form-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--sand-light);
+      margin-bottom: 1.25rem;
+    }
+    .form-group {
+      margin-bottom: 0.85rem;
+    }
+    .form-label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.3rem;
+    }
+    .form-input, .form-select {
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.55rem 0.75rem;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .form-input:focus, .form-select:focus { border-color: var(--border-hover); }
+    .form-row { display: flex; gap: 0.75rem; }
+    .form-row .form-group { flex: 1; }
+    .form-actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1.25rem;
+    }
+    .form-actions button {
+      flex: 1;
+      padding: 0.65rem;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 500;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn-cancel {
+      color: var(--text-muted);
+      background: transparent;
+      border: 1px solid var(--border);
+    }
+    .btn-cancel:hover { border-color: var(--border-hover); }
+    .btn-save {
+      color: #fff;
+      background: var(--wine);
+      border: none;
+    }
+    .btn-save:hover { background: var(--wine-light); }
+    .match-section {
+      max-width: 660px;
+      margin: 0 auto;
+      padding: 0 1.5rem 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    .match-input-row {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .match-input {
+      flex: 1;
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.6rem 0.85rem;
+      outline: none;
+    }
+    .match-input:focus { border-color: var(--border-hover); }
+    .match-input::placeholder { color: var(--text-dim); }
+    .match-btn {
+      padding: 0.6rem 1.2rem;
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      color: #fff;
+      background: var(--earth);
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.3s;
+      white-space: nowrap;
+    }
+    .match-btn:hover { background: var(--earth-light); }
+    .match-results {
+      max-width: 660px;
+      margin: 0.75rem auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    .match-result-card {
+      padding: 1rem 1.25rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--moss);
+      border-radius: var(--radius-sm);
+      margin-bottom: 0.5rem;
+      animation: fadeUp 0.4s ease-out backwards;
+    }
+    .match-result-card h4 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--sand-light);
+      margin-bottom: 0.3rem;
+    }
+    .match-result-card p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-grain"></div>
+
+  <header class="druvor-header">
+    <a href="index.html" class="back-link">← Tillbaka</a>
+    <h1 class="druvor-title">Min vinkällare</h1>
+    <p class="druvor-subtitle">Hantera dina viner och få matchningar</p>
+  </header>
+
+  <div class="kallare-controls">
+    <button class="add-wine-btn" onclick="openForm()">+ Lägg till vin</button>
+    <div class="kallare-stats" id="stats"></div>
+  </div>
+
+  <div class="match-section">
+    <div class="continent-header" style="margin-top:1rem">
+      <span class="continent-line"></span>
+      <span class="continent-name">Matcha mot en rätt</span>
+      <span class="continent-line"></span>
+    </div>
+    <div class="match-input-row">
+      <input type="text" class="match-input" id="matchInput" placeholder="Skriv en rätt... t.ex. 'grillad lax med dill'">
+      <button class="match-btn" onclick="matchWines()">Matcha</button>
+    </div>
+  </div>
+  <div class="match-results" id="matchResults"></div>
+
+  <div class="kallare-list" id="wineList"></div>
+
+  <div class="form-overlay" id="formOverlay">
+    <div class="form-modal">
+      <h2 class="form-title">Lägg till vin</h2>
+      <div class="form-group">
+        <label class="form-label">Vinnamn</label>
+        <input type="text" class="form-input" id="fNamn" placeholder="t.ex. Château Margaux">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Producent</label>
+          <input type="text" class="form-input" id="fProducent" placeholder="t.ex. Domaine XYZ">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Årgång</label>
+          <input type="number" class="form-input" id="fArgang" placeholder="2020">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Druva</label>
+          <input type="text" class="form-input" id="fDruva" placeholder="t.ex. Cabernet Sauvignon">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Typ</label>
+          <select class="form-select" id="fTyp">
+            <option value="rod">Rött</option>
+            <option value="vit">Vitt</option>
+            <option value="rose">Rosé</option>
+            <option value="mousserande">Mousserande</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Region</label>
+          <input type="text" class="form-input" id="fRegion" placeholder="t.ex. Bordeaux">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Antal flaskor</label>
+          <input type="number" class="form-input" id="fAntal" value="1" min="1">
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn-cancel" onclick="closeForm()">Avbryt</button>
+        <button class="btn-save" onclick="saveWine()">Spara</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'celar-kallare';
+
+    function getWines() {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    }
+
+    function saveWines(wines) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(wines));
+    }
+
+    function render() {
+      const wines = getWines();
+      const list = document.getElementById('wineList');
+      const stats = document.getElementById('stats');
+
+      const total = wines.reduce((s, w) => s + (w.antal || 1), 0);
+      const roda = wines.filter(w => w.typ === 'rod').reduce((s, w) => s + (w.antal || 1), 0);
+      const vita = wines.filter(w => w.typ === 'vit').reduce((s, w) => s + (w.antal || 1), 0);
+
+      stats.innerHTML = `
+        <div class="stat-card"><div class="stat-num">${total}</div><div class="stat-label">Flaskor</div></div>
+        <div class="stat-card"><div class="stat-num">${wines.length}</div><div class="stat-label">Viner</div></div>
+        <div class="stat-card"><div class="stat-num">${roda}</div><div class="stat-label">Röda</div></div>
+        <div class="stat-card"><div class="stat-num">${vita}</div><div class="stat-label">Vita</div></div>
+      `;
+
+      if (wines.length === 0) {
+        list.innerHTML = '<div class="empty-state"><p>Din vinkällare är tom.<br>Lägg till ditt första vin ovan.</p></div>';
+        return;
+      }
+
+      list.innerHTML = '';
+      wines.sort((a, b) => a.namn.localeCompare(b.namn, 'sv')).forEach((w, i) => {
+        const div = document.createElement('div');
+        div.className = 'wine-item';
+        div.style.animationDelay = `${i * 0.03}s`;
+        div.innerHTML = `
+          <div class="wine-color ${w.typ}"></div>
+          <div class="wine-info">
+            <div class="wine-name">${w.namn}</div>
+            <div class="wine-details">${w.producent || ''} ${w.argang ? '· ' + w.argang : ''} ${w.region ? '· ' + w.region : ''}</div>
+            <div class="wine-grape">${w.druva || ''}</div>
+          </div>
+          <div class="wine-qty">${w.antal || 1}</div>
+          <div class="wine-actions">
+            <button class="wine-action-btn" onclick="changeQty('${w.id}',-1)" title="Minska">−</button>
+            <button class="wine-action-btn" onclick="changeQty('${w.id}',1)" title="Öka">+</button>
+            <button class="wine-action-btn" onclick="removeWine('${w.id}')" title="Ta bort">×</button>
+          </div>
+        `;
+        list.appendChild(div);
+      });
+    }
+
+    function openForm() {
+      document.getElementById('formOverlay').classList.add('open');
+    }
+
+    function closeForm() {
+      document.getElementById('formOverlay').classList.remove('open');
+    }
+
+    function saveWine() {
+      const namn = document.getElementById('fNamn').value.trim();
+      if (!namn) return;
+      const wines = getWines();
+      wines.push({
+        id: Date.now().toString(36),
+        namn,
+        producent: document.getElementById('fProducent').value.trim(),
+        argang: document.getElementById('fArgang').value.trim(),
+        druva: document.getElementById('fDruva').value.trim(),
+        typ: document.getElementById('fTyp').value,
+        region: document.getElementById('fRegion').value.trim(),
+        antal: parseInt(document.getElementById('fAntal').value) || 1
+      });
+      saveWines(wines);
+      closeForm();
+      ['fNamn','fProducent','fArgang','fDruva','fRegion'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('fAntal').value = '1';
+      render();
+    }
+
+    function changeQty(id, delta) {
+      const wines = getWines();
+      const w = wines.find(w => w.id === id);
+      if (w) {
+        w.antal = Math.max(0, (w.antal || 1) + delta);
+        if (w.antal === 0) {
+          saveWines(wines.filter(x => x.id !== id));
+        } else {
+          saveWines(wines);
+        }
+        render();
+      }
+    }
+
+    function removeWine(id) {
+      saveWines(getWines().filter(w => w.id !== id));
+      render();
+    }
+
+    const grapeFood = {
+      'cabernet sauvignon': { mat: ['grillat kött', 'biff', 'lamm', 'vilt', 'hårda ostar'], stil: 'Kraftfull med höga tanniner — behöver fett och protein' },
+      'merlot': { mat: ['kyckling', 'grillat kött', 'pasta med köttsås', 'anka'], stil: 'Mjukare tanniner — flexibel med kött och fågel' },
+      'pinot noir': { mat: ['svamp', 'tryffel', 'anka', 'lax', 'grillad kyckling'], stil: 'Elegant och jordigt — klassisk till svamp och fågel' },
+      'syrah': { mat: ['lamm', 'grillat kött', 'kryddiga grytor', 'vilt'], stil: 'Kryddig och pepprig — perfekt till lammets kryddor' },
+      'shiraz': { mat: ['bbq', 'lamm', 'grillat kött', 'charkuterier'], stil: 'Mogen frukt, rökig — BBQ-klassikern' },
+      'grenache': { mat: ['tapas', 'charkuterier', 'grillad fisk', 'pizza'], stil: 'Generös frukt — flexibel till medelhavskök' },
+      'garnacha': { mat: ['tapas', 'charkuterier', 'grillad fisk', 'pizza'], stil: 'Generös frukt — flexibel till medelhavskök' },
+      'tempranillo': { mat: ['lamm', 'grillat kött', 'manchego', 'paella'], stil: 'Balanserad — Spaniens allround-druva' },
+      'sangiovese': { mat: ['pasta med tomatsås', 'pizza', 'grillat kött', 'parmigiano'], stil: 'Hög syra matchar tomat perfekt' },
+      'nebbiolo': { mat: ['tryffel', 'brässerad vilt', 'risotto', 'lagrad ost'], stil: 'Kraftfull men elegant — kräver rik mat' },
+      'malbec': { mat: ['bbq', 'biff', 'grillat lamm', 'empanadas'], stil: 'Mörk frukt och mjuka tanniner — grillat kött' },
+      'zinfandel': { mat: ['bbq', 'spareribs', 'pizza', 'grillad korv'], stil: 'Kryddig, mogen — BBQ och casual mat' },
+      'chardonnay': { mat: ['hummer', 'kräftor', 'krämig pasta', 'kyckling i sås'], stil: 'Fyllig — matchar fett och krämighet' },
+      'sauvignon blanc': { mat: ['sallad', 'getost', 'skaldjur', 'sparris', 'sushi'], stil: 'Fräsch och syradriven — grönsaker och lätt fisk' },
+      'riesling': { mat: ['kryddig mat', 'thai', 'sushi', 'fläskkotlett', 'korv'], stil: 'Hög syra och ev. sötma — motverkar chili' },
+      'chenin blanc': { mat: ['fläsk', 'thailändsk mat', 'skaldjur', 'fruktsallad'], stil: 'Mångsidig — torr till söt, hög syra' },
+      'pinot grigio': { mat: ['lätt fisk', 'sallad', 'antipasti', 'risotto'], stil: 'Lätt och neutral — enkel mat' },
+      'pinot gris': { mat: ['fläsk', 'kyckling', 'asiatisk mat', 'ostpaj'], stil: 'Fylligare än Grigio — mer textur' },
+      'gewürztraminer': { mat: ['kryddig mat', 'foie gras', 'aromatiska rätter', 'munster-ost'], stil: 'Aromatisk och fyllig — exotisk mat och stark ost' },
+      'viognier': { mat: ['kryddig kyckling', 'aprikosglaserad fläsk', 'thailändsk curry'], stil: 'Blommig och fyllig — aromatisk mat' },
+      'grüner veltliner': { mat: ['wiener schnitzel', 'sparris', 'sushi', 'lätt fisk'], stil: 'Vitpeppar och citrus — Österrikes allrounddruva' },
+      'albariño': { mat: ['skaldjur', 'sushi', 'ceviche', 'grillad fisk'], stil: 'Salt-mineralisk — havets druva' },
+      'alvarinho': { mat: ['skaldjur', 'sushi', 'ceviche', 'grillad fisk'], stil: 'Salt-mineralisk — havets druva' }
+    };
+
+    function matchWines() {
+      const dish = document.getElementById('matchInput').value.trim().toLowerCase();
+      if (!dish) return;
+      const wines = getWines();
+      const results = document.getElementById('matchResults');
+
+      const matches = [];
+      wines.forEach(w => {
+        const druva = (w.druva || '').toLowerCase();
+        const info = grapeFood[druva];
+        if (info) {
+          const relevance = info.mat.some(m => dish.includes(m) || m.split(' ').some(word => word.length > 3 && dish.includes(word)));
+          matches.push({ wine: w, info, relevance });
+        }
+      });
+
+      matches.sort((a, b) => (b.relevance ? 1 : 0) - (a.relevance ? 1 : 0));
+
+      if (matches.length === 0) {
+        results.innerHTML = '<div class="match-result-card"><h4>Inga matchningar</h4><p>Lägg till viner med druvsorter för att få matchningar.</p></div>';
+        return;
+      }
+
+      results.innerHTML = '';
+      matches.slice(0, 5).forEach((m, i) => {
+        results.innerHTML += `
+          <div class="match-result-card" style="animation-delay:${i * 0.08}s;${m.relevance ? 'border-left-color:var(--wine);' : ''}">
+            <h4>${m.wine.namn} ${m.wine.argang ? '(' + m.wine.argang + ')' : ''} ${m.relevance ? '★' : ''}</h4>
+            <p><strong>${m.wine.druva}</strong> — ${m.info.stil}</p>
+            <p style="margin-top:0.3rem;font-size:0.75rem;color:var(--text-dim)">Passar till: ${m.info.mat.join(', ')}</p>
+          </div>
+        `;
+      });
+    }
+
+    document.getElementById('formOverlay').addEventListener('click', e => {
+      if (e.target === e.currentTarget) closeForm();
+    });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeForm(); });
+    document.getElementById('matchInput').addEventListener('keydown', e => { if (e.key === 'Enter') matchWines(); });
+
+    render();
+  </script>
+</body>
+</html>
