@@ -204,6 +204,35 @@
   border-left-color: var(--earth-light);
 }
 
+/* ─── Footer navigation ─── */
+.lektion-footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 720px;
+  margin: 0 auto 2rem;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.lektion-nav-btn {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--wine);
+  text-decoration: none;
+  padding: 0.7rem 1.4rem;
+  border: 1px solid var(--border-hover);
+  border-radius: 100px;
+  transition: all 0.3s;
+}
+
+.lektion-nav-btn:hover {
+  background: rgba(107, 30, 46, 0.06);
+  border-color: var(--wine);
+}
+
 /* ─── Responsive ─── */
 @media (max-width: 600px) {
   .fact-list { padding-left: 0; }
