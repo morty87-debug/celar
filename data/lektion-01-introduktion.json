@@ -1,0 +1,169 @@
+{
+  "id": 1,
+  "titel": "Introduktion — I vingården & i vineriet",
+  "sektioner": [
+    {
+      "rubrik": "Vad är vin?",
+      "innehall": [
+        "Vin är en dryck som framställs från den partiella eller fullständiga alkoholjäsning av färska druvor, vad de än bär för benämning eller inte, eller av druvmust.",
+        "Den faktiska alkoholhalten ska inte vara mindre än 8,5 procent volym.",
+        "Smak beror till kloner, jordmån, mikroklimater — kombineras i begreppet terroir.",
+        "Ordet vin har officiella och begränsade definitioner, fastlagda av OIV (Organisation Internationale de la Vigne et du Vin, grundad 2001)."
+      ]
+    },
+    {
+      "rubrik": "Vinodling",
+      "innehall": [
+        "Vinstocken är en slingerväxt (en så kallad lian) som i naturen klättrar uppåt.",
+        "I vingården tvingar man den att växa som en produktiv buske.",
+        "Det ska gå att beskuggna så druvorna inte bränns av solen.",
+        "Det finns tre typer av vinväxter: Vitis Vinifera (europeisk — den typ som ger finviner), Vitis Labrusca (amerikansk, används i bland annat Vitis Rupestris som grundstam mot phylloxera).",
+        "Vinstocken förökas med sticklingar, ympning eller kloner."
+      ]
+    },
+    {
+      "rubrik": "Året i vingården",
+      "innehall": [
+        "Januari: Ranka vingårdens beskär för att nya skott ska bildas och kvalitéer som bär druvor.",
+        "Februari: Saven börjar stiga i stockarna — ympning på rotstock.",
+        "Mars: Våren börjar, man plöjer upp jorden och avslutar beskärningen.",
+        "April: Växtröjning. Sticklingar planteras. Skotten kommer upp, man vänder dem mot solen.",
+        "Maj: Rotsort avlägsnas, blandadsjukdomar börjar. Risk för frost.",
+        "Juni: Blomningen sätter ordentligt fart — ca 100 dagar innan druvorna ska skördas. Många gör en grön skörd (vendange verte).",
+        "Augusti: Druvorna börjar mjukna, sockerhalten ökar (véraison). Druvorna får sin färg.",
+        "Oktober: Skörden avslutas, dags att städa upp i vingården.",
+        "December: Vinbonden tar en kort vila på vintern, jorden plöjs. Några vinmaker startar beskärningen."
+      ]
+    },
+    {
+      "rubrik": "Klimatets roll",
+      "innehall": [
+        "Klimatet — medeltemperaturer, solljus och nederbörd — är det som i grunden avgör vilken typ av vin man kan producera.",
+        "Makroklimat: det övergripande klimatet i en stor region.",
+        "Mesoklimat: klimatet i en specifik vingård eller sluttning.",
+        "Mikroklimat: närmaste omgivningen runt själva druvklasen.",
+        "Latitud: vinodling sker huvudsakligen mellan 30-50 grader nord/syd.",
+        "Höjdskillnader: varje 100m höjd ger ca 0,6°C lägre temperatur.",
+        "Diurnal variation: skillnaden i temperatur mellan dag och natt — stor skillnad ger mer syra och frukta viner.",
+        "Havs- och vattennärhet ger mjukare klimat (Golfströmmen, Humboldt-strömmen).",
+        "Kontinentalt klimat: varma somrar, kalla vintrar (Burgund, delar av Tyskland)."
+      ]
+    },
+    {
+      "rubrik": "Terroir",
+      "innehall": [
+        "Terroir omfattar alla naturliga faktorer som påverkar vinets karaktär: jordmån, klimat, höjd, exposition, lokala traditioner.",
+        "Frankrikes terroirkoncept har framfött skillnader i synen på vinodling mellan Gamla och Nya världen.",
+        "Den gamla världen: terroir och tradition styr — vad du planterar var bestäms av regler.",
+        "Den nya världen: friare att experimentera — man planterar det som ger bäst resultat.",
+        "Granit, kalksten, skiffer, lera, sand — varje jordtyp ger olika karaktärsdrag i vinet."
+      ]
+    },
+    {
+      "rubrik": "Vintillverkning — vita och rosévin",
+      "innehall": [
+        "Stegen: skörd → pressning → jäsning → lagring → filtrering → flaskläggning.",
+        "Vita viner: druvjuicen pressas direkt, utan skal-kontakt — det ger ljus färg.",
+        "Kallmaceration eller kallstabilisering: sänker temperaturen för att behålla fruktiga aromer.",
+        "Vanliga druvor: Riesling, Sauvignon Blanc, Muscat (aromatiska).",
+        "Efter pressning: den erhållna musten kan vara mycket oslig — vinatillverkaren väljer om den ska lätta druvjuicen.",
+        "Jäsning i rostfria tankar (fruktiga, friska) eller ek (mer komplexitet).",
+        "Klarning sker med äggvita, bentonit eller centrifugering.",
+        "Rosévin: begränsad skalkontakt — juice får kontakt med röda druvskal några timmar."
+      ]
+    },
+    {
+      "rubrik": "Vintillverkning — rödvin",
+      "innehall": [
+        "Skörden inleds med druvornas sockerhalt och fenolisk mognad mäts i ballen.",
+        "Skalkontakt: röda druvors saft jäser med skalen — detta ger färg, tanniner och smak.",
+        "Maceration kan vara kort (lättviner typ Beaujolais) eller lång (kraftiga viner).",
+        "Pigeage: att trycka ner druvskalen i musten manuellt.",
+        "Remontage: att pumpa musten över skalen.",
+        "Skeden kan genomföras vid hand eller maskin — 90% av världens viner görs med maskin.",
+        "Malolaktisk jäsning (MLF): omvandlar äpplesyra till mjölksyra — ger mjukare, rundare viner."
+      ]
+    },
+    {
+      "rubrik": "Lagring, jäsning & böttonrörelse",
+      "innehall": [
+        "Jäsning och böttonrörelse: efter alkoholjäsningen kan druvorna ligga kvar på sin bottensats.",
+        "Lagring på jästfällningen ger vinet mer textur, fylligare kropp och komplexare smaker.",
+        "Vanligt för Chardonnay, Chenin Blanc och Sémillon.",
+        "Reducerat vin: för lite syre ger svavelaktiga, slutna dofter — kan åtgärdas med karaff.",
+        "Oxidativt vin: mer syrekontakt — nötiga, mörkare karaktär (Sherry, Madeira)."
+      ]
+    },
+    {
+      "rubrik": "Förvaringsfrågor",
+      "innehall": [
+        "Förvaring syftar till att bevara vinets fruktiga aromer och fina beskaffenhet i balans.",
+        "Rätt temperatur: 10-15°C.",
+        "Liggande flaskor: korken hålls fuktig.",
+        "Vin kan lagras i ek, betong, keramik, rostfritt stål — varje material påverkar smaken olika.",
+        "Vanilj, kokos, rök och kryddtoner kommer från ekfat.",
+        "Flaskstorlek har betydelse: större flaskor lagrar långsammare och jämnare."
+      ]
+    },
+    {
+      "rubrik": "Naturvin",
+      "innehall": [
+        "Naturvin: viner tillverkade med minimal intervention — inga eller väldigt få tillsatser.",
+        "Det finns ingen enhetlig officiell definition globalt.",
+        "I Frankrike definierade man 2020 via Vin Méthode Nature.",
+        "Krav: manuell skörd, ekologiskt odlade druvor, inga tillsatser förutom minimal svavel, inhemska jästkulturer.",
+        "Svavelmängder: max 30 mg/l för rött, max 40 mg/l för vitt (jämfört med konventionellt: 150-200 mg/l)."
+      ]
+    },
+    {
+      "rubrik": "Defekter",
+      "innehall": [
+        "Korkfel (TCA): klorföreningar reagerar med kork — luktar fuktigt, mögligt, kartong. 2-4% av alla korkar kan vara drabbade.",
+        "Oxidation: för mycket syre — vinet blir platt, brunt, tappar frukt. Brett/Brettanomyces: jäst som ger stalldoft, plåster. I små mängder kan det accepteras.",
+        "Reduktion: svavel-ton (tändstickor, ägg) — kan försvinna med luftning eller karaff.",
+        "Flyktiga syror (VA): ättika-doft — orsakas av acetobacter-bakterier.",
+        "Efflorpsering: andra jäsning i flaskan som inte var avsedd — ger oönskad kolsyra.",
+        "Fötbjudning: vinet har en fällning i flaskan som är tartrat-kristaller — ofarligt men oväntat."
+      ]
+    },
+    {
+      "rubrik": "Vinetiketten",
+      "innehall": [
+        "Etiketten ger mycket information: producent, årgång, region, druva, klassificering.",
+        "Numrering på framsidan visar typ av information:",
+        "1. Vinmakaren/producent — avslöjar mycket om stil och kvalitet.",
+        "2. Marqués de Murrieta — namn på vinmakeriet.",
+        "3. Castillo Ygay — specifik vinlinje (som t.ex. en lyxmodell).",
+        "4. Rioja — region, en av Spaniens viktigaste.",
+        "5. Denominación de Origen Calificada — högsta vin-klassificeringen i Spanien.",
+        "6. Gran Reserva Especial — lång lagring, högsta kvaliteten.",
+        "7. Cosecha 1986 — årgången vinet är gjort.",
+        "8. Embotellado por... — betyder att vinet är butelljerat på egendomen.",
+        "9. Logroño, Rioja — geografisk position."
+      ]
+    },
+    {
+      "rubrik": "Vinhistoria — viktiga årtal",
+      "innehall": [
+        "6000 f.Kr: Första vinerna tillverkas i Georgien.",
+        "4000 f.Kr: Armenien tillverkar vin — grotta i Areni har 6100 år gamla rester.",
+        "3000 f.Kr: Vinproduktion på Sicilien och Egypten.",
+        "800 f.Kr: Fenicier och greker sprider vinet till Medelhavet — Malaga, Cádiz, Jerez.",
+        "200 f.Kr: Romarriket sprider vin i Gallien (Frankrike), Hispanien.",
+        "700-talet: Romanska kloster bevarar vinproduktionen — Burgund.",
+        "1152: Eleonora av Aquitanien gifter sig med Henry Plantagenet — Bordeaux-vin till England.",
+        "1435: Första dokumenten om druvsorter i Tyskland ('Riesling').",
+        "1492: Columbus anländer till Amerika — spanjorerna börjar vinodling.",
+        "1500: Första Vitis vinifera planteras i Chile.",
+        "1597: Mendoza grundas — idag en av Argentinas viktigaste vinregioner.",
+        "1659: Sydafrika börjar officiellt producera vin.",
+        "1693: Dom Pérignon (enligt sägnen) skapar den första mousserande metoden i Champagne.",
+        "1756: Real Companhia — Douro/Portugal skapar bland de första kvalitetskontrollerna.",
+        "1855: Bordeaux-klassificeringen skapas — Grand Cru-systemet.",
+        "1863: Phylloxera-epidemin slår ut Europas vingårdar.",
+        "1935: AOC-systemet grundas i Frankrike (Appellation d'Origine Contrôlée).",
+        "1976: 'Judgment of Paris' — Kalifornien slår Frankrike i blindprovning."
+      ]
+    }
+  ]
+}
