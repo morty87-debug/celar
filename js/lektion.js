@@ -11,7 +11,23 @@ const sectionTypes = {
 const lektionsFiler = {
   1: 'data/lektion-01-introduktion.json',
   2: 'data/lektion-02-frankrike.json',
-  3: 'data/lektion-03-italien.json'
+  3: 'data/lektion-03-italien.json',
+  4: 'data/lektion-04-spanien.json',
+  5: 'data/lektion-05-mat-dryck-sake.json',
+  6: 'data/lektion-06-bordeaux-bourgogne.json',
+  7: 'data/lektion-07-portugal-starkvin.json',
+  8: 'data/lektion-08-tyskland-osterrike.json',
+  9: 'data/lektion-09-sommelierteori.json',
+  10: 'data/lektion-10-mousserande.json',
+  11: 'data/lektion-11-ol-cider.json',
+  12: 'data/lektion-12-ostra-europa.json',
+  13: 'data/lektion-13-sota-viner.json',
+  14: 'data/lektion-14-sprit.json',
+  15: 'data/lektion-15-nordamerika.json',
+  16: 'data/lektion-16-sydamerika.json',
+  17: 'data/lektion-17-oceanien.json',
+  18: 'data/lektion-18-sydafrika-asien.json',
+  19: 'data/lektion-19-somm-praktisk.json'
 };
 
 function getLektionId() {

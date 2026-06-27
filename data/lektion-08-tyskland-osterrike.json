@@ -1,0 +1,92 @@
+{
+  "id": 8,
+  "titel": "Tyskland, Österrike, Schweiz & Sverige",
+  "undertitel": "Nordeuropeiska vinländer",
+  "sektioner": [
+    {
+      "rubrik": "Tyskland – Översikt",
+      "innehall": [
+        "Tyskland har 100 000 hektar vinodlingar fördelade på 13 vinregioner.",
+        "Riesling är Tysklands viktigaste druva och ger viner från stentorra till mycket söta.",
+        "Spätburgunder (Pinot Noir) är den viktigaste röda druvan.",
+        "Silvaner är en vit druva som är särskilt viktig i Franken."
+      ]
+    },
+    {
+      "rubrik": "Prädikat-systemet",
+      "innehall": [
+        "Prädikat-systemet klassificerar viner efter druvans mognadsnivå mätt i Oechsle (sockerinnehåll i musten).",
+        "Kabinett är den lättaste Prädikat-nivån med lägst sockerhalt.",
+        "Spätlese (sen skörd) ger rikare och mognare viner.",
+        "Auslese görs på utvalda, extra mogna klasar.",
+        "Beerenauslese (BA) görs på handplockade, botrytisangripna bär och är mycket söt.",
+        "Eiswein görs på druvor som frusit naturligt på stocken och pressas frysta.",
+        "Trockenbeerenauslese (TBA) är den högsta Prädikat-nivån, gjord på helt intorkade botrytisbär."
+      ]
+    },
+    {
+      "rubrik": "VDP-pyramiden",
+      "innehall": [
+        "Gutswein är basnivån i VDP-pyramiden (godsviner).",
+        "Ortswein är byviner med lokal karaktär.",
+        "Erste Lage motsvarar Premier Cru – viner från klassificerade vingårdar.",
+        "Grosse Lage är den högsta nivån och motsvarar Grand Cru.",
+        "GG (Grosses Gewächs) är beteckningen för torra viner från Grosse Lage-vingårdar."
+      ]
+    },
+    {
+      "rubrik": "Tyska vinregioner",
+      "innehall": [
+        "Mosel har branta skiffersluttningar och producerar eleganta Riesling-viner.",
+        "Rheingau är en historiskt viktig region för Riesling.",
+        "Pfalz är en av Tysklands största och mest produktiva vinregioner.",
+        "Baden är Tysklands varmaste vinregion, belägen längst i söder.",
+        "Franken är känd för Silvaner och sina karaktäristiska Bocksbeutel-flaskor."
+      ]
+    },
+    {
+      "rubrik": "Österrike – Översikt",
+      "innehall": [
+        "Österrike har 44 500 hektar vinodlingar.",
+        "DAC-systemet (Districtus Austriae Controllatus) omfattar 18 DAC-områden.",
+        "Grüner Veltliner står för 30 % av Österrikes vinproduktion.",
+        "Zweigelt är Österrikes mest odlade röda druva.",
+        "Blaufränkisch ger kraftfulla och eleganta röda viner, främst i Burgenland."
+      ]
+    },
+    {
+      "rubrik": "Wachau",
+      "innehall": [
+        "Wachau har ett eget klassificeringssystem baserat på alkoholhalt och mognad.",
+        "Steinfeder är den lättaste kategorin med max 11,5 % alkohol.",
+        "Federspiel är mellankategorin med 11,5–12,5 % alkohol.",
+        "Smaragd är den kraftigaste kategorin med över 12,5 % alkohol."
+      ]
+    },
+    {
+      "rubrik": "Österrikiska vinregioner",
+      "innehall": [
+        "Niederösterreich (Nedre Österrike) är den största vinregionen och inkluderar Wachau, Kamptal och Kremstal.",
+        "Burgenland är känt för röda viner och söta viner runt Neusiedlersee.",
+        "Steiermark (Steiermark/Styrien) producerar friska vita viner.",
+        "Wien (Wien) är världens enda huvudstad med kommersiell vinodling inom stadsgränsen."
+      ]
+    },
+    {
+      "rubrik": "Schweiz",
+      "innehall": [
+        "Schweiz har 15 000 hektar vinodlingar.",
+        "Chasselas är Schweiz mest odlade vita druva och landets signaturdruva.",
+        "Endast 1 % av schweiziskt vin exporteras – nästan allt konsumeras inom landet."
+      ]
+    },
+    {
+      "rubrik": "Sverige",
+      "innehall": [
+        "Sverige har cirka 200 hektar vinodlingar.",
+        "Kommersiell vinodling har bedrivits i Sverige sedan 1999.",
+        "PIWI-hybrider som Solaris är de mest odlade druvorna tack vare deras motståndskraft mot kyla och sjukdomar."
+      ]
+    }
+  ]
+}

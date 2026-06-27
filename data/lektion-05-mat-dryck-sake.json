@@ -1,0 +1,113 @@
+{
+  "id": 5,
+  "titel": "Mat & dryck, alkoholfritt & sake",
+  "undertitel": "Parning, sensorik och alternativa drycker",
+  "sektioner": [
+    {
+      "rubrik": "Sensorik — grunderna",
+      "innehall": [
+        "Sensorik: vetenskapen om sinnesupplevelser — hur vi uppfattar aromer och smaker via syn, hörsel, känsel, smak och lukt.",
+        "Retronasal: arom uppfattad inifrån munnen — det mesta av det vi kallar 'smak' är egentligen doft.",
+        "Fem grundsmaker: sött, surt, salt, beskt, umami.",
+        "Anosmia: oförmåga att lukta. Hyperosmia: överkänslighet för dofter.",
+        "Adaption och habituering: sinnet vänjer sig vid dofter — därför luktar man inte sin egen parfym."
+      ]
+    },
+    {
+      "rubrik": "Syra i mat & dryck",
+      "innehall": [
+        "Syra i maten dämpar syran i drycken, förstärker sötma, dämpar bitterhet.",
+        "Syrakällor i mat: citrus, bär, äpple, vinäger, gräddfil, getost.",
+        "Syradrivna viner: Riesling, Champagne, Chenin Blanc, Cabernet Sauvignon, Carignan, Lambic-öl.",
+        "Grundregel: matens syra bör aldrig överstiga vinets syra — annars smakar vinet platt."
+      ]
+    },
+    {
+      "rubrik": "Salt, sötma & bitterhet",
+      "innehall": [
+        "Salt i maten dämpar syra, bitterhet OCH sötma i drycken — salt är en universell utjämnare.",
+        "Saltkällor: skaldjur, gravad fisk, soja, ostar, chips.",
+        "Salta drycker: Fino Sherry, Alvarinho, Chablis, Champagne.",
+        "Sötma i maten förstärker syra och bitterhet i drycken — söt mat kräver ännu sötare vin.",
+        "Bitterhet i maten förstärker bitterhet i drycken — undvik tanninrika viner till bitter mat.",
+        "Umami i maten förstärker bitterhet och astringens — kan ge metallisk ton. Parningsdrycker: Sake, Fino Sherry, Koshu."
+      ]
+    },
+    {
+      "rubrik": "Hetta, kropp & tanniner",
+      "innehall": [
+        "Hetta/chili förstärker alkohol- och tanninkänslan. Tanniner förstärker hettan.",
+        "Bästa motgiftet mot hetta: sötma och frukt — prova off-dry Riesling.",
+        "Kropp/viskositet: matcha dryckens kropp mot matens — fullt vin till kraftig mat, lätt vin till lätt mat.",
+        "Tanniner: fett och protein lugnar tanniner. Tanniner + tanniner (t.ex. mörk choklad + tanninrikt vin) = extrem astringens.",
+        "Temperatur: väldigt kalla drycker släpper färre aromer. Väldigt varma drycker — alkoholen dominerar."
+      ]
+    },
+    {
+      "rubrik": "Klassiska parningar",
+      "innehall": [
+        "Jordiga smaker → Pinot Noir.",
+        "Fet fisk / fiskbaserad sås → Chardonnay.",
+        "Salt mat → Champagne.",
+        "Grillat/stekt kött → Cabernet Sauvignon.",
+        "Syrlig dressing/sås → Sauvignon Blanc.",
+        "BBQ-glaserat kött → Malbec / Zinfandel.",
+        "Lamm → Syrah.",
+        "Kryddig mat → off-dry Riesling.",
+        "Druv-för-druv-substitution: lär dig klustra druvor med liknande egenskaper. T.ex. Albariño ≈ Riesling ≈ Grüner Veltliner ≈ Chenin Blanc."
+      ]
+    },
+    {
+      "rubrik": "Alkoholfria drycker",
+      "innehall": [
+        "Alkoholfritt vin — tre avalkoholiseringsmetoder:",
+        "Vakuumdestillation: vinet går in i vakuumkolonn — alkoholens kokpunkt sjunker till 34°C. Bevarar mest smak.",
+        "Membranfiltrering (omvänd osmos): vin pressas genom membran under tryck — alkoholmolekyler tvingas igenom.",
+        "Spinning cone column: vin centrifugeras i vakuum med roterande koner — arommolekyler separeras och återförs.",
+        "Kombucha: fermenterad dryck av socker, jäst, SCOBY-kultur och te. Kort hållbarhet.",
+        "Äppelmust: pressade äpplen, icke-fermenterad. Kan vara ren juice eller koncentrat.",
+        "Mousserande te: kolsyrad te i olika smaker — bubblorna håller inte lika länge.",
+        "Alkoholfri cider: äpplen/päron, fermenterad sedan avalkoholiserad."
+      ]
+    },
+    {
+      "rubrik": "Sake — grunderna",
+      "innehall": [
+        "Sake: traditionell japansk dryck — 'sake' betyder egentligen bara 'alkoholhaltig dryck' på japanska.",
+        "Fyra ingredienser: ris, vatten, koji (Aspergillus Oryzae-mögel) och jäst.",
+        "Ris: över 100 sorter. Topp 3: Yamada Nishiki, Gohyakumangoku, Miyamanishiki.",
+        "Vatten: låg mineralhalt — de flesta japanska vatten är mjuka.",
+        "Koji: bryter ner stärkelse i riset — ger näring till jästen. Två typer: Sohaze och Tsukihaze.",
+        "Jäst: påverkar smakprofilen — kan fermentera till 16-18%+."
+      ]
+    },
+    {
+      "rubrik": "Sake — produktion",
+      "innehall": [
+        "1. Polering: avgör kvalitetsgrad — procenten = hur mycket av ytterlagret som sitter kvar. Mer polering = lättare, mer delikat.",
+        "2. Tvättning och blötläggning: avlägsnar partiklar, ökar fuktinnehåll.",
+        "3. Ångning: 40-60 minuter — målet: hård utsida, mjuk insida.",
+        "4. Koji-framställning: 15-25% av riset blir koji. Mögel strös på, hålls vid 30-32°C, ~40% luftfuktighet, ~2 dagar.",
+        "5. Första jäsning (Shubo): skapar jäsningsbasen.",
+        "6. Andra jäsning: mer ris, koji, vatten, jäst tillsätts i tre faser. Total jäsning: 18-32 dagar.",
+        "7. Bryggarsprit (Jozo): valfritt. Neutral sprit vid 95%. 'Junmai' = ingen sprit tillsatt.",
+        "8. Pressning, filtrering, vattentillsats, pastörisering, lagring."
+      ]
+    },
+    {
+      "rubrik": "Sake — grader och stilar",
+      "innehall": [
+        "Junmai Daiginjo: ≤50% kvar efter polering, ingen sprit — finaste kvaliteten.",
+        "Daiginjo: ≤50% kvar, med sprit.",
+        "Junmai Ginjo: ≤60% kvar, ingen sprit.",
+        "Ginjo: ≤60% kvar, med sprit.",
+        "Junmai: ≤70% kvar, ingen sprit.",
+        "Honjozo: ≤70% kvar, med sprit.",
+        "Futsushu: >70% kvar — basklassen.",
+        "Koshu: lagrad sake. Taruzake: lagrad i cederfat.",
+        "Nigori: ofiltrerad (grumlig). Namazake: opastöriserad.",
+        "Happo Shu: mousserande sake."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "id": 10,
+  "titel": "Mousserande viner",
+  "undertitel": "Champagne, Cava, Prosecco & metoder",
+  "sektioner": [
+    {
+      "rubrik": "Tillverkningsmetoder",
+      "innehall": [
+        "Traditionell metod (méthode champenoise): basvin blandas med liqueur de tirage (jäst och socker) för en andra jäsning på flaska.",
+        "Under andra jäsningen bildas koldioxid som löser sig i vinet och skapar mousset.",
+        "Remuage (riddling): flaskorna vrids gradvis från horisontellt till inverterat läge så att jästsedimentet samlas i flaskhalsen.",
+        "Dégorgement (disgorgement): flaskhalsen fryses och sedimentproppen skjuts ut av trycket.",
+        "Dosage: efter dégorgement tillsätts en blandning av vin och socker (liqueur d'expédition) som bestämmer sötmanivån.",
+        "Charmat-metoden (tankmetod): andra jäsningen sker i stora trycktankar istället för på flaska, vilket är snabbare och billigare.",
+        "Asti-metoden: en enda jäsning som stoppas innan all socker omvandlats, vilket ger sötma och lägre alkoholhalt.",
+        "Méthode ancestrale (pét-nat): den ursprungliga metoden där vinet buteljeras innan första jäsningen är klar och fortsätter jäsa på flaska.",
+        "Transfermetoden: andra jäsningen sker på flaska men vinet tappas sedan över till tank för filtrering och dosage innan ombuteljering.",
+        "Karbonering: koldioxid tillsätts mekaniskt till ett stilla vin, den enklaste och billigaste metoden."
+      ]
+    },
+    {
+      "rubrik": "Dosage-nivåer",
+      "innehall": [
+        "Brut Nature (också kallat Zero Dosage): 0–3 g/L restsocker, inget socker tillsatt efter dégorgement.",
+        "Extra Brut: 0–6 g/L restsocker.",
+        "Brut: 0–12 g/L restsocker, den vanligaste stilen för champagne.",
+        "Extra Dry (Extra Sec): 12–17 g/L restsocker.",
+        "Dry (Sec): 17–32 g/L restsocker, trots namnet märkbart söt.",
+        "Demi-Sec: 32–50 g/L restsocker, passar till desserter.",
+        "Doux: över 50 g/L restsocker, den sötaste kategorin, mycket sällsynt idag."
+      ]
+    },
+    {
+      "rubrik": "Champagne",
+      "innehall": [
+        "Champagne-regionen ligger cirka 150 km nordost om Paris och omfattar cirka 34 000 hektar vinodling.",
+        "Tre tillåtna huvuddruvor: Chardonnay (vit, elegans och syra), Pinot Noir (blå, struktur och frukt) och Meunier (blå, fruktighet och rundhet).",
+        "Jorden består till stor del av krita (chalk) som ger utmärkt dränering och reflekterar värme samt bidrar till vinets mineralitet.",
+        "Det finns 17 Grand Cru-byar i Champagne som representerar de bästa vinodlingsplatserna.",
+        "Non-Vintage (NV) champagne är en blandning av flera årgångar för att skapa en konsekvent husstil och måste lagras minst 15 månader på jäst.",
+        "Vintage (millésimé) champagne görs bara i exceptionella år av druvor från en enda årgång och måste lagras minst 36 månader på jäst.",
+        "Blanc de Blancs: champagne gjord uteslutande av Chardonnay, ger elegant och citrusbetonad stil.",
+        "Blanc de Noirs: champagne gjord enbart av blå druvor (Pinot Noir och/eller Meunier), ger fylligare och mer fruktdriven stil.",
+        "Rosé-champagne kan göras genom kort maceration av blå druvor eller genom att blanda rött och vitt vin (assemblage).",
+        "Prestige Cuvée: ett hus' bästa champagne, ofta från Grand Cru-vinodlingar, till exempel Dom Pérignon, Cristal och La Grande Dame."
+      ]
+    },
+    {
+      "rubrik": "Crémant",
+      "innehall": [
+        "Crémant är beteckningen för mousserande vin gjort med traditionell metod utanför Champagne-regionen i Frankrike.",
+        "Crémant de Loire: görs ofta på Chenin Blanc och Cabernet Franc, frisk och fruktig stil.",
+        "Crémant d'Alsace: ofta baserad på Pinot Blanc, Riesling eller Pinot Gris, Frankrikes mest sålda crémant.",
+        "Crémant de Bourgogne: görs huvudsakligen på Chardonnay och Pinot Noir, stilmässigt nära champagne men till lägre pris."
+      ]
+    },
+    {
+      "rubrik": "Franciacorta",
+      "innehall": [
+        "Franciacorta ligger i Lombardiet, norra Italien, och omfattar cirka 3 200 hektar.",
+        "Tillverkas med metodo classico (traditionell metod) och anses vara Italiens finaste mousserande vin.",
+        "Huvuddruvor är Chardonnay, Pinot Noir och Pinot Blanc.",
+        "DOCG-klassificerat med strikta regler för lagring: minst 18 månader för non-vintage och 30 månader för vintage."
+      ]
+    },
+    {
+      "rubrik": "Prosecco",
+      "innehall": [
+        "Prosecco görs huvudsakligen av druvan Glera i Veneto och Friuli Venezia Giulia i nordöstra Italien.",
+        "Tillverkas med Charmat-metoden (tankjäsning) vilket ger en fruktig och blommig stil med lättare mousse.",
+        "Conegliano Valdobbiadene Prosecco Superiore DOCG är den högsta kvalitetsnivån med branta kullodlingar.",
+        "Cartizze är en liten subzon inom DOCG-området som anses producera de bästa proseccovinnerna.",
+        "Finns i tre moussenivåer: Spumante (fullt mousserande), Frizzante (lätt mousserande) och Tranquillo (stilla)."
+      ]
+    },
+    {
+      "rubrik": "Cava",
+      "innehall": [
+        "Cava produceras huvudsakligen i Penedès, Katalonien, men kan lagligen tillverkas i flera spanska regioner.",
+        "Odlingsarealen omfattar cirka 38 000 hektar, vilket gör Cava till en av världens största producenter av mousserande vin.",
+        "Traditionella druvor: Macabeo (Viura), Xarel·lo och Parellada, ibland kompletterade med Chardonnay och Pinot Noir.",
+        "Tillverkas med traditionell metod (método tradicional) och kategoriseras efter lagringstid: Cava (9 mån), Reserva (15 mån), Gran Reserva (30 mån).",
+        "Corpinnat är en kvalitetsklassificering som lanserades 2019 av nio toppproducenter som kräver ekologisk odling, handplockning och minst 18 månaders lagring på jäst."
+      ]
+    },
+    {
+      "rubrik": "Övriga mousserande viner",
+      "innehall": [
+        "Sekt är den tyska beteckningen för mousserande vin; Winzersekt görs med traditionell metod av en enskild producent och anses ha högst kvalitet.",
+        "Deutscher Sekt b.A. måste komma från ett specifikt tyskt vinområde och använda traditionell eller tankmetod.",
+        "English Sparkling Wine har vuxit kraftigt och omfattar nu cirka 3 855 hektar, främst i södra England på kritstensjordar liknande Champagne.",
+        "Engelska mousserande viner görs ofta på Chardonnay, Pinot Noir och Meunier med traditionell metod och har vunnit internationella priser.",
+        "Cap Classique är Sydafrikas beteckning för mousserande vin gjort med traditionell metod, främst av Chardonnay och Pinot Noir.",
+        "Cap Classique-produktionen är koncentrerad till Western Cape, särskilt Stellenbosch och Franschhoek."
+      ]
+    }
+  ]
+}

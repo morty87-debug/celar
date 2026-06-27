@@ -1,0 +1,139 @@
+﻿{
+  "id": 18,
+  "titel": "Sydafrika & Asien",
+  "undertitel": "Världens vinländer — övriga",
+  "sektioner": [
+    {
+      "rubrik": "Sydafrika — historia",
+      "innehall": [
+        "1652: holländska Ostindiska kompaniet anlägger Kapkolonin — vinodling påbörjas.",
+        "1685: franska hugenotter flyr till Franschhoek — tar med sig vinkunskap och druvsorter.",
+        "Vin de Constance: legendariskt sött vin från Constantia — världsberömt på 1700–1800-talet.",
+        "Apartheid och internationell bojkott: isolering hämmade vinindustrin i decennier.",
+        "Tot/Dop-systemet: vingårdsarbetare fick delar av lönen i vin — ett mörkt kapitel, nu förbjudet.",
+        "KWV (Koöperatieve Wijnbouwers Vereniging): monopolkontroll fram till 1994 — avregleringen öppnade för kvalitetsrevolution."
+      ]
+    },
+    {
+      "rubrik": "Klassificering — WO (Wine of Origin)",
+      "innehall": [
+        "Geographical Units → Regions → Districts → Wards: hierarkiskt ursprungssystem.",
+        "100 % av druvorna måste komma från det angivna området.",
+        "Vintage: minst 85 % från angiven årgång. Druvsort: minst 85 % av angiven druva."
+      ]
+    },
+    {
+      "rubrik": "Stellenbosch",
+      "innehall": [
+        "Sydafrikas mest berömda vindistrikt — hjärtat av kvalitetsvinproduktion.",
+        "Cabernet Sauvignon och Bordeaux-druvor dominerar — eleganta, åldringsvänliga röda.",
+        "False Bay: kylande inflytande från havet — ger långsam mognad och balans."
+      ]
+    },
+    {
+      "rubrik": "Swartland",
+      "innehall": [
+        "Naturvinsrevolution sedan 2000-talet — Swartland Independent Producers.",
+        "Shiraz, Chenin Blanc och Cinsault: huvuddruvor — ofta gamla vinstockar.",
+        "Torrodling (dryland farming): inget bevattning — ger låga skördar, koncentrerade viner."
+      ]
+    },
+    {
+      "rubrik": "Constantia",
+      "innehall": [
+        "Sydafrikas äldsta och historiskt mest berömda vinområde.",
+        "Sauvignon Blanc: fräsch, mineralisk — gynnas av kylande havsvindar.",
+        "Vin de Constance: återupplivat sött vin — Muscat de Frontignan."
+      ]
+    },
+    {
+      "rubrik": "Franschhoek",
+      "innehall": [
+        "MCC (Méthode Cap Classique): sydafrikanskt mousserande vin — traditionell metod.",
+        "Hugenottarv: franska vinnamn och traditioner lever kvar.",
+        "Chardonnay och Chenin Blanc: vita huvuddruvor."
+      ]
+    },
+    {
+      "rubrik": "Cape South Coast",
+      "innehall": [
+        "Sydafrikas kallaste vinregioner — maritim påverkan.",
+        "Pinot Noir och Chardonnay: burgundiska stilar — Elgin och Walker Bay.",
+        "Elgin: hög höjd, äppelodlingsdistrikt som blivit premiumvinregion.",
+        "Walker Bay / Hemel-en-Aarde: terrasserade dalar nära havet — exceptionell Pinot Noir."
+      ]
+    },
+    {
+      "rubrik": "Pinotage",
+      "innehall": [
+        "Korsning av Pinot Noir × Cinsault — skapad 1925 av professor Abraham Perold.",
+        "Sydafrikas signaturduva — finns nästan bara här.",
+        "Smaker: skogsbär, plommon, rök, choklad — kan vara rustik eller elegant beroende på producentstil."
+      ]
+    },
+    {
+      "rubrik": "Old Vine Project",
+      "innehall": [
+        "Certifiering och bevarande av Sydafrikas gamla vinstockar — minst 35 år.",
+        "Många Chenin Blanc-stockar från 1960-talet och tidigare — unik tillgång.",
+        "OVP-sigill på flaskan garanterar autentiska gamla vinstockar."
+      ]
+    },
+    {
+      "rubrik": "Georgien",
+      "innehall": [
+        "50 000 hektar — anses vara vinets födelseplats med 8 000 års historia.",
+        "Kvevri: stora lerkrus som grävs ner i marken — traditionell jäsning och lagring. UNESCO-kulturarv.",
+        "Över 500 inhemska druvsorter — enorm genetisk mångfald.",
+        "Rkatsiteli: viktigaste vita druvan — kan göras i kvevri med lång skalkontakt (amber/orange wine).",
+        "Saperavi: teinturier-druva (rött fruktkött) — mörk, tanninrik, kraftfull. Kakheti: största vinregionen."
+      ]
+    },
+    {
+      "rubrik": "Armenien",
+      "innehall": [
+        "Areni Noir: huvuddruva — odlas på hög höjd, runt 1 500 m.",
+        "Areni-1-grottan: 6 100 år gammalt vinfynd — världens äldsta kända vinkällare."
+      ]
+    },
+    {
+      "rubrik": "Libanon",
+      "innehall": [
+        "Bekaa Valley: huvudregion — 900–1 000 m höjd, torrt kontinentalt klimat.",
+        "Château Musar: ikoniskt vin — Cabernet Sauvignon, Cinsault, Carignan. Naturvinspionjär."
+      ]
+    },
+    {
+      "rubrik": "Israel",
+      "innehall": [
+        "Golan Heights: viktigaste kvalitetsregionen — vulkanjord, hög höjd.",
+        "Cabernet Sauvignon: dominerar premiumproduktionen.",
+        "Kosherproduktion: allt fler kvalitetsproducenter — mevushal-processen."
+      ]
+    },
+    {
+      "rubrik": "Japan",
+      "innehall": [
+        "21 000 hektar — fuktigt klimat, utmanande förhållanden.",
+        "Koshu: unik japansk druva, odlad i Yamanashi — lätt, delikat, citrus. Pergola-odling.",
+        "Växande kvalitet och internationellt intresse — Hokkaido som ny cool-climate-region."
+      ]
+    },
+    {
+      "rubrik": "Kina",
+      "innehall": [
+        "Ningxia: huvudregion på 1 200 m höjd — torrt kontinentalt klimat, stockarna begrävs på vintern.",
+        "Cabernet Sauvignon: dominerar — Bordeaux-inspiration.",
+        "Massiva investeringar — en av världens snabbast växande vinnationer."
+      ]
+    },
+    {
+      "rubrik": "Nordafrika",
+      "innehall": [
+        "Marocko: växande kvalitet, AOG-system — Meknes och Atlas-bergen.",
+        "Algeriet: stor produktion under kolonitiden — nu i revival.",
+        "Tunisien: Muscat-tradition, AOC-system, 15 000 hektar."
+      ]
+    }
+  ]
+}

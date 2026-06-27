@@ -1,0 +1,116 @@
+{
+  "id": 6,
+  "titel": "Bordeaux & Bourgogne",
+  "undertitel": "Fördjupning i Frankrikes storheter",
+  "sektioner": [
+    {
+      "rubrik": "Bordeaux – Översikt",
+      "innehall": [
+        "Bordeaux har 113 000 hektar vinodlingar och ett maritimt klimat.",
+        "Vänstra stranden domineras av Cabernet Sauvignon och har grusrika jordar.",
+        "Högra stranden domineras av Merlot och har lerrika jordar."
+      ]
+    },
+    {
+      "rubrik": "1855 års klassificering",
+      "innehall": [
+        "Klassificeringen från 1855 delar in vinerna i fem nivåer (crus).",
+        "Totalt 61 châteaux ingår i klassificeringen.",
+        "Endast Château Mouton Rothschild har ändrat rang sedan klassificeringen skapades (uppgraderat till Premier Cru 1973)."
+      ]
+    },
+    {
+      "rubrik": "Övriga klassificeringar",
+      "innehall": [
+        "Cru Bourgeois är en klassificering för kvalitetsviner från Médoc som inte ingår i 1855 års klassificering.",
+        "Graves har en egen klassificering för både röda och vita viner.",
+        "Saint-Émilion har en egen klassificering som reviderades senast 2022."
+      ]
+    },
+    {
+      "rubrik": "Viktiga appellationer – Vänstra stranden",
+      "innehall": [
+        "Pauillac är hem för tre Premier Cru: Château Latour, Château Lafite Rothschild och Château Mouton Rothschild.",
+        "Saint-Julien är känd för eleganta och balanserade viner.",
+        "Margaux producerar parfymerade och feminina viner.",
+        "Saint-Estèphe ger kraftfulla och strukturerade viner.",
+        "Pessac-Léognan är den främsta appellationen inom Graves."
+      ]
+    },
+    {
+      "rubrik": "Viktiga appellationer – Högra stranden & söta viner",
+      "innehall": [
+        "Pomerol är hem för Château Petrus och saknar officiell klassificering.",
+        "Saint-Émilion har Château Cheval Blanc som en av sina mest kända producenter.",
+        "Sauternes producerar söta viner med hjälp av botrytis (ädelröta).",
+        "Château d'Yquem är Sauternes mest berömda producent och den enda Premier Cru Supérieur."
+      ]
+    },
+    {
+      "rubrik": "Bordeaux – Handel",
+      "innehall": [
+        "Négociant-systemet är centralt i Bordeaux handel, där négocianter köper och säljer vin från producenterna.",
+        "En Primeur (fatprov) är ett system där viner säljs som terminer innan de buteljeras."
+      ]
+    },
+    {
+      "rubrik": "Bourgogne – Översikt",
+      "innehall": [
+        "Bourgogne har 28 000 hektar vinodlingar och ett kontinentalt klimat.",
+        "Terroir är det centrala begreppet i Bourgogne – varje vingård har unik karaktär."
+      ]
+    },
+    {
+      "rubrik": "Bourgognes klassificering",
+      "innehall": [
+        "Grand Cru är den högsta nivån och omfattar de allra bästa vingårdarna.",
+        "Premier Cru (1er Cru) är den näst högsta nivån.",
+        "Village-viner bär byns namn och utgör nästa nivå.",
+        "Régional-viner (t.ex. Bourgogne Rouge) är den bredaste och lägsta nivån."
+      ]
+    },
+    {
+      "rubrik": "Chablis",
+      "innehall": [
+        "Chablis ligger på Kimmeridge-jord (fossilrik kalksten).",
+        "Chablis har sju Grand Cru-vingårdar."
+      ]
+    },
+    {
+      "rubrik": "Côte de Nuits",
+      "innehall": [
+        "Gevrey-Chambertin är den största byn i Côte de Nuits med kraftfulla röda viner.",
+        "Chambolle-Musigny är känd för eleganta och feminina Pinot Noir-viner.",
+        "Vosne-Romanée är hem för Domaine de la Romanée-Conti (DRC), en av världens mest eftertraktade producenter."
+      ]
+    },
+    {
+      "rubrik": "Côte de Beaune",
+      "innehall": [
+        "Pommard producerar kraftiga och strukturerade röda viner.",
+        "Volnay ger eleganta och raffinerade röda viner.",
+        "Meursault är berömd för sina rika och fylliga vita Chardonnay-viner.",
+        "Puligny-Montrachet producerar några av världens finaste vita viner."
+      ]
+    },
+    {
+      "rubrik": "Övriga Bourgogne-regioner",
+      "innehall": [
+        "Côte Chalonnaise erbjuder prisvärda alternativ till Côte d'Or.",
+        "Mâconnais producerar friska och fruktiga vita viner, främst av Chardonnay.",
+        "Beaujolais har tio Cru-byar och odlar uteslutande Gamay.",
+        "Beaujolais är känt för kolsyremaceration (macération carbonique) som ger fruktiga och lättdruckna viner."
+      ]
+    },
+    {
+      "rubrik": "Viktiga termer i Bourgogne",
+      "innehall": [
+        "Climat är ett namngivet och avgränsat vingårdsskifte i Bourgogne.",
+        "Lieu-dit är ett geografiskt namn på en specifik plats eller vinodling.",
+        "Clos betecknar en muromgärdad vingård.",
+        "Monopole innebär att en enda producent äger hela vingården.",
+        "Bâtonnage är omrörning av vinet på sina jästfällningar för att ge mer kropp och komplexitet."
+      ]
+    }
+  ]
+}

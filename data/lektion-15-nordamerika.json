@@ -1,0 +1,68 @@
+{
+  "id": 15,
+  "titel": "Nordamerika",
+  "undertitel": "USA & Kanada",
+  "sektioner": [
+    {
+      "rubrik": "USA – Översikt",
+      "innehall": [
+        "USA har cirka 400 000 hektar vinodlingar och är världens fjärde största vinproducent.",
+        "Det amerikanska klassificeringssystemet kallas AVA (American Viticultural Area) och definierar geografiska odlingsområden.",
+        "AVA-systemet kräver att minst 85 % av druvorna kommer från det angivna området för att AVA-namnet ska få användas på etiketten.",
+        "År 1976 ägde den berömda Judgment of Paris rum, där kaliforniska viner slog franska viner i en blindprovning.",
+        "Judgment of Paris förändrade världens syn på amerikansk vinproduktion och bevisade att Nya världens viner kunde konkurrera med Europas bästa."
+      ]
+    },
+    {
+      "rubrik": "Kalifornien",
+      "innehall": [
+        "Kalifornien är USAs överlägset största vinregion med cirka 195 000 hektar vinodlingar.",
+        "Kalifornien står för över 80 % av all vinproduktion i USA.",
+        "Napa Valley är Kaliforniens mest prestigefyllda region och är särskilt känd för Cabernet Sauvignon av världsklass.",
+        "Napa Valley har 16 sub-AVAs som var och en har unika terroir- och klimatförhållanden.",
+        "Sonoma County är en mångsidig region känd för utmärkt Pinot Noir och Zinfandel.",
+        "Sonoma har ett svalare klimat än Napa och erbjuder en stor variation av druvor och stilar.",
+        "Paso Robles i San Luis Obispo County har blivit en ledande region för Syrah och Rhône-sorter.",
+        "Santa Barbara County, särskilt Santa Rita Hills, producerar elegant Pinot Noir tack vare kalla havsvindar.",
+        "Lodi i Central Valley är känt för sina gamla Zinfandel-vinstockar, varav vissa är över 100 år gamla.",
+        "Lodis old vine Zinfandel ger kraftfulla, koncentrerade viner med djup fruktkaraktär."
+      ]
+    },
+    {
+      "rubrik": "Oregon",
+      "innehall": [
+        "Oregon har cirka 14 500 hektar vinodlingar och ett svalt, maritimt klimat.",
+        "Willamette Valley är Oregons viktigaste vinregion och producerar Pinot Noir i burgundisk stil.",
+        "Oregons Pinot Noir anses vara bland de bästa utanför Bourgogne tack vare det svala klimatet och lerjordar."
+      ]
+    },
+    {
+      "rubrik": "Washington",
+      "innehall": [
+        "Washington State har cirka 15 000 hektar vinodlingar och är USAs näst största vinproducerande delstat.",
+        "Yakima Valley och Columbia Valley är Washingtons viktigaste vinregioner.",
+        "Cabernet Sauvignon är Washingtons mest framstående druva och trivs i det kontinentala klimatet med varma dagar och svala nätter.",
+        "Columbia Valley har ett halvökenliknande klimat där bevattning är nödvändig för vinodling."
+      ]
+    },
+    {
+      "rubrik": "Övriga delstater i USA",
+      "innehall": [
+        "New York State är känt för Finger Lakes-regionen som producerar utmärkt Riesling i ett svalt klimat.",
+        "Virginia har en växande vinindustri med fokus på Viognier och Bordeaux-sorter.",
+        "Texas är en av de snabbast växande vinregionerna i USA med allt mer kvalitetsinriktad produktion."
+      ]
+    },
+    {
+      "rubrik": "Kanada",
+      "innehall": [
+        "Kanada har cirka 12 500 hektar vinodlingar fördelade på flera provinser.",
+        "Det kanadensiska kvalitetssystemet kallas VQA (Vintners Quality Alliance) och garanterar ursprung och kvalitet.",
+        "Kanada är världens ledande producent av Ice Wine (Isvin), som tillverkas av druvor frysta naturligt på stocken.",
+        "Okanagan Valley i British Columbia har ett torrt, varmt klimat och producerar en mängd olika vinstilar.",
+        "Niagara Peninsula i Ontario är Kanadas största vinregion och särskilt känd för sin Ice Wine-produktion.",
+        "Det kalla kanadensiska klimatet skapar idealiska förhållanden för att producera koncentrerat och sött Isvin."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+﻿{
+  "id": 17,
+  "titel": "Oceanien",
+  "undertitel": "Australien & Nya Zeeland",
+  "sektioner": [
+    {
+      "rubrik": "Australien — översikt",
+      "innehall": [
+        "146 000 hektar vinodling — sjätte största vinproducenten i världen.",
+        "GI-system (Geographical Indications): Zone → Region → Subregion.",
+        "Fem stora producenter dominerar över 50 % av marknaden.",
+        "Max Schubert: skapare av Penfolds Grange — Australiens mest ikoniska vin.",
+        "Bushfire-impact: skogsbränder kan ge röktaint i druvor — stort problem, särskilt 2019–2020."
+      ]
+    },
+    {
+      "rubrik": "Western Australia",
+      "innehall": [
+        "Margaret River: 9 200 hektar — maritimt klimat med Indiska oceanen och Södra oceanen.",
+        "Cabernet Sauvignon: regionens flaggskepp — eleganta, strukturerade röda.",
+        "Chardonnay: världsklass — rika men balanserade med fräschör.",
+        "Trots liten produktion (3 % av Australien) står regionen för 20 % av premiumsegmentet."
+      ]
+    },
+    {
+      "rubrik": "South Australia",
+      "innehall": [
+        "76 000 hektar — Australiens viktigaste vinstat, hälften av landets produktion.",
+        "Barossa Valley: Australiens äldsta vinstockar, plantering sedan 1843. Shiraz dominerar — kraftfull, mörk, generös.",
+        "Old Vine Charter: klassificerar vinstockar efter ålder — 35 år (Old Vine), 75 år (Survivor Vine), 100 år (Centenarian Vine), 125 år (Ancestor Vine).",
+        "Clare Valley & Eden Valley: Australiens bästa Riesling — torr, mineralisk, åldras magnifikt.",
+        "Adelaide Hills: svalt klimat i höjd — elegant Chardonnay och Sauvignon Blanc.",
+        "Coonawarra: berömd terra rossa-jord (röd kalksten) — exceptionell Cabernet Sauvignon."
+      ]
+    },
+    {
+      "rubrik": "New South Wales",
+      "innehall": [
+        "40 000 hektar — inkluderar Australiens äldsta vinregion.",
+        "Hunter Valley: Semillon skördas vid låg mognad (10–11 % alkohol) — åldras remarkabelt i 10–20+ år, utvecklar toast och honung utan eklagring.",
+        "Orange: vulkanjord på 600 m+ höjd — svalt klimat, eleganta viner."
+      ]
+    },
+    {
+      "rubrik": "Victoria",
+      "innehall": [
+        "23 000 hektar — störst mångfald av stilar i Australien.",
+        "Yarra Valley: svalt klimat — Pinot Noir och Chardonnay i burgundisk stil.",
+        "Heathcote: kambrisk jord — kraftfull, elegant Shiraz."
+      ]
+    },
+    {
+      "rubrik": "Tasmania",
+      "innehall": [
+        "500 hektar — Australiens svalaste vinregion.",
+        "Mousserande viner: hög kvalitet — jämförs med Champagne.",
+        "Pinot Noir: elegant, syrlig, med ren frukt — växande rykte."
+      ]
+    },
+    {
+      "rubrik": "Shiraz vs Syrah",
+      "innehall": [
+        "Samma druva, olika stilar: Shiraz (australisk) vs Syrah (fransk/Rhône).",
+        "Shiraz: mognare frukt, högre alkohol, mjukare tanniner, ofta generöst ekad.",
+        "Syrah: mer pepprig, jordigt, striktare, lägre alkohol.",
+        "GSM-blandningar: Grenache, Shiraz, Mourvèdre — australisk variant av Rhône-blandning."
+      ]
+    },
+    {
+      "rubrik": "Nya Zeeland — översikt",
+      "innehall": [
+        "40 100 hektar vinodling — litet men med stort internationellt rykte.",
+        "96 % av vingårdarna är hållbart certifierade (Sustainable Winegrowing NZ).",
+        "22 GI:s (Geographical Indications) — officiellt registrerade.",
+        "Hög UV-strålning: ozonskiktet tunnare — ger intensiva smaker och tjockare druvskal."
+      ]
+    },
+    {
+      "rubrik": "Marlborough",
+      "innehall": [
+        "28 000 hektar — cirka två tredjedelar av Nya Zeelands totala vinproduktion.",
+        "Sauvignon Blanc: definierade druvan globalt — passionsfrukt, grapefrukt, gräs, fräsch syra.",
+        "Wairau Valley och Awatere Valley: två huvudzoner med olika mikroklimatkamratär."
+      ]
+    },
+    {
+      "rubrik": "Central Otago",
+      "innehall": [
+        "1 900 hektar — Nya Zeelands enda vinregion med kontinentalt klimat.",
+        "Världens sydligaste vinregion av betydelse.",
+        "Pinot Noir: intensiv, ren frukt, kryddighet — internationellt hyllade."
+      ]
+    },
+    {
+      "rubrik": "Hawke's Bay",
+      "innehall": [
+        "5 000 hektar — Nya Zeelands näst största region och äldsta vindistrikt.",
+        "Gimblett Gravels: unik stenig terräng, varm mikroklimat — exceptionella Bordeaux-blandningar.",
+        "Cabernet Sauvignon, Merlot och Syrah — Nya Zeelands bästa röda viner."
+      ]
+    },
+    {
+      "rubrik": "Martinborough / Wairarapa",
+      "innehall": [
+        "Pinot Noir: jordigt, komplext, med stor terroirkänsla.",
+        "Liten produktion, hög kvalitet — boutique-vingårdar dominerar.",
+        "Torrare klimat än mycket av Nordön — skyddat av bergskedjor."
+      ]
+    }
+  ]
+}

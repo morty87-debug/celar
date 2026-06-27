@@ -1,0 +1,99 @@
+{
+  "id": 7,
+  "titel": "Portugal & starkvin",
+  "undertitel": "Portvin, Madeira, Sherry & portugisiska viner",
+  "sektioner": [
+    {
+      "rubrik": "Portugal – Översikt",
+      "innehall": [
+        "Portugal har 240 000 hektar vinodlingar.",
+        "DOC/DOP är den högsta kvalitetsklassificeringen för portugisiska viner.",
+        "VR/IGP är beteckningen för regionala viner.",
+        "Vinho är den enklaste kategorin för bordsviner."
+      ]
+    },
+    {
+      "rubrik": "Portugisiska vintermer",
+      "innehall": [
+        "Garrafeira är en beteckning för viner som lagrats extra länge, både på fat och flaska.",
+        "Reserva anger ett vin av högre kvalitet än standardproduktionen.",
+        "Colheita betyder årgång och används för både portvin och bordsviner."
+      ]
+    },
+    {
+      "rubrik": "Vinho Verde",
+      "innehall": [
+        "Vinho Verde omfattar 21 000 hektar i nordvästra Portugal.",
+        "Alvarinho och Loureiro är de viktigaste druvorna i Vinho Verde."
+      ]
+    },
+    {
+      "rubrik": "Douro",
+      "innehall": [
+        "Douro-dalen har 46 000 hektar vinodlingar och skifferjordar.",
+        "Touriga Nacional och Tinta Roriz (Tempranillo) är de viktigaste röda druvorna i Douro."
+      ]
+    },
+    {
+      "rubrik": "Övriga portugisiska regioner",
+      "innehall": [
+        "Bairrada är känd för druvan Baga och producerar även Espumante (mousserande vin).",
+        "Alentejo har 22 000 hektar och producerar viner i internationell stil.",
+        "Dão producerar eleganta röda viner i Portugals inland.",
+        "Colares har bara 30 hektar och odlar oympad Ramisco-druva – en av få platser i Europa med oympade vinstockar."
+      ]
+    },
+    {
+      "rubrik": "Sherry – Översikt",
+      "innehall": [
+        "Sherry produceras i Jerez-triangeln i södra Spanien.",
+        "Albariza är den kritrika jord som ger de bästa Sherry-vinerna.",
+        "Palomino är huvuddruvan för torra Sherry-stilar.",
+        "Flor är ett lager av jäst som skyddar vinet från oxidation och ger biologiskt lagrade Sherry-stilar sin karaktär.",
+        "Solera-systemet är en metod för fraktionell blandning där äldre och yngre viner kombineras successivt."
+      ]
+    },
+    {
+      "rubrik": "Sherry-stilar",
+      "innehall": [
+        "Fino och Manzanilla lagras under flor och är torra, lätta och fräscha.",
+        "Amontillado börjar under flor men fortsätter med oxidativ lagring, vilket ger nötig karaktär.",
+        "Palo Cortado är en sällsynt stil som kombinerar Amontillados doft med Olorosos kropp.",
+        "Oloroso lagras helt oxidativt utan flor och blir mörk, rik och kraftfull.",
+        "Pedro Ximénez (PX) är en mycket söt Sherry gjord på soltorkade PX-druvor."
+      ]
+    },
+    {
+      "rubrik": "Portvin – Produktion",
+      "innehall": [
+        "Portvin görs på druvor från Douro-dalen.",
+        "Aguardente (vindestillat) tillsätts under jäsningen för att stoppa fermentationen och bevara druvsocker.",
+        "Lagares är traditionella stentråg där druvorna trampas för hand."
+      ]
+    },
+    {
+      "rubrik": "Portvin – Tawny-stilar",
+      "innehall": [
+        "Tawny Port lagras på fat och finns i åldersangivelserna 10, 20, 30 och 40 år.",
+        "Colheita Tawny är en årgångstappning av Tawny Port från ett enda skördeår."
+      ]
+    },
+    {
+      "rubrik": "Portvin – Ruby-stilar",
+      "innehall": [
+        "Late Bottled Vintage (LBV) lagras 4–6 år på fat innan buteljering.",
+        "Vintage Port är en årgångsvin av Ruby-typ.",
+        "Single Quinta Port kommer från en enda vingård och görs i utmärkta (men ej deklarerade) årgångar."
+      ]
+    },
+    {
+      "rubrik": "Madeira",
+      "innehall": [
+        "Madeira har fyra ädla druvor rangordnade från torrast till sötast: Sercial, Verdelho, Boal och Malmsey (Malvasia).",
+        "Estufagem är en uppvärmningsmetod i stora tankar som simulerar tropisk lagring.",
+        "Canteiro-metoden innebär naturlig lagring i varma vindsutrymmen utan artificiell uppvärmning.",
+        "Madeira klassificeras efter ålderskategorier som 3, 5, 10, 15 och 20 år samt Vintage och Frasqueira."
+      ]
+    }
+  ]
+}

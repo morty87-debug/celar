@@ -1,0 +1,129 @@
+{
+  "id": 4,
+  "titel": "Spanien",
+  "undertitel": "Världens vinländer — Europa",
+  "sektioner": [
+    {
+      "rubrik": "Spanien — översikt",
+      "innehall": [
+        "Spanien har världens största vingårdsareal: 970 000 hektar — men producerar mindre vin per hektar än Frankrike och Italien.",
+        "400-600 druvsorter i bruk — enormt stor mångfald.",
+        "Mesetaplatån: 600 m höjd, täcker 4/5 av landet — extremt kontinentalt klimat.",
+        "Trender: terroirfokus, lokala druvsorter i revival, vita viner i uppgång, mousserande tillväxt."
+      ]
+    },
+    {
+      "rubrik": "Klassificeringssystemet",
+      "innehall": [
+        "DOCa (Denominación de Origen Calificada): högsta nivån — bara Rioja och Priorat har denna status.",
+        "DO (Denominación de Origen): kontrollerat ursprung — de flesta kvalitetsregioner.",
+        "VP (Vino de Pagos): enskild vingård med egen DOP-status — 25 stycken totalt (2025).",
+        "DOP: EU-beteckning som omfattar DOCa, DO, VP och VC.",
+        "IGP (Indicación Geográfica Protegida): ersätter Vino de la Tierra.",
+        "Vino (Vino de España): basvin utan ursprungskrav — ersätter Vino de Mesa."
+      ]
+    },
+    {
+      "rubrik": "Lagringstermer",
+      "innehall": [
+        "Genérico (tidigare Joven): ungt vin utan lagringskrav.",
+        "Crianza rött: minst 24 månader totalt, varav 12 i ek.",
+        "Reserva rött: minst 36 månader totalt, varav 12 i ek.",
+        "Gran Reserva rött: minst 60 månader totalt, varav 24 i ek.",
+        "Crianza vitt: 6 månader i ek. Reserva vitt: 24 mån totalt, 6 i ek. Gran Reserva vitt: 48 mån totalt, 6 i ek.",
+        "Roble: kort eklagrad (informell term).",
+        "Sobre lías: lagring på jästfällning (sur lie)."
+      ]
+    },
+    {
+      "rubrik": "Gröna Spanien — nordväst",
+      "innehall": [
+        "Atlantiskt klimat med hög nederbörd — fokus på vita druvor.",
+        "Rías Baixas: Albariño-druvans hemvist — fräscha, salt-mineraliska vita viner. 2 000 hektar, medelstorlek 0,6 ha.",
+        "Albariño: citrus, lime, stenfrukt, fläder. Fräsch, salt-mineralisk. Hög syra. Synonym: Alvarinho (Portugal).",
+        "Bierzo: Mencía-druvan — skiffer och granit. Terroirdrivna röda viner med enorm lagringspotential. Renaissance på 2000-talet.",
+        "Mencía: björnbär, granatäpple, grön paprika, jordigt. Liknar Cabernet Franc. Hög syra.",
+        "Godello: stenfrukt, citron, blommig, våt sten. Kraftfulla, eleganta vita med glycerinkaraktär.",
+        "Txakolina (Baskien): extremt fräscha, lätt mousserande vita viner.",
+        "Ribeira Sacra (Galicien): dramatiska terrasser längs floden Sil."
+      ]
+    },
+    {
+      "rubrik": "Duerodalen — centrala norr",
+      "innehall": [
+        "73 000 hektar — kontinentalt klimat, skyddat från Atlanten. 600-1000 m höjd.",
+        "Ribera del Duero: 22 500 hektar. Tinto Fino (Tempranillo) dominerar — kraftfulla, eleganta röda.",
+        "Toro: sandjordar — Tinto Toro (Tempranillo) ger mörka, kraftfulla viner.",
+        "Rueda: hem för Verdejo — fräscha, aromatiska vita viner.",
+        "Tempranillo: jordgubbe, blåbär, hallon, dill, peppar, vanilj, tobak, kanel. Medelkropp, balanserad. Synonymer: Tinto Fino, Tinto País, Cencibel, Ull de Llebre.",
+        "Verdejo: lime, grönt äpple, krusbär, fänkål. Fräscha, torra vita."
+      ]
+    },
+    {
+      "rubrik": "Ebrodalen — Rioja & Navarra",
+      "innehall": [
+        "Rioja DOCa: 65 000 hektar — Spaniens mest berömda vinregion. Skyddad av Kantabriska bergen.",
+        "Tre delområden: Alavesa (atlantiskt, hög höjd), Alta (störst, söder om Ebro), Oriental (varmast, fylligast).",
+        "Druvor: Tempranillo, Garnacha, Graciano, Mazuelo (röda). Viura, Tempranillo Blanco (vita).",
+        "Klassisk Rioja: blandviner, köpta druvor, amerikanskt ek, lång fatlagring.",
+        "Modern Rioja: sortviner, egna vingårdar, franskt ek, kortare fatlagring.",
+        "Ny klassificering: Vino de Zona → Vino de Pueblo → Viñedo Singular (utöver Crianza/Reserva/Gran Reserva).",
+        "Garnacha: rött körsbär, fikon, blåbär, vitpeppar, lakrits. Torra röda, också rosé. Hög alkohol.",
+        "Viura (= Macabeo): citron, grönt äpple, nektarin. Enklare vita, premiumversioner eklagrade.",
+        "Navarra: 4 Vino de Pagos-egendomar. Känd för rosé men växer som rödvinsregion."
+      ]
+    },
+    {
+      "rubrik": "Medelhavskusten — Katalonien & sydöst",
+      "innehall": [
+        "212 000 hektar — medelhavsklimat med kylande havsbriser.",
+        "Priorat DOCa: 1 900 hektar. Licorella (skiffer) — unik jordtyp. Gamla vinstockar, branta sluttningar. Garnacha och Cariñena dominerar.",
+        "Priorat-historia: odling sedan 1100-talet. 1980-talets renaissance av 'the gang of five'. Utvecklas från kraft mot elegans.",
+        "Montsant: omger Priorat — liknande stil till lägre pris.",
+        "Penedès: Cava-land — Macabeo, Xarel·lo, Parellada för mousserande.",
+        "Jumilla (Murcia): Monastrell (Mourvèdre) — kraftfulla, mogna röda.",
+        "Mallorca: Binissalem och Pla i Llevant — lokala druvor som Manto Negro.",
+        "Bobal: viktig lokal druva i Valencia/Utiel-Requena — mörk, fruktiga röda."
+      ]
+    },
+    {
+      "rubrik": "Meseta — centralplatån",
+      "innehall": [
+        "550 000 hektar — Spaniens överlägset största vinområde.",
+        "La Mancha: världens största sammanhängande vindistrikt — huvudsakligen Airén (vit) och Cencibel (Tempranillo).",
+        "Valdepenas: traditionellt känd för lättdruckna röda.",
+        "Vinos de Madrid / Mentrida / Cebreros: hög höjd, gamla vinstockar, Garnacha-fokus. Madrid som marknadsplattform.",
+        "Airén: Spaniens (och världens) mest planterade vita druva — neutral, används ofta för destillation."
+      ]
+    },
+    {
+      "rubrik": "Andalusien",
+      "innehall": [
+        "30 000 hektar — hem för Sherry/Jerez.",
+        "Jerez-triangeln: Jerez de la Frontera, Sanlúcar de Barrameda, El Puerto de Santa María.",
+        "Albariza: kritvit kalkjord — unik för Jerez. Reflekterar solljus, lagrar vatten.",
+        "Palomino: huvuddruva för Sherry — neutral, terroirkänslig.",
+        "Pedro Ximénez (PX): extremt söta viner — russinkoncentrerad.",
+        "Sherry-produktion: basvin 11% → spritad till 15% (Fino-väg) eller 18% (Oloroso-väg).",
+        "Flor: jästhinna som skyddar vinet från oxidation — ger Fino sin unika karaktär.",
+        "Solera-systemet: gradvis blandning av årgångar genom criaderas.",
+        "Fino/Manzanilla: torr, under flor, lätt, salt. Till fisk, sushi, tapas.",
+        "Amontillado: börjar som Fino, flor dör — övergår till oxidativ lagring.",
+        "Palo Cortado: spontan övergång från Fino till oxidativ — sällsynt.",
+        "Oloroso: oxidativ, 16-18%. Till vilt, grytors, grillad fisk.",
+        "PX/Moscatel: söta stilar — till blåmögelost, choklad.",
+        "Montilla-Moriles och Málaga: andra andalusiska vinregioner med starkvin."
+      ]
+    },
+    {
+      "rubrik": "Kanarieöarna",
+      "innehall": [
+        "6 200 hektar — subtropiskt klimat, upp till 1 700 m höjd.",
+        "Lanzarote: vulkanjord — unik odling i hoyos/zanjas (gropar i vulkansten). Sahara-vindar.",
+        "Druvor: Malvasía, Listán Blanco, Moscatel (vita). Listán Negro, Negramoll (röda).",
+        "Många gamla, ogympade vinstockar — phylloxera har aldrig nått öarna.",
+        "Spännande terroir-viner med mineralitet och unika karaktärsdrag."
+      ]
+    }
+  ]
+}

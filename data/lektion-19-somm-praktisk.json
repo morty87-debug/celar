@@ -1,0 +1,147 @@
+﻿{
+  "id": 19,
+  "titel": "Sommelierens praktiska kunskap",
+  "undertitel": "Service, försäljning och ledarskap",
+  "sektioner": [
+    {
+      "rubrik": "Förberedelse",
+      "innehall": [
+        "Personlig hygien: duscha, borsta tänderna, diskret doft eller ingen parfym.",
+        "Uniform: ren, struken, professionell — representerar restaurangen.",
+        "Ha alltid med dig: penna, block, korkskruv (sommelierknivar).",
+        "Rummet i ordning: bord dukade, glas polerade, vinlistan uppdaterad, kylar på rätt temperatur."
+      ]
+    },
+    {
+      "rubrik": "Glaspolering",
+      "innehall": [
+        "Snabb teknik: håll glaset över ångande hett vatten — torka med mikrofiberduk.",
+        "Håll aldrig glaset med en hand på foten och en på kuppan samtidigt — risk att glaset går sönder.",
+        "Kontrollera mot ljuset: inga fingeravtryck, fläckar eller lukt."
+      ]
+    },
+    {
+      "rubrik": "Briefing",
+      "innehall": [
+        "Kort och informationstät: max 10–15 minuter före service.",
+        "Innehåll: bokningsläge, allergier och specialkost, nyheter på menyn och vinlistan.",
+        "Inkludera köket: alla ska veta vad som gäller.",
+        "Håll det energiskt och positivt — sätter tonen för servicen."
+      ]
+    },
+    {
+      "rubrik": "Gästbemötande",
+      "innehall": [
+        "Kroppsspråk: öppet, välkomnande — händer framför kroppen, inte i fickorna.",
+        "Rör aldrig ansiktet eller håret under service.",
+        "Stamgäster: 'Välkommen tillbaka' — visa att du minns dem.",
+        "Ögonkontakt, leende, var närvarande — gästen ska känna sig sedd."
+      ]
+    },
+    {
+      "rubrik": "Stresshantering",
+      "innehall": [
+        "Skriv ner: att anteckna minskar den mentala belastningen.",
+        "Träna och meditera: bygg upp stresstålighet utanför jobbet.",
+        "Kommunicera med gästen vid väntan: informera om förväntad tid — tystnad skapar frustration."
+      ]
+    },
+    {
+      "rubrik": "Vinförsäljning",
+      "innehall": [
+        "Treregeln: föreslå tre viner — ett billigare, ett i gästens budget, ett dyrare.",
+        "Motivera varför varje vin passar till deras mat eller preferens.",
+        "Lyssna på gästen: ställ öppna frågor — 'Vad dricker du gärna?', 'Rött eller vitt?'",
+        "Rekommendera ibland det billigare alternativet — bygger förtroende och lojalitet."
+      ]
+    },
+    {
+      "rubrik": "Bordsprotokoll",
+      "innehall": [
+        "Presentera dig med namn — skapa en personlig koppling.",
+        "Identifiera vinansvarig: vem vid bordet beställer vin?",
+        "Ge tid: lämna vinlistan och kom tillbaka — pressa aldrig.",
+        "Ta beställning: bekräfta årgång och producent för att undvika missförstånd.",
+        "POS innan hämtning: slå in ordern först, hämta sedan vinet."
+      ]
+    },
+    {
+      "rubrik": "Slutsålt vin",
+      "innehall": [
+        "Kom aldrig tomhänt till bordet — ha ett alternativ med dig.",
+        "Föreslå vin i samma prisklass och stil som det beställda.",
+        "Be om ursäkt kort och professionellt — fokusera på lösningen."
+      ]
+    },
+    {
+      "rubrik": "Hantera missnöjda gäster",
+      "innehall": [
+        "Lyssna: låt gästen prata klart utan att avbryta.",
+        "Bekräfta: 'Jag förstår, det ska jag lösa' — visa empati.",
+        "Kompensera: erbjud ett nytt glas, en rabatt, eller en dessert — var generös.",
+        "Skylla aldrig på en kollega — ta ansvar som team.",
+        "'Kill them with kindness': vänlighet avväpnar de flesta.",
+        "Vid trakasserier: var tydlig — be gästen lämna om beteendet fortsätter. Personalens säkerhet kommer först."
+      ]
+    },
+    {
+      "rubrik": "Vinpresentation",
+      "innehall": [
+        "Skaka aldrig flaskan — hantera varsamt, särskilt äldre viner.",
+        "Rätt glas först: ställ fram korrekt glas innan vinet öppnas.",
+        "Visa flaskan: presentera etiketten för den som beställt — bekräfta vin och årgång.",
+        "Öppna vid bordet: aldrig i köket eller vid bardisken."
+      ]
+    },
+    {
+      "rubrik": "Temperatur",
+      "innehall": [
+        "Snabbkylning: ishink med vatten + salt + is — kyler mycket snabbare än is ensamt.",
+        "Uppvärmning: häll varmt vatten över flaskan (om den är för kall) — aldrig mikrovågsugn.",
+        "Servera hellre för kallt än för varmt — vinet värms i glaset."
+      ]
+    },
+    {
+      "rubrik": "Dekantering",
+      "innehall": [
+        "10 steg: 1. Ställ upp utrustning (karaff, ljus, servett). 2. Tänd ljus. 3. Öppna flaskan varsamt. 4. Häll en provsmak till beställaren. 5. Bedöm om vinet behöver dekantering. 6. Häll långsamt i karaffen. 7. Sluta hälla när sediment syns vid flaskhalsen (använd ljuset). 8. Servera från karaffen. 9. Berömma gästens vinval. 10. Fyll på vid behov.",
+        "Unga viner: dekantera för att lufta — öppnar aromer och mjukar upp tanniner.",
+        "Gamla viner: dekantera försiktigt för att separera sediment — för mycket luft kan 'döda' vinet."
+      ]
+    },
+    {
+      "rubrik": "Ah-So korkdragare",
+      "innehall": [
+        "Används för gamla eller skadade korkar som riskerar att smulas med vanlig korkskruv.",
+        "Två tunna blad förs ner mellan kork och flaskhals — korken dras ut hel.",
+        "Kräver övning — risk att trycka ner korken om tekniken är fel."
+      ]
+    },
+    {
+      "rubrik": "Öppna mousserande vin",
+      "innehall": [
+        "6 varv: lossa musslet med 6 varv moturs.",
+        "Vrid flaskan, inte korken — bättre kontroll.",
+        "Tyst öppning: en viskning, inte en smäll — visar professionalism.",
+        "Håll alltid tummen på korken efter att musslet lossats."
+      ]
+    },
+    {
+      "rubrik": "Golvledarskap",
+      "innehall": [
+        "Se helheten: ha överblick över hela matsalen — var är behovet störst?",
+        "Hjälp kollegor: om du ser att någon är i nöd, sträck ut en hand.",
+        "Ta upp fel efter service: aldrig inför gäster, alltid konstruktivt.",
+        "Delegera: fördela uppgifter utifrån styrkor — alla behöver inte göra allt."
+      ]
+    },
+    {
+      "rubrik": "Avsluta service",
+      "innehall": [
+        "Varje gäst är lika viktig oavsett tid på kvällen — sista bordet får samma energi som första.",
+        "Överlämna till kollega: om du slutar före stängning, informera om pågående bord.",
+        "Föreslå saker att göra i staden: barer, caféer, sevärdheter — gästen minns den extra servicen."
+      ]
+    }
+  ]
+}
