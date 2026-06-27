@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celar — Identifiera vin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/druvor.css">
+  <style>
+    .id-container {
+      max-width: 560px;
+      margin: 1.5rem auto;
+      padding: 0 1.5rem 4rem;
+      position: relative;
+      z-index: 1;
+    }
+    .id-input-group { margin-bottom: 0.75rem; }
+    .id-label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.3rem;
+    }
+    .id-input {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.6rem 0.85rem;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .id-input:focus { border-color: var(--border-hover); }
+    .id-input::placeholder { color: var(--text-dim); }
+    .id-btn {
+      display: block;
+      width: 100%;
+      margin-top: 1rem;
+      padding: 0.75rem;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: #fff;
+      background: var(--wine);
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .id-btn:hover { background: var(--wine-light); }
+    .id-result {
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      animation: fadeUp 0.4s ease-out;
+      display: none;
+    }
+    .id-result.show { display: block; }
+    .id-result h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--sand-light);
+      margin-bottom: 0.75rem;
+    }
+    .id-section {
+      margin-bottom: 1rem;
+    }
+    .id-section-title {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.3rem;
+    }
+    .id-section p {
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .id-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-top: 0.3rem;
+    }
+    .id-tag-green {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--moss);
+      background: rgba(74,90,58,0.08);
+      padding: 0.25rem 0.6rem;
+      border-radius: 100px;
+    }
+    .id-tag-brown {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--earth);
+      background: rgba(92,64,51,0.08);
+      padding: 0.25rem 0.6rem;
+      border-radius: 100px;
+    }
+    .id-or {
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.8rem;
+      margin: 1.25rem 0;
+    }
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 0.5rem;
+    }
+    .quick-card {
+      padding: 0.75rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+    }
+    .quick-card:hover {
+      border-color: var(--border-hover);
+      background: var(--surface-hover);
+    }
+    .quick-card-name {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      color: var(--sand-light);
+    }
+    .quick-card-sub {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-grain"></div>
+
+  <header class="druvor-header">
+    <a href="index.html" class="back-link">← Tillbaka</a>
+    <h1 class="druvor-title">Identifiera vin</h1>
+    <p class="druvor-subtitle">Skriv in ett vinnamn — få druvor, region och matförslag</p>
+  </header>
+
+  <div class="id-container">
+    <div class="id-input-group">
+      <label class="id-label">Vinnamn eller druva</label>
+      <input type="text" class="id-input" id="wineInput" placeholder="t.ex. 'Barolo', 'Sancerre', 'Chablis', 'Amarone'...">
+    </div>
+    <button class="id-btn" onclick="identify()">Identifiera</button>
+
+    <div class="id-or">— eller välj ett vin —</div>
+    <div class="quick-grid" id="quickGrid"></div>
+
+    <div class="id-result" id="result"></div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-divider"><span class="divider-vine">✦</span></div>
+    <p>Celar — Byggt för sommelierer</p>
+  </footer>
+
+  <script>
+    const wines = [
+      { namn: "Barolo", druvor: "Nebbiolo (100%)", region: "Piemonte, Italien", typ: "Rött", fakta: "Minst 38 månaders lagring (18 i ek). Gran Selezione finns sedan 2014. Kallas 'vinernas kung'. Kraftfull, tanninrik med rosdoft och tjärtoner.", mat: ["Tryffel", "Brässerad vilt", "Risotto", "Lagrad ost"], aromer: "Ros, tjära, körsbär, lakrits, kryddor, torkade blommor" },
+      { namn: "Barbaresco", druvor: "Nebbiolo (100%)", region: "Piemonte, Italien", typ: "Rött", fakta: "Liknande Barolo men elegantare och tidigare tillgängligt. Minst 26 månaders lagring. 4 kommuner.", mat: ["Vilt", "Tryffelrisotto", "Brässerat kött"], aromer: "Ros, hallon, tjära, kryddor, violer" },
+      { namn: "Chianti Classico", druvor: "Sangiovese (min 80%)", region: "Toscana, Italien", typ: "Rött", fakta: "Historiska hjärtat av Chianti. Galestro och Alberese-jordar. Gran Selezione sedan 2013 (min 30 mån). Svart tupp-symbol.", mat: ["Pasta med tomatsås", "Pizza", "Grillat kött", "Parmigiano"], aromer: "Körsbär, plommon, örter, kryddor, tobak" },
+      { namn: "Brunello di Montalcino", druvor: "Sangiovese (100%, kallas Brunello)", region: "Toscana, Italien", typ: "Rött", fakta: "Minst 5 års lagring varav 2 i ek. Riserva: 6 år. Italiens mest prestigefyllda rödvin.", mat: ["Grillat rött kött", "Vilt", "Lagrad pecorino"], aromer: "Körsbär, plommon, läder, tobak, jord, kryddor" },
+      { namn: "Amarone", druvor: "Corvina, Corvinone, Rondinella", region: "Veneto, Italien", typ: "Rött", fakta: "Appassimento — druvor torkas 3-4 månader. 15-17% alkohol. Kraftigt, komplext, fylligt.", mat: ["Brässerat kött", "Hårda ostar", "Chokladdessert"], aromer: "Russin, mörka körsbär, choklad, kaffe, kryddor" },
+      { namn: "Champagne", druvor: "Chardonnay, Pinot Noir, Meunier", region: "Champagne, Frankrike", typ: "Mousserande", fakta: "Méthode traditionnelle. Kalkstensmark. 17 Grand Cru-byar. NV min 15 mån lagring. Vintage min 36 mån.", mat: ["Ostron", "Skaldjur", "Sushi", "Aperitif"], aromer: "Citrus, grönt äpple, brioche, mandel, krita" },
+      { namn: "Sancerre", druvor: "Sauvignon Blanc (vitt), Pinot Noir (rött)", region: "Loire, Frankrike", typ: "Vitt", fakta: "Östra Loire. Tre jordtyper: silex, caillottes, terres blanches. Hög syra, mineraldrivet.", mat: ["Getost", "Sallad", "Skaldjur", "Sparris"], aromer: "Krusbär, citrus, gräs, fläder, mineralitet" },
+      { namn: "Chablis", druvor: "Chardonnay (100%)", region: "Bourgogne, Frankrike", typ: "Vitt", fakta: "Kimmeridge-kalksten med fossiler. 7 Grand Cru. Stram, mineraldriven stil. Frostproblem.", mat: ["Ostron", "Fisk", "Skaldjur", "Lätt kyckling"], aromer: "Citrus, grönt äpple, krita, mineralitet, flinta" },
+      { namn: "Châteauneuf-du-Pape", druvor: "Grenache (dominant) + 12 andra", region: "Södra Rhône, Frankrike", typ: "Rött", fakta: "13 tillåtna druvor. Galets roulés (runda stenar) håller värmen. Generösa, varma röda.", mat: ["Grillat lamm", "Gryta", "Charkuterier"], aromer: "Mörka bär, kryddor, lakrits, garrigue, örter" },
+      { namn: "Côte-Rôtie", druvor: "Syrah (+ ev. Viognier)", region: "Norra Rhône, Frankrike", typ: "Rött", fakta: "Branta terrasser. Côte Brune och Côte Blonde. Viognier kan blandas in för elegans.", mat: ["Anka", "Lamm", "Vilt"], aromer: "Mörka bär, violer, peppar, rök, bacon" },
+      { namn: "Rioja", druvor: "Tempranillo, Garnacha, Graciano", region: "Ebrodalen, Spanien", typ: "Rött", fakta: "DOCa-status. Crianza (24 mån), Reserva (36), Gran Reserva (60). Klassisk vs modern stil.", mat: ["Lamm", "Manchego", "Grillat kött"], aromer: "Körsbär, vanilj, tobak, läder, kryddor" },
+      { namn: "Priorat", druvor: "Garnacha, Cariñena", region: "Katalonien, Spanien", typ: "Rött", fakta: "DOCa. Licorella (skiffer). Gamla vinstockar, branta sluttningar. Kraftfulla, koncentrerade.", mat: ["Grillat kött", "Vilt", "Kraftiga grytor"], aromer: "Mörka bär, mineral, skiffer, kryddor, lakrits" },
+      { namn: "Fino Sherry", druvor: "Palomino", region: "Jerez, Spanien", typ: "Starkvin", fakta: "15% alkohol. Biologisk lagring under flor-jäst. Solera-systemet. Manzanilla från Sanlúcar.", mat: ["Tapas", "Sushi", "Ostron", "Jamón"], aromer: "Mandel, bröd, salt, jäst, oliver" },
+      { namn: "Port (Tawny 20 år)", druvor: "Touriga Nacional, Tinta Roriz m.fl.", region: "Douro, Portugal", typ: "Starkvin", fakta: "Oxidativ fatlagring. Medelålder 20 år. Bärnstenfärgad. Nötig, karamell.", mat: ["Crème brûlée", "Nötbaserade desserter", "Blåmögelost"], aromer: "Karamell, nötter, torkad frukt, apelsin, honung" },
+      { namn: "Vinho Verde", druvor: "Alvarinho, Loureiro", region: "Minho, Portugal", typ: "Vitt", fakta: "Maritimt klimat. Fräscha, lätta vita. Monção e Melgaço bäst för Alvarinho.", mat: ["Grillad fisk", "Skaldjur", "Sushi", "Sallad"], aromer: "Citrus, persika, fläder, mineralitet, salt" },
+      { namn: "Riesling Kabinett", druvor: "Riesling", region: "Mosel, Tyskland", typ: "Vitt", fakta: "Prädikat-nivå. Lätt stil, ofta med restsötma. Skiffersluttningar. 7-9% alkohol.", mat: ["Kryddig mat", "Thai", "Fläskkotlett", "Fisk"], aromer: "Lime, grönt äpple, persika, petroleum, blommor" },
+      { namn: "Grüner Veltliner", druvor: "Grüner Veltliner", region: "Niederösterreich, Österrike", typ: "Vitt", fakta: "30% av Österrikes planteringar. Wachau: Steinfeder/Federspiel/Smaragd. Vitpeppar.", mat: ["Wiener schnitzel", "Sparris", "Sushi"], aromer: "Citrus, vitpeppar, grönt äpple, selleri" },
+      { namn: "Malbec", druvor: "Malbec", region: "Mendoza, Argentina", typ: "Rött", fakta: "Upp till 2000m höjd. Valle de Uco. Kraftfull mörk frukt. Argentina landets signatur.", mat: ["Biff", "BBQ", "Empanadas", "Grillat lamm"], aromer: "Plommon, blåbär, viol, choklad, kaffe, kryddor" },
+      { namn: "Marlborough Sauvignon Blanc", druvor: "Sauvignon Blanc", region: "Marlborough, Nya Zeeland", typ: "Vitt", fakta: "2/3 av NZ:s vingårdar. Distinkt aromatisk stil. 96% hållbart certifierat.", mat: ["Getost", "Sallad", "Grillad fisk", "Asiatisk mat"], aromer: "Passionsfrukt, krusbär, citrus, gräs, fläder" },
+      { namn: "Penfolds Grange", druvor: "Shiraz", region: "South Australia", typ: "Rött", fakta: "Australiens mest ikoniska vin. Skapad av Max Schubert 1951. Multi-regional blend.", mat: ["Grillat kött", "Vilt", "Lagrad ost"], aromer: "Plommon, björnbär, choklad, eukalyptus, kryddor" }
+    ];
+
+    function renderQuickGrid() {
+      const grid = document.getElementById('quickGrid');
+      wines.forEach(w => {
+        const card = document.createElement('div');
+        card.className = 'quick-card';
+        card.innerHTML = `<div class="quick-card-name">${w.namn}</div><div class="quick-card-sub">${w.region.split(',')[1] || w.region}</div>`;
+        card.onclick = () => { document.getElementById('wineInput').value = w.namn; identify(); };
+        grid.appendChild(card);
+      });
+    }
+
+    function identify() {
+      const input = document.getElementById('wineInput').value.trim().toLowerCase();
+      if (!input) return;
+
+      const match = wines.find(w =>
+        w.namn.toLowerCase().includes(input) ||
+        input.includes(w.namn.toLowerCase()) ||
+        w.druvor.toLowerCase().includes(input) ||
+        w.region.toLowerCase().includes(input)
+      );
+
+      const result = document.getElementById('result');
+      if (!match) {
+        result.className = 'id-result show';
+        result.innerHTML = `<h3>Inget resultat</h3><p style="color:var(--text-muted)">Prova med ett av vinerna i listan, eller skriv ett känt vinnamn som "Barolo", "Chablis" eller "Rioja".</p>`;
+        return;
+      }
+
+      result.className = 'id-result show';
+      result.innerHTML = `
+        <h3>${match.namn}</h3>
+        <div class="id-section">
+          <div class="id-section-title">Typ & Druvor</div>
+          <p><strong>${match.typ}</strong> — ${match.druvor}</p>
+        </div>
+        <div class="id-section">
+          <div class="id-section-title">Region</div>
+          <p>${match.region}</p>
+        </div>
+        <div class="id-section">
+          <div class="id-section-title">Aromer</div>
+          <p>${match.aromer}</p>
+        </div>
+        <div class="id-section">
+          <div class="id-section-title">Fakta</div>
+          <p>${match.fakta}</p>
+        </div>
+        <div class="id-section">
+          <div class="id-section-title">Passar till</div>
+          <div class="id-tags">${match.mat.map(m => `<span class="id-tag-brown">${m}</span>`).join('')}</div>
+        </div>
+      `;
+      result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    document.getElementById('wineInput').addEventListener('keydown', e => { if (e.key === 'Enter') identify(); });
+    renderQuickGrid();
+  </script>
+</body>
+</html>
