@@ -35,6 +35,27 @@ function getLektionId() {
   return parseInt(params.get('id')) || 1;
 }
 
+async function loadGrapeNames() {
+  try {
+    const res = await fetch('data/druvor.json');
+    const data = await res.json();
+    return data.map(d => d.namn).filter(Boolean).sort((a, b) => b.length - a.length);
+  } catch (e) {
+    return [];
+  }
+}
+
+function linkifyGrapes(html, grapeNames) {
+  if (!grapeNames.length) return html;
+  const pattern = new RegExp(`\\b(${grapeNames.map(n => n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})\\b`, 'g');
+  // Split on existing HTML tags to avoid replacing inside tag attributes
+  const parts = html.split(/(<[^>]+>)/);
+  return parts.map(part => {
+    if (part.startsWith('<')) return part;
+    return part.replace(pattern, '<a href="druvor.html#$1" class="grape-link">$1</a>');
+  }).join('');
+}
+
 async function loadLektion() {
   const id = getLektionId();
   const fil = lektionsFiler[id];
@@ -44,7 +65,7 @@ async function loadLektion() {
     return;
   }
 
-  const res = await fetch(fil);
+  const [res, grapeNames] = await Promise.all([fetch(fil), loadGrapeNames()]);
   const data = await res.json();
 
   document.querySelector('.lektion-title').textContent = data.titel;
@@ -91,6 +112,7 @@ async function loadLektion() {
         .replace(/\b(Vitis Vinifera|Vitis Labrusca|Vitis Rupestris|TCA|MLF|AOC|AOP|AOC\/AOP|OIV|IGP|VDQS|VdP|NV|DRC|LVMH|phylloxera|véraison|pigeage|remontage|botrytis|méthode traditionnelle)\b/gi,
           '<strong>$1</strong>');
 
+      processed = linkifyGrapes(processed, grapeNames);
       factsHtml += `<div class="fact-item">${processed}</div>\n`;
     });
 
@@ -107,6 +129,12 @@ async function loadLektion() {
     `;
     content.insertAdjacentHTML('beforeend', sectionHtml);
   });
+
+  // Add quiz button
+  const quizLink = document.createElement('div');
+  quizLink.className = 'lesson-quiz-link';
+  quizLink.innerHTML = '<a href="quiz.html?mode=blandad" class="lesson-quiz-btn">Testa dina kunskaper →</a>';
+  content.appendChild(quizLink);
 
   setupScrollSpy();
   setupNavigation(id);

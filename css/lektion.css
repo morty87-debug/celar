@@ -233,6 +233,43 @@
   border-color: var(--wine);
 }
 
+/* ─── Grape links ─── */
+.grape-link {
+  color: var(--wine);
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(107, 30, 46, 0.3);
+  transition: all 0.2s;
+}
+.grape-link:hover {
+  border-bottom-color: var(--wine);
+}
+
+/* ─── Quiz button ─── */
+.lesson-quiz-link {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+  position: relative;
+  z-index: 1;
+}
+.lesson-quiz-btn {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  background: var(--wine);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 2rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s;
+  letter-spacing: 0.03em;
+}
+.lesson-quiz-btn:hover {
+  background: var(--wine-light);
+}
+
 /* ─── Responsive ─── */
 @media (max-width: 600px) {
   .fact-list { padding-left: 0; }

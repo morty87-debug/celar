@@ -342,7 +342,8 @@
       <div class="form-row">
         <div class="form-group">
           <label class="form-label">Druva</label>
-          <input type="text" class="form-input" id="fDruva" placeholder="t.ex. Cabernet Sauvignon">
+          <input type="text" class="form-input" id="fDruva" placeholder="t.ex. Cabernet Sauvignon" list="druvList" autocomplete="off">
+          <datalist id="druvList"></datalist>
         </div>
         <div class="form-group">
           <label class="form-label">Typ</label>
@@ -541,6 +542,29 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeForm(); });
     document.getElementById('matchInput').addEventListener('keydown', e => { if (e.key === 'Enter') matchWines(); });
 
+    async function loadDruvAutocomplete() {
+      try {
+        const res = await fetch('data/druvor.json');
+        const druvor = await res.json();
+        const dl = document.getElementById('druvList');
+        druvor.forEach(d => {
+          const opt = document.createElement('option');
+          opt.value = d.namn;
+          dl.appendChild(opt);
+        });
+
+        const druvInput = document.getElementById('fDruva');
+        druvInput.addEventListener('change', () => {
+          const match = druvor.find(d => d.namn.toLowerCase() === druvInput.value.toLowerCase());
+          if (match) {
+            const typSel = document.getElementById('fTyp');
+            typSel.value = match.typ === 'vit' ? 'vit' : 'rod';
+          }
+        });
+      } catch(e) {}
+    }
+
+    loadDruvAutocomplete();
     render();
   </script>
 </body>

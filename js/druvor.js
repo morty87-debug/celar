@@ -8,6 +8,12 @@ async function loadDruvor() {
   allDruvor.sort((a, b) => a.namn.localeCompare(b.namn, 'sv'));
   renderDruvor();
   setupControls();
+
+  const hash = decodeURIComponent(window.location.hash.slice(1));
+  if (hash) {
+    const match = allDruvor.find(d => d.namn.toLowerCase() === hash.toLowerCase());
+    if (match) openModal(match);
+  }
 }
 
 function renderDruvor() {
