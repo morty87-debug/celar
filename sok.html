@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celar — Sök</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .sok-container {
+      max-width: 660px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+      position: relative;
+      z-index: 1;
+    }
+    .sok-header {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 3rem 1.5rem 1rem;
+      animation: fadeUp 0.8s ease-out;
+    }
+    .sok-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
+      font-weight: 300;
+      color: var(--sand-light);
+      letter-spacing: 0.1em;
+    }
+    .sok-input-wrap {
+      max-width: 500px;
+      margin: 1.5rem auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    .sok-input {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.85rem 1.25rem;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .sok-input:focus { border-color: var(--border-hover); box-shadow: 0 4px 16px rgba(0,0,0,0.04); }
+    .sok-input::placeholder { color: var(--text-dim); }
+    .sok-hint {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      margin-top: 0.5rem;
+    }
+    .sok-results { margin-top: 1.5rem; }
+    .sok-group-title {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 1.5rem 0 0.75rem;
+    }
+    .sok-group-line { flex:1; height:1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+    .sok-group-label {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .sok-item {
+      display: block;
+      padding: 0.85rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      margin-bottom: 0.4rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.3s;
+      animation: fadeUp 0.3s ease-out backwards;
+    }
+    .sok-item:hover {
+      border-color: var(--border-hover);
+      background: var(--surface-hover);
+      transform: translateX(3px);
+    }
+    .sok-item-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--sand-light);
+    }
+    .sok-item-meta {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      margin-top: 0.15rem;
+    }
+    .sok-item-snippet {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+      line-height: 1.5;
+    }
+    .sok-item-snippet mark {
+      background: rgba(107, 30, 46, 0.1);
+      color: var(--wine);
+      padding: 0 0.15rem;
+      border-radius: 2px;
+    }
+    .sok-empty {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+    .back-link {
+      position: absolute;
+      top: 2rem;
+      left: 1.5rem;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .back-link:hover { color: var(--wine); }
+  </style>
+</head>
+<body>
+  <div class="bg-grain"></div>
+
+  <header class="sok-header">
+    <a href="index.html" class="back-link">← Tillbaka</a>
+    <h1>Sök</h1>
+  </header>
+
+  <div class="sok-input-wrap">
+    <input type="text" class="sok-input" id="sokInput" placeholder="Sök i allt kursmaterial..." autofocus>
+    <p class="sok-hint">Sök bland lektioner, druvor, regioner, fakta...</p>
+  </div>
+
+  <div class="sok-container">
+    <div class="sok-results" id="sokResults"></div>
+  </div>
+
+  <footer class="footer" style="position:relative;z-index:1;">
+    <div class="footer-divider"><span class="divider-vine">✦</span></div>
+    <p style="font-family:var(--font-display);font-size:0.85rem;color:var(--text-dim);letter-spacing:0.1em;">Celar — Byggt för sommelierer</p>
+  </footer>
+
+  <script>
+    let searchData = { druvor: [], lektioner: [] };
+
+    const lektionsFiler = {
+      1:'data/lektion-01-introduktion.json',2:'data/lektion-02-frankrike.json',
+      3:'data/lektion-03-italien.json',4:'data/lektion-04-spanien.json',
+      5:'data/lektion-05-mat-dryck-sake.json',6:'data/lektion-06-bordeaux-bourgogne.json',
+      7:'data/lektion-07-portugal-starkvin.json',8:'data/lektion-08-tyskland-osterrike.json',
+      9:'data/lektion-09-sommelierteori.json',10:'data/lektion-10-mousserande.json',
+      11:'data/lektion-11-ol-cider.json',12:'data/lektion-12-ostra-europa.json',
+      13:'data/lektion-13-sota-viner.json',14:'data/lektion-14-sprit.json',
+      15:'data/lektion-15-nordamerika.json',16:'data/lektion-16-sydamerika.json',
+      17:'data/lektion-17-oceanien.json',18:'data/lektion-18-sydafrika-asien.json',
+      19:'data/lektion-19-somm-praktisk.json'
+    };
+
+    async function loadSearchData() {
+      const [druvorRes, ...lektionRes] = await Promise.all([
+        fetch('data/druvor.json').then(r => r.json()),
+        ...Object.entries(lektionsFiler).map(([id, url]) =>
+          fetch(url).then(r => r.json()).catch(() => null)
+        )
+      ]);
+      searchData.druvor = druvorRes;
+      searchData.lektioner = lektionRes.filter(Boolean);
+    }
+
+    function search(query) {
+      const q = query.toLowerCase().trim();
+      if (q.length < 2) return { druvor: [], lektioner: [] };
+
+      const druvResults = searchData.druvor.filter(d => {
+        const haystack = [
+          d.namn, d.ursprung, d.aromer?.frukt, d.aromer?.ovrigt, d.stil,
+          ...(d.synonymer || []), ...(d.regioner || []), ...(d.matparning || [])
+        ].join(' ').toLowerCase();
+        return haystack.includes(q);
+      }).slice(0, 8);
+
+      const lektionResults = [];
+      searchData.lektioner.forEach(lek => {
+        lek.sektioner.forEach((sek, sekIdx) => {
+          sek.innehall.forEach(fact => {
+            if (fact.toLowerCase().includes(q)) {
+              lektionResults.push({
+                lektionId: lek.id,
+                lektionTitel: lek.titel,
+                sektion: sek.rubrik,
+                sektionIdx: sekIdx,
+                fact
+              });
+            }
+          });
+        });
+      });
+
+      return { druvor: druvResults, lektioner: lektionResults.slice(0, 12) };
+    }
+
+    function highlight(text, query) {
+      const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+      return text.replace(regex, '<mark>$1</mark>');
+    }
+
+    function renderResults(query) {
+      const results = search(query);
+      const container = document.getElementById('sokResults');
+
+      if (query.trim().length < 2) {
+        container.innerHTML = '';
+        return;
+      }
+
+      if (results.druvor.length === 0 && results.lektioner.length === 0) {
+        container.innerHTML = '<div class="sok-empty">Inga resultat för "' + query + '"</div>';
+        return;
+      }
+
+      let html = '';
+
+      if (results.druvor.length > 0) {
+        html += `<div class="sok-group-title"><span class="sok-group-line"></span><span class="sok-group-label">Druvor</span><span class="sok-group-line"></span></div>`;
+        results.druvor.forEach((d, i) => {
+          html += `<a href="druvor.html#${encodeURIComponent(d.namn)}" class="sok-item" style="animation-delay:${i*0.03}s">
+            <div class="sok-item-title">${highlight(d.namn, query)}</div>
+            <div class="sok-item-meta">${d.typ === 'vit' ? '● Vit' : '● Röd'} · ${d.ursprung || ''}</div>
+            <div class="sok-item-snippet">${highlight((d.aromer?.frukt || '') + ' · ' + (d.aromer?.ovrigt || ''), query)}</div>
+          </a>`;
+        });
+      }
+
+      if (results.lektioner.length > 0) {
+        html += `<div class="sok-group-title"><span class="sok-group-line"></span><span class="sok-group-label">Lektioner</span><span class="sok-group-line"></span></div>`;
+        results.lektioner.forEach((r, i) => {
+          const snippet = r.fact.length > 150 ? r.fact.slice(0, 150) + '…' : r.fact;
+          html += `<a href="lektion.html?id=${r.lektionId}#section-${r.sektionIdx}" class="sok-item" style="animation-delay:${i*0.03}s">
+            <div class="sok-item-title">${highlight(r.sektion, query)}</div>
+            <div class="sok-item-meta">Lektion ${r.lektionId}: ${r.lektionTitel}</div>
+            <div class="sok-item-snippet">${highlight(snippet, query)}</div>
+          </a>`;
+        });
+      }
+
+      container.innerHTML = html;
+    }
+
+    let debounceTimer;
+    document.getElementById('sokInput').addEventListener('input', (e) => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => renderResults(e.target.value), 200);
+    });
+
+    loadSearchData();
+  </script>
+</body>
+</html>
