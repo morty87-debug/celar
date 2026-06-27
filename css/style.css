@@ -1,0 +1,107 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --clr-bg: #0f0f0f;
+  --clr-surface: #1a1a1a;
+  --clr-border: #2a2a2a;
+  --clr-text: #e8e8e8;
+  --clr-text-muted: #888;
+  --clr-accent: #8b5e3c;
+  --clr-accent-light: #c49a6c;
+  --radius: 12px;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: var(--clr-bg);
+  color: var(--clr-text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero {
+  text-align: center;
+  padding: 4rem 1rem 2rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--clr-accent-light);
+}
+
+.tagline {
+  margin-top: 0.5rem;
+  color: var(--clr-text-muted);
+  font-size: 1.1rem;
+}
+
+.main-nav {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  flex: 1;
+}
+
+.nav-section {
+  margin-bottom: 2.5rem;
+}
+
+.nav-section h2 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--clr-text-muted);
+  margin-bottom: 1rem;
+  padding-left: 0.25rem;
+}
+
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.75rem;
+}
+
+.nav-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem 1rem;
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: var(--clr-text);
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.nav-card:hover {
+  border-color: var(--clr-accent);
+  transform: translateY(-2px);
+}
+
+.nav-icon {
+  font-size: 1.8rem;
+}
+
+.nav-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--clr-text-muted);
+  font-size: 0.8rem;
+}
