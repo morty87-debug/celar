@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 700">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 848">
   <defs><filter id="shadow"><feDropShadow dx="1" dy="1.5" stdDeviation="2" flood-color="#2D1B14" flood-opacity="0.08"/></filter></defs>
   <text x="210" y="24" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="16" font-weight="400" fill="#2D1B14" letter-spacing="5">SYDAMERIKA</text>
   <text x="210" y="42" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#8a7a6a" letter-spacing="1" class="region-label">Placera regionerna och namnge de viktigaste druvorna</text>
@@ -176,13 +176,13 @@
     <text x="205.3" y="196.9" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#fff">6</text>
     <circle cx="144.9" cy="290.6" r="9" fill="#8B1A2B" stroke="#fff" stroke-width="0.8"/>
     <text x="144.9" y="294.1" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#fff">7</text></g>
-  <line x1="28" y1="572" x2="392" y2="572" stroke="#8B1A2B" stroke-width="0.3" opacity="0.25"/>
-  <text x="32" y="580" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">1. Coquimbo</tspan> : Syrah, Sauvignon Blanc</text>
-  <text x="32" y="595" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">2. Valparaiso</tspan> : Sauvignon Blanc, Pinot Noir</text>
-  <text x="32" y="610" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">3. O'Higgins</tspan> : Carmenere, Cab Sauvignon</text>
-  <text x="32" y="625" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">4. Maule</tspan> : Cab Sauvignon, Carmenere, Pais</text>
-  <text x="32" y="640" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">5. Mendoza</tspan> : Malbec, Cab Sauvignon</text>
-  <text x="32" y="655" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">6. Salta</tspan> : Torrontes, Malbec</text>
-  <text x="32" y="670" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">7. San Juan</tspan> : Syrah, Bonarda</text>
-  <text x="210" y="692" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" fill="#b0a89e">Cellar -- Sommelier Companion</text>
+  <line x1="28" y1="685" x2="392" y2="685" stroke="#8B1A2B" stroke-width="0.3" opacity="0.25"/>
+  <text x="32" y="693" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">1. Coquimbo</tspan> : Syrah, Sauvignon Blanc</text>
+  <text x="32" y="708" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">2. Valparaiso</tspan> : Sauvignon Blanc, Pinot Noir</text>
+  <text x="32" y="723" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">3. O'Higgins</tspan> : Carmenere, Cab Sauvignon</text>
+  <text x="32" y="738" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">4. Maule</tspan> : Cab Sauvignon, Carmenere, Pais</text>
+  <text x="32" y="753" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">5. Mendoza</tspan> : Malbec, Cab Sauvignon</text>
+  <text x="32" y="768" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">6. Salta</tspan> : Torrontes, Malbec</text>
+  <text x="32" y="783" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">7. San Juan</tspan> : Syrah, Bonarda</text>
+  <text x="210" y="840" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" fill="#b0a89e">Cellar -- Sommelier Companion</text>
 </svg>

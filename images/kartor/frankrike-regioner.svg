@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 680">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 760">
   <defs>
     <filter id="shadow"><feDropShadow dx="1" dy="1.5" stdDeviation="2" flood-color="#2D1B14" flood-opacity="0.08"/></filter>
   </defs>
@@ -63,23 +63,23 @@
   </g>
 
   <!-- Legend divider -->
-  <line x1="28" y1="452" x2="492" y2="452" stroke="#8B1A2B" stroke-width="0.3" opacity="0.25"/>
+  <line x1="28" y1="507" x2="492" y2="507" stroke="#8B1A2B" stroke-width="0.3" opacity="0.25"/>
 
   <!-- Legend -->
-  <text x="32" y="470" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">1. Champagne</tspan> : Chardonnay, Pinot Noir, Meunier</text>
-  <text x="32" y="485" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">2. Alsace</tspan> : Riesling, Gewurztraminer, Pinot Gris</text>
-  <text x="32" y="500" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">3. Loire</tspan> : Sauvignon Blanc, Chenin Blanc, Cab Franc</text>
-  <text x="32" y="515" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">4. Bourgogne</tspan> : Pinot Noir, Chardonnay</text>
-  <text x="32" y="530" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">5. Beaujolais</tspan> : Gamay</text>
-  <text x="32" y="545" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">6. Jura</tspan> : Savagnin, Chardonnay, Poulsard</text>
-  <text x="32" y="560" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">7. Savoie</tspan> : Jacquere, Altesse, Mondeuse</text>
-  <text x="32" y="575" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">8. Rhone</tspan> : Syrah, Grenache, Viognier, Mourvedre</text>
-  <text x="32" y="590" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">9. Provence</tspan> : Grenache, Cinsault, Mourvedre</text>
-  <text x="32" y="605" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">10. Korsika</tspan> : Nielluccio, Sciacarello, Vermentino</text>
-  <text x="32" y="620" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">11. Languedoc-Roussillon</tspan> : Grenache, Syrah, Carignan</text>
-  <text x="32" y="635" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">12. Sydvast</tspan> : Malbec, Tannat, Gros Manseng</text>
-  <text x="32" y="650" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">13. Bordeaux</tspan> : Cab Sauvignon, Merlot, Cab Franc</text>
+  <text x="32" y="515" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">1. Champagne</tspan> : Chardonnay, Pinot Noir, Meunier</text>
+  <text x="32" y="530" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">2. Alsace</tspan> : Riesling, Gewurztraminer, Pinot Gris</text>
+  <text x="32" y="545" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">3. Loire</tspan> : Sauvignon Blanc, Chenin Blanc, Cab Franc</text>
+  <text x="32" y="560" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">4. Bourgogne</tspan> : Pinot Noir, Chardonnay</text>
+  <text x="32" y="575" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">5. Beaujolais</tspan> : Gamay</text>
+  <text x="32" y="590" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">6. Jura</tspan> : Savagnin, Chardonnay, Poulsard</text>
+  <text x="32" y="605" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">7. Savoie</tspan> : Jacquere, Altesse, Mondeuse</text>
+  <text x="32" y="620" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">8. Rhone</tspan> : Syrah, Grenache, Viognier, Mourvedre</text>
+  <text x="32" y="635" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">9. Provence</tspan> : Grenache, Cinsault, Mourvedre</text>
+  <text x="32" y="650" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">10. Korsika</tspan> : Nielluccio, Sciacarello, Vermentino</text>
+  <text x="32" y="665" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">11. Languedoc-Roussillon</tspan> : Grenache, Syrah, Carignan</text>
+  <text x="32" y="680" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">12. Sydvast</tspan> : Malbec, Tannat, Gros Manseng</text>
+  <text x="32" y="695" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">13. Bordeaux</tspan> : Cab Sauvignon, Merlot, Cab Franc</text>
 
   <!-- Footer -->
-  <text x="260" y="672" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" fill="#b0a89e">Cellar -- Sommelier Companion</text>
+  <text x="260" y="752" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" fill="#b0a89e">Cellar -- Sommelier Companion</text>
 </svg>

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 680">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 760">
   <defs>
     <filter id="shadow"><feDropShadow dx="1" dy="1.5" stdDeviation="2" flood-color="#2D1B14" flood-opacity="0.08"/></filter>
   </defs>
@@ -64,23 +64,23 @@
   </g>
 
   <!-- Legend divider -->
-  <line x1="28" y1="452" x2="492" y2="452" stroke="#8B1A2B" stroke-width="0.3" opacity="0.25"/>
+  <line x1="28" y1="507" x2="492" y2="507" stroke="#8B1A2B" stroke-width="0.3" opacity="0.25"/>
 
   <!-- Legend -->
-  <text x="32" y="470" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">1. _______________</tspan> : _______________</text>
-  <text x="32" y="485" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">2. _______________</tspan> : _______________</text>
-  <text x="32" y="500" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">3. _______________</tspan> : _______________</text>
-  <text x="32" y="515" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">4. _______________</tspan> : _______________</text>
-  <text x="32" y="530" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">5. _______________</tspan> : _______________</text>
-  <text x="32" y="545" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">6. _______________</tspan> : _______________</text>
-  <text x="32" y="560" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">7. _______________</tspan> : _______________</text>
-  <text x="32" y="575" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">8. _______________</tspan> : _______________</text>
-  <text x="32" y="590" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">9. _______________</tspan> : _______________</text>
-  <text x="32" y="605" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">10. _______________</tspan> : _______________</text>
-  <text x="32" y="620" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">11. _______________</tspan> : _______________</text>
-  <text x="32" y="635" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">12. _______________</tspan> : _______________</text>
-  <text x="32" y="650" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">13. _______________</tspan> : _______________</text>
+  <text x="32" y="515" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">1. _______________</tspan> : _______________</text>
+  <text x="32" y="530" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">2. _______________</tspan> : _______________</text>
+  <text x="32" y="545" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">3. _______________</tspan> : _______________</text>
+  <text x="32" y="560" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">4. _______________</tspan> : _______________</text>
+  <text x="32" y="575" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">5. _______________</tspan> : _______________</text>
+  <text x="32" y="590" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">6. _______________</tspan> : _______________</text>
+  <text x="32" y="605" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">7. _______________</tspan> : _______________</text>
+  <text x="32" y="620" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">8. _______________</tspan> : _______________</text>
+  <text x="32" y="635" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">9. _______________</tspan> : _______________</text>
+  <text x="32" y="650" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">10. _______________</tspan> : _______________</text>
+  <text x="32" y="665" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">11. _______________</tspan> : _______________</text>
+  <text x="32" y="680" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">12. _______________</tspan> : _______________</text>
+  <text x="32" y="695" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">13. _______________</tspan> : _______________</text>
 
   <!-- Footer -->
-  <text x="260" y="672" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" fill="#b0a89e">Cellar -- Sommelier Companion</text>
+  <text x="260" y="752" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" fill="#b0a89e">Cellar -- Sommelier Companion</text>
 </svg>

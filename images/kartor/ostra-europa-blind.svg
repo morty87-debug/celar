@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 500">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 529">
   <defs><filter id="shadow"><feDropShadow dx="1" dy="1.5" stdDeviation="2" flood-color="#2D1B14" flood-opacity="0.08"/></filter></defs>
   <style>.region-label { display: none !important; }</style>
   <text x="275" y="24" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="16" font-weight="400" fill="#2D1B14" letter-spacing="5">OSTRA EUROPA</text>
@@ -162,11 +162,11 @@
     <text x="40.8" y="212.1" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#fff">4</text>
     <circle cx="516.5" cy="271.1" r="9" fill="#8B1A2B" stroke="#fff" stroke-width="0.8"/>
     <text x="516.5" y="274.6" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#fff">5</text></g>
-  <line x1="28" y1="402" x2="522" y2="402" stroke="#8B1A2B" stroke-width="0.3" opacity="0.25"/>
-  <text x="32" y="410" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">1. _______________</tspan> : _______________</text>
-  <text x="32" y="425" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">2. _______________</tspan> : _______________</text>
-  <text x="32" y="440" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">3. _______________</tspan> : _______________</text>
-  <text x="32" y="455" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">4. _______________</tspan> : _______________</text>
-  <text x="32" y="470" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">5. _______________</tspan> : _______________</text>
-  <text x="275" y="492" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" fill="#b0a89e">Cellar -- Sommelier Companion</text>
+  <line x1="28" y1="396" x2="522" y2="396" stroke="#8B1A2B" stroke-width="0.3" opacity="0.25"/>
+  <text x="32" y="404" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">1. _______________</tspan> : _______________</text>
+  <text x="32" y="419" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">2. _______________</tspan> : _______________</text>
+  <text x="32" y="434" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">3. _______________</tspan> : _______________</text>
+  <text x="32" y="449" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">4. _______________</tspan> : _______________</text>
+  <text x="32" y="464" font-family="Inter, sans-serif" font-size="8.5" fill="#2D1B14"><tspan font-weight="700">5. _______________</tspan> : _______________</text>
+  <text x="275" y="521" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" fill="#b0a89e">Cellar -- Sommelier Companion</text>
 </svg>
