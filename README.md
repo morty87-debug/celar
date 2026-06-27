@@ -1,27 +1,37 @@
-# Celar — Sommelier Study & Work Companion
+# Cellar — Sommelier Study & Work Companion
 
-En app för sommelierelever och yrkesverksamma sommelierer.
+En PWA för sommelierelever och yrkesverksamma sommelierer.
+
+**Live:** [morty87-debug.github.io/celar](https://morty87-debug.github.io/celar/)
 
 ## Studieverktyg
 
-- **Lektionsbaserat pluggande** — gå igenom kursen lektion för lektion med tillhörande kartor, druvor och fakta
-- **Druvor** — lär dig druvor, deras karaktär och var de odlas
-- **Kartor** — blindkartor för alla vinregioner
-- **Länder** — sammanfattad fakta per land och region
-
-Allt material baseras uteslutande på kursmaterialet — inget hämtas från externa källor.
+- **19 lektioner** — komplett sommelierkurs med klickbara druvlänkar och quiz
+- **77 druvor** — smakprofiler, karaktärmätare, regioner och matparning
+- **15 blindkartor** — egna SVG-kartor från geodata med blind/facit-läge
+- **25+ vinländer** — sammanfattad fakta per land med lektionslänkar
+- **6 quiz-lägen** — druvor, regioner, fakta, mat & vin, provning, blandad (200+ frågor)
+- **Flashcards** — spaced repetition för druvor
+- **Global sökning** — sök genom allt kursmaterial
+- **Framstegsspårning** — besökta lektioner och quiz-historik
 
 ## Professionellt verktyg
 
 - **Mat & vin-parning** — skriv in en rätt, få vinförslag med motivering
-- **Vinidentifiering** — fota en flaska, få info om vin, druvor och matförslag
-- **Vinkällare** — lägg in dina viner och få matchningar mot maträtter
+- **Fota vinflaska** — Claude Haiku AI analyserar etiketten
+- **Vinidentifiering** — sök vin eller druva, få all info
+- **Personlig vinkällare** — hantera viner, matcha mot maträtter
 
 ## Tech stack
 
-- HTML / CSS / JavaScript
-- Kursmaterial: PDF:er och bilder i `/Pdfer` och `/Kursboken`
+- HTML / CSS / JavaScript (ingen framework)
+- PWA med service worker och offline-stöd
+- Claude Haiku 4.5 API för bildanalys
+- Natural Earth geodata för kartor
+- GitHub Pages hosting
 
-## Kom igång
+## Installera som app
 
-Projektet är under uppbyggnad. Mer info kommer snart.
+1. Öppna länken ovan i mobilens webbläsare
+2. **iPhone:** Dela → Lägg till på hemskärmen
+3. **Android:** Meny (⋮) → Lägg till på startskärmen
