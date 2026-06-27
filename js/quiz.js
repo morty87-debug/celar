@@ -304,9 +304,9 @@ function showResults() {
 
   // Save quiz result to history
   try {
-    const history = JSON.parse(localStorage.getItem('celar-quiz-history')) || [];
+    const history = JSON.parse(localStorage.getItem('cellar-quiz-history')) || [];
     history.push({ mode: mode, score: score, total: questions.length, timestamp: Date.now() });
-    localStorage.setItem('celar-quiz-history', JSON.stringify(history));
+    localStorage.setItem('cellar-quiz-history', JSON.stringify(history));
   } catch (e) {}
 
   box.innerHTML = `

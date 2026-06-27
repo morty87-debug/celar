@@ -75,10 +75,10 @@ function linkifyGrapes(html, grapeNames) {
 
 function trackLessonVisit(id) {
   try {
-    const progress = JSON.parse(localStorage.getItem('celar-progress')) || {};
+    const progress = JSON.parse(localStorage.getItem('cellar-progress')) || {};
     if (!progress[id]) {
       progress[id] = { timestamp: Date.now() };
-      localStorage.setItem('celar-progress', JSON.stringify(progress));
+      localStorage.setItem('cellar-progress', JSON.stringify(progress));
     }
   } catch (e) {}
 }
