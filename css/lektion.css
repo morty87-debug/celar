@@ -7,18 +7,7 @@
   animation: fadeUp 0.8s ease-out;
 }
 
-.back-link {
-  position: absolute;
-  top: 2rem;
-  left: 1.5rem;
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.back-link:hover { color: var(--gold-light); }
+/* back-link now in style.css */
 
 .lektion-badge {
   display: inline-block;

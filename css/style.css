@@ -85,6 +85,39 @@ body::after {
   z-index: 0;
 }
 
+/* ─── Back link ─── */
+.back-link {
+  position: absolute;
+  top: 2rem;
+  left: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--wine);
+  text-decoration: none;
+  padding: 0.4rem 0.9rem 0.4rem 0.7rem;
+  border: 1px solid rgba(139, 26, 43, 0.2);
+  border-radius: 100px;
+  transition: all 0.3s;
+  z-index: 5;
+}
+
+.back-link:hover {
+  background: rgba(139, 26, 43, 0.06);
+  border-color: rgba(139, 26, 43, 0.4);
+}
+
+.back-link svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+
 /* ─── Hero ─── */
 .hero {
   position: relative;
