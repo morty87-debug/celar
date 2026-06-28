@@ -417,31 +417,19 @@
         const div = document.createElement('div');
         div.className = 'wine-item';
         div.style.animationDelay = `${i * 0.03}s`;
+        div.style.cursor = 'pointer';
+        div.onclick = () => openWineDetail(w.id);
         div.innerHTML = `
-          <div class="wine-color ${w.typ}" onclick="toggleWineDetail('${w.id}')" style="cursor:pointer;"></div>
-          <div class="wine-info" onclick="toggleWineDetail('${w.id}')" style="cursor:pointer;">
+          <div class="wine-color ${w.typ}"></div>
+          <div class="wine-info">
             <div class="wine-name">${w.namn}</div>
             <div class="wine-details">${w.producent || ''} ${w.argang ? '· ' + w.argang : ''} ${w.region ? '· ' + w.region : ''}</div>
             <div class="wine-grape">${w.druva || ''}${w.klassificering ? ' · ' + w.klassificering : ''}</div>
-            <div style="margin-top:0.2rem;" onclick="event.stopPropagation()">
-              ${[1,2,3,4,5].map(s => `<span onclick="rateWine('${w.id}',${s})" style="cursor:pointer;font-size:0.9rem;color:${s <= (w.rating||0) ? 'var(--gold-muted)' : 'var(--border)'};">★</span>`).join('')}
-              ${w.rating ? `<span style="font-size:0.7rem;color:var(--text-dim);margin-left:0.3rem;">${w.rating}/5</span>` : ''}
-            </div>
-            <div id="detail-${w.id}" style="display:none;margin-top:0.5rem;padding-top:0.5rem;border-top:1px solid var(--border);">
-              ${w.rating ? `<div style="font-size:0.78rem;color:var(--text);margin-bottom:0.3rem;"><strong style="color:var(--gold-muted);">Betyg:</strong> ${'★'.repeat(w.rating)}${'☆'.repeat(5-w.rating)} (${w.rating}/5)</div>` : ''}
-              ${w.aromer ? `<p style="font-size:0.78rem;color:var(--text);margin-bottom:0.3rem;"><strong style="color:var(--wine);">Aromer:</strong> ${w.aromer}</p>` : ''}
-              ${w.kropp || w.syra ? `<div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:0.3rem;">${w.kropp ? 'Kropp: ' + w.kropp : ''} ${w.syra ? '· Syra: ' + w.syra : ''} ${w.tanniner ? '· Tanniner: ' + w.tanniner : ''}</div>` : ''}
-              ${w.lagring ? `<div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:0.3rem;">🕐 ${w.lagring} ${w.temperatur ? '· 🌡 ' + w.temperatur : ''}</div>` : ''}
-              ${w.matforslag?.length ? `<div style="display:flex;flex-wrap:wrap;gap:0.2rem;margin-top:0.25rem;">${w.matforslag.map(m => `<span style="font-size:0.6rem;font-weight:500;color:var(--earth);background:rgba(92,64,51,0.08);padding:0.1rem 0.4rem;border-radius:100px;">${m}</span>`).join('')}</div>` : ''}
-              ${w.fakta ? `<p style="font-size:0.72rem;color:var(--text-dim);font-style:italic;margin-top:0.3rem;">${w.fakta}</p>` : ''}
+            <div style="margin-top:0.15rem;">
+              ${[1,2,3,4,5].map(s => `<span style="font-size:0.85rem;color:${s <= (w.rating||0) ? 'var(--gold-muted)' : 'var(--border)'};">★</span>`).join('')}
             </div>
           </div>
-          <div class="wine-qty">${w.antal || 1}</div>
-          <div class="wine-actions">
-            <button class="wine-action-btn" onclick="changeQty('${w.id}',-1)" title="Minska">−</button>
-            <button class="wine-action-btn" onclick="changeQty('${w.id}',1)" title="Öka">+</button>
-            <button class="wine-action-btn" onclick="removeWine('${w.id}')" title="Ta bort">×</button>
-          </div>
+          <div style="font-size:0.85rem;color:var(--text-dim);">→</div>
         `;
         list.appendChild(div);
       });
@@ -490,9 +478,82 @@
       }
     }
 
-    function toggleWineDetail(id) {
-      const el = document.getElementById('detail-' + id);
-      if (el) el.style.display = el.style.display === 'none' ? 'block' : 'none';
+    function openWineDetail(id) {
+      const wines = getWines();
+      const w = wines.find(x => x.id === id);
+      if (!w) return;
+
+      const meterBar = (label, value, color) => {
+        if (!value || value === '-') return '';
+        const levels = {'låg':20,'medium':55,'hög':90,'lätt':20,'full':90,'torrt':15,'halvtorrt':35,'halvsött':60,'sött':85};
+        const pct = levels[(value||'').toLowerCase()] || 50;
+        return `<div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.3rem;">
+          <span style="font-size:0.78rem;color:var(--text-muted);min-width:65px;">${label}</span>
+          <div style="flex:1;height:6px;background:rgba(0,0,0,0.05);border-radius:3px;overflow:hidden;">
+            <div style="height:100%;width:${pct}%;background:${color};border-radius:3px;"></div>
+          </div>
+          <span style="font-size:0.72rem;color:var(--text-dim);min-width:50px;text-align:right;">${value}</span>
+        </div>`;
+      };
+
+      const overlay = document.getElementById('wineDetailOverlay');
+      const content = document.getElementById('wineDetailContent');
+      content.innerHTML = `
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;">
+          <div class="wine-color ${w.typ}" style="width:16px;height:50px;border-radius:8px;flex-shrink:0;"></div>
+          <div>
+            <h2 style="font-family:var(--font-display);font-size:1.5rem;font-weight:400;color:var(--sand-light);line-height:1.2;">${w.namn}</h2>
+            <p style="font-size:0.82rem;color:var(--text-muted);">${w.producent || ''} ${w.argang ? '· ' + w.argang : ''}</p>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:1rem;">
+          ${w.druva ? `<span style="font-size:0.72rem;font-weight:500;color:var(--wine);background:rgba(139,26,43,0.08);padding:0.2rem 0.5rem;border-radius:100px;">${w.druva}</span>` : ''}
+          ${w.region ? `<span style="font-size:0.72rem;font-weight:500;color:var(--moss);background:rgba(74,90,58,0.08);padding:0.2rem 0.5rem;border-radius:100px;">${w.region}</span>` : ''}
+          ${w.klassificering && w.klassificering !== 'okänd' ? `<span style="font-size:0.72rem;font-weight:500;color:var(--earth);background:rgba(92,64,51,0.08);padding:0.2rem 0.5rem;border-radius:100px;">${w.klassificering}</span>` : ''}
+          ${w.alkohol && w.alkohol !== 'okänd' ? `<span style="font-size:0.72rem;font-weight:500;color:var(--text-muted);background:rgba(0,0,0,0.04);padding:0.2rem 0.5rem;border-radius:100px;">${w.alkohol}%</span>` : ''}
+          ${w.prisklass ? `<span style="font-size:0.72rem;font-weight:500;color:var(--gold-muted);background:rgba(138,109,42,0.08);padding:0.2rem 0.5rem;border-radius:100px;">${w.prisklass}</span>` : ''}
+        </div>
+
+        <div style="margin-bottom:0.75rem;" onclick="event.stopPropagation()">
+          <div style="font-size:0.7rem;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.3rem;">Ditt betyg</div>
+          ${[1,2,3,4,5].map(s => `<span onclick="rateWine('${w.id}',${s});openWineDetail('${w.id}')" style="cursor:pointer;font-size:1.3rem;color:${s <= (w.rating||0) ? 'var(--gold-muted)' : 'var(--border)'};">★</span>`).join('')}
+          ${w.rating ? `<span style="font-size:0.8rem;color:var(--text-dim);margin-left:0.3rem;">${w.rating}/5</span>` : `<span style="font-size:0.75rem;color:var(--text-dim);margin-left:0.3rem;">Tryck för att betygsätta</span>`}
+        </div>
+
+        ${w.kropp || w.syra || w.tanniner || w.sotma ? `
+        <div style="margin-bottom:1rem;">
+          <div style="font-size:0.7rem;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.4rem;">Karaktär</div>
+          ${meterBar('Kropp', w.kropp, 'var(--gold-muted)')}
+          ${meterBar('Syra', w.syra, 'var(--moss)')}
+          ${meterBar('Tanniner', w.tanniner, 'var(--wine)')}
+          ${meterBar('Sötma', w.sotma, 'var(--earth)')}
+        </div>` : ''}
+
+        ${w.aromer ? `<div style="margin-bottom:0.75rem;"><div style="font-size:0.7rem;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.3rem;">Aromer</div><p style="font-size:0.85rem;color:var(--text);line-height:1.5;">${w.aromer}</p></div>` : ''}
+
+        ${w.matforslag?.length ? `<div style="margin-bottom:0.75rem;"><div style="font-size:0.7rem;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.3rem;">Matförslag</div><div style="display:flex;flex-wrap:wrap;gap:0.25rem;">${w.matforslag.map(m => `<span style="font-size:0.72rem;font-weight:500;color:var(--earth);background:rgba(92,64,51,0.08);padding:0.2rem 0.5rem;border-radius:100px;">${m}</span>`).join('')}</div></div>` : ''}
+
+        ${w.lagring || w.temperatur ? `<div style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.75rem;">${w.lagring ? '🕐 ' + w.lagring : ''} ${w.temperatur ? '&nbsp;&nbsp;🌡 ' + w.temperatur : ''}</div>` : ''}
+
+        ${w.fakta ? `<div style="font-size:0.82rem;color:var(--text-dim);font-style:italic;border-left:3px solid var(--wine);padding-left:0.75rem;margin-bottom:1rem;line-height:1.5;">${w.fakta}</div>` : ''}
+
+        <div style="display:flex;flex-direction:column;gap:0.5rem;margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1rem;">
+          <div style="display:flex;gap:0.5rem;align-items:center;">
+            <span style="font-size:0.82rem;color:var(--text-muted);">Antal flaskor:</span>
+            <button class="wine-action-btn" onclick="event.stopPropagation();changeQty('${w.id}',-1);openWineDetail('${w.id}')">−</button>
+            <span style="font-family:var(--font-display);font-size:1.1rem;color:var(--text);min-width:2rem;text-align:center;">${w.antal || 1}</span>
+            <button class="wine-action-btn" onclick="event.stopPropagation();changeQty('${w.id}',1);openWineDetail('${w.id}')">+</button>
+          </div>
+          <button onclick="removeWine('${w.id}');closeWineDetail()" style="width:100%;padding:0.7rem;font-family:var(--font-body);font-size:0.85rem;font-weight:500;color:#fff;background:#a33;border:none;border-radius:var(--radius-sm);cursor:pointer;transition:all 0.3s;">🍷 Druckit upp — ta bort</button>
+          <button onclick="closeWineDetail()" style="width:100%;padding:0.6rem;font-family:var(--font-body);font-size:0.85rem;color:var(--text-muted);background:transparent;border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;">Stäng</button>
+        </div>
+      `;
+      overlay.classList.add('open');
+    }
+
+    function closeWineDetail() {
+      document.getElementById('wineDetailOverlay').classList.remove('open');
     }
 
     function removeWine(id) {
@@ -595,6 +656,9 @@
     });
     document.getElementById('photoOverlay').addEventListener('click', e => {
       if (e.target === e.currentTarget) closePhotoAdd();
+    });
+    document.getElementById('wineDetailOverlay').addEventListener('click', e => {
+      if (e.target === e.currentTarget) closeWineDetail();
     });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeForm(); });
     document.getElementById('matchInput').addEventListener('keydown', e => { if (e.key === 'Enter') matchWines(); });
@@ -804,6 +868,13 @@ Basera profilen på druvsorten, regionen och årgången. Om du inte kan läsa al
     loadDruvAutocomplete();
     render();
   </script>
+  <!-- Wine detail overlay -->
+  <div class="form-overlay" id="wineDetailOverlay">
+    <div class="form-modal" style="max-width:500px;max-height:85vh;overflow-y:auto;">
+      <div id="wineDetailContent"></div>
+    </div>
+  </div>
+
   <!-- Photo add overlay -->
   <div class="form-overlay" id="photoOverlay">
     <div class="form-modal" style="max-width:500px;">
