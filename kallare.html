@@ -309,7 +309,8 @@
   </header>
 
   <div class="kallare-controls">
-    <button class="add-wine-btn" onclick="openForm()">+ Lägg till vin</button>
+    <button class="add-wine-btn" onclick="openForm()">+ Lägg till vin manuellt</button>
+    <button class="add-wine-btn" style="background:var(--wine-deep);margin-top:0.5rem;" onclick="openPhotoAdd()">📷 Fota och lägg till</button>
     <button class="add-wine-btn" style="background:var(--earth);margin-top:0.5rem;" onclick="exportCellar()">Exportera vinkällare</button>
     <div class="kallare-stats" id="stats"></div>
   </div>
@@ -421,7 +422,8 @@
           <div class="wine-info">
             <div class="wine-name">${w.namn}</div>
             <div class="wine-details">${w.producent || ''} ${w.argang ? '· ' + w.argang : ''} ${w.region ? '· ' + w.region : ''}</div>
-            <div class="wine-grape">${w.druva || ''}</div>
+            <div class="wine-grape">${w.druva || ''}${w.aromer ? ' — ' + w.aromer : ''}</div>
+            ${w.matforslag?.length ? `<div style="display:flex;flex-wrap:wrap;gap:0.2rem;margin-top:0.25rem;">${w.matforslag.map(m => `<span style="font-size:0.6rem;font-weight:500;color:var(--earth);background:rgba(92,64,51,0.08);padding:0.1rem 0.4rem;border-radius:100px;">${m}</span>`).join('')}</div>` : ''}
           </div>
           <div class="wine-qty">${w.antal || 1}</div>
           <div class="wine-actions">
@@ -569,6 +571,9 @@
     document.getElementById('formOverlay').addEventListener('click', e => {
       if (e.target === e.currentTarget) closeForm();
     });
+    document.getElementById('photoOverlay').addEventListener('click', e => {
+      if (e.target === e.currentTarget) closePhotoAdd();
+    });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeForm(); });
     document.getElementById('matchInput').addEventListener('keydown', e => { if (e.key === 'Enter') matchWines(); });
 
@@ -610,9 +615,133 @@
       link.click();
     }
 
+    // ═══ PHOTO ADD ═══
+    let photoOverlayOpen = false;
+    function openPhotoAdd() {
+      const apiKey = getPhotoApiKey();
+      if (!apiKey) {
+        if (confirm('Du behöver en API-nyckel för fotofunktionen. Vill du gå till inställningen?')) {
+          window.location.href = 'identifiera-foto.html';
+        }
+        return;
+      }
+      document.getElementById('photoOverlay').classList.add('open');
+      photoOverlayOpen = true;
+    }
+    function closePhotoAdd() {
+      document.getElementById('photoOverlay').classList.remove('open');
+      document.getElementById('photoResult').style.display = 'none';
+      document.getElementById('photoUploadArea').style.display = 'block';
+      photoOverlayOpen = false;
+    }
+    function getPhotoApiKey() {
+      let key = localStorage.getItem('cellar-api-key');
+      if (!key) {
+        const match = document.cookie.match(/(^|;\s*)cellar-api-key=([^;]+)/);
+        if (match) key = decodeURIComponent(match[2]);
+      }
+      return key;
+    }
+    function handlePhotoFile(file) {
+      if (!file || !file.type.startsWith('image/')) return;
+      const reader = new FileReader();
+      reader.onload = async (e) => {
+        const b64 = e.target.result.split(',')[1];
+        document.getElementById('photoUploadArea').style.display = 'none';
+        document.getElementById('photoLoading').style.display = 'block';
+        try {
+          const res = await fetch('https://api.anthropic.com/v1/messages', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'x-api-key': getPhotoApiKey(),
+              'anthropic-version': '2023-06-01',
+              'anthropic-dangerous-direct-browser-access': 'true'
+            },
+            body: JSON.stringify({
+              model: 'claude-haiku-4-5', max_tokens: 1024,
+              messages: [{ role: 'user', content: [
+                { type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: b64 } },
+                { type: 'text', text: 'Analysera denna vinflaska. Svara ENBART med JSON: {"namn":"","producent":"","region":"","argang":"","typ":"rod/vit/rose/mousserande","druva":"","aromer":"","matforslag":["",""],"fakta":""}' }
+              ]}]
+            })
+          });
+          const data = await res.json();
+          const text = data.content[0].text;
+          const jsonMatch = text.match(/\{[\s\S]*\}/);
+          const wine = JSON.parse(jsonMatch ? jsonMatch[0] : text);
+
+          document.getElementById('photoLoading').style.display = 'none';
+          const pr = document.getElementById('photoResult');
+          pr.style.display = 'block';
+          pr.innerHTML = `
+            <h3 style="font-family:var(--font-display);font-size:1.3rem;color:var(--sand-light);margin-bottom:0.75rem;">${wine.namn || 'Okänt vin'}</h3>
+            <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.3rem;"><strong>Producent:</strong> ${wine.producent || '-'}</p>
+            <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.3rem;"><strong>Region:</strong> ${wine.region || '-'}</p>
+            <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.3rem;"><strong>Druva:</strong> ${wine.druva || '-'}</p>
+            <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.3rem;"><strong>Årgång:</strong> ${wine.argang || '-'}</p>
+            <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.3rem;"><strong>Aromer:</strong> ${wine.aromer || '-'}</p>
+            ${wine.matforslag?.length ? `<p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.3rem;"><strong>Matförslag:</strong> ${wine.matforslag.join(', ')}</p>` : ''}
+            ${wine.fakta ? `<p style="font-size:0.82rem;color:var(--text-dim);margin-top:0.5rem;font-style:italic;">${wine.fakta}</p>` : ''}
+            <div style="display:flex;gap:0.5rem;margin-top:1rem;">
+              <button class="btn-save" style="flex:1;" onclick="addPhotoWine(${JSON.stringify(wine).replace(/"/g,'&quot;')})">Lägg till i källaren</button>
+              <button class="btn-cancel" style="flex:0.5;" onclick="closePhotoAdd()">Avbryt</button>
+            </div>
+          `;
+        } catch(err) {
+          document.getElementById('photoLoading').style.display = 'none';
+          alert('Kunde inte analysera bilden: ' + err.message);
+          document.getElementById('photoUploadArea').style.display = 'block';
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+    function addPhotoWine(wine) {
+      const wines = getWines();
+      wines.push({
+        id: Date.now().toString(36),
+        namn: wine.namn || 'Okänt vin',
+        producent: wine.producent || '',
+        argang: wine.argang || '',
+        druva: wine.druva || '',
+        typ: wine.typ === 'vit' ? 'vit' : (wine.typ === 'rose' ? 'rose' : (wine.typ === 'mousserande' ? 'mousserande' : 'rod')),
+        region: wine.region || '',
+        antal: 1,
+        aromer: wine.aromer || '',
+        matforslag: wine.matforslag || [],
+        fakta: wine.fakta || '',
+        addedViaPhoto: true
+      });
+      saveWines(wines);
+      closePhotoAdd();
+      render();
+    }
+
     loadDruvAutocomplete();
     render();
   </script>
+  <!-- Photo add overlay -->
+  <div class="form-overlay" id="photoOverlay">
+    <div class="form-modal" style="max-width:500px;">
+      <h2 class="form-title">Fota vinflaska</h2>
+      <div id="photoUploadArea" style="text-align:center;padding:1.5rem 0;">
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem;">Ta ett foto eller ladda upp en bild — AI:n identifierar vinet och lägger till det i din källare.</p>
+        <div style="display:flex;gap:0.5rem;justify-content:center;">
+          <input type="file" id="photoFileInput" accept="image/*" style="display:none" onchange="handlePhotoFile(this.files[0])">
+          <input type="file" id="photoCameraInput" accept="image/*" capture="environment" style="display:none" onchange="handlePhotoFile(this.files[0])">
+          <button class="btn-save" onclick="document.getElementById('photoCameraInput').click()">📷 Kamera</button>
+          <button class="btn-cancel" onclick="document.getElementById('photoFileInput').click()">Välj bild</button>
+        </div>
+      </div>
+      <div id="photoLoading" style="display:none;text-align:center;padding:2rem 0;">
+        <div style="width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--wine);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 1rem;"></div>
+        <p style="font-size:0.85rem;color:var(--text-muted);">Analyserar etiketten...</p>
+      </div>
+      <div id="photoResult" style="display:none;"></div>
+      <button class="btn-cancel" style="width:100%;margin-top:0.75rem;" onclick="closePhotoAdd()">Stäng</button>
+    </div>
+  </div>
+
   <script src="js/mobile-nav.js"></script>
   <script>
     if ('serviceWorker' in navigator) {
