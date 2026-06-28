@@ -310,6 +310,7 @@
 
   <div class="kallare-controls">
     <button class="add-wine-btn" onclick="openForm()">+ Lägg till vin</button>
+    <button class="add-wine-btn" style="background:var(--earth);margin-top:0.5rem;" onclick="exportCellar()">Exportera vinkällare</button>
     <div class="kallare-stats" id="stats"></div>
   </div>
 
@@ -591,6 +592,22 @@
           }
         });
       } catch(e) {}
+    }
+
+    function exportCellar() {
+      const wines = getWines();
+      if (wines.length === 0) { alert('Din vinkällare är tom.'); return; }
+
+      let csv = 'Namn,Producent,Årgång,Druva,Typ,Region,Antal\n';
+      wines.forEach(w => {
+        csv += `"${w.namn}","${w.producent||''}","${w.argang||''}","${w.druva||''}","${w.typ||''}","${w.region||''}","${w.antal||1}"\n`;
+      });
+
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'cellar-vinkallare.csv';
+      link.click();
     }
 
     loadDruvAutocomplete();

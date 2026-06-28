@@ -380,3 +380,12 @@
   .druv-modal { padding: 1.5rem; }
   .modal-grape-name { font-size: 1.6rem; }
 }
+
+/* ─── Favorite Button ─── */
+.modal-content { position: relative; }
+.fav-btn {
+  position: absolute; top: 1rem; right: 1rem;
+  font-size: 1.5rem; background: none; border: none;
+  cursor: pointer; color: var(--border); transition: all 0.3s;
+}
+.fav-btn.active { color: var(--wine); }

@@ -39,6 +39,15 @@
     } catch (e) {}
   </script>
 
+  <section class="section" style="--delay: 0; max-width: 620px; margin: 0 auto;">
+    <div class="section-header">
+      <span class="section-line"></span>
+      <h2 class="section-title">Dagens quiz</h2>
+      <span class="section-line"></span>
+    </div>
+    <div id="dailyQuiz" style="position:relative;z-index:1;"></div>
+  </section>
+
   <main class="content">
     <section class="section" style="--delay: 0">
       <div class="section-header">
@@ -181,6 +190,134 @@
     <p>Cellar — Byggt för sommelierer</p>
   </footer>
 
+  <script>
+  (async function() {
+    try {
+      const res = await fetch('data/druvor.json');
+      const druvor = await res.json();
+      if (druvor.length < 4) return;
+
+      // Deterministic seed from today's date
+      const today = new Date().toISOString().slice(0, 10);
+      let hash = 0;
+      for (let i = 0; i < today.length; i++) {
+        hash = ((hash << 5) - hash) + today.charCodeAt(i);
+        hash |= 0;
+      }
+      function seededRand() {
+        hash = (hash * 1664525 + 1013904223) & 0x7fffffff;
+        return hash / 0x7fffffff;
+      }
+      function pick(arr) { return arr[Math.floor(seededRand() * arr.length)]; }
+      function shuffle(arr) {
+        const a = [...arr];
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(seededRand() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      }
+      function pickN(arr, n, exclude) {
+        const pool = arr.filter(d => d.namn !== exclude);
+        const res = [];
+        const used = new Set();
+        while (res.length < n && res.length < pool.length) {
+          const idx = Math.floor(seededRand() * pool.length);
+          if (!used.has(idx)) { used.add(idx); res.push(pool[idx]); }
+        }
+        return res;
+      }
+
+      const withAromer = druvor.filter(d => d.aromer && d.aromer.frukt);
+      const withSyra = druvor.filter(d => d.karaktar && d.karaktar.syra);
+      const withRegion = druvor.filter(d => d.regioner && d.regioner.length > 0);
+
+      const questions = [];
+
+      // Q1: aromas
+      if (withAromer.length >= 4) {
+        const correct = pick(withAromer);
+        const wrongs = pickN(withAromer, 3, correct.namn);
+        const options = shuffle([correct.namn, ...wrongs.map(d => d.namn)]);
+        questions.push({
+          q: `Vilken druva har dessa aromer: ${correct.aromer.frukt}?`,
+          options, answer: correct.namn
+        });
+      }
+
+      // Q2: syra
+      if (withSyra.length >= 4) {
+        const correct = pick(withSyra);
+        const allLevels = ['Låg', 'Medium-', 'Medium', 'Medium+', 'Hög'];
+        const rightAnswer = correct.karaktar.syra;
+        const wrongLevels = shuffle(allLevels.filter(l => l !== rightAnswer)).slice(0, 3);
+        const options = shuffle([rightAnswer, ...wrongLevels]);
+        questions.push({
+          q: `Vilken syranivå har ${correct.namn}?`,
+          options, answer: rightAnswer
+        });
+      }
+
+      // Q3: region
+      if (withRegion.length >= 4) {
+        const correct = pick(withRegion);
+        const rightRegion = correct.regioner[0];
+        const allRegions = [...new Set(druvor.flatMap(d => d.regioner || []))];
+        const wrongRegions = shuffle(allRegions.filter(r => r !== rightRegion)).slice(0, 3);
+        const options = shuffle([rightRegion, ...wrongRegions]);
+        questions.push({
+          q: `I vilken region odlas ${correct.namn}?`,
+          options, answer: rightRegion
+        });
+      }
+
+      if (questions.length === 0) return;
+
+      let answered = 0;
+      let score = 0;
+      const container = document.getElementById('dailyQuiz');
+
+      container.innerHTML = questions.map((qq, qi) => `
+        <div class="dq-card" id="dq${qi}" style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:0.75rem;">
+          <p style="font-family:var(--font-display);font-size:0.95rem;color:var(--sand-light);margin-bottom:0.65rem;">${qq.q}</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;">
+            ${qq.options.map(o => `<button class="dq-opt" data-qi="${qi}" data-val="${o}" style="font-family:var(--font-body);font-size:0.8rem;padding:0.5rem;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);cursor:pointer;transition:all 0.2s;">${o}</button>`).join('')}
+          </div>
+        </div>
+      `).join('') + '<div id="dqResult" style="text-align:center;display:none;padding:0.75rem;"></div>';
+
+      container.addEventListener('click', e => {
+        const btn = e.target.closest('.dq-opt');
+        if (!btn || btn.disabled) return;
+        const qi = parseInt(btn.dataset.qi);
+        const val = btn.dataset.val;
+        const qq = questions[qi];
+        const card = document.getElementById('dq' + qi);
+        const allBtns = card.querySelectorAll('.dq-opt');
+        allBtns.forEach(b => {
+          b.disabled = true;
+          b.style.cursor = 'default';
+          if (b.dataset.val === qq.answer) {
+            b.style.background = 'rgba(76,140,80,0.2)';
+            b.style.borderColor = '#4c8c50';
+            b.style.color = '#4c8c50';
+          } else if (b === btn && val !== qq.answer) {
+            b.style.background = 'rgba(139,26,43,0.2)';
+            b.style.borderColor = 'var(--wine)';
+            b.style.color = 'var(--wine)';
+          }
+        });
+        if (val === qq.answer) score++;
+        answered++;
+        if (answered === questions.length) {
+          const res = document.getElementById('dqResult');
+          res.style.display = 'block';
+          res.innerHTML = `<p style="font-family:var(--font-display);font-size:1.1rem;color:var(--sand-light);margin-bottom:0.5rem;">${score}/${questions.length} rätt</p><a href="quiz.html" style="font-family:var(--font-body);font-size:0.82rem;color:var(--wine);text-decoration:none;border-bottom:1px solid var(--wine);">Alla quiz &rarr;</a>`;
+        }
+      });
+    } catch(e) { console.error('Daily quiz error:', e); }
+  })();
+  </script>
   <script src="js/mobile-nav.js"></script>
   <script>
     if ('serviceWorker' in navigator) {
