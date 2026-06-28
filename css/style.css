@@ -34,6 +34,183 @@
   --font-body:     'Inter', 'Segoe UI', system-ui, sans-serif;
 }
 
+/* ─── Dark mode ─── */
+[data-theme="dark"] {
+  --bg: #1a1412;
+  --bg-warm: #211a16;
+  --surface: rgba(40, 32, 26, 0.7);
+  --surface-hover: rgba(50, 40, 32, 0.9);
+  --border: rgba(139, 26, 43, 0.15);
+  --border-hover: rgba(139, 26, 43, 0.35);
+  --text: #e8e0d6;
+  --text-muted: #9a8e80;
+  --text-dim: #6a6058;
+  --wine: #A52D3F;
+  --wine-deep: #8B1A2B;
+  --wine-light: #C44058;
+}
+
+/* ─── Theme toggle ─── */
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 50;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: var(--wine);
+  transition: all 0.3s;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.theme-toggle:hover {
+  border-color: var(--border-hover);
+  background: var(--surface-hover);
+}
+
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+}
+
+/* ─── Daily quiz card ─── */
+.daily-quiz-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.daily-quiz-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.daily-quiz-question {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.daily-quiz-question:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0;
+}
+
+.daily-quiz-question p {
+  font-size: 0.85rem;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.daily-quiz-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.daily-quiz-opt {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.daily-quiz-opt:hover:not([disabled]) {
+  border-color: var(--wine);
+  color: var(--wine);
+}
+
+.daily-quiz-opt[disabled] {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.daily-quiz-opt.correct {
+  border-color: #4a5a3a;
+  background: rgba(74, 90, 58, 0.15);
+  color: #6a8a4a;
+}
+
+.daily-quiz-opt.wrong {
+  border-color: #8B1A2B;
+  background: rgba(139, 26, 43, 0.1);
+  color: #A52D3F;
+}
+
+.daily-quiz-score {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.daily-quiz-link {
+  display: block;
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.78rem;
+  color: var(--wine);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: opacity 0.2s;
+}
+
+.daily-quiz-link:hover {
+  opacity: 0.7;
+}
+
+/* ─── Favorite button ─── */
+.modal-fav-btn {
+  position: absolute;
+  top: 1rem;
+  right: 2.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-dim);
+  padding: 0.25rem;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.modal-fav-btn:hover {
+  color: var(--wine);
+  transform: scale(1.15);
+}
+
+.modal-fav-btn.favorited {
+  color: var(--wine);
+}
+
+.modal-fav-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
 /* ─── Base ─── */
 html { scroll-behavior: smooth; }
 
