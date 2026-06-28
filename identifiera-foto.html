@@ -220,7 +220,7 @@
       position: relative;
       z-index: 1;
       text-align: center;
-      padding: 3rem 1.5rem 1rem;
+      padding: 4.5rem 1.5rem 1rem;
       animation: fadeUp 0.8s ease-out;
     }
     .druvor-title {
@@ -316,9 +316,28 @@
 
     let keyHidden = true;
 
+    function getStoredKey() {
+      // Try localStorage first, then cookie as backup
+      let key = localStorage.getItem(API_KEY_STORAGE);
+      if (!key) {
+        const match = document.cookie.match(new RegExp('(^|;\\s*)' + API_KEY_STORAGE + '=([^;]+)'));
+        if (match) key = decodeURIComponent(match[2]);
+      }
+      return key;
+    }
+
+    function storeKey(key) {
+      // Save in BOTH localStorage AND cookie (365 days)
+      localStorage.setItem(API_KEY_STORAGE, key);
+      const expires = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toUTCString();
+      document.cookie = API_KEY_STORAGE + '=' + encodeURIComponent(key) + ';expires=' + expires + ';path=/;SameSite=Strict';
+    }
+
     function loadApiKey() {
-      const key = localStorage.getItem(API_KEY_STORAGE);
+      const key = getStoredKey();
       if (key) {
+        // Re-save to both stores in case one was cleared
+        storeKey(key);
         document.getElementById('apiKeyInput').value = key;
         hideKey();
         document.getElementById('apiStatus').textContent = 'Ansluten';
@@ -331,7 +350,7 @@
       const input = document.getElementById('apiKeyInput');
       const key = input.value.trim();
       if (!key || key.includes('•')) return;
-      localStorage.setItem(API_KEY_STORAGE, key);
+      storeKey(key);
       hideKey();
       document.getElementById('apiStatus').textContent = 'Ansluten';
       document.getElementById('apiStatus').className = 'api-status on';
@@ -340,7 +359,7 @@
 
     function hideKey() {
       const input = document.getElementById('apiKeyInput');
-      const key = localStorage.getItem(API_KEY_STORAGE);
+      const key = getStoredKey();
       if (key) {
         input.value = 'sk-ant-••••••••' + key.slice(-4);
         input.type = 'text';
@@ -350,7 +369,7 @@
 
     function toggleShowKey() {
       const input = document.getElementById('apiKeyInput');
-      const key = localStorage.getItem(API_KEY_STORAGE);
+      const key = getStoredKey();
       if (!key) return;
       if (keyHidden) {
         input.value = key;
@@ -361,7 +380,7 @@
     }
 
     function copyKey() {
-      const key = localStorage.getItem(API_KEY_STORAGE);
+      const key = getStoredKey();
       if (!key) { alert('Ingen nyckel sparad.'); return; }
       navigator.clipboard.writeText(key).then(() => {
         const btn = event.target;
@@ -406,7 +425,7 @@
     });
 
     async function analyzeImage() {
-      const apiKey = localStorage.getItem(API_KEY_STORAGE);
+      const apiKey = getStoredKey();
       if (!apiKey) {
         showError('Ange din API-nyckel först.');
         return;
