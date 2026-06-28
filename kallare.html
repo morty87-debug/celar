@@ -418,12 +418,18 @@
         div.className = 'wine-item';
         div.style.animationDelay = `${i * 0.03}s`;
         div.innerHTML = `
-          <div class="wine-color ${w.typ}"></div>
-          <div class="wine-info">
+          <div class="wine-color ${w.typ}" onclick="toggleWineDetail('${w.id}')" style="cursor:pointer;"></div>
+          <div class="wine-info" onclick="toggleWineDetail('${w.id}')" style="cursor:pointer;">
             <div class="wine-name">${w.namn}</div>
             <div class="wine-details">${w.producent || ''} ${w.argang ? '· ' + w.argang : ''} ${w.region ? '· ' + w.region : ''}</div>
-            <div class="wine-grape">${w.druva || ''}${w.aromer ? ' — ' + w.aromer : ''}</div>
-            ${w.matforslag?.length ? `<div style="display:flex;flex-wrap:wrap;gap:0.2rem;margin-top:0.25rem;">${w.matforslag.map(m => `<span style="font-size:0.6rem;font-weight:500;color:var(--earth);background:rgba(92,64,51,0.08);padding:0.1rem 0.4rem;border-radius:100px;">${m}</span>`).join('')}</div>` : ''}
+            <div class="wine-grape">${w.druva || ''}${w.klassificering ? ' · ' + w.klassificering : ''}</div>
+            <div id="detail-${w.id}" style="display:none;margin-top:0.5rem;padding-top:0.5rem;border-top:1px solid var(--border);">
+              ${w.aromer ? `<p style="font-size:0.78rem;color:var(--text);margin-bottom:0.3rem;"><strong style="color:var(--wine);">Aromer:</strong> ${w.aromer}</p>` : ''}
+              ${w.kropp || w.syra ? `<div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:0.3rem;">${w.kropp ? 'Kropp: ' + w.kropp : ''} ${w.syra ? '· Syra: ' + w.syra : ''} ${w.tanniner ? '· Tanniner: ' + w.tanniner : ''}</div>` : ''}
+              ${w.lagring ? `<div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:0.3rem;">🕐 ${w.lagring} ${w.temperatur ? '· 🌡 ' + w.temperatur : ''}</div>` : ''}
+              ${w.matforslag?.length ? `<div style="display:flex;flex-wrap:wrap;gap:0.2rem;margin-top:0.25rem;">${w.matforslag.map(m => `<span style="font-size:0.6rem;font-weight:500;color:var(--earth);background:rgba(92,64,51,0.08);padding:0.1rem 0.4rem;border-radius:100px;">${m}</span>`).join('')}</div>` : ''}
+              ${w.fakta ? `<p style="font-size:0.72rem;color:var(--text-dim);font-style:italic;margin-top:0.3rem;">${w.fakta}</p>` : ''}
+            </div>
           </div>
           <div class="wine-qty">${w.antal || 1}</div>
           <div class="wine-actions">
@@ -477,6 +483,11 @@
         }
         render();
       }
+    }
+
+    function toggleWineDetail(id) {
+      const el = document.getElementById('detail-' + id);
+      if (el) el.style.display = el.style.display === 'none' ? 'block' : 'none';
     }
 
     function removeWine(id) {
@@ -662,7 +673,28 @@
               model: 'claude-haiku-4-5', max_tokens: 1024,
               messages: [{ role: 'user', content: [
                 { type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: b64 } },
-                { type: 'text', text: 'Analysera denna vinflaska. Svara ENBART med JSON: {"namn":"","producent":"","region":"","argang":"","typ":"rod/vit/rose/mousserande","druva":"","aromer":"","matforslag":["",""],"fakta":""}' }
+                { type: 'text', text: `Analysera denna vinflaska. Ge en detaljerad profil. Svara ENBART med JSON:
+{
+  "namn": "vinets fullständiga namn",
+  "producent": "producent/vingård",
+  "region": "region, land",
+  "argang": "årgång eller okänd",
+  "typ": "rod/vit/rose/mousserande",
+  "druva": "druvsort(er)",
+  "klassificering": "DOC/DOCG/AOC/etc eller okänd",
+  "alkohol": "volymprocent eller okänd",
+  "kropp": "lätt/medium/full",
+  "syra": "låg/medium/hög",
+  "tanniner": "låg/medium/hög (bara för röda)",
+  "sotma": "torrt/halvtorrt/halvsött/sött",
+  "aromer": "förväntade aromer baserat på druva och region",
+  "matforslag": ["maträtt 1", "maträtt 2", "maträtt 3", "maträtt 4"],
+  "lagring": "drick nu / 1-3 år / 3-5 år / 5-10 år / 10+ år",
+  "temperatur": "serveringstemperatur i °C",
+  "fakta": "kort beskrivning av vinet, regionen eller producenten",
+  "prisklass": "budget/medel/premium/lyx"
+}
+Basera profilen på druvsorten, regionen och årgången. Om du inte kan läsa all info, gör ditt bästa utifrån vad du ser.` }
               ]}]
             })
           });
@@ -674,15 +706,47 @@
           document.getElementById('photoLoading').style.display = 'none';
           const pr = document.getElementById('photoResult');
           pr.style.display = 'block';
+          const meterBar = (label, value, color) => {
+            const levels = {'låg':20,'medium':55,'hög':90,'lätt':20,'full':90,'torrt':15,'halvtorrt':35,'halvsött':60,'sött':85};
+            const pct = levels[(value||'').toLowerCase()] || 50;
+            return `<div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.35rem;">
+              <span style="font-size:0.75rem;color:var(--text-muted);min-width:60px;">${label}</span>
+              <div style="flex:1;height:5px;background:rgba(0,0,0,0.05);border-radius:3px;overflow:hidden;">
+                <div style="height:100%;width:${pct}%;background:${color};border-radius:3px;"></div>
+              </div>
+              <span style="font-size:0.7rem;color:var(--text-dim);min-width:50px;text-align:right;">${value||'-'}</span>
+            </div>`;
+          };
+
           pr.innerHTML = `
-            <h3 style="font-family:var(--font-display);font-size:1.3rem;color:var(--sand-light);margin-bottom:0.75rem;">${wine.namn || 'Okänt vin'}</h3>
-            <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.3rem;"><strong>Producent:</strong> ${wine.producent || '-'}</p>
-            <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.3rem;"><strong>Region:</strong> ${wine.region || '-'}</p>
-            <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.3rem;"><strong>Druva:</strong> ${wine.druva || '-'}</p>
-            <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.3rem;"><strong>Årgång:</strong> ${wine.argang || '-'}</p>
-            <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.3rem;"><strong>Aromer:</strong> ${wine.aromer || '-'}</p>
-            ${wine.matforslag?.length ? `<p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.3rem;"><strong>Matförslag:</strong> ${wine.matforslag.join(', ')}</p>` : ''}
-            ${wine.fakta ? `<p style="font-size:0.82rem;color:var(--text-dim);margin-top:0.5rem;font-style:italic;">${wine.fakta}</p>` : ''}
+            <h3 style="font-family:var(--font-display);font-size:1.3rem;color:var(--sand-light);margin-bottom:0.25rem;">${wine.namn || 'Okänt vin'}</h3>
+            <p style="font-size:0.78rem;color:var(--text-dim);margin-bottom:0.75rem;">${wine.producent || ''} ${wine.argang ? '· ' + wine.argang : ''} ${wine.region ? '· ' + wine.region : ''}</p>
+
+            <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:0.75rem;">
+              ${wine.druva ? `<span style="font-size:0.7rem;font-weight:500;color:var(--wine);background:rgba(139,26,43,0.08);padding:0.2rem 0.5rem;border-radius:100px;">${wine.druva}</span>` : ''}
+              ${wine.klassificering && wine.klassificering !== 'okänd' ? `<span style="font-size:0.7rem;font-weight:500;color:var(--moss);background:rgba(74,90,58,0.08);padding:0.2rem 0.5rem;border-radius:100px;">${wine.klassificering}</span>` : ''}
+              ${wine.alkohol && wine.alkohol !== 'okänd' ? `<span style="font-size:0.7rem;font-weight:500;color:var(--earth);background:rgba(92,64,51,0.08);padding:0.2rem 0.5rem;border-radius:100px;">${wine.alkohol}%</span>` : ''}
+              ${wine.prisklass ? `<span style="font-size:0.7rem;font-weight:500;color:var(--gold-muted);background:rgba(138,109,42,0.08);padding:0.2rem 0.5rem;border-radius:100px;">${wine.prisklass}</span>` : ''}
+            </div>
+
+            <div style="margin-bottom:0.75rem;">
+              ${meterBar('Kropp', wine.kropp, 'var(--gold-muted)')}
+              ${meterBar('Syra', wine.syra, 'var(--moss)')}
+              ${wine.tanniner && wine.tanniner !== '-' ? meterBar('Tanniner', wine.tanniner, 'var(--wine)') : ''}
+              ${meterBar('Sötma', wine.sotma, 'var(--earth)')}
+            </div>
+
+            ${wine.aromer ? `<p style="font-size:0.82rem;color:var(--text);margin-bottom:0.5rem;"><strong style="color:var(--wine);">Aromer:</strong> ${wine.aromer}</p>` : ''}
+
+            ${wine.matforslag?.length ? `<div style="margin-bottom:0.5rem;"><strong style="font-size:0.75rem;color:var(--text-muted);">MATFÖRSLAG</strong><div style="display:flex;flex-wrap:wrap;gap:0.25rem;margin-top:0.25rem;">${wine.matforslag.map(m => `<span style="font-size:0.68rem;font-weight:500;color:var(--earth);background:rgba(92,64,51,0.08);padding:0.15rem 0.45rem;border-radius:100px;">${m}</span>`).join('')}</div></div>` : ''}
+
+            <div style="display:flex;gap:0.75rem;font-size:0.78rem;color:var(--text-muted);margin-bottom:0.5rem;">
+              ${wine.lagring ? `<span>🕐 ${wine.lagring}</span>` : ''}
+              ${wine.temperatur ? `<span>🌡 ${wine.temperatur}</span>` : ''}
+            </div>
+
+            ${wine.fakta ? `<p style="font-size:0.8rem;color:var(--text-dim);font-style:italic;border-left:2px solid var(--wine);padding-left:0.6rem;margin-bottom:0.75rem;">${wine.fakta}</p>` : ''}
+
             <div style="display:flex;gap:0.5rem;margin-top:1rem;">
               <button class="btn-save" style="flex:1;" onclick="addPhotoWine(${JSON.stringify(wine).replace(/"/g,'&quot;')})">Lägg till i källaren</button>
               <button class="btn-cancel" style="flex:0.5;" onclick="closePhotoAdd()">Avbryt</button>
@@ -710,6 +774,15 @@
         aromer: wine.aromer || '',
         matforslag: wine.matforslag || [],
         fakta: wine.fakta || '',
+        klassificering: wine.klassificering || '',
+        alkohol: wine.alkohol || '',
+        kropp: wine.kropp || '',
+        syra: wine.syra || '',
+        tanniner: wine.tanniner || '',
+        sotma: wine.sotma || '',
+        lagring: wine.lagring || '',
+        temperatur: wine.temperatur || '',
+        prisklass: wine.prisklass || '',
         addedViaPhoto: true
       });
       saveWines(wines);
