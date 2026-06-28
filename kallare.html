@@ -309,9 +309,11 @@
   </header>
 
   <div class="kallare-controls">
-    <button class="add-wine-btn" onclick="openForm()">+ Lägg till vin manuellt</button>
-    <button class="add-wine-btn" style="background:var(--wine-deep);margin-top:0.5rem;" onclick="openPhotoAdd()">📷 Fota och lägg till</button>
-    <button class="add-wine-btn" style="background:var(--earth);margin-top:0.5rem;" onclick="exportCellar()">Exportera vinkällare</button>
+    <div style="display:flex;gap:0.5rem;">
+      <button class="add-wine-btn" style="flex:1;" onclick="openPhotoAdd()">📷 Fota vin</button>
+      <button class="add-wine-btn" style="flex:1;background:var(--earth);" onclick="openForm()">+ Manuellt</button>
+    </div>
+    <button onclick="exportCellar()" style="display:block;width:100%;margin-top:0.5rem;padding:0.5rem;font-family:var(--font-body);font-size:0.72rem;color:var(--text-dim);background:none;border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;">Exportera som CSV</button>
     <div class="kallare-stats" id="stats"></div>
   </div>
 
@@ -877,23 +879,38 @@ Basera profilen på druvsorten, regionen och årgången. Om du inte kan läsa al
 
   <!-- Photo add overlay -->
   <div class="form-overlay" id="photoOverlay">
-    <div class="form-modal" style="max-width:500px;">
-      <h2 class="form-title">Fota vinflaska</h2>
-      <div id="photoUploadArea" style="text-align:center;padding:1.5rem 0;">
-        <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem;">Ta ett foto eller ladda upp en bild — AI:n identifierar vinet och lägger till det i din källare.</p>
-        <div style="display:flex;gap:0.5rem;justify-content:center;">
+    <div class="form-modal" style="max-width:500px;max-height:90vh;overflow-y:auto;">
+      <h2 style="font-family:var(--font-display);font-size:1.3rem;font-weight:400;color:var(--text);margin-bottom:0.25rem;">Fota vinflaska</h2>
+      <p style="font-size:0.78rem;color:var(--text-dim);margin-bottom:1rem;">AI:n identifierar vin, druvor, region och matförslag</p>
+
+      <div id="photoUploadArea">
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:2rem 1.25rem;text-align:center;">
+          <div style="width:40px;height:40px;margin:0 auto 0.75rem;color:var(--wine);opacity:0.7;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z"/>
+              <path d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z"/>
+            </svg>
+          </div>
+          <p style="font-family:var(--font-display);font-size:1rem;color:var(--text);margin-bottom:0.2rem;">Ta foto av etiketten</p>
+          <p style="font-size:0.75rem;color:var(--text-dim);margin-bottom:1rem;">Vinet läggs direkt till i din källare</p>
           <input type="file" id="photoFileInput" accept="image/*" style="display:none" onchange="handlePhotoFile(this.files[0])">
           <input type="file" id="photoCameraInput" accept="image/*" capture="environment" style="display:none" onchange="handlePhotoFile(this.files[0])">
-          <button class="btn-save" onclick="document.getElementById('photoCameraInput').click()">📷 Kamera</button>
-          <button class="btn-cancel" onclick="document.getElementById('photoFileInput').click()">Välj bild</button>
+          <div style="display:flex;gap:0.5rem;justify-content:center;">
+            <button onclick="document.getElementById('photoCameraInput').click()" style="padding:0.65rem 1.4rem;font-family:var(--font-body);font-size:0.85rem;font-weight:500;color:#fff;background:var(--wine);border:none;border-radius:100px;cursor:pointer;">📷 Kamera</button>
+            <button onclick="document.getElementById('photoFileInput').click()" style="padding:0.65rem 1.4rem;font-family:var(--font-body);font-size:0.85rem;font-weight:500;color:var(--text-muted);background:transparent;border:1px solid var(--border);border-radius:100px;cursor:pointer;">Välj bild</button>
+          </div>
         </div>
       </div>
-      <div id="photoLoading" style="display:none;text-align:center;padding:2rem 0;">
-        <div style="width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--wine);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 1rem;"></div>
-        <p style="font-size:0.85rem;color:var(--text-muted);">Analyserar etiketten...</p>
+
+      <div id="photoLoading" style="display:none;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:2.5rem 1rem;text-align:center;">
+        <div style="width:36px;height:36px;border:2.5px solid var(--border);border-top-color:var(--wine);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 1rem;"></div>
+        <p style="font-size:0.85rem;color:var(--text-muted);">Analyserar etiketten</p>
+        <p style="font-size:0.72rem;color:var(--text-dim);margin-top:0.3rem;">Identifierar druva, region, aromer och matförslag</p>
       </div>
+
       <div id="photoResult" style="display:none;"></div>
-      <button class="btn-cancel" style="width:100%;margin-top:0.75rem;" onclick="closePhotoAdd()">Stäng</button>
+
+      <button onclick="closePhotoAdd()" style="display:block;width:100%;margin-top:0.75rem;padding:0.55rem;font-family:var(--font-body);font-size:0.82rem;color:var(--text-dim);background:none;border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;">Stäng</button>
     </div>
   </div>
 
