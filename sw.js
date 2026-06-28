@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cellar-v2';
+const CACHE_NAME = 'cellar-v3';
 const ASSETS = [
   './',
   './index.html',
@@ -29,6 +29,10 @@ const ASSETS = [
   './data/lektion-druvor.json',
   './data/lektion-kartor.json',
   './icons/icon-192.png',
+  './provning.html',
+  './terminsprov.html',
+  './smakprofil.html',
+  './vinlista.html',
   './icons/icon-512.png'
 ];
 
