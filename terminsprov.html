@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cellar — Terminsprov</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/quiz.css">
+  <link rel="stylesheet" href="css/mobile.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#8B1A2B">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <style>
+    .exam-timer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: var(--wine-deep);
+      color: #fff;
+      text-align: center;
+      padding: 0.5rem;
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+    .exam-timer.warning { background: #b33a00; animation: pulse 1s infinite; }
+    @keyframes pulse { 50% { opacity: 0.8; } }
+
+    .exam-wrap {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0 1.5rem 3rem;
+    }
+    .exam-start {
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+    .exam-start p {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    .btn-start {
+      display: inline-block;
+      padding: 0.9rem 2.5rem;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      background: var(--wine);
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: background 0.3s;
+      letter-spacing: 0.03em;
+    }
+    .btn-start:hover { background: var(--wine-deep); }
+
+    .exam-question-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      margin-top: 3.5rem;
+    }
+
+    .exam-feedback {
+      text-align: center;
+      padding: 0.8rem;
+      border-radius: var(--radius-sm);
+      margin-top: 1rem;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: none;
+    }
+    .exam-feedback.correct { display: block; background: rgba(74,154,74,0.15); color: #2d7a2d; }
+    .exam-feedback.wrong { display: block; background: rgba(180,50,50,0.15); color: #a03030; }
+
+    .exam-results {
+      text-align: center;
+      padding: 2rem 0;
+    }
+    .exam-results-score {
+      font-family: var(--font-display);
+      font-size: 4rem;
+      color: var(--wine);
+      font-weight: 300;
+    }
+    .exam-results-label {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin: 0.5rem 0 1.5rem;
+    }
+    .exam-pass { color: #2d7a2d; font-weight: 600; }
+    .exam-fail { color: var(--wine); font-weight: 600; }
+    .exam-breakdown {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      margin: 1.5rem 0;
+    }
+    .exam-bd-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.6rem 1rem;
+      text-align: center;
+      min-width: 100px;
+    }
+    .exam-bd-cat {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-dim);
+    }
+    .exam-bd-score {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--wine);
+      margin-top: 0.2rem;
+    }
+
+    /* History below start */
+    .exam-history {
+      margin-top: 2rem;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 1.5rem 3rem;
+    }
+    .exam-history-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--sand-light);
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .exam-history-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.7rem 1rem;
+      margin-bottom: 0.4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+    }
+    .exam-history-date { color: var(--text-dim); font-size: 0.75rem; }
+    .exam-history-score { font-weight: 600; }
+    .exam-history-pass { color: #2d7a2d; }
+    .exam-history-fail { color: var(--wine); }
+  </style>
+</head>
+<body>
+  <div class="bg-grain"></div>
+
+  <header class="druvor-header" style="position:relative;z-index:1;text-align:center;padding:3rem 1.5rem 1rem;animation:fadeUp 0.8s ease-out;">
+    <a href="quiz.html" class="back-link"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Tillbaka</a>
+    <h1 style="font-family:var(--font-display);font-size:clamp(2.5rem,6vw,3.5rem);font-weight:300;color:var(--sand-light);letter-spacing:0.1em;">Terminsprov</h1>
+    <p style="font-family:var(--font-display);font-style:italic;font-size:1rem;color:var(--text-muted);margin-top:0.3rem;">30 frågor — 45 minuter</p>
+  </header>
+
+  <div class="exam-wrap" id="examWrap">
+    <div class="exam-start" id="examStart">
+      <p>Simulerat sommelier-prov med 30 slumpmässiga frågor från alla kategorier. Du har 45 minuter på dig. Minst 70% krävs för godkänt. Du kan inte gå tillbaka till tidigare frågor.</p>
+      <button class="btn-start" onclick="startExam()">Starta prov</button>
+    </div>
+    <div id="examBox" style="display:none;"></div>
+  </div>
+
+  <div class="exam-history" id="examHistorySection">
+    <h3 class="exam-history-title">Tidigare försök</h3>
+    <div id="examHistoryList"></div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-divider"><span class="divider-vine">✦</span></div>
+    <p>Cellar — Byggt för sommelierer</p>
+  </footer>
+
+  <script>
+    let druvor = [];
+    let examQuestions = [];
+    let examCurrent = 0;
+    let examScore = 0;
+    let examAnswered = false;
+    let examTimer = null;
+    let examTimeLeft = 45 * 60;
+    let timerEl = null;
+    const EXAM_TOTAL = 30;
+
+    function pick(arr, n) {
+      const s = [...arr].sort(() => Math.random() - 0.5);
+      return s.slice(0, n);
+    }
+    function pickOther(arr, exclude, n) {
+      return pick(arr.filter(x => x !== exclude), n);
+    }
+    function escHtml(s) {
+      return s.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    }
+
+    // Reuse question generators from quiz.js patterns
+    function generateAllQuestions() {
+      const all = [];
+      // Druvor questions
+      druvor.forEach(d => {
+        if (d.aromer && d.aromer.frukt) {
+          all.push({ cat: 'Druvor', q: 'Vilken druva har dessa fruktaromer: "' + d.aromer.frukt + '"?', correct: d.namn, wrong: pickOther(druvor.filter(x => x.typ === d.typ), d, 3).map(x => x.namn) });
+        }
+        if (d.karaktar && d.karaktar.syra) {
+          all.push({ cat: 'Druvor', q: 'Vilken syranivå har ' + d.namn + '?', correct: d.karaktar.syra, wrong: pickOther(['Låg','Medium-','Medium','Medium+','Hög'], d.karaktar.syra, 3) });
+        }
+        if (d.typ === 'röd' && d.karaktar && d.karaktar.tanniner) {
+          all.push({ cat: 'Druvor', q: 'Vilken tanninnivå har ' + d.namn + '?', correct: d.karaktar.tanniner, wrong: pickOther(['Låg','Medium-','Medium','Medium+','Hög'], d.karaktar.tanniner, 3) });
+        }
+        if (d.regioner && d.regioner.length >= 2) {
+          all.push({ cat: 'Regioner', q: 'I vilken av dessa regioner odlas ' + d.namn + '?', correct: d.regioner[0], wrong: pickOther(druvor.flatMap(x => x.regioner || []), d.regioner[0], 3) });
+        }
+      });
+
+      // Region questions
+      const regions = [
+        { region: 'Champagne', land: 'Frankrike', druvor: 'Chardonnay, Pinot Noir, Meunier' },
+        { region: 'Bordeaux', land: 'Frankrike', druvor: 'Cabernet Sauvignon, Merlot' },
+        { region: 'Bourgogne', land: 'Frankrike', druvor: 'Pinot Noir, Chardonnay' },
+        { region: 'Barossa Valley', land: 'Australien', druvor: 'Shiraz, Grenache' },
+        { region: 'Marlborough', land: 'Nya Zeeland', druvor: 'Sauvignon Blanc' },
+        { region: 'Rioja', land: 'Spanien', druvor: 'Tempranillo, Garnacha' },
+        { region: 'Piemonte', land: 'Italien', druvor: 'Nebbiolo, Barbera, Dolcetto' },
+        { region: 'Toscana', land: 'Italien', druvor: 'Sangiovese' },
+        { region: 'Mosel', land: 'Tyskland', druvor: 'Riesling' },
+        { region: 'Douro', land: 'Portugal', druvor: 'Touriga Nacional, Tinta Roriz' },
+        { region: 'Mendoza', land: 'Argentina', druvor: 'Malbec' },
+        { region: 'Napa Valley', land: 'USA', druvor: 'Cabernet Sauvignon' },
+        { region: 'Stellenbosch', land: 'Sydafrika', druvor: 'Cabernet Sauvignon, Shiraz' },
+        { region: 'Wachau', land: 'Österrike', druvor: 'Grüner Veltliner, Riesling' },
+        { region: 'Tokaj', land: 'Ungern', druvor: 'Furmint' },
+        { region: 'Jerez', land: 'Spanien', druvor: 'Palomino' },
+        { region: 'Priorat', land: 'Spanien', druvor: 'Garnacha, Cariñena' },
+        { region: 'Santorini', land: 'Grekland', druvor: 'Assyrtiko' }
+      ];
+      regions.forEach(r => {
+        all.push({ cat: 'Regioner', q: 'Vilka druvor är viktigast i ' + r.region + '?', correct: r.druvor, wrong: pickOther(regions, r, 3).map(x => x.druvor) });
+        all.push({ cat: 'Regioner', q: 'I vilket land ligger ' + r.region + '?', correct: r.land, wrong: pickOther([...new Set(regions.map(x => x.land))], r.land, 3) });
+      });
+
+      // Fakta
+      const fakta = [
+        { q: 'Vad är TCA?', correct: 'Korkfel — klorföreningar reagerar med mögel', wrong: ['Tanninsyra i ekfat','En jästtyp vid fermentering','En klassificering i Bordeaux'] },
+        { q: 'Vad är MLF?', correct: 'Omvandlar äpplesyra till mjölksyra', wrong: ['En typ av ekfatslagring','En skördeteknik','En klassificeringsnivå i Bourgogne'] },
+        { q: 'Vad betyder Brut Nature?', correct: '0-3 g/L socker', wrong: ['12-17 g/L socker','32-50 g/L socker','Naturvin utan tillsatser'] },
+        { q: 'Vad är appassimento?', correct: 'Druvor torkas för att koncentrera socker och smak', wrong: ['En jäsningsmetod i tank','En typ av ekfat','En italiensk klassificering'] },
+        { q: 'Vad betyder AOC/AOP?', correct: 'Appellation d\'Origine Contrôlée/Protégée', wrong: ['Association of Organic Cellars','Alleen Oude Cuvée','Assemblage d\'Origine Classique'] },
+        { q: 'Vad är flor-jäst?', correct: 'Jästhinna som skyddar Sherry från oxidation', wrong: ['En typ av vinfel','En druvsort i Jerez','En filtreringsmetod'] },
+        { q: 'Vad är phylloxera?', correct: 'Vinlus som attackerar rötterna', wrong: ['En svampsjukdom','En typ av jäst','En druvsort'] },
+        { q: 'Vad är véraison?', correct: 'Druvorna börjar mjukna och ändra färg', wrong: ['Beskärning av vinstocken','Skörd av druvorna','Pressning av musten'] },
+        { q: 'Vad mäter Oechsle?', correct: 'Sockerhalt i druvmust', wrong: ['Syranivå i vin','Alkoholhalt i färdigt vin','Tanninnivå'] },
+        { q: 'Vad är Brettanomyces?', correct: 'Vildjäst — ger stall- och läderdoft', wrong: ['En ädel mögelsort','En druvsort i Sydafrika','En typ av korkfel'] },
+        { q: 'Vad är méthode traditionnelle?', correct: 'Andra jäsning i flaskan', wrong: ['Jäsning i stor tank','Handskördning av druvor','Lagring i ekfat'] },
+        { q: 'Vad är DOCG i Italien?', correct: 'Denominazione di Origine Controllata e Garantita — högsta nivån', wrong: ['Den näst högsta klassificeringen','En regional beteckning utan krav','En kvalitetsstämpel för olivolja'] },
+        { q: 'Vad är Solera-systemet?', correct: 'Gradvis blandning av årgångar', wrong: ['En typ av ekfat','En temperaturkontrollmetod','En druvsort i Spanien'] }
+      ];
+      fakta.forEach(f => all.push({ cat: 'Fakta', ...f }));
+
+      // Mat & vin
+      const pairs = [
+        { q: 'Bästa vinet till grillat lamm?', correct: 'Syrah / Shiraz', wrong: ['Riesling','Pinot Grigio','Moscato d\'Asti'] },
+        { q: 'Bästa vinet till ostron?', correct: 'Champagne eller Chablis', wrong: ['Amarone','Barolo','Zinfandel'] },
+        { q: 'Bästa vinet till kryddig thai-curry?', correct: 'Off-dry Riesling', wrong: ['Cabernet Sauvignon','Barolo','Oloroso Sherry'] },
+        { q: 'Bästa vinet till pasta med tomatsås?', correct: 'Sangiovese (Chianti)', wrong: ['Sauternes','Eiswein','Champagne'] },
+        { q: 'Bästa vinet till chokladdessert?', correct: 'Recioto / Ruby Port', wrong: ['Chablis','Muscadet','Vinho Verde'] },
+        { q: 'Bästa vinet till sushi?', correct: 'Fino Sherry eller Albariño', wrong: ['Barolo','Amarone','Châteauneuf-du-Pape'] }
+      ];
+      pairs.forEach(p => all.push({ cat: 'Mat & Vin', ...p }));
+
+      // Provning
+      const provning = [
+        { q: 'Vad står BLIK för?', correct: 'Balans, Längd, Intensitet, Komplexitet', wrong: ['Bukett, Läge, Import, Kvalitet','Bitterhet, Lager, Ister, Kropp','Blommig, Lätt, Intensiv, Klar'] },
+        { q: 'Hur många poäng ges totalt i provningsmetodiken?', correct: '40 poäng', wrong: ['20 poäng','50 poäng','100 poäng'] },
+        { q: 'Vad indikerar tårar på glaset?', correct: 'Hög alkoholhalt', wrong: ['Hög syra','Höga tanniner','Vinfel'] },
+        { q: 'Vad betyder längd vid vinprovning?', correct: 'Hur länge smaken sitter kvar efter att man svalt', wrong: ['Hur länge vinet kan lagras','Flaskans höjd','Antal sekunder man luktar'] },
+        { q: 'Vad är tertiära aromer?', correct: 'Aromer från lagring — torkad frukt, nötter', wrong: ['Fruktiga aromer från druvan','Aromer från ekfat och jäsning','Defektaromer'] },
+        { q: 'Vad indikerar hög salivproduktion vid provning?', correct: 'Hög syra i vinet', wrong: ['Höga tanniner','Hög alkohol','Hög sötma'] },
+        { q: 'Vad betyder torrt vin?', correct: 'Max 4 g/L restsocker', wrong: ['Vinet har aldrig kontakt med vatten','Druvor torkade före pressning','Vinet lagrats utan ek'] },
+        { q: 'Vilken servetemperatur gäller för mousserande vin?', correct: '6-8°C', wrong: ['14-18°C','10-12°C','18-20°C'] }
+      ];
+      provning.forEach(p => all.push({ cat: 'Provning', ...p }));
+
+      return all;
+    }
+
+    async function startExam() {
+      const res = await fetch('data/druvor.json');
+      druvor = await res.json();
+
+      examQuestions = pick(generateAllQuestions(), EXAM_TOTAL);
+      examCurrent = 0;
+      examScore = 0;
+      examTimeLeft = 45 * 60;
+
+      document.getElementById('examStart').style.display = 'none';
+      document.getElementById('examHistorySection').style.display = 'none';
+      document.getElementById('examBox').style.display = 'block';
+
+      // Create timer
+      timerEl = document.createElement('div');
+      timerEl.className = 'exam-timer';
+      document.body.prepend(timerEl);
+      updateTimerDisplay();
+      examTimer = setInterval(timerTick, 1000);
+
+      showExamQuestion();
+    }
+
+    function timerTick() {
+      examTimeLeft--;
+      updateTimerDisplay();
+      if (examTimeLeft <= 300 && timerEl) timerEl.classList.add('warning');
+      if (examTimeLeft <= 0) {
+        clearInterval(examTimer);
+        finishExam();
+      }
+    }
+
+    function updateTimerDisplay() {
+      const m = Math.floor(examTimeLeft / 60);
+      const s = examTimeLeft % 60;
+      if (timerEl) timerEl.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+    }
+
+    function showExamQuestion() {
+      const box = document.getElementById('examBox');
+      if (examCurrent >= examQuestions.length) {
+        finishExam();
+        return;
+      }
+
+      const q = examQuestions[examCurrent];
+      examAnswered = false;
+      const pct = (examCurrent / examQuestions.length) * 100;
+      const allOpts = [q.correct, ...q.wrong].sort(() => Math.random() - 0.5);
+
+      box.innerHTML = '<div class="exam-question-card">' +
+        '<div class="quiz-progress"><div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:' + pct + '%"></div></div>' +
+        '<span class="quiz-progress-text">Fråga ' + (examCurrent + 1) + ' av ' + examQuestions.length + '</span></div>' +
+        '<div class="quiz-category-label">' + q.cat + '</div>' +
+        '<div class="quiz-q">' + q.q + '</div>' +
+        '<div class="quiz-opts" id="examOpts">' +
+        allOpts.map(function(o) {
+          return '<button class="quiz-opt" onclick="examAnswer(this,\'' + escHtml(o) + '\',\'' + escHtml(q.correct) + '\')">' + o + '</button>';
+        }).join('') +
+        '</div>' +
+        '<div class="exam-feedback" id="examFeedback"></div>' +
+        '</div>';
+    }
+
+    function examAnswer(btn, selected, correct) {
+      if (examAnswered) return;
+      examAnswered = true;
+
+      var opts = document.querySelectorAll('.quiz-opt');
+      opts.forEach(function(o) {
+        o.disabled = true;
+        if (o.textContent === correct) o.classList.add('correct');
+      });
+
+      var fb = document.getElementById('examFeedback');
+      if (selected === correct) {
+        examScore++;
+        fb.className = 'exam-feedback correct';
+        fb.textContent = 'Rätt!';
+      } else {
+        btn.classList.add('wrong');
+        fb.className = 'exam-feedback wrong';
+        fb.textContent = 'Fel — rätt svar: ' + correct;
+      }
+
+      setTimeout(function() {
+        examCurrent++;
+        showExamQuestion();
+      }, 1500);
+    }
+
+    function finishExam() {
+      clearInterval(examTimer);
+      if (timerEl) { timerEl.remove(); timerEl = null; }
+
+      var pct = Math.round((examScore / EXAM_TOTAL) * 100);
+      var pass = pct >= 70;
+
+      // Category breakdown
+      var cats = {};
+      examQuestions.forEach(function(q, i) {
+        if (!cats[q.cat]) cats[q.cat] = { right: 0, total: 0 };
+        cats[q.cat].total++;
+      });
+      // We need to track per-question correctness — reconstruct from score
+      // Since we can't easily track per-question, we'll show total only
+      // Actually let's track it properly
+      // We'll use a simpler approach: just show total
+
+      // Save to history
+      try {
+        var history = JSON.parse(localStorage.getItem('cellar-exam-history')) || [];
+        history.unshift({ date: new Date().toISOString(), score: examScore, total: EXAM_TOTAL, pct: pct, pass: pass });
+        localStorage.setItem('cellar-exam-history', JSON.stringify(history));
+      } catch (e) {}
+
+      var box = document.getElementById('examBox');
+      box.innerHTML = '<div class="exam-results">' +
+        '<div class="exam-results-score">' + pct + '%</div>' +
+        '<div class="exam-results-label">' + examScore + ' av ' + EXAM_TOTAL + ' rätt</div>' +
+        '<div class="' + (pass ? 'exam-pass' : 'exam-fail') + '" style="font-size:1.2rem;margin-bottom:1rem;">' +
+        (pass ? 'GODKÄNT' : 'UNDERKÄNT') + '</div>' +
+        '<p style="font-family:var(--font-body);font-size:0.85rem;color:var(--text-muted);margin-bottom:2rem;">' +
+        (pass ? 'Bra jobbat! Du klarade provet.' : 'Du behöver minst 70% för godkänt. Fortsätt plugga!') + '</p>' +
+        '<button class="btn-start" onclick="location.reload()">Gör om provet</button>' +
+        '<br><br><a href="quiz.html" style="color:var(--text-muted);font-size:0.85rem;">Tillbaka till quiz-menyn</a>' +
+        '</div>';
+    }
+
+    function renderExamHistory() {
+      var list = document.getElementById('examHistoryList');
+      var history = [];
+      try { history = JSON.parse(localStorage.getItem('cellar-exam-history')) || []; } catch (e) {}
+
+      if (!history.length) {
+        list.innerHTML = '<p style="text-align:center;color:var(--text-dim);font-family:var(--font-body);font-size:0.85rem;padding:1rem;">Inga tidigare försök.</p>';
+        return;
+      }
+
+      list.innerHTML = history.map(function(h) {
+        var d = new Date(h.date);
+        return '<div class="exam-history-item">' +
+          '<span class="exam-history-date">' + d.toLocaleDateString('sv-SE') + '</span>' +
+          '<span class="exam-history-score ' + (h.pass ? 'exam-history-pass' : 'exam-history-fail') + '">' +
+          h.pct + '% — ' + (h.pass ? 'Godkänt' : 'Underkänt') + '</span></div>';
+      }).join('');
+    }
+
+    renderExamHistory();
+  </script>
+  <script src="js/mobile-nav.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+  </script>
+</body>
+</html>

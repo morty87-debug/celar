@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cellar — Provning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mobile.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#8B1A2B">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <style>
+    .provning-form { max-width: 640px; margin: 0 auto; padding: 0 1.5rem 3rem; }
+    .form-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .form-card h2 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--wine);
+      margin-bottom: 1rem;
+      letter-spacing: 0.03em;
+    }
+    .form-card h2 span {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-family: var(--font-body);
+      margin-left: 0.5rem;
+    }
+    .form-group { margin-bottom: 1rem; }
+    .form-group:last-child { margin-bottom: 0; }
+    .form-label {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--wine);
+    }
+    .form-textarea { min-height: 70px; resize: vertical; }
+    .form-number { width: 100px; }
+
+    /* Pill radio buttons */
+    .pill-group { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .pill-radio { display: none; }
+    .pill-label {
+      display: inline-block;
+      padding: 0.35rem 0.75rem;
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s;
+      user-select: none;
+    }
+    .pill-radio:checked + .pill-label {
+      background: var(--wine);
+      color: #fff;
+      border-color: var(--wine);
+    }
+    .pill-label:hover { border-color: var(--wine); }
+
+    /* BLIK sliders */
+    .blik-group { margin-bottom: 0.75rem; }
+    .blik-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem; }
+    .blik-header .form-label { margin-bottom: 0; }
+    .blik-val { font-family: var(--font-body); font-size: 0.85rem; color: var(--wine); font-weight: 600; }
+    .blik-slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      outline: none;
+    }
+    .blik-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: var(--wine);
+      cursor: pointer;
+    }
+    .blik-slider::-moz-range-thumb {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: var(--wine);
+      cursor: pointer;
+      border: none;
+    }
+    .blik-total {
+      text-align: center;
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: var(--wine);
+      margin-top: 0.5rem;
+    }
+    .blik-total small { font-size: 0.9rem; color: var(--text-muted); }
+
+    .tannin-group { display: none; }
+    .tannin-group.visible { display: block; }
+
+    .btn-save {
+      display: block;
+      width: 100%;
+      padding: 0.9rem;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #fff;
+      background: var(--wine);
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: background 0.3s;
+      letter-spacing: 0.03em;
+    }
+    .btn-save:hover { background: var(--wine-deep); }
+
+    /* History */
+    .history-section {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0 1.5rem 3rem;
+    }
+    .history-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--sand-light);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .history-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.8rem 1rem;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      transition: border-color 0.3s;
+    }
+    .history-item:hover { border-color: var(--border-hover); }
+    .history-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+    }
+    .history-wine { font-weight: 600; color: var(--text); }
+    .history-date { color: var(--text-dim); font-size: 0.75rem; }
+    .history-score { color: var(--wine); font-weight: 600; }
+    .history-details {
+      display: none;
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .history-item.expanded .history-details { display: block; }
+    .history-delete {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.3rem 0.7rem;
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      color: var(--wine);
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: all 0.2s;
+    }
+    .history-delete:hover { background: var(--wine); color: #fff; }
+    .empty-history {
+      text-align: center;
+      color: var(--text-dim);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      padding: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-grain"></div>
+
+  <header class="druvor-header" style="position:relative;z-index:1;text-align:center;padding:3rem 1.5rem 1rem;animation:fadeUp 0.8s ease-out;">
+    <a href="index.html" class="back-link"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Tillbaka</a>
+    <h1 style="font-family:var(--font-display);font-size:clamp(2.5rem,6vw,3.5rem);font-weight:300;color:var(--sand-light);letter-spacing:0.1em;">Provning</h1>
+    <p style="font-family:var(--font-display);font-style:italic;font-size:1rem;color:var(--text-muted);margin-top:0.3rem;">40-poängs provningsprotokoll</p>
+  </header>
+
+  <form class="provning-form" id="provningForm" autocomplete="off">
+
+    <!-- 1. Vin-info -->
+    <div class="form-card">
+      <h2>Vin-info</h2>
+      <div class="form-group">
+        <label class="form-label">Vinnamn</label>
+        <input type="text" class="form-input" id="vinNamn" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Producent</label>
+        <input type="text" class="form-input" id="producent">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Typ</label>
+        <select class="form-select" id="vinTyp" onchange="updateTyp()">
+          <option value="rött">Rött</option>
+          <option value="vitt">Vitt</option>
+          <option value="rosé">Rosé</option>
+          <option value="mousserande">Mousserande</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- 2. Utseende (5p) -->
+    <div class="form-card">
+      <h2>Utseende <span>(5p)</span></h2>
+      <div class="form-group">
+        <label class="form-label">Klarhet</label>
+        <div class="pill-group">
+          <input type="radio" name="klarhet" value="Klar" id="klarhet1" class="pill-radio" checked>
+          <label for="klarhet1" class="pill-label">Klar</label>
+          <input type="radio" name="klarhet" value="Grumlig" id="klarhet2" class="pill-radio">
+          <label for="klarhet2" class="pill-label">Grumlig</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Intensitet</label>
+        <div class="pill-group">
+          <input type="radio" name="utseendeIntensitet" value="Låg" id="ui1" class="pill-radio">
+          <label for="ui1" class="pill-label">Låg</label>
+          <input type="radio" name="utseendeIntensitet" value="Medium-" id="ui2" class="pill-radio">
+          <label for="ui2" class="pill-label">Medium-</label>
+          <input type="radio" name="utseendeIntensitet" value="Medium" id="ui3" class="pill-radio" checked>
+          <label for="ui3" class="pill-label">Medium</label>
+          <input type="radio" name="utseendeIntensitet" value="Medium+" id="ui4" class="pill-radio">
+          <label for="ui4" class="pill-label">Medium+</label>
+          <input type="radio" name="utseendeIntensitet" value="Hög" id="ui5" class="pill-radio">
+          <label for="ui5" class="pill-label">Hög</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Färg</label>
+        <select class="form-select" id="farg">
+          <!-- Red -->
+          <optgroup label="Rött" class="farg-rod">
+            <option value="Purpur">Purpur</option>
+            <option value="Rubinröd">Rubinröd</option>
+            <option value="Granatröd">Granatröd</option>
+            <option value="Tegelfärgad">Tegelfärgad</option>
+          </optgroup>
+          <!-- White -->
+          <optgroup label="Vitt" class="farg-vit">
+            <option value="Citrongul">Citrongul</option>
+            <option value="Guldgul">Guldgul</option>
+            <option value="Bärnstensgul">Bärnstensgul</option>
+          </optgroup>
+          <!-- Rosé -->
+          <optgroup label="Rosé" class="farg-rose">
+            <option value="Blekrosa">Blekrosa</option>
+            <option value="Laxrosa">Laxrosa</option>
+            <option value="Koppar">Koppar</option>
+          </optgroup>
+        </select>
+      </div>
+    </div>
+
+    <!-- 3. Näsa (10p) -->
+    <div class="form-card">
+      <h2>Näsa <span>(10p)</span></h2>
+      <div class="form-group">
+        <label class="form-label">Renhet</label>
+        <div class="pill-group">
+          <input type="radio" name="renhet" value="Ren" id="ren1" class="pill-radio" checked>
+          <label for="ren1" class="pill-label">Ren</label>
+          <input type="radio" name="renhet" value="Defekt" id="ren2" class="pill-radio">
+          <label for="ren2" class="pill-label">Defekt</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Intensitet</label>
+        <div class="pill-group">
+          <input type="radio" name="nasIntensitet" value="Låg" id="ni1" class="pill-radio">
+          <label for="ni1" class="pill-label">Låg</label>
+          <input type="radio" name="nasIntensitet" value="Medium-" id="ni2" class="pill-radio">
+          <label for="ni2" class="pill-label">Medium-</label>
+          <input type="radio" name="nasIntensitet" value="Medium" id="ni3" class="pill-radio" checked>
+          <label for="ni3" class="pill-label">Medium</label>
+          <input type="radio" name="nasIntensitet" value="Medium+" id="ni4" class="pill-radio">
+          <label for="ni4" class="pill-label">Medium+</label>
+          <input type="radio" name="nasIntensitet" value="Hög" id="ni5" class="pill-radio">
+          <label for="ni5" class="pill-label">Hög</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Utveckling</label>
+        <div class="pill-group">
+          <input type="radio" name="utveckling" value="Ung" id="utv1" class="pill-radio" checked>
+          <label for="utv1" class="pill-label">Ung</label>
+          <input type="radio" name="utveckling" value="Utvecklande" id="utv2" class="pill-radio">
+          <label for="utv2" class="pill-label">Utvecklande</label>
+          <input type="radio" name="utveckling" value="Mogen" id="utv3" class="pill-radio">
+          <label for="utv3" class="pill-label">Mogen</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Aromer</label>
+        <textarea class="form-textarea" id="nasAromer" placeholder="Beskriv aromer..."></textarea>
+      </div>
+    </div>
+
+    <!-- 4. Gom (16p) -->
+    <div class="form-card">
+      <h2>Gom <span>(16p)</span></h2>
+      <div class="form-group">
+        <label class="form-label">Sötma</label>
+        <div class="pill-group">
+          <input type="radio" name="sotma" value="Torrt" id="sot1" class="pill-radio" checked>
+          <label for="sot1" class="pill-label">Torrt</label>
+          <input type="radio" name="sotma" value="Halvtorrt" id="sot2" class="pill-radio">
+          <label for="sot2" class="pill-label">Halvtorrt</label>
+          <input type="radio" name="sotma" value="Halvsött" id="sot3" class="pill-radio">
+          <label for="sot3" class="pill-label">Halvsött</label>
+          <input type="radio" name="sotma" value="Sött" id="sot4" class="pill-radio">
+          <label for="sot4" class="pill-label">Sött</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Syra</label>
+        <div class="pill-group">
+          <input type="radio" name="syra" value="Låg" id="sy1" class="pill-radio">
+          <label for="sy1" class="pill-label">Låg</label>
+          <input type="radio" name="syra" value="Medium-" id="sy2" class="pill-radio">
+          <label for="sy2" class="pill-label">Medium-</label>
+          <input type="radio" name="syra" value="Medium" id="sy3" class="pill-radio" checked>
+          <label for="sy3" class="pill-label">Medium</label>
+          <input type="radio" name="syra" value="Medium+" id="sy4" class="pill-radio">
+          <label for="sy4" class="pill-label">Medium+</label>
+          <input type="radio" name="syra" value="Hög" id="sy5" class="pill-radio">
+          <label for="sy5" class="pill-label">Hög</label>
+        </div>
+      </div>
+      <div class="form-group tannin-group" id="tanninGroup">
+        <label class="form-label">Tanniner</label>
+        <div class="pill-group">
+          <input type="radio" name="tanniner" value="Låg" id="ta1" class="pill-radio">
+          <label for="ta1" class="pill-label">Låg</label>
+          <input type="radio" name="tanniner" value="Medium-" id="ta2" class="pill-radio">
+          <label for="ta2" class="pill-label">Medium-</label>
+          <input type="radio" name="tanniner" value="Medium" id="ta3" class="pill-radio" checked>
+          <label for="ta3" class="pill-label">Medium</label>
+          <input type="radio" name="tanniner" value="Medium+" id="ta4" class="pill-radio">
+          <label for="ta4" class="pill-label">Medium+</label>
+          <input type="radio" name="tanniner" value="Hög" id="ta5" class="pill-radio">
+          <label for="ta5" class="pill-label">Hög</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Alkohol %</label>
+        <input type="number" class="form-input form-number" id="alkohol" min="5" max="25" step="0.1" value="13">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Kropp</label>
+        <div class="pill-group">
+          <input type="radio" name="kropp" value="Lätt" id="kr1" class="pill-radio">
+          <label for="kr1" class="pill-label">Lätt</label>
+          <input type="radio" name="kropp" value="Medium" id="kr2" class="pill-radio" checked>
+          <label for="kr2" class="pill-label">Medium</label>
+          <input type="radio" name="kropp" value="Full" id="kr3" class="pill-radio">
+          <label for="kr3" class="pill-label">Full</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Längd</label>
+        <div class="pill-group">
+          <input type="radio" name="langd" value="Kort" id="la1" class="pill-radio">
+          <label for="la1" class="pill-label">Kort</label>
+          <input type="radio" name="langd" value="Medium" id="la2" class="pill-radio" checked>
+          <label for="la2" class="pill-label">Medium</label>
+          <input type="radio" name="langd" value="Lång" id="la3" class="pill-radio">
+          <label for="la3" class="pill-label">Lång</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Aromer</label>
+        <textarea class="form-textarea" id="gomAromer" placeholder="Beskriv smaker..."></textarea>
+      </div>
+    </div>
+
+    <!-- 5. Slutsats (9p) -->
+    <div class="form-card">
+      <h2>Slutsats <span>(9p)</span></h2>
+      <div class="form-group">
+        <label class="form-label">Land</label>
+        <input type="text" class="form-input" id="land">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Region</label>
+        <input type="text" class="form-input" id="region">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Druva</label>
+        <input type="text" class="form-input" id="druva">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Årgång</label>
+        <input type="number" class="form-input form-number" id="argang" min="1900" max="2030">
+      </div>
+      <div class="form-group">
+        <label class="form-label" style="margin-bottom:0.8rem;">Kvalitet — BLIK</label>
+        <div class="blik-group">
+          <div class="blik-header">
+            <span class="form-label">Balans</span>
+            <span class="blik-val" id="blikBalansVal">0</span>
+          </div>
+          <input type="range" class="blik-slider" id="blikBalans" min="0" max="1" step="0.5" value="0" oninput="updateBLIK()">
+        </div>
+        <div class="blik-group">
+          <div class="blik-header">
+            <span class="form-label">Längd</span>
+            <span class="blik-val" id="blikLangdVal">0</span>
+          </div>
+          <input type="range" class="blik-slider" id="blikLangd" min="0" max="1" step="0.5" value="0" oninput="updateBLIK()">
+        </div>
+        <div class="blik-group">
+          <div class="blik-header">
+            <span class="form-label">Intensitet</span>
+            <span class="blik-val" id="blikIntensitetVal">0</span>
+          </div>
+          <input type="range" class="blik-slider" id="blikIntensitet" min="0" max="1" step="0.5" value="0" oninput="updateBLIK()">
+        </div>
+        <div class="blik-group">
+          <div class="blik-header">
+            <span class="form-label">Komplexitet</span>
+            <span class="blik-val" id="blikKomplexitetVal">0</span>
+          </div>
+          <input type="range" class="blik-slider" id="blikKomplexitet" min="0" max="1" step="0.5" value="0" oninput="updateBLIK()">
+        </div>
+        <div class="blik-total">
+          <span id="blikTotal">0</span> <small>/ 4 BLIK</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Matförslag</label>
+        <input type="text" class="form-input" id="matforslag" placeholder="Vad passar vinet till?">
+      </div>
+    </div>
+
+    <button type="submit" class="btn-save">Spara provning</button>
+  </form>
+
+  <section class="history-section">
+    <h2 class="history-title">Mina provningar</h2>
+    <div id="historyList"></div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-divider"><span class="divider-vine">✦</span></div>
+    <p>Cellar — Byggt för sommelierer</p>
+  </footer>
+
+  <script>
+    function updateTyp() {
+      const typ = document.getElementById('vinTyp').value;
+      const tg = document.getElementById('tanninGroup');
+      tg.classList.toggle('visible', typ === 'rött');
+    }
+    updateTyp();
+
+    function updateBLIK() {
+      const b = parseFloat(document.getElementById('blikBalans').value);
+      const l = parseFloat(document.getElementById('blikLangd').value);
+      const i = parseFloat(document.getElementById('blikIntensitet').value);
+      const k = parseFloat(document.getElementById('blikKomplexitet').value);
+      document.getElementById('blikBalansVal').textContent = b;
+      document.getElementById('blikLangdVal').textContent = l;
+      document.getElementById('blikIntensitetVal').textContent = i;
+      document.getElementById('blikKomplexitetVal').textContent = k;
+      document.getElementById('blikTotal').textContent = b + l + i + k;
+    }
+
+    function getRadio(name) {
+      const el = document.querySelector(`input[name="${name}"]:checked`);
+      return el ? el.value : '';
+    }
+
+    document.getElementById('provningForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const tasting = {
+        date: new Date().toISOString(),
+        vinNamn: document.getElementById('vinNamn').value,
+        producent: document.getElementById('producent').value,
+        vinTyp: document.getElementById('vinTyp').value,
+        klarhet: getRadio('klarhet'),
+        utseendeIntensitet: getRadio('utseendeIntensitet'),
+        farg: document.getElementById('farg').value,
+        renhet: getRadio('renhet'),
+        nasIntensitet: getRadio('nasIntensitet'),
+        utveckling: getRadio('utveckling'),
+        nasAromer: document.getElementById('nasAromer').value,
+        sotma: getRadio('sotma'),
+        syra: getRadio('syra'),
+        tanniner: getRadio('tanniner'),
+        alkohol: document.getElementById('alkohol').value,
+        kropp: getRadio('kropp'),
+        langd: getRadio('langd'),
+        gomAromer: document.getElementById('gomAromer').value,
+        land: document.getElementById('land').value,
+        region: document.getElementById('region').value,
+        druva: document.getElementById('druva').value,
+        argang: document.getElementById('argang').value,
+        blikBalans: parseFloat(document.getElementById('blikBalans').value),
+        blikLangd: parseFloat(document.getElementById('blikLangd').value),
+        blikIntensitet: parseFloat(document.getElementById('blikIntensitet').value),
+        blikKomplexitet: parseFloat(document.getElementById('blikKomplexitet').value),
+        blikTotal: parseFloat(document.getElementById('blikTotal').textContent),
+        matforslag: document.getElementById('matforslag').value
+      };
+
+      try {
+        const tastings = JSON.parse(localStorage.getItem('cellar-tastings')) || [];
+        tastings.unshift(tasting);
+        localStorage.setItem('cellar-tastings', JSON.stringify(tastings));
+      } catch (e) {}
+
+      this.reset();
+      updateTyp();
+      updateBLIK();
+      renderHistory();
+    });
+
+    function renderHistory() {
+      const list = document.getElementById('historyList');
+      let tastings = [];
+      try { tastings = JSON.parse(localStorage.getItem('cellar-tastings')) || []; } catch (e) {}
+
+      if (!tastings.length) {
+        list.innerHTML = '<p class="empty-history">Inga provningar sparade.</p>';
+        return;
+      }
+
+      list.innerHTML = tastings.map((t, i) => {
+        const d = new Date(t.date);
+        const dateStr = d.toLocaleDateString('sv-SE');
+        return `
+          <div class="history-item" onclick="this.classList.toggle('expanded')">
+            <div class="history-header">
+              <span class="history-wine">${t.vinNamn || 'Namnlöst vin'}</span>
+              <span class="history-score">BLIK ${t.blikTotal}/4</span>
+            </div>
+            <div class="history-header" style="margin-top:0.25rem;">
+              <span class="history-date">${dateStr}</span>
+              <span class="history-date">${t.vinTyp}</span>
+            </div>
+            <div class="history-details">
+              <strong>Producent:</strong> ${t.producent || '—'}<br>
+              <strong>Färg:</strong> ${t.farg} | <strong>Klarhet:</strong> ${t.klarhet}<br>
+              <strong>Näsa:</strong> ${t.nasIntensitet} intensitet, ${t.utveckling}, ${t.renhet}<br>
+              <strong>Aromer (näsa):</strong> ${t.nasAromer || '—'}<br>
+              <strong>Gom:</strong> ${t.sotma}, syra ${t.syra}, kropp ${t.kropp}, längd ${t.langd}<br>
+              ${t.tanniner ? '<strong>Tanniner:</strong> ' + t.tanniner + '<br>' : ''}
+              <strong>Alkohol:</strong> ${t.alkohol}%<br>
+              <strong>Aromer (gom):</strong> ${t.gomAromer || '—'}<br>
+              <strong>Slutsats:</strong> ${t.land || '?'}, ${t.region || '?'}, ${t.druva || '?'} ${t.argang || ''}<br>
+              <strong>BLIK:</strong> B${t.blikBalans} L${t.blikLangd} I${t.blikIntensitet} K${t.blikKomplexitet} = ${t.blikTotal}/4<br>
+              <strong>Matförslag:</strong> ${t.matforslag || '—'}<br>
+              <button class="history-delete" onclick="event.stopPropagation();deleteTasting(${i})">Ta bort</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function deleteTasting(index) {
+      try {
+        const tastings = JSON.parse(localStorage.getItem('cellar-tastings')) || [];
+        tastings.splice(index, 1);
+        localStorage.setItem('cellar-tastings', JSON.stringify(tastings));
+      } catch (e) {}
+      renderHistory();
+    }
+
+    renderHistory();
+  </script>
+  <script src="js/mobile-nav.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+  </script>
+</body>
+</html>
