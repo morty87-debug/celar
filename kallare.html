@@ -423,7 +423,12 @@
             <div class="wine-name">${w.namn}</div>
             <div class="wine-details">${w.producent || ''} ${w.argang ? '· ' + w.argang : ''} ${w.region ? '· ' + w.region : ''}</div>
             <div class="wine-grape">${w.druva || ''}${w.klassificering ? ' · ' + w.klassificering : ''}</div>
+            <div style="margin-top:0.2rem;" onclick="event.stopPropagation()">
+              ${[1,2,3,4,5].map(s => `<span onclick="rateWine('${w.id}',${s})" style="cursor:pointer;font-size:0.9rem;color:${s <= (w.rating||0) ? 'var(--gold-muted)' : 'var(--border)'};">★</span>`).join('')}
+              ${w.rating ? `<span style="font-size:0.7rem;color:var(--text-dim);margin-left:0.3rem;">${w.rating}/5</span>` : ''}
+            </div>
             <div id="detail-${w.id}" style="display:none;margin-top:0.5rem;padding-top:0.5rem;border-top:1px solid var(--border);">
+              ${w.rating ? `<div style="font-size:0.78rem;color:var(--text);margin-bottom:0.3rem;"><strong style="color:var(--gold-muted);">Betyg:</strong> ${'★'.repeat(w.rating)}${'☆'.repeat(5-w.rating)} (${w.rating}/5)</div>` : ''}
               ${w.aromer ? `<p style="font-size:0.78rem;color:var(--text);margin-bottom:0.3rem;"><strong style="color:var(--wine);">Aromer:</strong> ${w.aromer}</p>` : ''}
               ${w.kropp || w.syra ? `<div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:0.3rem;">${w.kropp ? 'Kropp: ' + w.kropp : ''} ${w.syra ? '· Syra: ' + w.syra : ''} ${w.tanniner ? '· Tanniner: ' + w.tanniner : ''}</div>` : ''}
               ${w.lagring ? `<div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:0.3rem;">🕐 ${w.lagring} ${w.temperatur ? '· 🌡 ' + w.temperatur : ''}</div>` : ''}
@@ -493,6 +498,12 @@
     function removeWine(id) {
       saveWines(getWines().filter(w => w.id !== id));
       render();
+    }
+
+    function rateWine(id, rating) {
+      const wines = getWines();
+      const w = wines.find(w => w.id === id);
+      if (w) { w.rating = rating; saveWines(wines); render(); }
     }
 
     const grapeFood = {

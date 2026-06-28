@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cellar — Min smakprofil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/druvor.css">
+  <style>
+    .profil-section {
+      max-width: 660px;
+      margin: 0 auto 2rem;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 0.5s ease-out backwards;
+    }
+    .profil-section h2 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--sand-light);
+      margin-bottom: 0.75rem;
+    }
+    .profil-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 0.75rem;
+    }
+    .profil-stat {
+      text-align: center;
+      padding: 1rem 0.75rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+    }
+    .profil-stat-num {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      color: var(--wine);
+      line-height: 1;
+    }
+    .profil-stat-label {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.3rem;
+    }
+    .top-wine {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      margin-bottom: 0.4rem;
+    }
+    .top-wine-stars {
+      color: var(--gold-muted);
+      font-size: 0.85rem;
+      min-width: 5rem;
+    }
+    .top-wine-name {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      color: var(--sand-light);
+    }
+    .top-wine-detail {
+      font-size: 0.72rem;
+      color: var(--text-dim);
+    }
+    .bar-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+    .bar-label {
+      min-width: 100px;
+      font-size: 0.8rem;
+      color: var(--text);
+    }
+    .bar-track {
+      flex: 1;
+      height: 8px;
+      background: rgba(0,0,0,0.05);
+      border-radius: 4px;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 4px;
+    }
+    .bar-val {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      min-width: 2rem;
+      text-align: right;
+    }
+    .stil-card {
+      padding: 1.25rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--wine);
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 1.7;
+    }
+    .food-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+    .food-tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--earth);
+      background: rgba(92,64,51,0.08);
+      padding: 0.2rem 0.55rem;
+      border-radius: 100px;
+    }
+    .empty-profil {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--text-dim);
+    }
+    .empty-profil p { font-size: 0.9rem; margin-top: 0.5rem; }
+    @media (max-width: 480px) {
+      .profil-stats { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+  <link rel="stylesheet" href="css/mobile.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#8B1A2B">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+</head>
+<body>
+  <div class="bg-grain"></div>
+
+  <header class="druvor-header">
+    <a href="index.html" class="back-link"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Tillbaka</a>
+    <h1 class="druvor-title">Min smakprofil</h1>
+    <p class="druvor-subtitle">Baserat på dina betyg och provningar</p>
+  </header>
+
+  <div id="content"></div>
+
+  <script>
+    function getWines() {
+      try { return JSON.parse(localStorage.getItem('cellar-kallare')) || []; } catch { return []; }
+    }
+    function getTastings() {
+      try { return JSON.parse(localStorage.getItem('cellar-tastings')) || []; } catch { return []; }
+    }
+
+    function render() {
+      const wines = getWines();
+      const tastings = getTastings();
+      const container = document.getElementById('content');
+      const rated = wines.filter(w => w.rating && w.rating > 0);
+
+      if (rated.length === 0) {
+        container.innerHTML = '<div class="empty-profil"><p>Du har inte betygsatt några viner ännu.<br>Gå till <a href="kallare.html" style="color:var(--wine);">din vinkällare</a> och betygsätt viner för att bygga din smakprofil.</p></div>';
+        return;
+      }
+
+      // === A. Översikt ===
+      const avgRating = (rated.reduce((s, w) => s + w.rating, 0) / rated.length).toFixed(1);
+
+      // Most common grape
+      const grapeCounts = {};
+      rated.forEach(w => {
+        const g = (w.druva || '').trim();
+        if (g) grapeCounts[g] = (grapeCounts[g] || 0) + 1;
+      });
+      const topGrape = Object.entries(grapeCounts).sort((a, b) => b[1] - a[1])[0];
+
+      // Favorite region
+      const regionRatings = {};
+      rated.forEach(w => {
+        const r = (w.region || '').trim();
+        if (r) {
+          if (!regionRatings[r]) regionRatings[r] = [];
+          regionRatings[r].push(w.rating);
+        }
+      });
+      const topRegion = Object.entries(regionRatings)
+        .map(([r, scores]) => [r, scores.reduce((a, b) => a + b, 0) / scores.length])
+        .sort((a, b) => b[1] - a[1])[0];
+
+      let html = `
+        <div class="profil-section" style="animation-delay:0.1s;">
+          <h2>Översikt</h2>
+          <div class="profil-stats">
+            <div class="profil-stat"><div class="profil-stat-num">${rated.length}</div><div class="profil-stat-label">Viner betygsatta</div></div>
+            <div class="profil-stat"><div class="profil-stat-num">${avgRating}</div><div class="profil-stat-label">Genomsnittligt betyg</div></div>
+            <div class="profil-stat"><div class="profil-stat-num" style="font-size:1.1rem;">${topGrape ? topGrape[0] : '-'}</div><div class="profil-stat-label">Mest provade druva</div></div>
+            <div class="profil-stat"><div class="profil-stat-num" style="font-size:1.1rem;">${topRegion ? topRegion[0] : '-'}</div><div class="profil-stat-label">Favoritregion</div></div>
+          </div>
+        </div>
+      `;
+
+      // === B. Toppviner ===
+      const topWines = rated.filter(w => w.rating >= 4).sort((a, b) => b.rating - a.rating);
+      if (topWines.length > 0) {
+        html += `<div class="profil-section" style="animation-delay:0.2s;"><h2>Dina toppviner</h2>`;
+        topWines.forEach(w => {
+          html += `
+            <div class="top-wine">
+              <div class="top-wine-stars">${'★'.repeat(w.rating)}${'☆'.repeat(5 - w.rating)}</div>
+              <div>
+                <div class="top-wine-name">${w.namn}</div>
+                <div class="top-wine-detail">${w.druva || ''} ${w.region ? '· ' + w.region : ''} ${w.argang ? '· ' + w.argang : ''}</div>
+              </div>
+            </div>`;
+        });
+        html += `</div>`;
+      }
+
+      // === C. Druvpreferenser ===
+      const grapeRatings = {};
+      rated.forEach(w => {
+        const g = (w.druva || '').trim();
+        if (g) {
+          if (!grapeRatings[g]) grapeRatings[g] = { scores: [], typ: w.typ || 'rod' };
+          grapeRatings[g].scores.push(w.rating);
+        }
+      });
+      const grapeAvgs = Object.entries(grapeRatings)
+        .filter(([, v]) => v.scores.length >= 2)
+        .map(([g, v]) => ({ name: g, avg: v.scores.reduce((a, b) => a + b, 0) / v.scores.length, typ: v.typ }))
+        .sort((a, b) => b.avg - a.avg);
+
+      if (grapeAvgs.length > 0) {
+        html += `<div class="profil-section" style="animation-delay:0.3s;"><h2>Druvpreferenser</h2>`;
+        grapeAvgs.forEach(g => {
+          const pct = (g.avg / 5 * 100).toFixed(0);
+          const color = g.typ === 'vit' ? 'var(--gold-muted)' : 'var(--wine)';
+          html += `
+            <div class="bar-row">
+              <span class="bar-label">${g.name}</span>
+              <div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:${color};"></div></div>
+              <span class="bar-val">${g.avg.toFixed(1)}</span>
+            </div>`;
+        });
+        html += `</div>`;
+      }
+
+      // === D. Regionpreferenser ===
+      const regionAvgs = Object.entries(regionRatings)
+        .filter(([, scores]) => scores.length >= 1)
+        .map(([r, scores]) => ({ name: r, avg: scores.reduce((a, b) => a + b, 0) / scores.length }))
+        .sort((a, b) => b.avg - a.avg);
+
+      if (regionAvgs.length > 0) {
+        html += `<div class="profil-section" style="animation-delay:0.4s;"><h2>Regionpreferenser</h2>`;
+        regionAvgs.slice(0, 10).forEach(r => {
+          const pct = (r.avg / 5 * 100).toFixed(0);
+          html += `
+            <div class="bar-row">
+              <span class="bar-label">${r.name}</span>
+              <div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:var(--moss);"></div></div>
+              <span class="bar-val">${r.avg.toFixed(1)}</span>
+            </div>`;
+        });
+        html += `</div>`;
+      }
+
+      // === E. Stilpreferenser ===
+      const highRated = rated.filter(w => w.rating >= 4);
+      const kroppVals = highRated.map(w => (w.kropp || '').toLowerCase()).filter(Boolean);
+      const syraVals = highRated.map(w => (w.syra || '').toLowerCase()).filter(Boolean);
+      const tanninVals = highRated.map(w => (w.tanniner || '').toLowerCase()).filter(Boolean);
+
+      function mostCommon(arr) {
+        if (arr.length === 0) return null;
+        const counts = {};
+        arr.forEach(v => counts[v] = (counts[v] || 0) + 1);
+        return Object.entries(counts).sort((a, b) => b[1] - a[1])[0][0];
+      }
+
+      const prefKropp = mostCommon(kroppVals);
+      const prefSyra = mostCommon(syraVals);
+      const prefTannin = mostCommon(tanninVals);
+
+      if (prefKropp || prefSyra) {
+        let stilText = 'Du föredrar ';
+        if (prefKropp) stilText += `<strong>${prefKropp}</strong> viner`;
+        if (prefSyra) stilText += ` med <strong>${prefSyra}</strong> syra`;
+        if (prefTannin) stilText += ` och <strong>${prefTannin}</strong> tanniner`;
+        stilText += '.';
+
+        html += `
+          <div class="profil-section" style="animation-delay:0.5s;">
+            <h2>Stilpreferenser</h2>
+            <div class="stil-card">${stilText}</div>
+          </div>`;
+      }
+
+      // === F. Matparningsinsikter ===
+      const foodCounts = {};
+      highRated.forEach(w => {
+        if (w.matforslag && Array.isArray(w.matforslag)) {
+          w.matforslag.forEach(m => {
+            const key = m.trim().toLowerCase();
+            if (key) foodCounts[key] = (foodCounts[key] || 0) + 1;
+          });
+        }
+      });
+      const topFoods = Object.entries(foodCounts).sort((a, b) => b[1] - a[1]).slice(0, 12);
+
+      if (topFoods.length > 0) {
+        html += `
+          <div class="profil-section" style="animation-delay:0.6s;">
+            <h2>Matparningsinsikter</h2>
+            <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.75rem;">Vanligaste parningstipsen från dina toppviner:</p>
+            <div class="food-tags">
+              ${topFoods.map(([food, count]) => `<span class="food-tag">${food} (${count})</span>`).join('')}
+            </div>
+          </div>`;
+      }
+
+      // === Tasting protocol data ===
+      if (tastings.length > 0) {
+        const tastingRated = tastings.filter(t => t.rating && t.rating > 0);
+        if (tastingRated.length > 0) {
+          const tavg = (tastingRated.reduce((s, t) => s + t.rating, 0) / tastingRated.length).toFixed(1);
+          html += `
+            <div class="profil-section" style="animation-delay:0.7s;">
+              <h2>Provningsprotokoll</h2>
+              <div class="profil-stats">
+                <div class="profil-stat"><div class="profil-stat-num">${tastings.length}</div><div class="profil-stat-label">Provningar</div></div>
+                <div class="profil-stat"><div class="profil-stat-num">${tavg}</div><div class="profil-stat-label">Snittbetyg provningar</div></div>
+              </div>
+            </div>`;
+        }
+      }
+
+      container.innerHTML = html;
+    }
+
+    render();
+  </script>
+
+  <footer class="footer" style="padding-bottom:5rem;">
+    <div class="footer-divider"><span class="divider-vine">&#10038;</span></div>
+    <p>Cellar &mdash; Byggt f&ouml;r sommelierer</p>
+  </footer>
+
+  <script src="js/mobile-nav.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+  </script>
+</body>
+</html>
