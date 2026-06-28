@@ -269,7 +269,9 @@
         <span class="api-status off" id="apiStatus">Ej ansluten</span>
       </div>
       <div class="api-key-row">
-        <input type="password" class="api-key-input" id="apiKeyInput" placeholder="sk-ant-...">
+        <input type="text" class="api-key-input" id="apiKeyInput" placeholder="sk-ant-..." style="flex:1;">
+        <button class="api-save-btn" onclick="toggleShowKey()" id="toggleKeyBtn" style="background:var(--earth);min-width:auto;padding:0.5rem 0.7rem;" title="Visa/dölj">👁</button>
+        <button class="api-save-btn" onclick="copyKey()" style="background:var(--moss);min-width:auto;padding:0.5rem 0.7rem;" title="Kopiera">📋</button>
         <button class="api-save-btn" onclick="saveApiKey()">Spara</button>
       </div>
       <p class="api-note">Hämta din nyckel från <a href="https://console.anthropic.com" target="_blank" style="color:var(--wine)">console.anthropic.com</a>. $5 gratis kredit. Nyckeln sparas lokalt.</p>
@@ -312,10 +314,13 @@
     let currentImageBase64 = null;
     const API_KEY_STORAGE = 'cellar-api-key';
 
+    let keyHidden = true;
+
     function loadApiKey() {
       const key = localStorage.getItem(API_KEY_STORAGE);
       if (key) {
-        document.getElementById('apiKeyInput').value = '••••••••••••••••';
+        document.getElementById('apiKeyInput').value = key;
+        hideKey();
         document.getElementById('apiStatus').textContent = 'Ansluten';
         document.getElementById('apiStatus').className = 'api-status on';
         document.getElementById('apiSection').classList.add('connected');
@@ -323,13 +328,48 @@
     }
 
     function saveApiKey() {
-      const key = document.getElementById('apiKeyInput').value.trim();
-      if (!key || key === '••••••••••••••••') return;
+      const input = document.getElementById('apiKeyInput');
+      const key = input.value.trim();
+      if (!key || key.includes('•')) return;
       localStorage.setItem(API_KEY_STORAGE, key);
-      document.getElementById('apiKeyInput').value = '••••••••••••••••';
+      hideKey();
       document.getElementById('apiStatus').textContent = 'Ansluten';
       document.getElementById('apiStatus').className = 'api-status on';
       document.getElementById('apiSection').classList.add('connected');
+    }
+
+    function hideKey() {
+      const input = document.getElementById('apiKeyInput');
+      const key = localStorage.getItem(API_KEY_STORAGE);
+      if (key) {
+        input.value = 'sk-ant-••••••••' + key.slice(-4);
+        input.type = 'text';
+        keyHidden = true;
+      }
+    }
+
+    function toggleShowKey() {
+      const input = document.getElementById('apiKeyInput');
+      const key = localStorage.getItem(API_KEY_STORAGE);
+      if (!key) return;
+      if (keyHidden) {
+        input.value = key;
+        keyHidden = false;
+      } else {
+        hideKey();
+      }
+    }
+
+    function copyKey() {
+      const key = localStorage.getItem(API_KEY_STORAGE);
+      if (!key) { alert('Ingen nyckel sparad.'); return; }
+      navigator.clipboard.writeText(key).then(() => {
+        const btn = event.target;
+        btn.textContent = '✓';
+        setTimeout(() => { btn.textContent = '📋'; }, 1500);
+      }).catch(() => {
+        prompt('Kopiera nyckeln:', key);
+      });
     }
 
     function openCamera() {
