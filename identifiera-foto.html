@@ -481,20 +481,29 @@
                 },
                 {
                   type: 'text',
-                  text: `Analysera denna vinflaska. Svara ENBART med JSON i detta format (ingen annan text):
+                  text: `Du är en erfaren sommelier. Analysera denna vinflaska och ge en professionell presentation som en sommelier skulle ge en gäst. Svara ENBART med JSON:
 {
   "namn": "vinets fullständiga namn",
   "producent": "producent/vingård",
   "region": "region, land",
-  "argang": "årgång eller 'okänd'",
+  "argang": "årgång eller okänd",
   "typ": "rött/vitt/rosé/mousserande",
   "druvor": ["lista", "druvor"],
-  "aromer": "förväntade aromer baserat på druva och region",
-  "matforslag": ["mat 1", "mat 2", "mat 3"],
-  "fakta": "kort beskrivning av vinet, regionen eller producenten",
-  "priskllass": "budget/medel/premium/lyx"
+  "klassificering": "DOC/DOCG/AOC/Grand Cru etc",
+  "alkohol": "volymprocent",
+  "kropp": "lätt/medium/full",
+  "syra": "låg/medium/hög",
+  "tanniner": "låg/medium/hög (för röda)",
+  "sotma": "torrt/halvtorrt/halvsött/sött",
+  "aromer": "detaljerade aromer — primära frukter, sekundära noter, tertiära om lagrat",
+  "smaknot": "en professionell smakbeskrivning i 2-3 meningar, som en sommelier skulle presentera för en gäst",
+  "matforslag": ["rätt 1", "rätt 2", "rätt 3", "rätt 4"],
+  "servering": "optimal serveringstemperatur och glastyp",
+  "lagring": "drickfönster och lagringspotential",
+  "historia": "kort om producenten, regionen eller vinets historia — intressant att berätta för gästen",
+  "prisklass": "budget/medel/premium/lyx"
 }
-Om du inte kan identifiera vinet, gör ditt bästa baserat på vad du ser på etiketten.`
+Ge detaljerad, pålitlig information baserad på druvsort, region och årgång.`
                 }
               ]
             }]
@@ -528,24 +537,62 @@ Om du inte kan identifiera vinet, gör ditt bästa baserat på vad du ser på et
 
     function showResult(wine) {
       const card = document.getElementById('resultCard');
+
+      const meterBar = (label, value, color) => {
+        if (!value || value === '-' || value === 'okänd') return '';
+        const levels = {'låg':20,'medium':55,'hög':90,'lätt':20,'full':90,'torrt':15,'halvtorrt':35,'halvsött':60,'sött':85};
+        const pct = levels[(value||'').toLowerCase()] || 50;
+        return `<div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.3rem;">
+          <span style="font-size:0.78rem;color:var(--text-muted);min-width:65px;">${label}</span>
+          <div style="flex:1;height:6px;background:rgba(0,0,0,0.05);border-radius:3px;overflow:hidden;">
+            <div style="height:100%;width:${pct}%;background:${color};border-radius:3px;"></div>
+          </div>
+          <span style="font-size:0.72rem;color:var(--text-dim);min-width:50px;text-align:right;">${value}</span>
+        </div>`;
+      };
+
       card.innerHTML = `
         <h2 class="result-name">${wine.namn || 'Okänt vin'}</h2>
-        ${wine.producent ? `<div class="result-section"><div class="result-section-title">Producent</div><p>${wine.producent}</p></div>` : ''}
-        <div class="result-section">
-          <div class="result-section-title">Typ & Årgång</div>
-          <p>${wine.typ || ''} ${wine.argang && wine.argang !== 'okänd' ? '· ' + wine.argang : ''}</p>
+        <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.75rem;">${wine.producent || ''} ${wine.argang && wine.argang !== 'okänd' ? '· ' + wine.argang : ''} ${wine.region ? '· ' + wine.region : ''}</p>
+
+        <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:1rem;">
+          ${wine.druvor?.length ? wine.druvor.map(d => `<a href="druvor.html#${encodeURIComponent(d)}" class="result-tag tag-wine">${d}</a>`).join('') : ''}
+          ${wine.klassificering && wine.klassificering !== 'okänd' ? `<span class="result-tag tag-green">${wine.klassificering}</span>` : ''}
+          ${wine.alkohol && wine.alkohol !== 'okänd' ? `<span class="result-tag tag-brown">${wine.alkohol}%</span>` : ''}
+          ${wine.prisklass ? `<span style="font-size:0.7rem;font-weight:500;color:var(--gold-muted);background:rgba(138,109,42,0.08);padding:0.2rem 0.5rem;border-radius:100px;">${wine.prisklass}</span>` : ''}
         </div>
+
+        ${wine.smaknot ? `
         <div class="result-section">
-          <div class="result-section-title">Region</div>
-          <p>${wine.region || 'Okänd'}</p>
-        </div>
-        ${wine.druvor?.length ? `<div class="result-section"><div class="result-section-title">Druvor</div><div class="result-tags">${wine.druvor.map(d => `<a href="druvor.html#${encodeURIComponent(d)}" class="result-tag tag-wine">${d}</a>`).join('')}</div></div>` : ''}
+          <div class="result-section-title">Sommelierens presentation</div>
+          <p style="font-style:italic;border-left:3px solid var(--wine);padding-left:0.75rem;line-height:1.6;">${wine.smaknot}</p>
+        </div>` : ''}
+
+        ${wine.kropp || wine.syra ? `
+        <div class="result-section">
+          <div class="result-section-title">Karaktär</div>
+          ${meterBar('Kropp', wine.kropp, 'var(--gold-muted)')}
+          ${meterBar('Syra', wine.syra, 'var(--moss)')}
+          ${wine.tanniner && wine.tanniner !== '-' ? meterBar('Tanniner', wine.tanniner, 'var(--wine)') : ''}
+          ${meterBar('Sötma', wine.sotma, 'var(--earth)')}
+        </div>` : ''}
+
         ${wine.aromer ? `<div class="result-section"><div class="result-section-title">Aromer</div><p>${wine.aromer}</p></div>` : ''}
-        ${wine.fakta ? `<div class="result-section"><div class="result-section-title">Fakta</div><p>${wine.fakta}</p></div>` : ''}
-        ${wine.matforslag?.length ? `<div class="result-section"><div class="result-section-title">Passar till</div><div class="result-tags">${wine.matforslag.map(m => `<span class="result-tag tag-brown">${m}</span>`).join('')}</div></div>` : ''}
-        ${wine.priskllass ? `<div class="result-section"><div class="result-section-title">Prisklass</div><span class="result-tag tag-green">${wine.priskllass}</span></div>` : ''}
+
+        ${wine.matforslag?.length ? `<div class="result-section"><div class="result-section-title">Matförslag</div><div class="result-tags">${wine.matforslag.map(m => `<span class="result-tag tag-brown">${m}</span>`).join('')}</div></div>` : ''}
+
+        ${wine.servering ? `<div class="result-section"><div class="result-section-title">Servering</div><p>${wine.servering}</p></div>` : ''}
+
+        ${wine.lagring ? `<div class="result-section"><div class="result-section-title">Lagring</div><p>${wine.lagring}</p></div>` : ''}
+
+        ${wine.historia ? `
+        <div class="result-section">
+          <div class="result-section-title">Berättelsen bakom vinet</div>
+          <p style="font-style:italic;color:var(--text-dim);line-height:1.6;">${wine.historia}</p>
+        </div>` : ''}
+
         <div style="margin-top:1.25rem;text-align:center;">
-          <button class="upload-btn btn-file" onclick="resetUpload()">Analysera en till</button>
+          <button onclick="resetUpload()" style="padding:0.65rem 1.5rem;font-family:var(--font-body);font-size:0.85rem;font-weight:500;color:var(--text-muted);background:transparent;border:1px solid var(--border);border-radius:100px;cursor:pointer;">Analysera ett till vin</button>
         </div>
       `;
       card.classList.add('show');
