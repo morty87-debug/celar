@@ -81,7 +81,8 @@
     }
 
     .upload-area {
-      border: 2px dashed var(--border);
+      background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 2.5rem 1.5rem;
       text-align: center;
@@ -89,28 +90,32 @@
       transition: all 0.3s;
       margin-bottom: 1rem;
     }
-    .upload-area:hover { border-color: var(--border-hover); background: var(--surface); }
-    .upload-area.dragover { border-color: var(--wine); background: rgba(107,30,46,0.04); }
-    .upload-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .upload-area:hover { border-color: var(--border-hover); background: var(--surface-hover); box-shadow: 0 4px 16px rgba(0,0,0,0.04); }
+    .upload-area.dragover { border-color: var(--wine); background: rgba(139,26,43,0.04); }
+    .upload-icon {
+      width: 48px; height: 48px; margin: 0 auto 0.75rem;
+      color: var(--wine); opacity: 0.7;
+    }
     .upload-text {
       font-family: var(--font-display);
-      font-size: 1.1rem;
-      color: var(--sand-light);
-      margin-bottom: 0.3rem;
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 0.25rem;
     }
-    .upload-sub { font-size: 0.8rem; color: var(--text-dim); }
-    .upload-btn-row { display: flex; gap: 0.5rem; justify-content: center; margin-top: 1rem; }
+    .upload-sub { font-size: 0.78rem; color: var(--text-dim); }
+    .upload-btn-row { display: flex; gap: 0.5rem; justify-content: center; margin-top: 1.25rem; }
     .upload-btn {
-      padding: 0.6rem 1.2rem;
+      padding: 0.7rem 1.5rem;
       font-family: var(--font-body);
       font-size: 0.85rem;
       font-weight: 500;
-      border-radius: var(--radius-sm);
+      border-radius: 100px;
       cursor: pointer;
       transition: all 0.3s;
     }
     .btn-camera { color: #fff; background: var(--wine); border: none; }
-    .btn-camera:hover { background: var(--wine-light); }
+    .btn-camera:hover { background: var(--wine-light); transform: translateY(-1px); }
     .btn-file { color: var(--text-muted); background: transparent; border: 1px solid var(--border); }
     .btn-file:hover { border-color: var(--border-hover); }
 
@@ -146,20 +151,25 @@
 
     .loading {
       text-align: center;
-      padding: 2rem;
+      padding: 3rem 1rem;
       display: none;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 1rem;
     }
     .loading.show { display: block; }
     .spinner {
-      width: 40px; height: 40px;
-      border: 3px solid var(--border);
+      width: 36px; height: 36px;
+      border: 2.5px solid var(--border);
       border-top-color: var(--wine);
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
       margin: 0 auto 1rem;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
-    .loading-text { font-size: 0.88rem; color: var(--text-muted); }
+    .loading-text { font-size: 0.85rem; color: var(--text-muted); font-family: var(--font-body); }
+    .loading-sub { font-size: 0.72rem; color: var(--text-dim); margin-top: 0.3rem; }
 
     .result-card {
       background: var(--surface);
@@ -264,25 +274,32 @@
 
   <div class="foto-container">
     <div class="api-key-section" id="apiSection">
-      <div class="api-key-label">
-        API-nyckel
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.4rem;">
+        <span class="api-key-label" style="margin-bottom:0;">API-nyckel</span>
         <span class="api-status off" id="apiStatus">Ej ansluten</span>
       </div>
       <div class="api-key-row">
-        <input type="text" class="api-key-input" id="apiKeyInput" placeholder="sk-ant-..." style="flex:1;">
-        <button class="api-save-btn" onclick="toggleShowKey()" id="toggleKeyBtn" style="background:var(--earth);min-width:auto;padding:0.5rem 0.7rem;" title="Visa/dölj">👁</button>
-        <button class="api-save-btn" onclick="copyKey()" style="background:var(--moss);min-width:auto;padding:0.5rem 0.7rem;" title="Kopiera">📋</button>
+        <input type="text" class="api-key-input" id="apiKeyInput" placeholder="Klistra in din API-nyckel här..." style="flex:1;">
         <button class="api-save-btn" onclick="saveApiKey()">Spara</button>
       </div>
-      <p class="api-note">Hämta din nyckel från <a href="https://console.anthropic.com" target="_blank" style="color:var(--wine)">console.anthropic.com</a>. $5 gratis kredit. Nyckeln sparas lokalt.</p>
+      <div style="display:flex;gap:0.4rem;margin-top:0.4rem;">
+        <button onclick="toggleShowKey()" style="font-size:0.72rem;color:var(--text-dim);background:none;border:1px solid var(--border);border-radius:6px;padding:0.25rem 0.5rem;cursor:pointer;" title="Visa/dölj nyckel">Visa nyckel</button>
+        <button onclick="copyKey()" style="font-size:0.72rem;color:var(--text-dim);background:none;border:1px solid var(--border);border-radius:6px;padding:0.25rem 0.5rem;cursor:pointer;" title="Kopiera nyckel">Kopiera</button>
+      </div>
+      <p class="api-note">Nyckeln sparas lokalt i din webbläsare. <a href="https://console.anthropic.com/settings/keys" target="_blank" style="color:var(--wine);">Hämta nyckel →</a></p>
     </div>
 
     <div class="upload-area" id="uploadArea">
-      <div class="upload-icon">📷</div>
+      <div class="upload-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z"/>
+          <path d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z"/>
+        </svg>
+      </div>
       <div class="upload-text">Fota eller ladda upp en vinflaska</div>
-      <div class="upload-sub">Klicka, dra och släpp, eller använd kameran</div>
+      <div class="upload-sub">AI:n identifierar vin, druvor, region och matförslag</div>
       <div class="upload-btn-row">
-        <button class="upload-btn btn-camera" onclick="openCamera()">Kamera</button>
+        <button class="upload-btn btn-camera" onclick="openCamera()">📷 Kamera</button>
         <button class="upload-btn btn-file" onclick="openFile()">Välj bild</button>
       </div>
     </div>
@@ -297,7 +314,8 @@
 
     <div class="loading" id="loading">
       <div class="spinner"></div>
-      <div class="loading-text">Analyserar etiketten...</div>
+      <div class="loading-text">Analyserar etiketten</div>
+      <div class="loading-sub">AI:n läser druva, region, aromer och matförslag</div>
     </div>
 
     <div class="error-msg" id="errorMsg"></div>
