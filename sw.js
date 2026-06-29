@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cellar-v3';
+const CACHE_NAME = 'cellar-v4';
 const ASSETS = [
   './',
   './index.html',
@@ -33,6 +33,7 @@ const ASSETS = [
   './terminsprov.html',
   './smakprofil.html',
   './vinlista.html',
+  './provningsledare.html',
   './icons/icon-512.png'
 ];
 
