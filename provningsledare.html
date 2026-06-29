@@ -63,9 +63,15 @@
     .ts-field textarea { height:60px; resize:vertical; }
     .ts-group { margin:0.75rem 0; }
     .ts-group-title { font-family:var(--font-display); font-size:0.95rem; font-weight:500; color:var(--wine); margin-bottom:0.4rem; padding-bottom:0.25rem; border-bottom:1px solid var(--border); }
-    .ts-score-row { display:flex; gap:0.5rem; align-items:center; margin-bottom:0.35rem; flex-wrap:wrap; }
-    .ts-score-row span { font-family:var(--font-body); font-size:0.8rem; color:var(--text); min-width:100px; }
-    .ts-score-row select { font-family:var(--font-body); font-size:0.8rem; padding:0.25rem 0.4rem; border:1px solid var(--border); border-radius:6px; background:var(--bg); color:var(--text); }
+    .ts-radio-row { display:flex; gap:0.5rem; align-items:center; margin-bottom:0.35rem; flex-wrap:wrap; }
+    .ts-radio-row .row-label { font-family:var(--font-body); font-size:0.8rem; color:var(--text); min-width:100px; font-weight:500; }
+    .ts-radio-row label { font-family:var(--font-body); font-size:0.78rem; color:var(--text-muted); display:inline-flex; align-items:center; gap:0.2rem; cursor:pointer; }
+    .ts-radio-row input[type="radio"] { accent-color:var(--wine); }
+    .ts-stars { display:inline-flex; gap:0.15rem; font-size:1.3rem; cursor:pointer; }
+    .ts-stars .star { color:var(--border); transition:color 0.2s; }
+    .ts-stars .star.active { color:var(--wine); }
+    .ts-free-text { width:100%; font-family:var(--font-body); font-size:0.82rem; padding:0.4rem 0.6rem; border:1px solid var(--border); border-radius:var(--radius-sm); background:var(--bg); color:var(--text); min-height:50px; resize:vertical; }
+    .ts-color-hint { font-family:var(--font-body); font-size:0.75rem; color:var(--text-dim); margin-top:0.15rem; }
 
     /* Two column word bank */
     .word-cols { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
@@ -78,7 +84,21 @@
     /* Numbered principle cards */
     .principle-card { display:flex; gap:0.75rem; align-items:flex-start; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:1rem 1.25rem; margin-bottom:0.6rem; }
     .principle-num { font-family:var(--font-display); font-size:1.5rem; font-weight:300; color:var(--wine); line-height:1; min-width:1.5rem; text-align:center; }
+    .principle-text h4 { font-family:var(--font-display); font-size:1rem; font-weight:500; color:var(--sand-light); margin-bottom:0.3rem; }
+    .principle-text p { font-family:var(--font-body); font-size:0.85rem; color:var(--text); line-height:1.6; margin-bottom:0.3rem; }
     .principle-text { font-family:var(--font-body); font-size:0.85rem; color:var(--text); line-height:1.5; }
+
+    /* Checklist */
+    .checklist { list-style:none; padding:0; }
+    .checklist li { font-family:var(--font-body); font-size:0.85rem; color:var(--text); padding:0.35rem 0 0.35rem 0; line-height:1.5; }
+
+    /* Summary sheet */
+    .summary-sheet { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:1.5rem; margin-bottom:1rem; }
+    .summary-sheet h2 { font-family:var(--font-display); font-size:1.3rem; font-weight:400; color:var(--sand-light); margin-bottom:1rem; text-align:center; }
+    .summary-field { margin-bottom:0.75rem; }
+    .summary-field label { display:block; font-family:var(--font-body); font-size:0.8rem; font-weight:500; color:var(--wine); margin-bottom:0.2rem; }
+    .summary-field textarea { width:100%; font-family:var(--font-body); font-size:0.82rem; padding:0.4rem 0.6rem; border:1px solid var(--border); border-radius:var(--radius-sm); background:var(--bg); color:var(--text); height:50px; resize:vertical; }
+    .summary-field input { width:100%; font-family:var(--font-body); font-size:0.82rem; padding:0.4rem 0.6rem; border:1px solid var(--border); border-radius:var(--radius-sm); background:var(--bg); color:var(--text); }
 
     /* Print styles */
     @media print {
@@ -87,7 +107,7 @@
       .pl-section { display:none !important; }
       .pl-section.print-active { display:block !important; }
       .pl-main { max-width:100%; padding:0; margin:0; }
-      .pl-card, .tasting-sheet, .principle-card { break-inside:avoid; border-color:#ccc; background:#fff; box-shadow:none; backdrop-filter:none; }
+      .pl-card, .tasting-sheet, .principle-card, .summary-sheet { break-inside:avoid; border-color:#ccc; background:#fff; box-shadow:none; backdrop-filter:none; }
       .pl-table th { background:#8B1A2B !important; color:#fff !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
       * { color:#000 !important; }
       .pl-table th, .pl-table th * { color:#fff !important; }
@@ -124,306 +144,1099 @@
 
   <main class="pl-main">
 
+    <!-- ═══════════════════════════════════════════════════════ -->
     <!-- ═══ LEDARMANUS ═══ -->
+    <!-- ═══════════════════════════════════════════════════════ -->
     <section class="pl-section active" id="sec-ledarmanus">
       <button class="print-btn" onclick="printSection('ledarmanus')">&#x1F5A8; Skriv ut denna sektion</button>
 
+      <!-- Intro -->
       <div class="pl-card">
-        <h2>Förberedelser</h2>
-        <ul>
-          <li>4-6 viner per provning</li>
-          <li>5-7 cl per vin per person</li>
-          <li>En 75cl flaska räcker 10-12 smakprov</li>
-          <li>Samma glas till alla</li>
-          <li>Vatten rikligt, ett per person</li>
-          <li>Spottkärl — helt ok att spotta, säg det högt</li>
-          <li>Temperatur: vitt 8-10°C, rött 16-18°C, mousserande 6-8°C</li>
-        </ul>
+        <h2>Att hålla vinprovning</h2>
+        <p><em>Den kompletta guiden för dig som leder — från första flaskan till sista skålen</em></p>
+
+        <h3>Så här använder du paketet</h3>
+        <p>Det här är ett av fem dokument. De andra är Provningsprotokoll (ett per deltagare), Vin &amp; mat, Vin &amp; ost och Vin &amp; mousserande.</p>
+        <p>Manuset är byggt som en mall: själva ramen — ordning, talmanus, tider — är densamma varje gång. Du byter bara ut vinerna. Längst bak finns en ifyllbar planeringsmall.</p>
+        <p>Allt du läser högt för gruppen står i grå talmanus-rutor. Du kan läsa rakt av — eller göra det till ditt eget.</p>
       </div>
 
+      <!-- Vad du håller i handen -->
       <div class="pl-card">
-        <h2>Ordning — från lätt till kraftigt</h2>
+        <h2>Vad du håller i handen</h2>
+        <p>Du behöver inte vara sommelier för att leda en bra provning. Du behöver en plan, en ordning och några frågor på fickan. Det här dokumentet ger dig alltihop.</p>
+        <p>Manuset är upplagt i den ordning kvällen faktiskt sker:</p>
         <ul>
-          <li>Torrt före sött</li>
-          <li>Lätt före kraftigt</li>
-          <li>Vitt före rött (vanligtvis)</li>
-          <li>Ungt före lagrat</li>
-          <li>Enkelt före komplext</li>
+          <li><strong>1. Förberedelser</strong> — inköp, glas, temperatur, dukning. Allt klart innan gästerna kommer.</li>
+          <li><strong>2. Upplägg &amp; teman</strong> — välj en av de färdiga provningarna eller bygg en egen.</li>
+          <li><strong>3. Körschema</strong> — minut-för-minut så du alltid vet vad som händer härnäst.</li>
+          <li><strong>4. Talmanus</strong> — vad du säger när ni tittar, doftar och smakar.</li>
+          <li><strong>5. Håll det intressant</strong> — frågor, lekar och knep för både nybörjare och vinvana.</li>
+          <li><strong>6. Mat &amp; ost</strong> — hur du väver in de två moduldokumenten.</li>
+          <li><strong>7. Planeringsmall</strong> — fyll i, kopiera, kör igen med nya viner.</li>
         </ul>
+
+        <h3>Den enda regel som betyder något</h3>
+        <p>Vin är först och främst en njutningsdryck. Tekniken är till för att ge ord åt det man känner — inte för att någon ska känna sig dum. Om någon säger "det smakar gott" är det ett helt giltigt svar. Din uppgift är att hjälpa dem hitta nästa ord.</p>
       </div>
 
+      <!-- 1. Förberedelser -->
       <div class="pl-card">
-        <h2>Körschema (tidsplan)</h2>
+        <h2>1. Förberedelser</h2>
+
+        <h3>Hur många viner och hur mycket?</h3>
+        <p>Sikta på 4-6 viner. Det ger bredd nog att jämföra utan att näsan tröttnar. Färre än fyra blir tunt, fler än sex blir svårt att hålla fokus på.</p>
+
         <table class="pl-table">
-          <thead><tr><th>Tid</th><th>Moment</th></tr></thead>
+          <thead><tr><th>Per person</th><th>Praktiskt</th></tr></thead>
           <tbody>
-            <tr><td>0:00</td><td>Välkomsthälsning, tema, regler</td></tr>
-            <tr><td>0:05</td><td>Vin 1 — titta, dofta, smaka</td></tr>
-            <tr><td>0:17</td><td>Vin 2 — jämför med vin 1</td></tr>
-            <tr><td>0:30</td><td>Paus — vatten, bröd</td></tr>
-            <tr><td>0:38</td><td>Vin 3</td></tr>
-            <tr><td>0:50</td><td>Vin 4 — jämför med vin 3</td></tr>
-            <tr><td>1:05</td><td>Mat/ost (om modul används)</td></tr>
-            <tr><td>1:25</td><td>Ranking, avrundning</td></tr>
+            <tr><td>Provningsmått: 5-7 cl per vin</td><td>En 75 cl-flaska räcker till ca 10-12 smakprov</td></tr>
+            <tr><td>6 viner, 8 gäster</td><td>Räkna med 4-5 flaskor totalt om alla smakar allt</td></tr>
+            <tr><td>Vatten: rikligt</td><td>Ett vattenglas per person, fyll på ofta</td></tr>
+            <tr><td>Spottkärl: 1 delat eller eget</td><td>Helt ok att spotta — säg det högt så ingen skäms</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Glas</h3>
+        <ul>
+          <li>Samma sorts glas till alla viner. Formen påverkar upplevelsen, så likadana glas gör jämförelsen rättvis.</li>
+          <li>Ett bra vitvinsglas fungerar utmärkt till allt. Du behöver inget sommelierkit. (Undantag: för mousserande är tulpanglas bäst — se modulen Vin &amp; mousserande.)</li>
+          <li>Ett glas per vin är bäst — då kan man gå tillbaka och jämföra. Går inte det: ha minst två glas per person och skölj med vatten mellan vinerna.</li>
+          <li>Numrera glasen med ringar, tejp eller en bit maskeringstejp så ingen tappar bort vilket vin som är vilket.</li>
+        </ul>
+
+        <h3>Serveringstemperatur</h3>
+        <p>För kallt dödar doften, för varmt gör vinet platt och alkoholigt. Ta fram vinerna i god tid.</p>
+        <table class="pl-table">
+          <thead><tr><th>Vintyp</th><th>Temperatur</th><th>Knep</th></tr></thead>
+          <tbody>
+            <tr><td>Mousserande &amp; champagne</td><td>6-10 &deg;C</td><td>Ishink: hälften vatten + is, ca 30 min. Mogen champagne i övre spännet</td></tr>
+            <tr><td>Friska vita &amp; rosé</td><td>8-10 &deg;C</td><td>Ur kylen 15-20 min innan</td></tr>
+            <tr><td>Fylliga/ekade vita</td><td>10-12 &deg;C</td><td>Ur kylen 30 min innan</td></tr>
+            <tr><td>Lätta röda</td><td>12-14 &deg;C</td><td>10 min i kylen om rummet är varmt</td></tr>
+            <tr><td>Fylliga röda</td><td>16-18 &deg;C</td><td>Rumstempererat — men inte 22 &deg;C</td></tr>
+          </tbody>
+        </table>
+
+        <div class="pl-quote">
+          <div class="label">Lufta de röda</div>
+          <p>Öppna kraftiga röda viner minst 30 minuter innan provningen, gärna i karaff. Luften mjukar upp sträva tanniner och får doften att öppna sig.</p>
+        </div>
+
+        <h3>Dukning — checklista</h3>
+        <ul>
+          <li>Vit duk eller vita papper under glasen, så ni kan bedöma färgen mot ljus bakgrund.</li>
+          <li>Bra, neutralt ljus. Tänd gärna stearinljus senare på kvällen — men inte doftljus, de stör näsan.</li>
+          <li>Neutralt tilltugg att nollställa med: osaltade kex, en bit ljust bröd, ev. mild ost. Inget starkt.</li>
+          <li>Penna + provningsprotokoll vid varje plats (det separata deltagardokumentet).</li>
+          <li>Vattenkaraff och spottkärl inom räckhåll.</li>
+          <li>1-2 alkoholfria alternativ — en genomtänkt must, alkoholfri mousserande eller mousserande te är faktiskt kul att prova också.</li>
+        </ul>
+
+        <div class="pl-quote">
+          <div class="label">Sätt tonen redan i inbjudan</div>
+          <p>Be gästerna att inte parfymera sig och att inte förfesta. Skriv gärna: "Provning först, mat efteråt, det är helt ok att spotta." Det tar bort prestige innan ni ens börjat.</p>
+        </div>
+
+        <h3>Att spotta — och varför det inte är konstigt</h3>
+        <p>Att spotta är normalt på varje seriös provning — det är så man orkar smaka 6 viner och fortfarande känna det sjätte. Visa hur, så vågar fler:</p>
+        <ul>
+          <li>Ta en liten klunk, låt den gå runt i munnen, andas ut genom näsan, och spotta sedan i en riktad stråle ner i kärlet.</li>
+          <li>Ett ogenomskinligt kärl (en kaffemugg, en liten kanna) gör det mindre utställt. Ett delat är ok, eget är trevligare.</li>
+          <li>Säg högt att du själv tänker spotta — då följer andra efter utan att skämmas.</li>
+        </ul>
+
+        <h3>När ett vin är trasigt</h3>
+        <p>Ungefär en flaska på tjugo med naturkork har något fel. Som ledare bör du känna igen de två vanligaste — och inte tveka att öppna en reservflaska.</p>
+        <table class="pl-table">
+          <thead><tr><th>Fel</th><th>Så märks det</th><th>Gör så här</th></tr></thead>
+          <tbody>
+            <tr><td>Korkfel (TCA)</td><td>Doft av blöt kartong, fuktig källare, "våt hund". Frukten är dämpad eller död, vinet känns platt.</td><td>Öppna en ny flaska. Inte farligt — men förstört. Köpt nyligen? Systembolaget tar tillbaka.</td></tr>
+            <tr><td>Oxidation</td><td>Brunaktig färg, doft av äppelskrutt/sherry, frukten borta, smaken besk och platt.</td><td>Slå ut det. (Avsiktlig oxidation i t.ex. sherry doftar trevligare.)</td></tr>
+          </tbody>
+        </table>
+
+        <div class="pl-quote">
+          <div class="label">Knep för att vara säker</div>
+          <p>Misstänker du korkfel — låt vinet stå några minuter i glaset. Är det korkat rasar frukten snabbt och blir bara sämre. Ett friskt men slutet vin öppnar sig istället.</p>
+        </div>
+      </div>
+
+      <!-- 2. Välj upplägg och tema -->
+      <div class="pl-card">
+        <h2>2. Välj upplägg och tema</h2>
+        <p>Ett tydligt tema är den röda tråden som gör kvällen begriplig. Det hjälper gästerna veta vad de letar efter och gör att vinerna går att jämföra med varandra.</p>
+
+        <h3>Öppet eller blint?</h3>
+        <table class="pl-table">
+          <thead><tr><th>Variant</th><th>Så funkar det</th><th>Passar</th></tr></thead>
+          <tbody>
+            <tr><td>Öppen provning</td><td>Etiketterna syns. Enklast, mest lärorikt för nybörjare.</td><td>Första gången / blandad grupp</td></tr>
+            <tr><td>Halvblind</td><td>Man vet vilka viner som ingår, men inte i vilken ordning.</td><td>När ni vill ha lite tävling utan press</td></tr>
+            <tr><td>Blind</td><td>Flaskorna döljs i påsar/strumpor. Alla viner får samma chans.</td><td>Vana gäster, gissningstema</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Sex färdiga teman — byt bara ut vinerna</h3>
+        <p>Var och en är byggd "lätt till kraftigt", vilket alltid är rätt smakordning (mer om det i avsnitt 3).</p>
+
+        <p><strong>A. Bara vitt — "från friskt till fylligt"</strong><br>
+        Visar hur mycket vitt vin kan variera. Förslag på stilföljd: en frisk Sauvignon Blanc &rarr; en Riesling &rarr; en oekad Chardonnay &rarr; en ekad/fatlagrad Chardonnay.</p>
+
+        <p><strong>B. Bara rött — "lätt till kraftigt"</strong><br>
+        Lär gruppen känna tanniner och kropp. Förslag: Pinot Noir &rarr; Sangiovese (t.ex. Chianti) &rarr; Syrah/Shiraz &rarr; Cabernet Sauvignon eller Malbec.</p>
+
+        <p><strong>C. Hälften vitt, hälften rött — "hela resan"</strong><br>
+        Två vita först (friskt &rarr; fylligt), sedan två röda (lätt &rarr; kraftigt). Bra första provning eftersom alla hittar något de gillar.</p>
+
+        <p><strong>D. Bubbel — "vägen till champagne"</strong><br>
+        Jämför hur bubblan görs: Prosecco (stora, fruktiga bubblor) &rarr; Cava (torrare, mineralisk) &rarr; Champagne (brödig, komplex). En klassisk aha-upplevelse. Se den egna modulen Vin &amp; mousserande för glasval, vad man bedömer i bubbel och ett färdigt upplägg.</p>
+
+        <p><strong>E. En druva — tre platser</strong><br>
+        Samma druva från olika länder visar hur klimat formar vinet. T.ex. Chardonnay från Chablis, ett varmare Nya världen-läge och något däremellan. Inled med några ord om klimat.</p>
+
+        <p><strong>F. Pris-tema — "säger dyrare alltid bättre?"</strong><br>
+        Samma stil i olika prisklasser, gärna blint. Alltid roligt och ofta förlösande — det dyraste vinner inte alltid.</p>
+
+        <div class="pl-quote">
+          <div class="label">Ta med en "joker"</div>
+          <p>Överväg att smöga in ett vin som avviker lite från temat — en ovanlig druva, en udda årgång. Det väcker diskussion och ger kvällen en pratstartare.</p>
+        </div>
+
+        <p>Vill du ha fakta om enskilda druvor, regioner och typiska aromer att förbereda dig med? Använd Cellar-appens avsnitt Druvor, Länder och Mat &amp; Vin när du planerar vilka viner som ska ingå.</p>
+      </div>
+
+      <!-- 3. Körschema -->
+      <div class="pl-card">
+        <h2>3. Körschema för kvällen</h2>
+        <p>Räkna ca 10 minuter per vin plus en paus i mitten. En provning med 5-6 viner landar på 75-90 minuter, sedan går ni gärna över till mat och fri diskussion.</p>
+
+        <table class="pl-table">
+          <thead><tr><th>Tid</th><th>Moment</th><th>Vad du gör</th></tr></thead>
+          <tbody>
+            <tr><td>0:00</td><td>Välkommen</td><td>Hälsa, dela ut protokoll, förklara kvällens tema och spelregler (1 min, se talmanus)</td></tr>
+            <tr><td>0:05</td><td>Glaset i handen</td><td>Häll upp vin 1 åt alla INNAN du börjar prata. Ingen ska titta på ett tomt glas.</td></tr>
+            <tr><td>0:07</td><td>Vin 1</td><td>Titta &rarr; dofta &rarr; smaka &rarr; prata. Följ talmanuset i avsnitt 4.</td></tr>
+            <tr><td>0:17</td><td>Vin 2</td><td>Samma metod. Jämför gärna mot vin 1.</td></tr>
+            <tr><td>0:27</td><td>Vin 3</td><td>Samma metod.</td></tr>
+            <tr><td>0:37</td><td>PAUS</td><td>10 min. Vatten, frisk luft, sträck på benen. Näsan behöver vila.</td></tr>
+            <tr><td>0:47</td><td>Vin 4-6</td><td>Fortsätt mot de kraftigare vinerna.</td></tr>
+            <tr><td>1:20</td><td>Sammanfattning</td><td>Favorit? Största överraskningen? Avslöja ev. blinda viner &amp; priser.</td></tr>
+            <tr><td>1:30</td><td>Mat / ost</td><td>Gå över till mat- eller ostmodulen, eller servera resten till maten.</td></tr>
+          </tbody>
+        </table>
+
+        <div class="pl-quote">
+          <div class="label">Gyllene regeln för värdskap</div>
+          <p>Se alltid till att folk har lite vin i glaset — och låt dem titta, dofta och smaka själva innan du berättar allt om vinet. Det finns inget tråkigare än att sitta med ett fullt glas och lyssna på någon prata i fem minuter.</p>
+        </div>
+      </div>
+
+      <!-- 4. Talmanus -->
+      <div class="pl-card">
+        <h2>4. Talmanus — metoden steg för steg</h2>
+        <p>Presentera EN enkel metod och upprepa den för varje vin. Det skapar lugn och gör vinerna jämförbara. De grå rutorna kan du läsa rakt av.</p>
+
+        <h3>Välkomstord</h3>
+        <div class="pl-quote">
+          <div class="label">Säg ungefär så här</div>
+          <p>"Välkomna! Ikväll ska vi smaka [antal] viner på temat [tema]. Vi tar dem i tur och ordning, från det lättaste till det kraftigaste. För varje vin gör vi samma sak: vi tittar, vi doftar, vi smakar, och sen pratar vi om det.</p>
+          <p style="margin-top:0.4rem;">Det finns inga fel svar. Känner du blåbär där jag känner körsbär så har du rätt — vi känner alla olika. Det är helt ok att spotta, och det är helt ok att bara tycka att något är gott. Skål och så sätter vi igång!"</p>
+        </div>
+
+        <h3>Steg 1 — Titta (utseende)</h3>
+        <p>Låt alla hålla glaset mot den vita duken eller ett papper och luta det lite.</p>
+        <div class="pl-quote">
+          <div class="label">Frågor att ställa högt</div>
+          <p>"Hur intensiv är färgen — ljus och genomskinlig, eller mörk och tät?"</p>
+          <p style="margin-top:0.3rem;">"Vilken nyans? (vitt: citrongult &rarr; guldgult &rarr; bärnsten. rött: purpur/rubin &rarr; granat &rarr; tegel.)"</p>
+        </div>
+        <p><strong>Tips att dela:</strong> i rött vin avslöjar kanten ålder — blå/lila ton = ungt, tegel/brun ton = moget.</p>
+
+        <h3>Steg 2 — Dofta (näsa)</h3>
+        <p>Först en försiktig doft utan att snurra glaset. Snurra sedan för att frigöra aromer och dofta igen.</p>
+        <div class="pl-quote">
+          <div class="label">Frågor att ställa högt</div>
+          <p>"Vad är det första du känner? Säg det rakt ut, första intrycket är ofta rätt."</p>
+          <p style="margin-top:0.3rem;">"Hittar ni någon frukt eller bär? Någon ört eller krydda? Känns det av ek — vanilj, röst, kola?"</p>
+        </div>
+        <p><strong>För vana gäster:</strong> skilj på primära (frukt från druvan), sekundära (från jäsning/ek) och tertiära (från lagring — t.ex. läder, törkad frukt) aromer.</p>
+
+        <h3>Steg 3 — Smaka (gom)</h3>
+        <p>Ta en rejäl klunk, lite större än vanligt, och låt vinet gå runt i hela munnen innan ni sväljer eller spottar. Andas ut genom näsan efteråt — då kommer eftersmaken fram.</p>
+        <div class="pl-quote">
+          <div class="label">Det här letar vi efter (i den här ordningen)</div>
+          <p><strong>Sötma:</strong> torrt eller finns det sötma?<br>
+          <strong>Syra:</strong> får det munnen att vattnas? (hög = friskt och pigg)<br>
+          <strong>Tanniner (bara rött):</strong> den sträva, lite torra känslan på tandköttet. Låg, medel eller hög?<br>
+          <strong>Kropp:</strong> känns vinet lätt som lättmjölk, eller fylligt som grädde?<br>
+          <strong>Längd:</strong> hur länge sitter smaken kvar efteråt? Räkna sekunderna — kort (5-8 s), medel (8-12 s), lång (&gt;12 s). Längre = oftast finare vin.<br>
+          <strong>Balans:</strong> spänner allt ihop, eller stack något ut (för surt, för alkoholigt)?</p>
+        </div>
+
+        <h3>Steg 4 — Prata &amp; sammanfatta</h3>
+        <p>Nu är det fritt fram att prata. Det är här kvällen lever. Låt gärna alla först bilda sig en egen uppfattning under tystnad, och öppna sedan för diskussion.</p>
+        <div class="pl-quote">
+          <div class="label">Avrundande frågor per vin</div>
+          <p>"Tyckte ni om det — och varför? Det är den viktigaste frågan."</p>
+          <p style="margin-top:0.3rem;">"Vad skulle ni vilja äta till det här vinet?" (bra brygga till mat-modulen)</p>
+          <p style="margin-top:0.3rem;">"På en skala 1-5 — vad ger ni det?" Låt alla säga sin siffra.</p>
+        </div>
+      </div>
+
+      <!-- 5. Håll det intressant -->
+      <div class="pl-card">
+        <h2>5. Så håller du det intressant</h2>
+        <p>Skillnaden mellan en provning och en bra provning är oftast inte vinerna — det är samtalet runt dem.</p>
+
+        <h3>För blandade grupper</h3>
+        <ul>
+          <li>Använd känslofrågor, inte bara faktafrågor. "Vilket vin påminner er om sommaren?" eller "Vilket skulle ni ta med på picknick?" får igång även den som aldrig provat vin.</li>
+          <li>Låt alla gissa före avslöjandet. Pris, land eller druva — gissa först, avslöja sen. Ger en liten kick av tävling.</li>
+          <li>Jämför två viner sida vid sida. "Vilket är syrligast?" "Vilket är kraftigast?" Kontraster är mycket lättare att känna än något isolerat.</li>
+          <li>Ranka i slutet. Låt var och en sätta sin topp-3. Ofta vinner inte det dyraste — och det är poängen.</li>
+        </ul>
+
+        <h3>För den vinvane gästen</h3>
+        <ul>
+          <li>Bjud på en liten utmaning: en blind "joker", eller frågan "gamla eller nya världen?"</li>
+          <li>Låt dem gärna bidra — be någon van gäst beskriva ett vin med egna ord. Det höjer hela bordet.</li>
+          <li>Väv in en fakta-pärla per vin: ett knep, en region, en historia. Lagom — inte en föreläsning.</li>
+        </ul>
+
+        <h3>Små knep som räddar stämningen</h3>
+        <table class="pl-table">
+          <thead><tr><th>Situation</th><th>Vad du gör</th></tr></thead>
+          <tbody>
+            <tr><td>Det blir tyst / spänt</td><td>Ställ en låg-insats-fråga: "Frukt eller inte frukt?" Alla vågar svara.</td></tr>
+            <tr><td>Någon dominerar</td><td>"Vi tar ett varv — ett ord var på det här vinet."</td></tr>
+            <tr><td>Någon känner sig dum</td><td>Upprepa: "Det finns inga fel. Näsan behöver träning, inte talang."</td></tr>
+            <tr><td>Energin sjunker</td><td>Gör pausen, eller häll upp nästa vin direkt — nytt vin = ny energi.</td></tr>
+            <tr><td>Någon blir för full</td><td>Det är därför ni har vatten, bröd och spottkärl. Erbjud diskret.</td></tr>
           </tbody>
         </table>
       </div>
 
+      <!-- 6. Mat och ost -->
       <div class="pl-card">
-        <h2>Talmanus — vad du säger vid varje steg</h2>
-        <div class="pl-quote">
-          <div class="label">Välkomst</div>
-          <p>"Välkomna! Ikväll ska vi prova [antal] viner med temat [tema]. Ni har ett provningsblad framför er — fyll i det medan vi kör. Det finns inga fel svar."</p>
-        </div>
-        <div class="pl-quote">
-          <div class="label">Titta</div>
-          <p>"Häll upp en skvätt och luta glaset mot en vit bakgrund. Vad ser ni? Är det ljust eller mörkt? Klart eller grumligt?"</p>
-        </div>
-        <div class="pl-quote">
-          <div class="label">Dofta</div>
-          <p>"Dofta först utan att snurra. Sedan snurra glaset tre-fyra varv och dofta igen. Vad kommer? Frukt? Blommor? Kryddor?"</p>
-        </div>
-        <div class="pl-quote">
-          <div class="label">Smaka</div>
-          <p>"Ta en liten klunk. Låt vinet röra sig i hela munnen. Hur känns syran? Tanninerna? Hur lång är eftersmaken?"</p>
-        </div>
+        <h2>6. Att väva in mat och ost</h2>
+        <p>De två separata moduldokumenten — Vin &amp; mat och Vin &amp; ost — är byggda för att haka på efter själva provningen. Här är hur du får ihop helheten.</p>
+
+        <h3>Två sätt att köra</h3>
+        <ul>
+          <li><strong>Provning först, mat sen.</strong> Smaka vinerna rent, sammanfatta, och servera sedan mat/ost och prova samma viner igen. Gästerna får då uppleva hur samma vin förändras med mat — ofta kvällens största aha.</li>
+          <li><strong>Parallellt tema.</strong> Lägg upp provningen som en mat- eller ostprovning från start, där varje vin har sin tugga bredvid sig.</li>
+        </ul>
+
+        <h3>De tre principerna du behöver kunna</h3>
+        <p>Allt i mat- och ostmodulerna bygger på dessa. Lär dig dem så kan du improvisera:</p>
+        <ol>
+          <li><strong>Matcha tyngd med tyngd</strong> — Lätt mat &rarr; lätt vin. Kraftig mat &rarr; kraftigt vin. Det vin eller den rätt som är svagast försvinner annars.</li>
+          <li><strong>Syra möter syra, sött möter sött</strong> — Syrlig mat behöver minst lika syrligt vin. Och: vinet ska alltid vara lika sött eller sötare än desserten — annars smakar vinet surt.</li>
+          <li><strong>Spegla eller kontrastera</strong> — Antingen spegla (smörig Chardonnay till hummer) eller skapa kontrast (mousserande syra mot salt/fett). Båda funkar — välj medvetet.</li>
+        </ol>
+        <p>Detaljerna — vad fett, salt, beska och hetta gör med vinet, plus konkreta kombinationer och en ostmatris — finns i de två moduldokumenten. Använd dem som uppslagsverk när du planerar.</p>
       </div>
 
+      <!-- 7. Planeringsmall -->
       <div class="pl-card">
-        <h2>Håll det intressant</h2>
-        <ul>
-          <li><strong>Blindprovning:</strong> dölj etiketterna, gissa land/druva</li>
-          <li><strong>Pris vs kvalitet:</strong> blanda en billig och en dyr — vilken vinner?</li>
-          <li><strong>"Vad passar till?":</strong> ge gästerna en rätt, de väljer vin</li>
-          <li><strong>Quiz:</strong> ställ frågor efter varje vin</li>
+        <h2>7. Planeringsmall — kopiera och återanvänd</h2>
+        <p>Det här är hela poängen med paketet: ramen är klar. Fyll i en ny sida per provning, byt vinerna, kör igen.</p>
+
+        <h3>Kvällens ram</h3>
+        <table class="pl-table">
+          <thead><tr><th>Fält</th><th>Fyll i</th></tr></thead>
+          <tbody>
+            <tr><td>Datum &amp; antal gäster</td><td></td></tr>
+            <tr><td>Tema (avsnitt 2)</td><td></td></tr>
+            <tr><td>Öppet / halvblint / blint</td><td></td></tr>
+            <tr><td>Mat- eller ostmodul?</td><td></td></tr>
+            <tr><td>Inhandlat / budget</td><td></td></tr>
+          </tbody>
+        </table>
+
+        <h3>Vinerna — i smakordning (lätt &rarr; kraftigt)</h3>
+        <table class="pl-table">
+          <thead><tr><th>#</th><th>Vin / producent / årgång</th><th>Typ &amp; temp</th><th>En sak att lyfta</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td></td><td></td><td></td></tr>
+            <tr><td>2</td><td></td><td></td><td></td></tr>
+            <tr><td>3</td><td></td><td></td><td></td></tr>
+            <tr><td>4</td><td></td><td></td><td></td></tr>
+            <tr><td>5</td><td></td><td></td><td></td></tr>
+            <tr><td>6</td><td></td><td></td><td></td></tr>
+          </tbody>
+        </table>
+
+        <h3>Inför-checklista</h3>
+        <ul class="checklist">
+          <li>&#9744; Viner inhandlade och i rätt smakordning</li>
+          <li>&#9744; Röda öppnade/karafferade i tid, vita &amp; bubbel nedkylda</li>
+          <li>&#9744; Glas (1 per vin) framdukade och numrerade</li>
+          <li>&#9744; Vit duk/papper, bra ljus, inga doftljus</li>
+          <li>&#9744; Vatten, spottkärl, neutralt tilltugg</li>
+          <li>&#9744; Protokoll + penna vid varje plats</li>
+          <li>&#9744; 1-2 alkoholfria alternativ</li>
+          <li>&#9744; Mat-/ostmodul förberedd om den ska användas</li>
         </ul>
       </div>
+
+      <!-- Sista ordet -->
+      <div class="pl-card">
+        <h2>Sista ordet</h2>
+        <p>Det bästa vinet är det som gör sällskapet bättre — inte nödvändigtvis det dyraste. Låt kvällen börja i glaset, fortsätta i samtalet och sluta i nyfikenheten inför nästa tema. Lycka till — skål!</p>
+      </div>
+
     </section>
 
+    <!-- ═══════════════════════════════════════════════════════ -->
     <!-- ═══ PROVNINGSPROTOKOLL ═══ -->
+    <!-- ═══════════════════════════════════════════════════════ -->
     <section class="pl-section" id="sec-protokoll">
       <button class="print-btn" onclick="printSection('protokoll')">&#x1F5A8; Skriv ut denna sektion</button>
 
+      <!-- Intro -->
       <div class="pl-card">
-        <h2>Ordbank</h2>
+        <h2>Mitt provningsblad</h2>
+        <p><em>Titta &middot; Dofta &middot; Smaka &middot; Sammanfatta</em></p>
+        <h3>Så fyller du i</h3>
+        <p>Ringa in eller kryssa för det som stämmer. Det finns inga fel svar — vi känner alla olika.</p>
+        <p>Använd ett blad per vin. Poängen i kanten är samma som proffsen använder (40 poäng totalt), men strunta i den om du vill — orden är det viktiga.</p>
+        <p>Skriv hellre för mycket än för lite. Det du skriver nu hjälper dig minnas vinet sen.</p>
+      </div>
+
+      <!-- Ordbank -->
+      <div class="pl-card">
+        <h2>Ordbank — till hjälp när du letar ord</h2>
+        <p>Det är mycket lättare att hitta en doft eller smak om man har en lista att välja från. Använd den här när du fastnar.</p>
         <div class="word-cols">
           <div class="word-col">
-            <h3>Vita viner</h3>
+            <h3>Vita &amp; mousserande viner</h3>
             <div class="word-item"><strong>Citrus:</strong> <span>citron, lime, grapefrukt</span></div>
-            <div class="word-item"><strong>Stenfrukt:</strong> <span>päron, äpple, persika, aprikos</span></div>
+            <div class="word-item"><strong>Stenfrukt &amp; kärnfrukt:</strong> <span>päron, äpple, persika, aprikos</span></div>
             <div class="word-item"><strong>Tropiskt:</strong> <span>ananas, mango, passionsfrukt</span></div>
-            <div class="word-item"><strong>Blommor &amp; ört:</strong> <span>vit blomma, fläder, gräs</span></div>
-            <div class="word-item"><strong>Ek/lagring:</strong> <span>vanilj, smör, bröd, rostat, nötter</span></div>
+            <div class="word-item"><strong>Blommor &amp; ört:</strong> <span>vit blomma, fläder, gräs, nyklippt hö</span></div>
+            <div class="word-item"><strong>Från ek/lagring:</strong> <span>vanilj, smör, bröd, rostat, nötter</span></div>
             <div class="word-item"><strong>Mineral:</strong> <span>krita, flinta, sten, salt</span></div>
           </div>
           <div class="word-col">
             <h3>Röda viner</h3>
-            <div class="word-item"><strong>Röd frukt:</strong> <span>jordgubb, hallon, körsbär</span></div>
-            <div class="word-item"><strong>Mörk frukt:</strong> <span>björnbär, blåbär, plommon</span></div>
+            <div class="word-item"><strong>Röd frukt:</strong> <span>jordgubb, hallon, körsbär, rödvinbär</span></div>
+            <div class="word-item"><strong>Mörk frukt:</strong> <span>björnbär, blåbär, plommon, svartvinbär</span></div>
             <div class="word-item"><strong>Krydda:</strong> <span>peppar, lakrits, nejlika, kanel</span></div>
-            <div class="word-item"><strong>Ört &amp; jord:</strong> <span>tobak, läder, svamp, kaffe</span></div>
-            <div class="word-item"><strong>Ek/lagring:</strong> <span>vanilj, choklad, kola, rök</span></div>
-            <div class="word-item"><strong>Mognad:</strong> <span>torkad frukt, fikon, dadel</span></div>
+            <div class="word-item"><strong>Ört &amp; jord:</strong> <span>tobak, läder, skogsbotten, svamp, kaffe</span></div>
+            <div class="word-item"><strong>Från ek/lagring:</strong> <span>vanilj, choklad, kola, rök, kokos</span></div>
+            <div class="word-item"><strong>Mognad (äldre vin):</strong> <span>törkad frukt, fikon, russin</span></div>
           </div>
+        </div>
+        <div class="pl-quote" style="margin-top:1rem;">
+          <div class="label">De fem grundsmakerna att känna efter</div>
+          <p>Sött &middot; Surt (får munnen att vattnas) &middot; Salt &middot; Beskt &middot; Umami (djup, köttig smak). I vin pratar man mest om sötma och syra — plus tanninerna i rött, den sträva känslan på tandköttet.</p>
+        </div>
+        <div class="pl-quote">
+          <div class="label">Om vinet känns "off"</div>
+          <p>Ibland är en flaska trasig — inte farligt, men förstört. Korkfel: doft av blöt kartong eller fuktig källare, frukten död. Oxidation: brunaktig färg, doft av äppelskrutt/sherry. Känner du något sådant — säg till, så öppnar vi en ny.</p>
         </div>
       </div>
 
-      <div class="tasting-sheet">
-        <h2>Provningsblad</h2>
-        <button class="print-btn" onclick="printSection('protokoll')" style="margin:0 auto 1rem;display:flex;">&#x1F5A8; Skriv ut provningsblad</button>
-
+      <!-- VIN 1-6 tasting sheets -->
+      <div class="tasting-sheet" id="ts-vin1">
+        <h2>V I N 1</h2>
         <div class="ts-row">
-          <div class="ts-field" style="flex:2"><label>Vin namn / producent</label><input type="text"></div>
+          <div class="ts-field" style="flex:2"><label>Vin / producent</label><input type="text"></div>
           <div class="ts-field"><label>Typ</label>
-            <select><option>Vitt</option><option>Rött</option><option>Rosé</option><option>Mousserande</option><option>Sött</option></select>
+            <div class="ts-radio-row" style="margin-top:0.3rem;">
+              <label><input type="radio" name="v1type" value="rott"> Rött</label>
+              <label><input type="radio" name="v1type" value="vitt"> Vitt</label>
+              <label><input type="radio" name="v1type" value="rose"> Rosé</label>
+              <label><input type="radio" name="v1type" value="mouss"> Mousserande</label>
+            </div>
           </div>
-          <div class="ts-field"><label>Årgång</label><input type="text"></div>
+          <div class="ts-field" style="max-width:100px;"><label>Årgång</label><input type="text"></div>
         </div>
 
         <div class="ts-group">
-          <div class="ts-group-title">Utseende (5p)</div>
-          <div class="ts-score-row"><span>Klarhet</span><select><option>1</option><option>2</option><option selected>3</option></select></div>
-          <div class="ts-score-row"><span>Intensitet</span><select><option>1</option><option selected>2</option></select></div>
-          <div class="ts-score-row"><span>Färg (beskriv)</span><input type="text" style="flex:1;font-family:var(--font-body);font-size:0.8rem;padding:0.25rem 0.4rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--text);"></div>
+          <div class="ts-group-title">Utseende &middot; 5 poäng</div>
+          <div class="ts-radio-row"><span class="row-label">Klarhet</span>
+            <label><input type="radio" name="v1klar" value="klar"> Klar</label>
+            <label><input type="radio" name="v1klar" value="grumlig"> Grumlig</label>
+          </div>
+          <div class="ts-radio-row"><span class="row-label">Intensitet</span>
+            <label><input type="radio" name="v1uint" value="lag"> Låg</label>
+            <label><input type="radio" name="v1uint" value="med-"> Medium&minus;</label>
+            <label><input type="radio" name="v1uint" value="med"> Medium</label>
+            <label><input type="radio" name="v1uint" value="med+"> Medium+</label>
+            <label><input type="radio" name="v1uint" value="hog"> Hög</label>
+          </div>
+          <div style="margin-top:0.4rem;">
+            <span class="row-label" style="font-family:var(--font-body);font-size:0.8rem;color:var(--text);font-weight:500;">Färg / nyans</span>
+            <div class="ts-color-hint">Rött: purpur &middot; rubin &middot; granat &middot; tegel&emsp;Vitt: citrongul &middot; guldgul &middot; bärnsten&emsp;Rosé: blekrosa &middot; laxrosa &middot; koppar</div>
+          </div>
         </div>
 
         <div class="ts-group">
-          <div class="ts-group-title">Näsa (10p)</div>
-          <div class="ts-score-row"><span>Renhet</span><select><option>1</option><option>2</option><option selected>3</option></select></div>
-          <div class="ts-score-row"><span>Intensitet</span><select><option>1</option><option>2</option><option selected>3</option></select></div>
-          <div class="ts-score-row"><span>Utveckling</span><select><option>1</option><option selected>2</option></select></div>
-          <div class="ts-score-row"><span>Aromer</span><input type="text" style="flex:1;font-family:var(--font-body);font-size:0.8rem;padding:0.25rem 0.4rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--text);" placeholder="Beskriv aromer..."></div>
+          <div class="ts-group-title">Näsa &middot; 10 poäng</div>
+          <div class="ts-radio-row"><span class="row-label">Renhet</span>
+            <label><input type="radio" name="v1ren" value="ren"> Ren</label>
+            <label><input type="radio" name="v1ren" value="defekt"> Defekt? (korkfel / oxidation)</label>
+          </div>
+          <div class="ts-radio-row"><span class="row-label">Intensitet</span>
+            <label><input type="radio" name="v1nint" value="lag"> Låg</label>
+            <label><input type="radio" name="v1nint" value="med-"> Medium&minus;</label>
+            <label><input type="radio" name="v1nint" value="med"> Medium</label>
+            <label><input type="radio" name="v1nint" value="med+"> Medium+</label>
+            <label><input type="radio" name="v1nint" value="hog"> Hög</label>
+          </div>
+          <div class="ts-radio-row"><span class="row-label">Utveckling</span>
+            <label><input type="radio" name="v1utv" value="ung"> Ung</label>
+            <label><input type="radio" name="v1utv" value="utvecklande"> Utvecklande</label>
+            <label><input type="radio" name="v1utv" value="mogen"> Mogen</label>
+          </div>
+          <div style="margin-top:0.4rem;">
+            <label style="font-family:var(--font-body);font-size:0.8rem;color:var(--text);font-weight:500;">Aromer jag känner — använd ordbanken</label>
+            <textarea class="ts-free-text" placeholder="Beskriv aromer..."></textarea>
+          </div>
         </div>
 
         <div class="ts-group">
-          <div class="ts-group-title">Gom (16p)</div>
-          <div class="ts-score-row"><span>Sötma</span><select><option>1</option><option selected>2</option><option>3</option></select></div>
-          <div class="ts-score-row"><span>Syra</span><select><option>1</option><option>2</option><option selected>3</option></select></div>
-          <div class="ts-score-row"><span>Tanniner</span><select><option>1</option><option>2</option><option selected>3</option></select></div>
-          <div class="ts-score-row"><span>Alkohol</span><select><option>1</option><option selected>2</option><option>3</option></select></div>
-          <div class="ts-score-row"><span>Kropp</span><select><option>1</option><option selected>2</option><option>3</option></select></div>
-          <div class="ts-score-row"><span>Längd</span><select><option>1</option><option selected>2</option></select></div>
+          <div class="ts-group-title">Gom &middot; 16 poäng</div>
+          <div class="ts-radio-row"><span class="row-label">Sötma</span>
+            <label><input type="radio" name="v1sot" value="torrt"> Torrt</label>
+            <label><input type="radio" name="v1sot" value="halvtorrt"> Halvtorrt</label>
+            <label><input type="radio" name="v1sot" value="halvsott"> Halvsött</label>
+            <label><input type="radio" name="v1sot" value="sott"> Sött</label>
+          </div>
+          <div class="ts-radio-row"><span class="row-label">Syra</span>
+            <label><input type="radio" name="v1syra" value="lag"> Låg</label>
+            <label><input type="radio" name="v1syra" value="med-"> Medium&minus;</label>
+            <label><input type="radio" name="v1syra" value="med"> Medium</label>
+            <label><input type="radio" name="v1syra" value="med+"> Medium+</label>
+            <label><input type="radio" name="v1syra" value="hog"> Hög</label>
+          </div>
+          <div class="ts-radio-row"><span class="row-label">Tanniner</span>
+            <label><input type="radio" name="v1tan" value="lag"> Låg</label>
+            <label><input type="radio" name="v1tan" value="med-"> Medium&minus;</label>
+            <label><input type="radio" name="v1tan" value="med"> Medium</label>
+            <label><input type="radio" name="v1tan" value="med+"> Medium+</label>
+            <label><input type="radio" name="v1tan" value="hog"> Hög</label>
+          </div>
+          <div class="ts-radio-row"><span class="row-label">Alkohol</span>
+            <label><input type="radio" name="v1alk" value="lag"> Låg</label>
+            <label><input type="radio" name="v1alk" value="med"> Medium</label>
+            <label><input type="radio" name="v1alk" value="hog"> Hög</label>
+          </div>
+          <div class="ts-radio-row"><span class="row-label">Kropp</span>
+            <label><input type="radio" name="v1kropp" value="latt"> Lätt</label>
+            <label><input type="radio" name="v1kropp" value="med"> Medium</label>
+            <label><input type="radio" name="v1kropp" value="full"> Full</label>
+          </div>
+          <div class="ts-radio-row"><span class="row-label">Längd</span>
+            <label><input type="radio" name="v1langd" value="kort"> Kort</label>
+            <label><input type="radio" name="v1langd" value="med"> Medium</label>
+            <label><input type="radio" name="v1langd" value="lang"> Lång</label>
+          </div>
+          <div class="ts-radio-row"><span class="row-label">Mousse (bubbel)</span>
+            <label><input type="radio" name="v1mousse" value="krispig"> Krispig</label>
+            <label><input type="radio" name="v1mousse" value="mjuk"> Mjuk</label>
+            <label><input type="radio" name="v1mousse" value="kramig"> Krämig</label>
+            <label><input type="radio" name="v1mousse" value="aggressiv"> Aggressiv</label>
+          </div>
+          <div style="margin-top:0.4rem;">
+            <label style="font-family:var(--font-body);font-size:0.8rem;color:var(--text);font-weight:500;">Smaker &amp; helhetskänsla</label>
+            <textarea class="ts-free-text" placeholder="Beskriv smaker..."></textarea>
+          </div>
         </div>
 
         <div class="ts-group">
-          <div class="ts-group-title">Slutsats (9p)</div>
-          <div class="ts-score-row"><span>Land</span><input type="text" style="flex:1;font-family:var(--font-body);font-size:0.8rem;padding:0.25rem 0.4rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--text);"></div>
-          <div class="ts-score-row"><span>Druva</span><input type="text" style="flex:1;font-family:var(--font-body);font-size:0.8rem;padding:0.25rem 0.4rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--text);"></div>
-          <div class="ts-score-row"><span>Kvalitet</span><select><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option></select></div>
-          <div class="ts-score-row"><span>Matförslag</span><input type="text" style="flex:1;font-family:var(--font-body);font-size:0.8rem;padding:0.25rem 0.4rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--text);"></div>
-        </div>
-
-        <div class="ts-group">
-          <div class="ts-group-title">Fria anteckningar</div>
-          <div class="ts-field"><textarea placeholder="Egna tankar, kommentarer..."></textarea></div>
+          <div class="ts-group-title">Slutsats &middot; 9 poäng</div>
+          <div style="margin-bottom:0.5rem;">
+            <span style="font-family:var(--font-body);font-size:0.8rem;color:var(--text);font-weight:500;">Mitt betyg:</span>
+            <span class="ts-stars" data-rating="0">
+              <span class="star" data-v="1">&#9734;</span><span class="star" data-v="2">&#9734;</span><span class="star" data-v="3">&#9734;</span><span class="star" data-v="4">&#9734;</span><span class="star" data-v="5">&#9734;</span>
+            </span>
+          </div>
+          <div class="ts-row">
+            <div class="ts-field"><label>Gissad druva / land</label><input type="text"></div>
+          </div>
+          <div style="margin-top:0.3rem;">
+            <label style="font-family:var(--font-body);font-size:0.8rem;color:var(--text);font-weight:500;">Skulle passa till (mat / ost)</label>
+            <textarea class="ts-free-text" placeholder="Matförslag..."></textarea>
+          </div>
         </div>
       </div>
+
+      <!-- VIN 2-6: generated by JS to avoid massive HTML duplication -->
+      <div id="extra-sheets"></div>
+
+      <!-- Summary -->
+      <div class="summary-sheet">
+        <h2>Kvällens sammanfattning</h2>
+        <p style="font-family:var(--font-body);font-size:0.85rem;color:var(--text);text-align:center;margin-bottom:1rem;">När ni provat klart — tänk tillbaka på alla viner tillsammans.</p>
+        <div class="summary-field"><label>Min favorit ikväll — och varför:</label><textarea></textarea></div>
+        <div class="summary-field"><label>Största överraskningen:</label><textarea></textarea></div>
+        <div class="summary-field"><label>Ett vin jag vill köpa igen:</label><textarea></textarea></div>
+        <div class="summary-field"><label>Ett nytt ord jag lärde mig:</label><textarea></textarea></div>
+        <h3 style="font-family:var(--font-display);font-size:1rem;color:var(--wine);margin:1rem 0 0.5rem;">Min topp 3</h3>
+        <div class="summary-field"><label>1:</label><input type="text"></div>
+        <div class="summary-field"><label>2:</label><input type="text"></div>
+        <div class="summary-field"><label>3:</label><input type="text"></div>
+      </div>
+
     </section>
 
+    <!-- ═══════════════════════════════════════════════════════ -->
     <!-- ═══ VIN & MAT ═══ -->
+    <!-- ═══════════════════════════════════════════════════════ -->
     <section class="pl-section" id="sec-mat">
       <button class="print-btn" onclick="printSection('mat')">&#x1F5A8; Skriv ut denna sektion</button>
 
       <div class="pl-card">
-        <h2>7 principer</h2>
+        <h2>Vin &amp; mat</h2>
+        <p><em>Grunderna för att få mat och vin att lyfta varandra</em></p>
+        <h3>Så används modulen</h3>
+        <p>Den här modulen hakar på efter själva provningen. Låt gästerna smaka samma vin före och efter en tugga — det är då magin syns.</p>
+        <p>Första delen är principerna (det du som ledare behöver kunna). Andra delen är färdiga kombinationer du kan servera direkt.</p>
       </div>
-      <div class="principle-card"><div class="principle-num">1</div><div class="principle-text">Matcha tyngd med tyngd</div></div>
-      <div class="principle-card"><div class="principle-num">2</div><div class="principle-text">Syra möter syra</div></div>
-      <div class="principle-card"><div class="principle-num">3</div><div class="principle-text">Sötma tämjer hetta</div></div>
-      <div class="principle-card"><div class="principle-num">4</div><div class="principle-text">Salt + fett gör vin rundare</div></div>
-      <div class="principle-card"><div class="principle-num">5</div><div class="principle-text">Bitterhet förstärker bitterhet — undvik tanniner till bitter mat</div></div>
-      <div class="principle-card"><div class="principle-num">6</div><div class="principle-text">Hetta krockar med tanniner — välj halvtorrt vin</div></div>
-      <div class="principle-card"><div class="principle-num">7</div><div class="principle-text">Umami stökar till det — lös med mjuka tanniner</div></div>
 
-      <div class="pl-card" style="margin-top:1rem;">
-        <h2>Klassiska kombinationer</h2>
+      <div class="pl-card">
+        <h2>De bärande principerna</h2>
+        <p>Det finns inga absoluta regler — men några riktlinjer gör att det nästan alltid blir bra. Allt handlar om hur grundsmakerna i maten påverkar vinet.</p>
+      </div>
+
+      <div class="principle-card">
+        <div class="principle-num">1</div>
+        <div class="principle-text">
+          <h4>Matcha tyngd med tyngd</h4>
+          <p>Den enklaste och viktigaste regeln. Kraftig mat behöver kraftigt vin, lätt mat behöver lätt vin. Annars försvinner den svagare av de två. En lätt sallad kör över ett sprött vin; en kraftig gryta dränker ett delikat.</p>
+          <p>Tumregel från flaskan: knubbiga bordeauxflaskor rymmer ofta kraftiga viner, smala bourgogneflaskor ofta mjukare. Inte alltid — men ofta.</p>
+        </div>
+      </div>
+
+      <div class="principle-card">
+        <div class="principle-num">2</div>
+        <div class="principle-text">
+          <h4>Syra möter syra</h4>
+          <p>Ett syrligt vin behöver mat med minst lika mycket syra, annars smakar vinet platt. Och tvärtom: syrlig mat (citrus, vinäger, tomat, getost) får ett lågsyrligt vin att kännas tunt och tråkigt.</p>
+          <div class="pl-quote" style="margin-top:0.5rem;">
+            <div class="label">Klassiskt exempel</div>
+            <p>En syrlig, frisk Sauvignon Blanc eller Sancerre till en syrlig färsk getost — syra möter syra och båda lyfter.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="principle-card">
+        <div class="principle-num">3</div>
+        <div class="principle-text">
+          <h4>Sött möter sött — alltid</h4>
+          <p>Till dessert ska vinet alltid vara lika sött eller sötare än maten. Om desserten är sötare än vinet kommer bara den råa syran fram och vinet smakar surt. Ett sött vin har dessutom oftast hög syra som balanserar.</p>
+        </div>
+      </div>
+
+      <div class="principle-card">
+        <div class="principle-num">4</div>
+        <div class="principle-text">
+          <h4>Salt är vinets bästa vän</h4>
+          <p>Salt dämpar både syra och strävhet i vinet och lyfter fram frukt och sötma. Salt mat gör nästan vilket vin som helst rundare och godare. Därför funkar salta rätter så bra till både syrliga vita och tanninrika röda.</p>
+        </div>
+      </div>
+
+      <div class="principle-card">
+        <div class="principle-num">5</div>
+        <div class="principle-text">
+          <h4>Fett vill ha syra eller tanniner</h4>
+          <p>Fett lägger sig som en hinna på tungan. Två saker skär igenom det:</p>
+          <p><strong>Syra</strong> — funkar på lättare feta rätter (lax, fläsk, gräddsåser). Tänk Riesling, Sauvignon Blanc, Pinot Noir.</p>
+          <p><strong>Tanniner</strong> — funkar på fett kött. Strävheten fäster vid fettet, och fettet mjukar i sin tur upp tanninerna. Tänk Cabernet, Bordeaux, Malbec till en entrecôte.</p>
+        </div>
+      </div>
+
+      <div class="principle-card">
+        <div class="principle-num">6</div>
+        <div class="principle-text">
+          <h4>Beska och hetta — var försiktig</h4>
+          <p>Beska i maten förstärker tanninerna i rött vin (kan bli metalliskt). Möt hellre beska med fruktighet och lite sötma i vinet.</p>
+          <p>Hetta/stark mat krockar med tanniner och hög alkohol — det gör maten ännu starkare. Välj ett halvtorrt vin med lite restsötma (t.ex. Riesling) som tämjer hettan. Till riktigt stark mat är öl ofta bättre än vin.</p>
+        </div>
+      </div>
+
+      <div class="principle-card">
+        <div class="principle-num">7</div>
+        <div class="principle-text">
+          <h4>Umami kan stöka till det</h4>
+          <p>Umami (svamp, soja, lagrad ost, råa grönsaker, skaldjur) kan locka fram bittra och metalliska toner i vin. Lös det med ett vin med mjuka tanniner och fruktsötma, eller balansera maten med salt. Rå svamp + strävt vin = risk; stekt svamp + mjukt bärigt vin = harmoni.</p>
+        </div>
+      </div>
+
+      <div class="pl-card">
+        <h2>Två strategier: spegla eller kontrastera</h2>
+        <p>När grundsmakerna väl är i balans kan du höja nivån genom att medvetet välja hur mat och vin ska mötas.</p>
         <table class="pl-table">
-          <thead><tr><th>Rätt</th><th>Vin</th></tr></thead>
+          <thead><tr><th>Strategi</th><th>Idén</th><th>Exempel</th></tr></thead>
           <tbody>
-            <tr><td>Grillat kött</td><td>Cabernet Sauvignon</td></tr>
-            <tr><td>Fet fisk</td><td>Chardonnay</td></tr>
-            <tr><td>Skaldjur</td><td>Champagne / Chablis</td></tr>
-            <tr><td>Pasta med tomat</td><td>Sangiovese</td></tr>
-            <tr><td>Kryddig mat</td><td>Off-dry Riesling</td></tr>
-            <tr><td>Getost</td><td>Sauvignon Blanc</td></tr>
-            <tr><td>Choklad</td><td>Portvin / Recioto</td></tr>
-            <tr><td>Blåmögelost</td><td>Sauternes</td></tr>
+            <tr><td>Spegla</td><td>Ta fasta på ett gemensamt drag och förstärk det.</td><td>Smörig, fyllig Chardonnay till hummer (båda fylliga &amp; smöriga)</td></tr>
+            <tr><td>Kontrastera</td><td>Låt motsatser balansera varandra.</td><td>Mousserande vins syra &amp; bubbel mot salt, fett och friterat</td></tr>
+            <tr><td>Geografiskt</td><td>Det som växer ihop, hör ihop.</td><td>Lokal rätt + vin från samma region (Chianti till toskansk mat)</td></tr>
           </tbody>
         </table>
-      </div>
-    </section>
-
-    <!-- ═══ VIN & OST ═══ -->
-    <section class="pl-section" id="sec-ost">
-      <button class="print-btn" onclick="printSection('ost')">&#x1F5A8; Skriv ut denna sektion</button>
-
-      <div class="pl-card">
-        <h2>Grundprinciper</h2>
-        <ul>
-          <li>Salt + fett dämpar vinets strävhet</li>
-          <li>Rött vin passar sällan till mild ost</li>
-          <li>Sött + salt = klassiker (blåmögel + Sauternes)</li>
-        </ul>
+        <div class="pl-quote">
+          <div class="label">Proffsets genväg</div>
+          <p>Mattraditioner har formats i symbios med sina viner. Är du osäker — välj ett vin från samma trakt som rätten kommer ifrån. Det är sällan fel.</p>
+        </div>
       </div>
 
       <div class="pl-card">
-        <h2>Ostmatris</h2>
+        <h2>Färdiga kombinationer</h2>
+        <p>Kategorierna nedan följer Cellar-appens "Mat &amp; Vin" — använd appen för att finjustera mot ett specifikt vin du har.</p>
         <div style="overflow-x:auto;">
           <table class="pl-table">
-            <thead><tr><th>Osttyp</th><th>Exempel</th><th>Vin</th><th>Varför</th></tr></thead>
+            <thead><tr><th>Rätt / kategori</th><th>Funkar bra</th><th>Varför</th></tr></thead>
             <tbody>
-              <tr><td>Färskost/get</td><td>Chèvre</td><td>Sancerre, Sauvignon Blanc</td><td>Syra möter syra</td></tr>
-              <tr><td>Mjuk vitmögel</td><td>Brie, camembert</td><td>Riesling, mousserande</td><td>Syra skär genom kräm</td></tr>
-              <tr><td>Halvhård</td><td>Havarti, gouda</td><td>Lätt rött, fylligt vitt</td><td>Mångsidig</td></tr>
-              <tr><td>Lagrad hårdost</td><td>Parmesan, comté</td><td>Fylligt rött, sherry</td><td>Umami klarar kraftiga viner</td></tr>
-              <tr><td>Blåmögel</td><td>Roquefort, stilton</td><td>Sauternes, portvin</td><td>Sötma balanserar salt</td></tr>
-              <tr><td>Tvättad skorpa</td><td>Taleggio, münster</td><td>Gewürztraminer</td><td>Kraftig arom kräver kraftigt vin</td></tr>
+              <tr><td>Grillat kött</td><td>Cabernet Sauvignon, Malbec, Syrah</td><td>Tanniner skär genom fett; rökighet speglas</td></tr>
+              <tr><td>Fet fisk (lax)</td><td>Riesling, Pinot Noir (lätt kyld)</td><td>Syra skär genom fettet</td></tr>
+              <tr><td>Vit fisk</td><td>Chablis, Sauvignon Blanc, Albariño</td><td>Frisk syra utan att ta över</td></tr>
+              <tr><td>Skaldjur</td><td>Mousserande, Champagne, torrt vitt</td><td>Bubbel &amp; syra lyfter mineralitet och sälta</td></tr>
+              <tr><td>Pasta (tomat)</td><td>Sangiovese, Barbera</td><td>Vinets syra möter tomatens syra</td></tr>
+              <tr><td>Pasta (grädde)</td><td>Ekad Chardonnay</td><td>Struktur möter krämighet</td></tr>
+              <tr><td>Kryddigt / hett</td><td>Halvtorr Riesling, Gewürztraminer</td><td>Restsötma tämjer hettan</td></tr>
+              <tr><td>Ost &amp; chark</td><td>Se ostmodulen</td><td>Beror helt på osten</td></tr>
+              <tr><td>Vegetariskt / svamp</td><td>Pinot Noir, lätt Barbera</td><td>Mjuka tanniner klarar umami</td></tr>
+              <tr><td>Dessert</td><td>Sauternes, Moscato, portvin</td><td>Vinet måste vara sötare än rätten</td></tr>
             </tbody>
           </table>
         </div>
       </div>
+
+      <div class="pl-card">
+        <h2>Vanliga fallgropar</h2>
+        <ul>
+          <li>Tanninrikt rött till fisk &rarr; metallisk smak. Vill du ha rött till fisk, välj en lätt, lätt kyld Pinot Noir.</li>
+          <li>Torrt vin till söt dessert &rarr; vinet smakar surt. Vinet ska alltid vara sötast.</li>
+          <li>Kraftigt rött till stark mat &rarr; förstärker hettan obehagligt.</li>
+          <li>Fel temperatur &rarr; för kallt rött eller för varmt vitt dödar karaktären.</li>
+        </ul>
+
+        <div class="pl-quote">
+          <div class="label">Övning att göra med gruppen</div>
+          <p>Ta ett vin och tre små tuggor: något salt (chips/oliv), något syrligt (citron) och något sött (en bit choklad). Låt alla smaka vinet emellan varje tugga och beskriva hur det förändras. En av kvällens roligaste aha-upplevelser — och den kräver nästan ingen förberedelse.</p>
+        </div>
+      </div>
+
     </section>
 
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- ═══ VIN & OST ═══ -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <section class="pl-section" id="sec-ost">
+      <button class="print-btn" onclick="printSection('ost')">&#x1F5A8; Skriv ut denna sektion</button>
+
+      <div class="pl-card">
+        <h2>Vin &amp; ost</h2>
+        <p><em>En guide till en av matvärldens mest älskade — och mest missförstådda — kombinationer</em></p>
+        <h3>Så används modulen</h3>
+        <p>Perfekt som avslutning på provningen. Lägg upp 4-5 ostar från mild till kraftig, i samma logik som vinerna gick från lätt till kraftigt.</p>
+        <p>Den vanligaste myten är att rött vin alltid passar till ost. Sanningen är att vitt och sött ofta vinner — den här modulen visar varför.</p>
+      </div>
+
+      <div class="pl-card">
+        <h2>Grundprinciperna för ost</h2>
+        <p>Ost är salt, fett och ofta syrligt eller umamirikt på samma gång — därför är det både tacksamt och knepigt. Några hållpunkter:</p>
+
+        <h3>Salt + fett är din vän</h3>
+        <p>Ostens sälta dämpar vinets syra och strävhet och lyfter fram frukten, precis som med salt mat i allmänhet. Det är därför ost får många viner att smaka rundare.</p>
+
+        <h3>Varför rött vin ofta svärer mot mild ost</h3>
+        <p>Krämiga, milda ostar (brie, färskost) möter tanninerna i rött vin med en lätt bitter, nästan metallisk ton. Därför är friska vita viner och mousserande oftast bättre till de mjuka ostarna.</p>
+
+        <h3>Sött + salt = klassikern</h3>
+        <p>Kraftiga, salta ostar — särskilt blåmögel — blir magiska med ett sött vin. Sötman balanserar sältan och skapar den där söt-salta kombinationen som blir en perfekt avslutning. Sauternes till roquefort är en av vinvärldens mest berömda äktenskap.</p>
+
+        <h3>Matcha intensitet</h3>
+        <p>Som med all mat: mild ost &rarr; lätt vin, kraftig ost &rarr; kraftigt vin. En späd färskost dränks av ett stort rött; en lagrad, umamirik hårdost behöver något med tyngd.</p>
+
+        <h3>Geografiknepet</h3>
+        <p>Ost och vin från samma trakt funkar nästan alltid. De har vuxit fram tillsammans. Är du osäker — tänk regionalt.</p>
+      </div>
+
+      <div class="pl-card">
+        <h2>Ostmatrisen</h2>
+        <p>Den här tabellen är modulens hjärta. Ordna gärna ostbrickan i den här ordningen — uppifrån och ner är ungefär mild till kraftig.</p>
+        <div style="overflow-x:auto;">
+          <table class="pl-table">
+            <thead><tr><th>Osttyp</th><th>Exempel</th><th>Vin som passar</th><th>Varför</th></tr></thead>
+            <tbody>
+              <tr><td>Färskost / get</td><td>chèvre, färskost</td><td>Sancerre, Sauvignon Blanc</td><td>Syra möter syra; undvik tanniner</td></tr>
+              <tr><td>Mjuk vitmögel</td><td>brie, camembert</td><td>Torr Riesling, Chenin Blanc, mousserande</td><td>Syra &amp; bubbel skär genom krämigheten</td></tr>
+              <tr><td>Halvhård</td><td>havarti, gouda</td><td>Lätt rött, fylligt vitt</td><td>Mångsidig — många viner funkar</td></tr>
+              <tr><td>Lagrad hårdost</td><td>parmesan, comté, manchego</td><td>Fylligt rött, sherry, portvin</td><td>Umami &amp; sälta klarar kraftiga viner</td></tr>
+              <tr><td>Blåmögel</td><td>roquefort, gorgonzola, stilton</td><td>Sauternes, portvin (sött!)</td><td>Sötma balanserar den salta skärpan</td></tr>
+              <tr><td>Tvättad skorpa</td><td>taleggio, münster</td><td>Aromatiskt vitt, Gewürztraminer</td><td>Kraftig arom kräver aromatiskt vin</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="pl-quote" style="margin-top:0.75rem;">
+          <div class="label">Den enda "regeln" att minnas</div>
+          <p>Om du bara minns en sak: vitt vin är oftare rätt till ost än rött, och blåmögelost vill ha sött vin. Med de två klarar du dig långt.</p>
+        </div>
+      </div>
+
+      <div class="pl-card">
+        <h2>Lägg upp en ostprovning</h2>
+        <p>Vill du göra ost till huvudnumret snarare än avslutning? Så här bygger du en egen ostflight.</p>
+
+        <h3>Välj 4-5 ostar i stigande styrka</h3>
+        <ol>
+          <li>En mjuk &amp; mild — brie eller färsk get.</li>
+          <li>En halvhård — gouda eller havarti.</li>
+          <li>En lagrad hårdost — parmesan, comté eller en riktigt lagrad cheddar.</li>
+          <li>En blåmögel — gorgonzola eller stilton.</li>
+          <li>(Valfritt) en udda — en tvättad skorpa eller rökt ost som jokern.</li>
+        </ol>
+
+        <h3>Servera rätt</h3>
+        <ul>
+          <li>Ta fram ostarna 30-60 min innan — rumstempererad ost smakar mångdubbelt mer.</li>
+          <li>Egen kniv per ost så smakerna inte blandas.</li>
+          <li>Tillbehör som bygger broar: honung och söt marmelad till blåmögel, nötter och frukt till hårdost, neutralt bröd eller kex att nollställa med.</li>
+          <li>Provsmaka osten före och efter en klunk vin — precis som med mat-modulen.</li>
+        </ul>
+
+        <h3>Föreslå ett upplägg</h3>
+        <table class="pl-table">
+          <thead><tr><th>Ordning</th><th>Ost</th><th>Vin</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Färsk get / brie</td><td>Mousserande eller frisk Sauvignon Blanc</td></tr>
+            <tr><td>2</td><td>Gouda / havarti</td><td>Fylligt vitt eller lätt rött</td></tr>
+            <tr><td>3</td><td>Comté / parmesan</td><td>Fylligt rött eller sherry</td></tr>
+            <tr><td>4</td><td>Gorgonzola / stilton</td><td>Sauternes eller portvin</td></tr>
+          </tbody>
+        </table>
+
+        <div class="pl-quote" style="margin-top:0.75rem;">
+          <div class="label">Lät avslutning</div>
+          <p>Den söt-salta kombinationen av blåmögelost och sött vin är ofta kvällens mest överraskande ögonblick — spara den till sist och låt den få vara finalen.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
     <!-- ═══ MOUSSERANDE ═══ -->
+    <!-- ═══════════════════════════════════════════════════════ -->
     <section class="pl-section" id="sec-mousserande">
       <button class="print-btn" onclick="printSection('mousserande')">&#x1F5A8; Skriv ut denna sektion</button>
 
       <div class="pl-card">
+        <h2>Vin &amp; mousserande</h2>
+        <p><em>Från prosecco till champagne — en grund för att prova bubbel</em></p>
+        <h3>Så används modulen</h3>
+        <p>En komplett grund för en provning med bara bubbel — eller för att inleda en vanlig provning med ett mousserande.</p>
+        <p>Första delen förklarar hur bubblan görs (själva poängen med ett bubbeltema). Sedan följer glasval, vad man bedömer, serveringsritual och ett färdigt upplägg.</p>
+      </div>
+
+      <div class="pl-card">
         <h2>Hur bubblan görs</h2>
+        <p>All bubbel är inte gjord på samma sätt — och det är där skillnaden i karaktär kommer ifrån. Det här är hela idén med ett bubbeltema: smaka metoderna mot varandra.</p>
+        <p>Bubblan är koldioxid som bildas vid en andra jäsning. Var den jäsningen sker avgör stilen:</p>
         <table class="pl-table">
-          <thead><tr><th>Metod</th><th>Var</th><th>Ger</th><th>Exempel</th></tr></thead>
+          <thead><tr><th>Metod</th><th>Var andra jäsningen sker</th><th>Ger</th><th>Exempel</th></tr></thead>
           <tbody>
-            <tr><td>Traditionell</td><td>I flaskan</td><td>Fina bubblor, bröd, komplexitet</td><td>Champagne, Cava, Crémant</td></tr>
-            <tr><td>Tankmetod</td><td>I tank</td><td>Stora bubblor, fruktigt</td><td>Prosecco</td></tr>
+            <tr><td>Traditionell metod</td><td>I flaskan, på jästfällningen</td><td>Fina, ihålliga bubblor, bröd- och briochetoner, komplexitet</td><td>Champagne, Cava, Crémant, Franciacorta</td></tr>
+            <tr><td>Tankmetod (Charmat)</td><td>I stor trycktank</td><td>Stora, fruktiga bubblor, fräscht, lättdrucket</td><td>Prosecco</td></tr>
+          </tbody>
+        </table>
+        <div class="pl-quote" style="margin-top:0.5rem;">
+          <div class="label">Det här förklarar smaken</div>
+          <p>Tiden på jästfällningen ("la lie") ger de brödiga, nötiga, briga tonerna i champagne och cava. Prosecco görs snabbt och utan den kontakten — därför smakar den mer av frisk frukt (päron, gröna äpplen) och mindre av bröd.</p>
+        </div>
+
+        <h3>Tre stilar att känna till</h3>
+        <ul>
+          <li><strong>Prosecco</strong> (Italien, tankmetod) — fruktig, lätt, stora bubblor. Oftast prisvärd.</li>
+          <li><strong>Cava</strong> (Spanien, traditionell metod) — torrare, mineralisk, mer brödig än prosecco.</li>
+          <li><strong>Champagne</strong> (Frankrike, traditionell metod) — mest komplex: bröd, brioche, mineral, lång eftersmak. Endast från regionen Champagne.</li>
+        </ul>
+
+        <h3>Två ord på etiketten</h3>
+        <p>Sötman på ett mousserande står på flaskan. Bra att kunna förklara för gruppen:</p>
+        <table class="pl-table">
+          <thead><tr><th>Term</th><th>Betyder</th></tr></thead>
+          <tbody>
+            <tr><td>Brut Nature / Zéro</td><td>Knastertorrt, ingen tillsatt sötma</td></tr>
+            <tr><td>Extra Brut</td><td>Mycket torrt</td></tr>
+            <tr><td>Brut</td><td>Torrt — den vanligaste stilen</td></tr>
+            <tr><td>Extra Dry</td><td>Lite rundare (förvirrande nog sötare än Brut!)</td></tr>
+            <tr><td>Sec / Demi-Sec</td><td>Märkbart sött — bra till dessert</td></tr>
           </tbody>
         </table>
       </div>
 
       <div class="pl-card">
-        <h2>Rätt glas</h2>
+        <h2>Rätt glas till bubbel</h2>
+        <p>Glaset spelar större roll för mousserande än för något annat vin — det styr både hur bubblan beter sig och hur mycket arom du får.</p>
         <table class="pl-table">
           <thead><tr><th>Glas</th><th>Bubbla</th><th>Arom</th><th>Omdöme</th></tr></thead>
           <tbody>
-            <tr><td>Tulpan</td><td>Bevaras</td><td>Koncentreras</td><td>Bäst</td></tr>
-            <tr><td>Flöjt</td><td>Vackert</td><td>Dämpas</td><td>Snyggt men missar doft</td></tr>
-            <tr><td>Coupe</td><td>Försvinner</td><td>Försvinner</td><td>Undvik</td></tr>
+            <tr><td>Tulpan</td><td>Bevaras väl</td><td>Koncentreras mot näsan</td><td>Bäst i test — bästa balansen, välj detta</td></tr>
+            <tr><td>Flöjt (smal)</td><td>Visas vackert</td><td>Dämpas</td><td>Snyggt, men du missar doften</td></tr>
+            <tr><td>Coupe (bred skål)</td><td>Försvinner snabbt</td><td>Försvinner snabbt</td><td>Elegant men sämst — undvik vid provning</td></tr>
+            <tr><td>Vitvinsglas</td><td>Mindre bevarad</td><td>Utvecklas väl</td><td>Bra för mogen, komplex champagne</td></tr>
           </tbody>
         </table>
+        <div class="pl-quote" style="margin-top:0.5rem;">
+          <div class="label">Praktiska råd</div>
+          <p>Har du bara ett sorts glas: använd ett tulpan- eller vanligt vitvinsglas — inte en smal flöjt och inte en coupe.</p>
+          <p style="margin-top:0.3rem;">Fyll till max två tredjedelar så bubblorna inte skummar över och aromerna får utrymme.</p>
+          <p style="margin-top:0.3rem;">Ju äldre och mer komplext vinet är, desto större glas tål det — mogen champagne i ett rejält vitvinsglas är en uppenbarelse.</p>
+        </div>
       </div>
 
       <div class="pl-card">
-        <h2>Dosage (sötma)</h2>
+        <h2>Vad man bedömer i bubbel</h2>
+        <p>Metoden är densamma som för andra viner — titta, dofta, smaka — men bubblan lägger till några egna saker att kolla.</p>
+
+        <h3>Titta — själva moussen</h3>
+        <ul>
+          <li><strong>Bubblornas storlek:</strong> små och fina = oftast högre kvalitet (traditionell metod). Stora = ofta tankmetod.</li>
+          <li><strong>Uthållighet:</strong> en ihållig ström av bubblor som fortsätter länge är ett kvalitetstecken.</li>
+          <li><strong>Pärlbandet</strong> — en fin, stadig pelare av bubblor från glasets botten är vackert och säger något om vinet.</li>
+        </ul>
+
+        <h3>Dofta — frukt eller bröd?</h3>
+        <p>Den avgörande frågan för att gissa metod och ursprung:</p>
+        <ul>
+          <li>Frisk frukt (päron, äpple, citrus) utan brödighet &rarr; pekar mot tankmetod / Prosecco.</li>
+          <li>Bröd, brioche, mandel, nötter &rarr; pekar mot traditionell metod / Champagne, Cava.</li>
+        </ul>
+
+        <h3>Smaka — moussen i munnen</h3>
+        <ul>
+          <li>Hur känns bubblan? Krispig och pigg, mjuk och krämig, eller aggressiv och stickig?</li>
+          <li>Krämig, fint integrerad mousse är ett kvalitetstecken. Stickig och grov är mindre fint.</li>
+          <li>Notera syran (bubbel har ofta hög syra — det är därför det känns så fräscht) och längden.</li>
+        </ul>
+
+        <div class="pl-quote" style="margin-top:0.5rem;">
+          <div class="label">Provningsprotokollet täcker detta</div>
+          <p>Deltagarnas protokoll har en rad för Mousse (krispig/mjuk/krämig/aggressiv). Använd den när ni provar bubbel.</p>
+        </div>
+      </div>
+
+      <div class="pl-card">
+        <h2>Servera bubbel rätt</h2>
+
+        <h3>Öppna utan dramatik</h3>
+        <ol>
+          <li>Kyl ordentligt — minst 2-3 timmar i kyl, eller 30 min i ishink med hälften vatten + is. Öppna vinet kallt (~6 &deg;C), då skummar det inte över.</li>
+          <li>Håll flaskan i 45 graders lutning, ta tag i korken och vrid på flaskan — inte korken.</li>
+          <li>Låt inte korken flyga. Sikta på ett mjukt "suck" snarare än en smäll — det är både finare och säkrare.</li>
+          <li>Häll i två omgångar om det skummar, fyll till max 2/3.</li>
+        </ol>
+
+        <div class="pl-quote">
+          <div class="label">Glöm vispen</div>
+          <p>En champagnevisp tar på några sekunder bort de bubblor det tagit åratal att skapa. Använd aldrig. Spara öppnad flaska med en mousserande-propp — då håller den friskt i några dygn.</p>
+        </div>
+      </div>
+
+      <div class="pl-card">
+        <h2>Färdigt upplägg — "vägen till champagne"</h2>
+        <p>4-5 bubblor från lätt och fruktigt mot komplext, i den här ordningen. Gärna blint som final.</p>
         <table class="pl-table">
-          <thead><tr><th>Nivå</th><th>Socker g/L</th></tr></thead>
+          <thead><tr><th>Ordning</th><th>Vin</th><th>Poäng att lyfta</th></tr></thead>
           <tbody>
-            <tr><td>Brut Nature</td><td>0-3</td></tr>
-            <tr><td>Extra Brut</td><td>0-6</td></tr>
-            <tr><td>Brut</td><td>0-12</td></tr>
-            <tr><td>Extra Dry</td><td>12-17</td></tr>
-            <tr><td>Sec</td><td>17-32</td></tr>
-            <tr><td>Demi-Sec</td><td>32-50</td></tr>
-            <tr><td>Doux</td><td>50+</td></tr>
+            <tr><td>1</td><td>Prosecco (Italien)</td><td>Tankmetod — stora, fruktiga bubblor, päron &amp; äpple</td></tr>
+            <tr><td>2</td><td>Cava (Spanien)</td><td>Traditionell metod — torrare, mer mineral &amp; bröd</td></tr>
+            <tr><td>3</td><td>Crémant (Frankrike)</td><td>Traditionell metod utanför Champagne — prisvärt mellansteg</td></tr>
+            <tr><td>4</td><td>Champagne, Brut</td><td>Komplexitet, brioche, lång eftersmak</td></tr>
+            <tr><td>5</td><td>(Valfri joker)</td><td>Rosé-bubbel, blanc de blancs, eller en årgångschampagne</td></tr>
           </tbody>
         </table>
+
+        <div class="pl-quote" style="margin-top:0.5rem;">
+          <div class="label">Smaka pris mot kvalitet</div>
+          <p>Bubbel är perfekt för ett pris-tema. "69 kr eller 269 kr?" — vid en jämförande provning känner ofta även nybörjaren skillnaden mellan champagne och enklare mousserande. Om den är värd pengarna får var och en avgöra själv.</p>
+        </div>
       </div>
+
+      <div class="pl-card">
+        <h2>Bubbel &amp; mat — snabbt</h2>
+        <p>Bubblans syra och kolsyra är en kontrast-mästare mot salt och fett:</p>
+        <ul>
+          <li><strong>Klassiskt:</strong> champagne till ostron och skaldjur — syra &amp; bubbel lyfter mineralitet och sälta.</li>
+          <li><strong>Överraskande bra:</strong> bubbel till friterat och salt (chips, tempura, pommes) — bubblan skär genom fettet.</li>
+          <li><strong>Till dessert:</strong> välj en Sec/Demi-Sec eller Moscato d'Asti — ett Brut blir surt mot sött.</li>
+        </ul>
+      </div>
+
     </section>
 
+    <!-- ═══════════════════════════════════════════════════════ -->
     <!-- ═══ EXEMPELKVÄLLAR ═══ -->
+    <!-- ═══════════════════════════════════════════════════════ -->
     <section class="pl-section" id="sec-exempelkvallar">
       <button class="print-btn" onclick="printSection('exempelkvallar')">&#x1F5A8; Skriv ut denna sektion</button>
 
       <div class="pl-card">
-        <h2>Kväll 1: "Hela resan" (2 vita + 2 röda)</h2>
-        <table class="pl-table">
-          <thead><tr><th>#</th><th>Vin</th><th>Stil</th><th>Temp</th><th>Fokus</th></tr></thead>
-          <tbody>
-            <tr><td>1</td><td>Sauvignon Blanc (Loire/NZ)</td><td>Friskt vitt</td><td>8-10°C</td><td>Lyft syran</td></tr>
-            <tr><td>2</td><td>Ekad Chardonnay (Bourgogne/Kalifornien)</td><td>Fylligt vitt</td><td>10-12°C</td><td>Jämför mot vin 1</td></tr>
-            <tr><td>3</td><td>Pinot Noir (Bourgogne/NZ)</td><td>Lätt rött</td><td>14-16°C</td><td>Introducera tanniner</td></tr>
-            <tr><td>4</td><td>Cabernet Sauvignon / Malbec</td><td>Kraftigt rött</td><td>16-18°C</td><td>Jämför strävhet</td></tr>
-          </tbody>
-        </table>
-        <p style="margin-top:0.75rem;"><strong>Ost:</strong> Brie → Comté → Roquefort</p>
+        <h2>Två färdiga provningar</h2>
+        <p><em>Ifyllda mallar att köra rakt av — eller byta vinerna i</em></p>
+        <h3>Så används dokumentet</h3>
+        <p>Här är planeringsmallen från Ledarmanuset ifylld två gånger — en klassisk "hela resan" (hälften vitt, hälften rött) och en bubbelkväll.</p>
+        <p>Vinerna är typexempel som visar hur man bygger stilföljden lätt &rarr; kraftigt. Byt gärna till flaskor du hittar — huvudsaken är att du håller ordningen och stilarna.</p>
+        <p>Priserna är grova riktmärken (svenska systembolagspriser) och ändras — se dem som en nivå, inte ett facit.</p>
       </div>
 
+      <!-- Exempel 1 -->
       <div class="pl-card">
-        <h2>Kväll 2: Bubbelkväll (4 mousserande)</h2>
+        <h2>Exempel 1 — "Hela resan"</h2>
+        <p>Hälften vitt, hälften rött, från friskt till kraftigt. Den bästa första provningen — alla hittar något de gillar, och man får känna hela bredden på en kväll.</p>
+
+        <h3>Kvällens ram</h3>
         <table class="pl-table">
-          <thead><tr><th>#</th><th>Vin</th><th>Fokus</th></tr></thead>
+          <thead><tr><th>Fält</th><th>Ifyllt</th></tr></thead>
           <tbody>
-            <tr><td>1</td><td>Prosecco</td><td>Tankmetod, fruktigt</td></tr>
-            <tr><td>2</td><td>Cava</td><td>Traditionell metod, nötig</td></tr>
-            <tr><td>3</td><td>Crémant</td><td>Jämför med Champagne</td></tr>
-            <tr><td>4</td><td>Champagne</td><td>Toppstilen</td></tr>
+            <tr><td>Datum &amp; antal gäster</td><td>____________ &middot; 6-8 gäster</td></tr>
+            <tr><td>Tema</td><td>Hela resan — 2 vita + 2 röda, lätt till kraftigt</td></tr>
+            <tr><td>Öppet / halvblint / blint</td><td>Öppet (enklast för blandad grupp — etiketterna syns)</td></tr>
+            <tr><td>Mat- eller ostmodul?</td><td>Ost till sist (mild &rarr; kraftig, följer vinordningen)</td></tr>
+            <tr><td>Inhandlat / budget</td><td>4 flaskor, ca 500-700 kr totalt</td></tr>
           </tbody>
         </table>
+
+        <h3>Vinerna — i smakordning</h3>
+        <table class="pl-table">
+          <thead><tr><th>#</th><th>Vin / stil (typexempel)</th><th>Typ &amp; temp</th><th>En sak att lyfta</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Sauvignon Blanc, t.ex. från Loire eller Nya Zeeland</td><td>Friskt vitt &middot; 8-10 &deg;C</td><td>Den höga syran — får munnen att vattnas. Doft av gräs, krusbär, citrus.</td></tr>
+            <tr><td>2</td><td>Ekad Chardonnay, t.ex. från Bourgogne eller Kalifornien</td><td>Fylligt vitt &middot; 10-12 &deg;C</td><td>Kontrasten mot 1: rundare, smörig, vanilj från eken. Samma färg — helt annan känsla.</td></tr>
+            <tr><td>3</td><td>Pinot Noir, t.ex. från Bourgogne, Tyskland eller Chile</td><td>Lätt rött &middot; 12-14 &deg;C</td><td>Lätta, mjuka tanniner. Röd frukt (körsbär, hallon). Bron mellan vitt och rött.</td></tr>
+            <tr><td>4</td><td>Cabernet Sauvignon / Malbec, t.ex. Bordeaux eller Argentina</td><td>Fylligt rött &middot; 16-18 &deg;C</td><td>Höga tanniner — den sträva känslan på tandköttet. Mörk frukt, kropp, längd.</td></tr>
+          </tbody>
+        </table>
+
+        <div class="pl-quote">
+          <div class="label">Karaffera vin 4</div>
+          <p>Öppna det kraftiga röda (vin 4) minst 30 min innan, gärna i karaff — tanninerna mjuknar och doften öppnar sig.</p>
+        </div>
+
+        <h3>Körschema för just den här kvällen</h3>
+        <table class="pl-table">
+          <thead><tr><th>Tid</th><th>Vad som händer</th></tr></thead>
+          <tbody>
+            <tr><td>0:00</td><td>Välkommen, dela ut protokoll, förklara: "2 vita först, sen 2 röda, lätt till kraftigt."</td></tr>
+            <tr><td>0:05</td><td>Vin 1 (Sauvignon Blanc) — titta, dofta, smaka. Lyft syran.</td></tr>
+            <tr><td>0:17</td><td>Vin 2 (ekad Chardonnay) — jämför rakt mot vin 1. "Samma färg — känns de likadana?"</td></tr>
+            <tr><td>0:30</td><td>Kort paus — vatten, bröd, frisk luft. Byt till röda glas om ni använder flera.</td></tr>
+            <tr><td>0:38</td><td>Vin 3 (Pinot Noir) — introducera tanniner mjukt.</td></tr>
+            <tr><td>0:50</td><td>Vin 4 (Cabernet/Malbec) — jämför mot vin 3. "Vilket känns strävast?"</td></tr>
+            <tr><td>1:05</td><td>Ost in (mild &rarr; kraftig). Prova samma viner igen mot osten — märk hur de ändras.</td></tr>
+            <tr><td>1:25</td><td>Ranka topp-3, avrunda. Vilket blev favoriten — och varför?</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Ost till kvällen (om du kör ostmodulen)</h3>
+        <p>Välj 3-4 ostar och servera i stigande styrka, parallellt med vinerna:</p>
+        <ul>
+          <li>Brie / färsk get till vin 1-2 (de vita) — syran i vinet möter den krämiga osten.</li>
+          <li>Lagrad hårdost (comté, parmesan) till vin 3-4 — sältan mjukar upp tanninerna.</li>
+          <li>Spara en liten blåmögel till finalen och servera med honung — söt-salt aha-upplevelse.</li>
+        </ul>
       </div>
+
+      <!-- Exempel 2 -->
+      <div class="pl-card">
+        <h2>Exempel 2 — "Vägen till champagne"</h2>
+        <p>En bubbelkväll som visar hur metoden formar smaken — från fruktig prosecco till brödig champagne. Festligt, lättillgängligt och perfekt för ett pris-tema.</p>
+
+        <h3>Kvällens ram</h3>
+        <table class="pl-table">
+          <thead><tr><th>Fält</th><th>Ifyllt</th></tr></thead>
+          <tbody>
+            <tr><td>Datum &amp; antal gäster</td><td>____________ &middot; 6-8 gäster</td></tr>
+            <tr><td>Tema</td><td>Vägen till champagne — 4 mousserande, fruktigt till komplext</td></tr>
+            <tr><td>Öppet / halvblint / blint</td><td>Öppet först, vin 4 gärna blint ("gissa pris")</td></tr>
+            <tr><td>Mat- eller ostmodul?</td><td>Smått salt &amp; friterat (chips, tempura) — bubblan skär genom fettet</td></tr>
+            <tr><td>Inhandlat / budget</td><td>4 flaskor, ca 600-900 kr (champagnen drar upp det)</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Vinerna — i smakordning</h3>
+        <table class="pl-table">
+          <thead><tr><th>#</th><th>Vin / stil (typexempel)</th><th>Typ &amp; temp</th><th>En sak att lyfta</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Prosecco (Italien)</td><td>Mousserande &middot; 6-8 &deg;C</td><td>Tankmetod — stora, fruktiga bubblor. Päron &amp; grönt äpple. Lättdrucket.</td></tr>
+            <tr><td>2</td><td>Cava (Spanien)</td><td>Mousserande &middot; 6-8 &deg;C</td><td>Traditionell metod — torrare, mineralisk, lite mer bröd än proseccon.</td></tr>
+            <tr><td>3</td><td>Crémant (Frankrike, utanför Champagne)</td><td>Mousserande &middot; 6-8 &deg;C</td><td>Samma metod som champagne, lägre pris — ett bra mellansteg.</td></tr>
+            <tr><td>4</td><td>Champagne, Brut</td><td>Mousserande &middot; 6-10 &deg;C</td><td>Komplexiteten: bröd, brioche, lång eftersmak. Fina, ihålliga bubblor.</td></tr>
+          </tbody>
+        </table>
+
+        <div class="pl-quote">
+          <div class="label">Glas &amp; öppning</div>
+          <p>Använd tulpanglas (inte smala flöjter) så doften kommer fram. Öppna kallt (~6 &deg;C), vrid på flaskan — inte korken — och sikta på ett mjukt "suck". Fyll till max 2/3.</p>
+        </div>
+
+        <h3>Körschema för just den här kvällen</h3>
+        <table class="pl-table">
+          <thead><tr><th>Tid</th><th>Vad som händer</th></tr></thead>
+          <tbody>
+            <tr><td>0:00</td><td>Välkommen med vin 1 i glaset direkt — bubbel är en perfekt välkomstdryck.</td></tr>
+            <tr><td>0:05</td><td>Förklara kort: "All bubbel görs inte lika — ikväll smakar vi skillnaden."</td></tr>
+            <tr><td>0:08</td><td>Vin 1 (Prosecco) — titta på bubblorna (stora?), dofta efter frisk frukt.</td></tr>
+            <tr><td>0:20</td><td>Vin 2 (Cava) — jämför: "Känner ni mer bröd/mineral här?"</td></tr>
+            <tr><td>0:32</td><td>Kort paus — vatten och något salt att tugga på.</td></tr>
+            <tr><td>0:40</td><td>Vin 3 (Crémant) — mellansteget mot champagne.</td></tr>
+            <tr><td>0:52</td><td>Vin 4 (Champagne), gärna blint — "vilken är dyrast, tror ni?" Låt alla gissa, avslöja sen.</td></tr>
+            <tr><td>1:05</td><td>Servera salt &amp; friterat, prova bubblan mot maten. Ranka topp-3, avrunda.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Pris-vinkeln (valfritt men kul)</h3>
+        <p>Bubbel är perfekt för att testa om dyrare är bättre. Notera ungefärliga priser och låt gruppen gissa innan du avslöjar:</p>
+        <ul>
+          <li>Prosecco och cava ligger ofta runt 100-150 kr.</li>
+          <li>Crémant något högre, ofta 150-250 kr.</li>
+          <li>Champagne från ca 300 kr och uppåt — ofta kvällens dyraste.</li>
+        </ul>
+
+        <div class="pl-quote">
+          <div class="label">Poängen</div>
+          <p>Vid en jämförande provning känner ofta även nybörjaren skillnaden mellan champagne och enklare bubbel. Om den är värd pengarna får var och en avgöra själv — och det är just den diskussionen som gör kvällen.</p>
+        </div>
+      </div>
+
+      <!-- Bygg din egen -->
+      <div class="pl-card">
+        <h2>Bygg din egen — snabbguide</h2>
+        <p>När du vill skapa en ny kväll: följ samma tre steg som exemplen bygger på.</p>
+        <ol>
+          <li><strong>Välj ett tema och en stilföljd.</strong> Bestäm 4-6 viner som går att ställa i ordning lätt &rarr; kraftigt (i kropp, sötma eller intensitet). Det är ramen som gör vinerna jämförbara.</li>
+          <li><strong>Sätt temperatur och ordning.</strong> Använd temperaturtabellen i Ledarmanuset. Kyl bubbel och vita, karaffera kraftiga röda i tid.</li>
+          <li><strong>Välj en pratstartare per vin.</strong> "En sak att lyfta" i tabellen är din replik när det blir tyst — en kontrast mot föregående vin, en typisk arom, eller en fråga till gruppen.</li>
+        </ol>
+
+        <h3>Fler tema-idéer att fylla i själv</h3>
+        <table class="pl-table">
+          <thead><tr><th>Tema</th><th>Stilföljd (lätt &rarr; kraftigt)</th></tr></thead>
+          <tbody>
+            <tr><td>Bara vitt</td><td>Sauvignon Blanc &rarr; Riesling &rarr; oekad Chardonnay &rarr; ekad Chardonnay</td></tr>
+            <tr><td>Bara rött</td><td>Pinot Noir &rarr; Sangiovese &rarr; Syrah &rarr; Cabernet / Malbec</td></tr>
+            <tr><td>En druva, tre platser</td><td>Samma druva från svalt &rarr; medel &rarr; varmt klimat</td></tr>
+            <tr><td>Pris-tema</td><td>Samma stil i stigande prisklass, gärna blint</td></tr>
+          </tbody>
+        </table>
+
+        <div class="pl-quote" style="margin-top:0.75rem;">
+          <div class="label">Allt hänger ihop</div>
+          <p>Det här dokumentet, Ledarmanuset, protokollet och de tre modulerna (mat, ost, mousserande) är byggda för att fungera tillsammans. Ramen är alltid densamma — du byter bara vinerna. Lycka till, och skål!</p>
+        </div>
+      </div>
+
     </section>
 
   </main>
 
   <footer class="footer" style="position:relative;z-index:1;">
-    <div class="footer-divider"><span class="divider-vine">✦</span></div>
+    <div class="footer-divider"><span class="divider-vine">&#10022;</span></div>
     <p style="font-family:var(--font-display);font-size:0.85rem;color:var(--text-dim);letter-spacing:0.1em;">Cellar — Byggt för sommelierer</p>
   </footer>
 
@@ -447,6 +1260,41 @@
         document.querySelectorAll('.pl-section').forEach(s => s.classList.remove('print-active'));
       }, 500);
     }
+
+    // Generate VIN 2-6 tasting sheets by cloning VIN 1
+    (function() {
+      const container = document.getElementById('extra-sheets');
+      const template = document.getElementById('ts-vin1');
+      for (let i = 2; i <= 6; i++) {
+        const clone = template.cloneNode(true);
+        clone.id = 'ts-vin' + i;
+        clone.querySelector('h2').textContent = 'V I N ' + i;
+        // Fix radio names to avoid conflicts
+        clone.querySelectorAll('input[type="radio"]').forEach(r => {
+          r.name = r.name.replace(/^v1/, 'v' + i);
+          r.checked = false;
+        });
+        // Clear text inputs and textareas
+        clone.querySelectorAll('input[type="text"]').forEach(inp => inp.value = '');
+        clone.querySelectorAll('textarea').forEach(ta => ta.value = '');
+        // Reset stars
+        clone.querySelectorAll('.ts-stars .star').forEach(s => s.classList.remove('active'));
+        container.appendChild(clone);
+      }
+    })();
+
+    // Star rating
+    document.addEventListener('click', function(e) {
+      const star = e.target.closest('.star');
+      if (!star) return;
+      const stars = star.parentElement;
+      const val = parseInt(star.dataset.v);
+      stars.dataset.rating = val;
+      stars.querySelectorAll('.star').forEach(s => {
+        s.classList.toggle('active', parseInt(s.dataset.v) <= val);
+        s.textContent = parseInt(s.dataset.v) <= val ? '★' : '☆';
+      });
+    });
   </script>
   <script src="js/mobile-nav.js"></script>
   <script>
