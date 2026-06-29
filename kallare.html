@@ -547,11 +547,52 @@
             <span style="font-family:var(--font-display);font-size:1.1rem;color:var(--text);min-width:2rem;text-align:center;">${w.antal || 1}</span>
             <button class="wine-action-btn" onclick="event.stopPropagation();changeQty('${w.id}',1);openWineDetail('${w.id}')">+</button>
           </div>
+          <button onclick="printWine('${w.id}')" style="width:100%;padding:0.6rem;font-family:var(--font-body);font-size:0.82rem;font-weight:500;color:var(--text-muted);background:transparent;border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;">🖨 Skriv ut</button>
           <button onclick="removeWine('${w.id}');closeWineDetail()" style="width:100%;padding:0.7rem;font-family:var(--font-body);font-size:0.85rem;font-weight:500;color:#fff;background:#a33;border:none;border-radius:var(--radius-sm);cursor:pointer;transition:all 0.3s;">🍷 Druckit upp — ta bort</button>
-          <button onclick="closeWineDetail()" style="width:100%;padding:0.6rem;font-family:var(--font-body);font-size:0.85rem;color:var(--text-muted);background:transparent;border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;">Stäng</button>
+          <button onclick="closeWineDetail()" class="no-print" style="width:100%;padding:0.6rem;font-family:var(--font-body);font-size:0.85rem;color:var(--text-muted);background:transparent;border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;">Stäng</button>
         </div>
       `;
       overlay.classList.add('open');
+    }
+
+    function printWine(id) {
+      const wines = getWines();
+      const w = wines.find(x => x.id === id);
+      if (!w) return;
+      const printWin = window.open('', '_blank');
+      printWin.document.write(`<!DOCTYPE html><html><head><title>${w.namn} — Cellar</title>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+        <style>
+          body{font-family:Inter,sans-serif;max-width:600px;margin:2rem auto;color:#2c2218;font-size:11pt;line-height:1.6;}
+          h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:22pt;font-weight:400;margin-bottom:0.25rem;color:#8B1A2B;}
+          .sub{font-size:10pt;color:#666;margin-bottom:1rem;}
+          .tag{display:inline-block;font-size:8pt;font-weight:500;padding:2px 8px;border-radius:20px;margin:2px;border:1px solid #ddd;}
+          table{width:100%;border-collapse:collapse;margin:0.75rem 0;}
+          td{padding:4px 8px;font-size:10pt;border-bottom:1px solid #eee;}
+          td:first-child{font-weight:600;width:100px;color:#8B1A2B;}
+          .footer{text-align:center;font-size:8pt;color:#999;margin-top:2rem;border-top:1px solid #eee;padding-top:0.5rem;}
+          .section{margin-bottom:0.75rem;}
+          .section-title{font-size:8pt;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#8B1A2B;margin-bottom:0.25rem;}
+          .quote{border-left:3px solid #8B1A2B;padding-left:0.75rem;font-style:italic;color:#555;}
+        </style></head><body>
+        <h1>${w.namn}</h1>
+        <p class="sub">${w.producent||''} ${w.argang?'· '+w.argang:''} ${w.region?'· '+w.region:''}</p>
+        <div>${w.druva?'<span class="tag">'+w.druva+'</span>':''}${w.klassificering?'<span class="tag">'+w.klassificering+'</span>':''}${w.alkohol?'<span class="tag">'+w.alkohol+'%</span>':''}${w.prisklass?'<span class="tag">'+w.prisklass+'</span>':''}</div>
+        ${w.kropp||w.syra?'<table>'+
+          (w.kropp?'<tr><td>Kropp</td><td>'+w.kropp+'</td></tr>':'')+
+          (w.syra?'<tr><td>Syra</td><td>'+w.syra+'</td></tr>':'')+
+          (w.tanniner?'<tr><td>Tanniner</td><td>'+w.tanniner+'</td></tr>':'')+
+          (w.sotma?'<tr><td>Sötma</td><td>'+w.sotma+'</td></tr>':'')+
+        '</table>':''}
+        ${w.aromer?'<div class="section"><div class="section-title">Aromer</div><p>'+w.aromer+'</p></div>':''}
+        ${w.matforslag?.length?'<div class="section"><div class="section-title">Matförslag</div><p>'+w.matforslag.join(', ')+'</p></div>':''}
+        ${w.lagring?'<div class="section"><div class="section-title">Lagring</div><p>'+w.lagring+(w.temperatur?' · Servera vid '+w.temperatur:'')+'</p></div>':''}
+        ${w.fakta?'<div class="section"><div class="section-title">Om vinet</div><p class="quote">'+w.fakta+'</p></div>':''}
+        ${w.rating?'<div class="section"><div class="section-title">Betyg</div><p>'+'★'.repeat(w.rating)+'☆'.repeat(5-w.rating)+' ('+w.rating+'/5)</p></div>':''}
+        <div class="footer">Cellar — Sommelier Companion</div>
+        </body></html>`);
+      printWin.document.close();
+      printWin.print();
     }
 
     function closeWineDetail() {

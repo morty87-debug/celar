@@ -539,3 +539,55 @@ body::after {
   .card { padding: 1.5rem 1rem 1.25rem; }
   .card-icon { width: 32px; height: 32px; }
 }
+
+/* ─── Print styles ─── */
+@media print {
+  .bg-grain, .mobile-nav, .theme-toggle, .hero-badge,
+  .hero-divider, .card-glow, .back-link, footer, .footer,
+  #dailyQuiz, .no-print { display: none !important; }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 11pt;
+    padding: 0;
+  }
+
+  * {
+    color: #000 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a { text-decoration: underline; }
+
+  .wine-color {
+    border: 1px solid #666 !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .wine-item, .card, .fact-item, .result-card,
+  .map-card, .quiz-box, .daily-quiz-card {
+    break-inside: avoid;
+    border: 1px solid #ddd !important;
+  }
+
+  .print-header {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 18pt;
+    letter-spacing: 3px;
+  }
+
+  .print-footer {
+    text-align: center;
+    font-size: 8pt;
+    color: #999 !important;
+    margin-top: 2rem;
+    border-top: 1px solid #ddd;
+    padding-top: 0.5rem;
+  }
+}

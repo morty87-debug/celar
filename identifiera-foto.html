@@ -591,7 +591,8 @@ Ge detaljerad, pålitlig information baserad på druvsort, region och årgång.`
           <p style="font-style:italic;color:var(--text-dim);line-height:1.6;">${wine.historia}</p>
         </div>` : ''}
 
-        <div style="margin-top:1.25rem;text-align:center;">
+        <div style="margin-top:1.25rem;display:flex;gap:0.5rem;justify-content:center;flex-wrap:wrap;">
+          <button onclick="window.print()" style="padding:0.65rem 1.5rem;font-family:var(--font-body);font-size:0.85rem;font-weight:500;color:var(--wine);background:transparent;border:1px solid var(--border-hover);border-radius:100px;cursor:pointer;">🖨 Skriv ut</button>
           <button onclick="resetUpload()" style="padding:0.65rem 1.5rem;font-family:var(--font-body);font-size:0.85rem;font-weight:500;color:var(--text-muted);background:transparent;border:1px solid var(--border);border-radius:100px;cursor:pointer;">Analysera ett till vin</button>
         </div>
       `;
