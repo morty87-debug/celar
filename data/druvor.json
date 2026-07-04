@@ -3,6 +3,7 @@
     "namn": "Chardonnay",
     "typ": "vit",
     "ursprung": "Frankrike, Bourgogne",
+    "obligatorisk": true,
     "synonymer": ["Morillon"],
     "aromer": {
       "frukt": "Citron, lime, grönt äpple, omogen persika, aprikos, mango (varmare klimat)",
@@ -21,6 +22,7 @@
     "namn": "Sauvignon Blanc",
     "typ": "vit",
     "ursprung": "Frankrike, Loire",
+    "obligatorisk": true,
     "synonymer": ["Fumé Blanc"],
     "aromer": {
       "frukt": "Citron, lime, krusbär, persika, rabarber, melon, passionsfrukt (Nya världen)",
@@ -39,6 +41,7 @@
     "namn": "Riesling",
     "typ": "vit",
     "ursprung": "Tyskland, Rheingau",
+    "obligatorisk": true,
     "synonymer": ["Rheinriesling", "Weisser Riesling"],
     "aromer": {
       "frukt": "Citron, lime, grapefrukt, grönt äpple, päron, persika",
@@ -57,6 +60,7 @@
     "namn": "Chenin Blanc",
     "typ": "vit",
     "ursprung": "Frankrike, Loire",
+    "obligatorisk": true,
     "synonymer": ["Pineau de la Loire", "Steen (Sydafrika)"],
     "aromer": {
       "frukt": "Citron, lime, gula äpplen, persika",
@@ -75,6 +79,7 @@
     "namn": "Gewürztraminer",
     "typ": "vit",
     "ursprung": "Italien/Tyskland (Sydtyrolen)",
+    "obligatorisk": true,
     "synonymer": ["Traminer", "Savagnin Rosé"],
     "aromer": {
       "frukt": "Persika, litchi, mango, tropiska frukter",
@@ -93,6 +98,7 @@
     "namn": "Pinot Gris",
     "typ": "vit",
     "ursprung": "Frankrike, Bourgogne",
+    "obligatorisk": true,
     "synonymer": ["Pinot Grigio", "Grauburgunder", "Ruländer"],
     "aromer": {
       "frukt": "Päron, persika, aprikos, citrus, honung (Alsace-stil)",
@@ -108,9 +114,29 @@
     "matparning": ["Lättare fiskrätter (Grigio)", "Kyckling i gräddsås (Gris)", "Pasta med svamp", "Japansk mat"]
   },
   {
+    "namn": "Pinot Blanc",
+    "typ": "vit",
+    "ursprung": "Frankrike, Alsace",
+    "obligatorisk": true,
+    "synonymer": ["Weißburgunder (Tyskland)", "Pinot Bianco (Italien)"],
+    "aromer": {
+      "frukt": "Grönt äpple, päron, citron, persika",
+      "ovrigt": "Mandel, blommig, mjölkig, subtil"
+    },
+    "karaktar": {
+      "syra": "Medium till Medium+",
+      "kropp": "Lätt till Medium",
+      "alkohol": "12-13.5%"
+    },
+    "stil": "Friska, neutrala vita viner med mild fruktkaraktär. Alsace och Tyskland (som Weißburgunder) producerar de bästa versionerna. Används även i mousserande viner. Mer tillgänglig och rundare än Riesling eller Gewürztraminer.",
+    "regioner": ["Alsace", "Baden (Tyskland)", "Pfalz (Tyskland)", "Trentino-Alto Adige (Italien)", "Österrike"],
+    "matparning": ["Grillad fisk", "Kyckling", "Milda ostar", "Antipasti", "Pasta med gräddsås"]
+  },
+  {
     "namn": "Muscat",
     "typ": "vit",
     "ursprung": "Grekland (troligen)",
+    "obligatorisk": true,
     "synonymer": ["Moscato", "Muskateller", "Moscatel", "Muscat Blanc à Petits Grains", "Muscat de Frontignan"],
     "aromer": {
       "frukt": "Druva, persika, aprikos, apelsin, litchi",
@@ -129,6 +155,7 @@
     "namn": "Viognier",
     "typ": "vit",
     "ursprung": "Frankrike, Rhône Nord",
+    "obligatorisk": true,
     "synonymer": [],
     "aromer": {
       "frukt": "Mogen persika, aprikos, mango",
@@ -147,6 +174,7 @@
     "namn": "Grüner Veltliner",
     "typ": "vit",
     "ursprung": "Österrike",
+    "obligatorisk": true,
     "synonymer": ["GruVe"],
     "aromer": {
       "frukt": "Grönt äpple, citrus, lime, vit persika",
@@ -165,6 +193,7 @@
     "namn": "Albariño",
     "typ": "vit",
     "ursprung": "Spanien, Galicien",
+    "obligatorisk": true,
     "synonymer": ["Alvarinho (Portugal)"],
     "aromer": {
       "frukt": "Citrus, lime, stenfrukt, persika, apelsin",
@@ -196,6 +225,196 @@
     "stil": "Fräscha, torra vita viner från Rueda. Aromatiskt driven med örtiga karaktärer. Liknar Sauvignon Blanc men med egen identitet.",
     "regioner": ["Rueda"],
     "matparning": ["Tapas", "Grillad fisk", "Räkor", "Lättrökta rätter"]
+  },
+  {
+    "namn": "Verdicchio",
+    "typ": "vit",
+    "ursprung": "Italien, Marche",
+    "obligatorisk": true,
+    "synonymer": [],
+    "aromer": {
+      "frukt": "Citron, grönt äpple, persika",
+      "ovrigt": "Mineralitet, mandel, anis"
+    },
+    "karaktar": {
+      "syra": "Medium+ till Hög",
+      "kropp": "Medium",
+      "alkohol": "12-13.5%"
+    },
+    "stil": "Friska vita viner med mineralitet. Verdicchio dei Castelli di Jesi är mest känt. Kan vara enkel eller komplex med lagringspotential.",
+    "regioner": ["Castelli di Jesi", "Matelica"],
+    "matparning": ["Skaldjur", "Grillad fisk", "Pasta med musslor", "Friterad mat"]
+  },
+  {
+    "namn": "Silvaner",
+    "typ": "vit",
+    "ursprung": "Tyskland",
+    "obligatorisk": true,
+    "synonymer": ["Sylvaner"],
+    "aromer": {
+      "frukt": "Grönt äpple, citron, päron, melon",
+      "ovrigt": "Örtig, gräsig, jordig mineralitet"
+    },
+    "karaktar": {
+      "syra": "Medium",
+      "kropp": "Lätt till Medium",
+      "alkohol": "11.5-13.5%"
+    },
+    "stil": "Torra vita viner med neutral, mineralisk karaktär. Franken (Franconien) är den viktigaste regionen — vinet säljs i den typiska Bocksbeutel-flaskan. Alsace ger fylligare version. Diskret och terroirdriven.",
+    "regioner": ["Franken (Tyskland)", "Rheinhessen", "Alsace", "Österrike"],
+    "matparning": ["Grillad fisk", "Sparris", "Lätta grönsakrätter", "Milda ostar"]
+  },
+  {
+    "namn": "Grenache Blanc",
+    "typ": "vit",
+    "ursprung": "Spanien/Frankrike",
+    "obligatorisk": true,
+    "synonymer": ["Garnacha Blanca (Spanien)"],
+    "aromer": {
+      "frukt": "Persika, aprikos, citrus, vit blomma",
+      "ovrigt": "Anisfrö, örtig, honung, nötiga toner"
+    },
+    "karaktar": {
+      "syra": "Medium- till Medium",
+      "kropp": "Medium till Full",
+      "alkohol": "13-15%"
+    },
+    "stil": "Fyllig vit med låg syra och rik textur. Viktig i Châteauneuf-du-Pape Blanc och Roussillon. Blandas ofta med Roussanne och Marsanne. Bäst dricks ung för friskhetens skull.",
+    "regioner": ["Châteauneuf-du-Pape", "Roussillon", "Languedoc", "Rioja (Spanien)"],
+    "matparning": ["Grillad kyckling", "Fisk med smörsås", "Krämig pasta", "Milda ostar"]
+  },
+  {
+    "namn": "Vermentino",
+    "typ": "vit",
+    "ursprung": "Italien/Frankrike",
+    "obligatorisk": true,
+    "synonymer": ["Rolle (Frankrike)"],
+    "aromer": {
+      "frukt": "Citron, päron, persika, grönt äpple",
+      "ovrigt": "Örtig, blommig, marin mineralitet"
+    },
+    "karaktar": {
+      "syra": "Medium+ till Hög",
+      "kropp": "Lätt till Medium",
+      "alkohol": "12.5-14%"
+    },
+    "stil": "Aromatiskt drivna torra viner, ståltanksjästa, lagring på jästfällning, ingen MLC eller fat. Vermentino di Gallura DOCG på Sardinien är premiumversionen.",
+    "regioner": ["Sardinien (Gallura)", "Ligurien", "Toscana", "Korsika", "Provence"],
+    "matparning": ["Grillad fisk", "Skaldjur", "Pesto", "Medelhavssallader"]
+  },
+  {
+    "namn": "Sémillon",
+    "typ": "vit",
+    "ursprung": "Frankrike, Bordeaux",
+    "obligatorisk": true,
+    "synonymer": ["Semillon"],
+    "aromer": {
+      "frukt": "Citron, fikon, persika, aprikos, honung (åldrad)",
+      "ovrigt": "Bivax, lanolin, rostat bröd (Hunter Valley med ålder)"
+    },
+    "karaktar": {
+      "syra": "Medium- till Medium",
+      "kropp": "Medium till Full",
+      "alkohol": "10-14%"
+    },
+    "stil": "Viktigt i Bordeaux-blandningar (med Sauvignon Blanc). Huvuddruvan i Sauternes (söt, botrytisangripen). Hunter Valley (Australien) ger unik torr stil som åldras remarkabelt — skördas vid 10-11% alkohol.",
+    "regioner": ["Bordeaux (Graves, Sauternes)", "Hunter Valley (Australien)", "Barossa Valley"],
+    "matparning": ["Foie gras (söt stil)", "Grillad fisk", "Kyckling med citron", "Blåmögelost (Sauternes)"]
+  },
+  {
+    "namn": "Marsanne",
+    "typ": "vit",
+    "ursprung": "Frankrike, Rhône Nord",
+    "obligatorisk": true,
+    "synonymer": [],
+    "aromer": {
+      "frukt": "Citron, mogen persika, mango, övermoget gult äpple",
+      "ovrigt": "Blommig, kaprifol, stenrökig mineralitet"
+    },
+    "karaktar": {
+      "syra": "Medium- till Medium",
+      "kropp": "Full",
+      "alkohol": "13.5-14.5%"
+    },
+    "stil": "Torra viner, fylliga och oljiga, oxidationstoner, ingen MLC. Blandas oftast med Roussanne i Hermitage, Crozes-Hermitage och Saint-Joseph.",
+    "regioner": ["Hermitage", "Crozes-Hermitage", "Saint-Joseph", "Languedoc", "Australien"],
+    "matparning": ["Grillad kyckling", "Krämig pasta", "Fisk med smörsås", "Mjuka ostar"]
+  },
+  {
+    "namn": "Roussanne",
+    "typ": "vit",
+    "ursprung": "Frankrike, Rhône Nord",
+    "obligatorisk": true,
+    "synonymer": [],
+    "aromer": {
+      "frukt": "Moget päron, persika, aprikos",
+      "ovrigt": "Örtig, ört-thé, blommig"
+    },
+    "karaktar": {
+      "syra": "Medium till Medium+",
+      "kropp": "Full",
+      "alkohol": "13.5-14.5%"
+    },
+    "stil": "Torra viner, fylliga och oljiga, ingen MLC. Blandas oftast med Marsanne. Bidrar med mer syra och aromatisk komplexitet än Marsanne.",
+    "regioner": ["Hermitage", "Crozes-Hermitage", "Saint-Joseph", "Châteauneuf-du-Pape"],
+    "matparning": ["Grillad fisk med örter", "Kyckling med dragon", "Svamprisotto"]
+  },
+  {
+    "namn": "Solaris",
+    "typ": "vit",
+    "ursprung": "Tyskland (PIWI-hybrid)",
+    "obligatorisk": true,
+    "synonymer": [],
+    "aromer": {
+      "frukt": "Citrus, grönt äpple, tropisk frukt, ananas",
+      "ovrigt": "Kryddig, blommig, örtig"
+    },
+    "karaktar": {
+      "syra": "Medium till Medium+",
+      "kropp": "Lätt till Medium",
+      "alkohol": "11-13%"
+    },
+    "stil": "PIWI-hybrid — motståndskraftig mot kyla och sjukdomar. Sveriges mest odlade druva. Ger fräscha, aromatiska vita viner i nordliga klimat.",
+    "regioner": ["Sverige", "Danmark", "Nordtyskland", "England"],
+    "matparning": ["Skaldjur", "Lätt fisk", "Ostbricka", "Sallader"]
+  },
+  {
+    "namn": "Godello",
+    "typ": "vit",
+    "ursprung": "Spanien, Galicien",
+    "obligatorisk": true,
+    "synonymer": [],
+    "aromer": {
+      "frukt": "Stenfrukt, citron, persika, aprikos",
+      "ovrigt": "Blommig, våt sten, mineralitet"
+    },
+    "karaktar": {
+      "syra": "Medium+ till Hög",
+      "kropp": "Medium till Full",
+      "alkohol": "12.5-14%"
+    },
+    "stil": "Kraftfulla, eleganta vita med glycerinkaraktär. Terroirdriven druva från nordvästra Spanien. Renaissance på 2000-talet.",
+    "regioner": ["Valdeorras", "Bierzo"],
+    "matparning": ["Skaldjur", "Grillad fisk", "Kyckling", "Bläckfisk"]
+  },
+  {
+    "namn": "Chasselas",
+    "typ": "vit",
+    "ursprung": "Schweiz/Frankrike",
+    "obligatorisk": true,
+    "synonymer": ["Fendant (Schweiz)", "Gutedel (Tyskland)"],
+    "aromer": {
+      "frukt": "Grönt äpple, citron, päron",
+      "ovrigt": "Mineralitet, nötter, blommig, subtil"
+    },
+    "karaktar": {
+      "syra": "Medium",
+      "kropp": "Lätt till Medium",
+      "alkohol": "11-12.5%"
+    },
+    "stil": "Schweiz mest odlade vita druva och landets signaturdruva. Subtil, terroirdriven karaktär. Finns även i Savoie (Frankrike). Bara 1% av schweiziskt vin exporteras.",
+    "regioner": ["Vaud (Schweiz)", "Valais (Schweiz)", "Savoie (Frankrike)", "Baden (Tyskland)"],
+    "matparning": ["Fondue", "Raclette", "Grillad fisk", "Sparris"]
   },
   {
     "namn": "Furmint",
@@ -270,78 +489,6 @@
     "matparning": ["Risotto", "Grillad fisk", "Lättrökta rätter", "Mjuka ostar"]
   },
   {
-    "namn": "Verdicchio",
-    "typ": "vit",
-    "ursprung": "Italien, Marche",
-    "synonymer": [],
-    "aromer": {
-      "frukt": "Citron, grönt äpple, persika",
-      "ovrigt": "Mineralitet, mandel, anis"
-    },
-    "karaktar": {
-      "syra": "Medium+ till Hög",
-      "kropp": "Medium",
-      "alkohol": "12-13.5%"
-    },
-    "stil": "Friska vita viner med mineralitet. Verdicchio dei Castelli di Jesi är mest känt. Kan vara enkel eller komplex med lagringspotential.",
-    "regioner": ["Castelli di Jesi", "Matelica"],
-    "matparning": ["Skaldjur", "Grillad fisk", "Pasta med musslor", "Friterad mat"]
-  },
-  {
-    "namn": "Vermentino",
-    "typ": "vit",
-    "ursprung": "Italien/Frankrike",
-    "synonymer": ["Rolle (Frankrike)"],
-    "aromer": {
-      "frukt": "Citron, päron, persika, grönt äpple",
-      "ovrigt": "Örtig, blommig, marin mineralitet"
-    },
-    "karaktar": {
-      "syra": "Medium+ till Hög",
-      "kropp": "Lätt till Medium",
-      "alkohol": "12.5-14%"
-    },
-    "stil": "Aromatiskt drivna torra viner, ståltanksjästa, lagring på jästfällning, ingen MLC eller fat. Vermentino di Gallura DOCG på Sardinien är premiumversionen.",
-    "regioner": ["Sardinien (Gallura)", "Ligurien", "Toscana", "Korsika", "Provence"],
-    "matparning": ["Grillad fisk", "Skaldjur", "Pesto", "Medelhavssallader"]
-  },
-  {
-    "namn": "Melon de Bourgogne",
-    "typ": "vit",
-    "ursprung": "Frankrike, Bourgogne (odlas nu i Loire)",
-    "synonymer": ["Melon", "Muscadet"],
-    "aromer": {
-      "frukt": "Neutral, citrus: lime, citron, grönt äpple, druvig",
-      "ovrigt": "Jästig, snäckskal, mineralitet"
-    },
-    "karaktar": {
-      "syra": "Medium+ till Hög",
-      "kropp": "Lätt",
-      "alkohol": "10-12%"
-    },
-    "stil": "Torra vita viner, ingen MLC, primärt ståltanksjäst, Sur Lie för komplexitet. Muscadet Sèvre-et-Maine är huvudappellationen.",
-    "regioner": ["Muscadet (västra Loire)"],
-    "matparning": ["Ostron", "Musslor", "Skaldjur", "Friterad fisk"]
-  },
-  {
-    "namn": "Sémillon",
-    "typ": "vit",
-    "ursprung": "Frankrike, Bordeaux",
-    "synonymer": ["Semillon"],
-    "aromer": {
-      "frukt": "Citron, fikon, persika, aprikos, honung (åldrad)",
-      "ovrigt": "Bivax, lanolin, rostat bröd (Hunter Valley med ålder)"
-    },
-    "karaktar": {
-      "syra": "Medium- till Medium",
-      "kropp": "Medium till Full",
-      "alkohol": "10-14%"
-    },
-    "stil": "Viktigt i Bordeaux-blandningar (med Sauvignon Blanc). Huvuddruvan i Sauternes (söt, botrytisangripen). Hunter Valley (Australien) ger unik torr stil som åldras remarkabelt — skördas vid 10-11% alkohol.",
-    "regioner": ["Bordeaux (Graves, Sauternes)", "Hunter Valley (Australien)", "Barossa Valley"],
-    "matparning": ["Foie gras (söt stil)", "Grillad fisk", "Kyckling med citron", "Blåmögelost (Sauternes)"]
-  },
-  {
     "namn": "Muscadelle",
     "typ": "vit",
     "ursprung": "Frankrike, Bordeaux",
@@ -358,60 +505,6 @@
     "stil": "Aromatisk druva som används i mindre andelar i Bordeaux vita blandviner och Sauternes. Bidrar med blommighet och aromarkomplexitet.",
     "regioner": ["Bordeaux", "Bergerac"],
     "matparning": ["Desserter med frukt", "Blåmögelost", "Frukttårta"]
-  },
-  {
-    "namn": "Chasselas",
-    "typ": "vit",
-    "ursprung": "Schweiz/Frankrike",
-    "synonymer": ["Fendant (Schweiz)", "Gutedel (Tyskland)"],
-    "aromer": {
-      "frukt": "Grönt äpple, citron, päron",
-      "ovrigt": "Mineralitet, nötter, blommig, subtil"
-    },
-    "karaktar": {
-      "syra": "Medium",
-      "kropp": "Lätt till Medium",
-      "alkohol": "11-12.5%"
-    },
-    "stil": "Schweiz mest odlade vita druva och landets signaturdruva. Subtil, terroirdriven karaktär. Finns även i Savoie (Frankrike). Bara 1% av schweiziskt vin exporteras.",
-    "regioner": ["Vaud (Schweiz)", "Valais (Schweiz)", "Savoie (Frankrike)", "Baden (Tyskland)"],
-    "matparning": ["Fondue", "Raclette", "Grillad fisk", "Sparris"]
-  },
-  {
-    "namn": "Marsanne",
-    "typ": "vit",
-    "ursprung": "Frankrike, Rhône Nord",
-    "synonymer": [],
-    "aromer": {
-      "frukt": "Citron, mogen persika, mango, övermoget gult äpple",
-      "ovrigt": "Blommig, kaprifol, stenrökig mineralitet"
-    },
-    "karaktar": {
-      "syra": "Medium- till Medium",
-      "kropp": "Full",
-      "alkohol": "13.5-14.5%"
-    },
-    "stil": "Torra viner, fylliga och oljiga, oxidationstoner, ingen MLC. Blandas oftast med Roussanne i Hermitage, Crozes-Hermitage och Saint-Joseph.",
-    "regioner": ["Hermitage", "Crozes-Hermitage", "Saint-Joseph", "Languedoc", "Australien"],
-    "matparning": ["Grillad kyckling", "Krämig pasta", "Fisk med smörsås", "Mjuka ostar"]
-  },
-  {
-    "namn": "Roussanne",
-    "typ": "vit",
-    "ursprung": "Frankrike, Rhône Nord",
-    "synonymer": [],
-    "aromer": {
-      "frukt": "Moget päron, persika, aprikos",
-      "ovrigt": "Örtig, ört-thé, blommig"
-    },
-    "karaktar": {
-      "syra": "Medium till Medium+",
-      "kropp": "Full",
-      "alkohol": "13.5-14.5%"
-    },
-    "stil": "Torra viner, fylliga och oljiga, ingen MLC. Blandas oftast med Marsanne. Bidrar med mer syra och aromatisk komplexitet än Marsanne.",
-    "regioner": ["Hermitage", "Crozes-Hermitage", "Saint-Joseph", "Châteauneuf-du-Pape"],
-    "matparning": ["Grillad fisk med örter", "Kyckling med dragon", "Svamprisotto"]
   },
   {
     "namn": "Savagnin",
@@ -466,24 +559,6 @@
     "stil": "Japans signaturdruva — ger lätta, delikata, subtila vita viner. Odlas främst i Yamanashi-prefekturen. Perfekt till japansk mat.",
     "regioner": ["Yamanashi (Japan)"],
     "matparning": ["Sushi", "Sashimi", "Tempura", "Japansk mat generellt"]
-  },
-  {
-    "namn": "Godello",
-    "typ": "vit",
-    "ursprung": "Spanien, Galicien",
-    "synonymer": [],
-    "aromer": {
-      "frukt": "Stenfrukt, citron, persika, aprikos",
-      "ovrigt": "Blommig, våt sten, mineralitet"
-    },
-    "karaktar": {
-      "syra": "Medium+ till Hög",
-      "kropp": "Medium till Full",
-      "alkohol": "12.5-14%"
-    },
-    "stil": "Kraftfulla, eleganta vita med glycerinkaraktär. Terroirdriven druva från nordvästra Spanien. Renaissance på 2000-talet.",
-    "regioner": ["Valdeorras", "Bierzo"],
-    "matparning": ["Skaldjur", "Grillad fisk", "Kyckling", "Bläckfisk"]
   },
   {
     "namn": "Glera",
@@ -666,24 +741,6 @@
     "matparning": ["Vitello tonnato", "Antipasti", "Grillad kyckling", "Lättrökta rätter"]
   },
   {
-    "namn": "Solaris",
-    "typ": "vit",
-    "ursprung": "Tyskland (PIWI-hybrid)",
-    "synonymer": [],
-    "aromer": {
-      "frukt": "Citrus, grönt äpple, tropisk frukt, ananas",
-      "ovrigt": "Kryddig, blommig, örtig"
-    },
-    "karaktar": {
-      "syra": "Medium till Medium+",
-      "kropp": "Lätt till Medium",
-      "alkohol": "11-13%"
-    },
-    "stil": "PIWI-hybrid — motståndskraftig mot kyla och sjukdomar. Sveriges mest odlade druva. Ger fräscha, aromatiska vita viner i nordliga klimat.",
-    "regioner": ["Sverige", "Danmark", "Nordtyskland", "England"],
-    "matparning": ["Skaldjur", "Lätt fisk", "Ostbricka", "Sallader"]
-  },
-  {
     "namn": "Rkatsiteli",
     "typ": "vit",
     "ursprung": "Georgien",
@@ -706,6 +763,7 @@
     "namn": "Cabernet Sauvignon",
     "typ": "röd",
     "ursprung": "Frankrike, Bordeaux",
+    "obligatorisk": true,
     "synonymer": ["Cab Sav"],
     "aromer": {
       "frukt": "Svarta vinbär, björnbär, körsbär, plommon, blåbär",
@@ -725,6 +783,7 @@
     "namn": "Merlot",
     "typ": "röd",
     "ursprung": "Frankrike, Bordeaux",
+    "obligatorisk": true,
     "synonymer": [],
     "aromer": {
       "frukt": "Plommon, körsbär, blåbär, svarta vinbär",
@@ -744,6 +803,7 @@
     "namn": "Pinot Noir",
     "typ": "röd",
     "ursprung": "Frankrike, Bourgogne",
+    "obligatorisk": true,
     "synonymer": ["Spätburgunder (Tyskland)", "Blauburgunder"],
     "aromer": {
       "frukt": "Jordgubbar, hallon, röda körsbär, lingon",
@@ -763,6 +823,7 @@
     "namn": "Syrah",
     "typ": "röd",
     "ursprung": "Frankrike, Rhône Nord",
+    "obligatorisk": true,
     "synonymer": ["Shiraz (Australien)"],
     "aromer": {
       "frukt": "Björnbär, skogsbär, plommon, blåbär",
@@ -782,6 +843,7 @@
     "namn": "Grenache",
     "typ": "röd",
     "ursprung": "Spanien (troligen Aragonien)",
+    "obligatorisk": true,
     "synonymer": ["Garnacha (Spanien)", "Cannonau (Sardinien)"],
     "aromer": {
       "frukt": "Röda bär, hallon, jordgubbar, körsbär, fikon",
@@ -801,6 +863,7 @@
     "namn": "Tempranillo",
     "typ": "röd",
     "ursprung": "Spanien",
+    "obligatorisk": true,
     "synonymer": ["Tinto Fino", "Tinto País", "Cencibel", "Ull de Llebre", "Tinta Roriz (Portugal)", "Aragonez (Portugal)"],
     "aromer": {
       "frukt": "Jordgubbe, blåbär, hallon, körsbär, plommon",
@@ -820,6 +883,7 @@
     "namn": "Sangiovese",
     "typ": "röd",
     "ursprung": "Italien, Toscana",
+    "obligatorisk": true,
     "synonymer": ["Brunello (Montalcino)", "Prugnolo Gentile (Montepulciano)", "Morellino", "Nielluccio (Korsika)"],
     "aromer": {
       "frukt": "Körsbär, plommon, jordgubbar, tranbär",
@@ -839,6 +903,7 @@
     "namn": "Nebbiolo",
     "typ": "röd",
     "ursprung": "Italien, Piemonte",
+    "obligatorisk": true,
     "synonymer": ["Chiavennasca (Lombardiet)", "Spanna"],
     "aromer": {
       "frukt": "Körsbär, hallon, jordgubbar, fikon (med ålder)",
@@ -855,85 +920,10 @@
     "matparning": ["Tryffelrätter", "Braserat nötkött", "Vilt", "Lagrad Parmigiano", "Tajarin med smör"]
   },
   {
-    "namn": "Barbera",
-    "typ": "röd",
-    "ursprung": "Italien, Piemonte",
-    "synonymer": [],
-    "aromer": {
-      "frukt": "Körsbär, plommon, blåbär, björnbär",
-      "ovrigt": "Kryddig, jordig, vanilj (vid fatlagring)"
-    },
-    "karaktar": {
-      "syra": "Hög",
-      "tanniner": "Låg till Medium-",
-      "kropp": "Medium till Full",
-      "alkohol": "13-15%"
-    },
-    "stil": "Italiens mest planterade röda druva efter Sangiovese — fruktig, hög syra, låga tanniner. Barbera d'Asti och d'Alba är huvudappellationerna. Mjuk och tillgänglig.",
-    "regioner": ["Asti", "Alba", "Monferrato"],
-    "matparning": ["Pizza", "Pasta med tomatsås", "Grillat kött", "Charkuterier"]
-  },
-  {
-    "namn": "Gamay",
-    "typ": "röd",
-    "ursprung": "Frankrike, Bourgogne/Beaujolais",
-    "synonymer": ["Gamay Noir à Jus Blanc"],
-    "aromer": {
-      "frukt": "Jordgubbe, hallon, körsbär, banan (Nouveau)",
-      "ovrigt": "Blommig, peppar, jordig"
-    },
-    "karaktar": {
-      "syra": "Medium+ till Hög",
-      "tanniner": "Låg till Medium-",
-      "kropp": "Lätt till Medium",
-      "alkohol": "12-13%"
-    },
-    "stil": "Fruktdrivna, lättdruckna röda viner. Beaujolais Nouveau (maceration carbonique — banantoner). Cru Beaujolais (Morgon, Fleurie, Moulin-à-Vent) ger seriösa, åldringsvänliga viner. Även i Savoie och Bugey.",
-    "regioner": ["Beaujolais", "Beaujolais Cru (Morgon, Fleurie, Moulin-à-Vent)", "Loire", "Savoie", "Bugey"],
-    "matparning": ["Charkuterier", "Lyonnais-kök", "Lättare kötträtter", "Kyckling", "Serveras gärna svalt"]
-  },
-  {
-    "namn": "Malbec",
-    "typ": "röd",
-    "ursprung": "Frankrike, Sydväst (Cahors)",
-    "synonymer": ["Côt (Loire)", "Auxerrois (Cahors)"],
-    "aromer": {
-      "frukt": "Skogsbär, mörka körsbär, plommon, björnbär",
-      "ovrigt": "Viol, kryddig, tobak, kaffe, choklad"
-    },
-    "karaktar": {
-      "syra": "Medium till Medium+",
-      "tanniner": "Medium+ till Hög",
-      "kropp": "Full",
-      "alkohol": "13.5-15%"
-    },
-    "stil": "Torra viner, mörka, fylliga och tanninrika, lagras ofta på fat. Argentinas signaturdruva sedan phylloxeran decimerade franska planteringar. Mendoza (speciellt Valle de Uco på hög höjd) ger elegant, komplex stil.",
-    "regioner": ["Mendoza", "Valle de Uco", "Cahors", "Languedoc"],
-    "matparning": ["Grillat nötkött", "Argentinsk asado", "Empanadas", "Hård ost", "Chokladdessert"]
-  },
-  {
-    "namn": "Carmenère",
-    "typ": "röd",
-    "ursprung": "Frankrike, Bordeaux",
-    "synonymer": [],
-    "aromer": {
-      "frukt": "Körsbär, plommon, björnbär, svarta vinbär",
-      "ovrigt": "Grön paprika, choklad, kryddor, rökiga toner, kaffeböna"
-    },
-    "karaktar": {
-      "syra": "Medium",
-      "tanniner": "Medium till Medium+",
-      "kropp": "Medium till Full",
-      "alkohol": "13-14.5%"
-    },
-    "stil": "Chiles signaturdruva — länge förväxlad med Merlot tills DNA-analys avslöjade sanningen 1994. Ansågs utdöd i Europa efter phylloxeran. Mjukare, mer kryddig version av Cabernet-familjen.",
-    "regioner": ["Chile (Colchagua, Rapel)", "Bordeaux (minimalt)"],
-    "matparning": ["Grillat kött", "Kryddiga grytor", "Empanadas", "Grillad paprika"]
-  },
-  {
     "namn": "Cabernet Franc",
     "typ": "röd",
     "ursprung": "Frankrike, Bordeaux/Loire",
+    "obligatorisk": true,
     "synonymer": ["Bouchet"],
     "aromer": {
       "frukt": "Röda körsbär, hallon, blåbär, svarta vinbär, grön paprika",
@@ -950,9 +940,30 @@
     "matparning": ["Grillad kyckling", "Lammkotletter", "Ratatouille", "Getost"]
   },
   {
+    "namn": "Touriga Nacional",
+    "typ": "röd",
+    "ursprung": "Portugal",
+    "obligatorisk": true,
+    "synonymer": [],
+    "aromer": {
+      "frukt": "Svarta vinbär, björnbär, körsbär, blåbär",
+      "ovrigt": "Viol, lavendel, rosor, kryddor, bergamott"
+    },
+    "karaktar": {
+      "syra": "Medium+ till Hög",
+      "tanniner": "Hög",
+      "kropp": "Full",
+      "alkohol": "13-15%"
+    },
+    "stil": "Portugals finaste druva — viktig för portvin och alltmer framstående som torrt rödvin (Douro, Dão). Intensiv färg, kraftig tanninstruktur, aromatiskt komplex med blommiga toner.",
+    "regioner": ["Douro", "Dão", "Alentejo"],
+    "matparning": ["Braserat kött", "Vilt", "Lamm", "Hård ost", "Choklad (portvin)"]
+  },
+  {
     "namn": "Mourvèdre",
     "typ": "röd",
     "ursprung": "Spanien",
+    "obligatorisk": true,
     "synonymer": ["Monastrell (Spanien)", "Mataro"],
     "aromer": {
       "frukt": "Svarta vinbär, björnbär, plommon, blåbär",
@@ -969,9 +980,150 @@
     "matparning": ["Vildsvin", "Grillat lamm", "Kryddiga grytor", "Charkuterier"]
   },
   {
+    "namn": "Carménère",
+    "typ": "röd",
+    "ursprung": "Frankrike, Bordeaux",
+    "obligatorisk": true,
+    "synonymer": [],
+    "aromer": {
+      "frukt": "Körsbär, plommon, björnbär, svarta vinbär",
+      "ovrigt": "Grön paprika, choklad, kryddor, rökiga toner, kaffeböna"
+    },
+    "karaktar": {
+      "syra": "Medium",
+      "tanniner": "Medium till Medium+",
+      "kropp": "Medium till Full",
+      "alkohol": "13-14.5%"
+    },
+    "stil": "Chiles signaturdruva — länge förväxlad med Merlot tills DNA-analys avslöjade sanningen 1994. Ansågs utdöd i Europa efter phylloxeran. Mjukare, mer kryddig version av Cabernet-familjen.",
+    "regioner": ["Chile (Colchagua, Rapel)", "Bordeaux (minimalt)"],
+    "matparning": ["Grillat kött", "Kryddiga grytor", "Empanadas", "Grillad paprika"]
+  },
+  {
+    "namn": "Malbec",
+    "typ": "röd",
+    "ursprung": "Frankrike, Sydväst (Cahors)",
+    "obligatorisk": true,
+    "synonymer": ["Côt (Loire)", "Auxerrois (Cahors)"],
+    "aromer": {
+      "frukt": "Skogsbär, mörka körsbär, plommon, björnbär",
+      "ovrigt": "Viol, kryddig, tobak, kaffe, choklad"
+    },
+    "karaktar": {
+      "syra": "Medium till Medium+",
+      "tanniner": "Medium+ till Hög",
+      "kropp": "Full",
+      "alkohol": "13.5-15%"
+    },
+    "stil": "Torra viner, mörka, fylliga och tanninrika, lagras ofta på fat. Argentinas signaturdruva sedan phylloxeran decimerade franska planteringar. Mendoza (speciellt Valle de Uco på hög höjd) ger elegant, komplex stil.",
+    "regioner": ["Mendoza", "Valle de Uco", "Cahors", "Languedoc"],
+    "matparning": ["Grillat nötkött", "Argentinsk asado", "Empanadas", "Hård ost", "Chokladdessert"]
+  },
+  {
+    "namn": "Petit Verdot",
+    "typ": "röd",
+    "ursprung": "Frankrike, Bordeaux",
+    "obligatorisk": true,
+    "synonymer": [],
+    "aromer": {
+      "frukt": "Svarta vinbär, björnbär, blåbär, plommon",
+      "ovrigt": "Viol, lavendel, kryddor, tobak, kaffe"
+    },
+    "karaktar": {
+      "syra": "Hög",
+      "tanniner": "Hög",
+      "kropp": "Full",
+      "alkohol": "13-15%"
+    },
+    "stil": "Klassisk Bordeaux-blendingdruva — ger mörk färg, intensiv tanninstruktur och blommig karaktär. Mognar sent och planteras i begränsad mängd i Bordeaux. I Nya världen (Kalifornien, Australien) görs endruvsviner med stor framgång.",
+    "regioner": ["Bordeaux (Médoc)", "Napa Valley", "Australien (Barossa)", "Sydafrika"],
+    "matparning": ["Grillat nötkött", "Vilt", "Lamm", "Hård lagrad ost"]
+  },
+  {
+    "namn": "Petite Sirah",
+    "typ": "röd",
+    "ursprung": "Frankrike (= Durif)",
+    "obligatorisk": true,
+    "synonymer": ["Durif"],
+    "aromer": {
+      "frukt": "Björnbär, blåbär, plommon, mörka körsbär",
+      "ovrigt": "Svartpeppar, choklad, lakrits, kryddor"
+    },
+    "karaktar": {
+      "syra": "Medium+ till Hög",
+      "tanniner": "Hög",
+      "kropp": "Full",
+      "alkohol": "13.5-15.5%"
+    },
+    "stil": "Mörka, kraftiga röda viner med intensiv tanninstuktur — tyngre än Syrah. Mest framstående i Kalifornien (Napa Valley, Paso Robles). Trots namnet ingen nära koppling till Syrah — faktiskt en korsning av Syrah × Peloursin (Durif).",
+    "regioner": ["Kalifornien (Napa, Paso Robles)", "Australien", "Mexico"],
+    "matparning": ["Grillat nötkött", "BBQ", "Lamm", "Kraftiga ostar"]
+  },
+  {
+    "namn": "País",
+    "typ": "röd",
+    "ursprung": "Spanien (Mission)",
+    "obligatorisk": true,
+    "synonymer": ["Mission (Kalifornien)", "Criolla Chica (Argentina)", "Listán Prieto"],
+    "aromer": {
+      "frukt": "Röda körsbär, hallon, jordgubbar, tranbär",
+      "ovrigt": "Jordig, örtig, blommig"
+    },
+    "karaktar": {
+      "syra": "Medium till Medium+",
+      "tanniner": "Låg till Medium-",
+      "kropp": "Lätt till Medium",
+      "alkohol": "11.5-13%"
+    },
+    "stil": "En av världens äldsta planterade druvor i Amerika — kom med spanska missionärer på 1500-talet. Chile upplever en renaissance för País — gamla vinstockar (100+ år) i Maule och Itata ger eleganta, naturliga viner.",
+    "regioner": ["Chile (Maule, Itata, Bio Bio)", "Kanarierna", "Mexiko"],
+    "matparning": ["Charkuterier", "Grillad kyckling", "Lättare kötträtter", "Tapas"]
+  },
+  {
+    "namn": "Carignan",
+    "typ": "röd",
+    "ursprung": "Spanien (Aragonien)",
+    "obligatorisk": true,
+    "synonymer": ["Cariñena (Spanien)", "Carignano (Sardinien)", "Mazuelo"],
+    "aromer": {
+      "frukt": "Hallon, blåbär, skogsbär, björnbär",
+      "ovrigt": "Kryddig, nejlika, kanel, tobak"
+    },
+    "karaktar": {
+      "syra": "Medium+ till Hög",
+      "tanniner": "Medium+ till Hög",
+      "kropp": "Medium till Full",
+      "alkohol": "13.5-14.5%"
+    },
+    "stil": "Torra viner, mjukas ofta ner genom Maceration Carbonique eller blending, ofatad och fatad. Gamla vinstockar ger utmärkta viner. Viktig i Priorat och södra Frankrike.",
+    "regioner": ["Languedoc-Roussillon", "Provence", "Priorat", "Sardinien (Carignano del Sulcis)"],
+    "matparning": ["Grillade korvar", "Lammgryta", "Cassoulet", "Kryddiga rätter"]
+  },
+  {
+    "namn": "Barbera",
+    "typ": "röd",
+    "ursprung": "Italien, Piemonte",
+    "obligatorisk": true,
+    "synonymer": [],
+    "aromer": {
+      "frukt": "Körsbär, plommon, blåbär, björnbär",
+      "ovrigt": "Kryddig, jordig, vanilj (vid fatlagring)"
+    },
+    "karaktar": {
+      "syra": "Hög",
+      "tanniner": "Låg till Medium-",
+      "kropp": "Medium till Full",
+      "alkohol": "13-15%"
+    },
+    "stil": "Italiens mest planterade röda druva efter Sangiovese — fruktig, hög syra, låga tanniner. Barbera d'Asti och d'Alba är huvudappellationerna. Mjuk och tillgänglig.",
+    "regioner": ["Asti", "Alba", "Monferrato"],
+    "matparning": ["Pizza", "Pasta med tomatsås", "Grillat kött", "Charkuterier"]
+  },
+  {
     "namn": "Zinfandel",
     "typ": "röd",
     "ursprung": "Kroatien (genetiskt = Tribidrag)",
+    "obligatorisk": true,
     "synonymer": ["Primitivo (Italien)", "Tribidrag", "Crljenak Kaštelanski"],
     "aromer": {
       "frukt": "Björnbär, plommon, russin, körsbär, blåbär, fikon",
@@ -988,9 +1140,50 @@
     "matparning": ["BBQ-revben", "Grillat kött", "Pizza", "Kryddiga korvar", "Hamburgare"]
   },
   {
+    "namn": "Gamay",
+    "typ": "röd",
+    "ursprung": "Frankrike, Bourgogne/Beaujolais",
+    "obligatorisk": true,
+    "synonymer": ["Gamay Noir à Jus Blanc"],
+    "aromer": {
+      "frukt": "Jordgubbe, hallon, körsbär, banan (Nouveau)",
+      "ovrigt": "Blommig, peppar, jordig"
+    },
+    "karaktar": {
+      "syra": "Medium+ till Hög",
+      "tanniner": "Låg till Medium-",
+      "kropp": "Lätt till Medium",
+      "alkohol": "12-13%"
+    },
+    "stil": "Fruktdrivna, lättdruckna röda viner. Beaujolais Nouveau (maceration carbonique — banantoner). Cru Beaujolais (Morgon, Fleurie, Moulin-à-Vent) ger seriösa, åldringsvänliga viner. Även i Savoie och Bugey.",
+    "regioner": ["Beaujolais", "Beaujolais Cru (Morgon, Fleurie, Moulin-à-Vent)", "Loire", "Savoie", "Bugey"],
+    "matparning": ["Charkuterier", "Lyonnais-kök", "Lättare kötträtter", "Kyckling", "Serveras gärna svalt"]
+  },
+  {
+    "namn": "Meunier",
+    "typ": "röd",
+    "ursprung": "Frankrike, Champagne",
+    "obligatorisk": true,
+    "synonymer": ["Pinot Meunier", "Schwarzriesling (Tyskland)"],
+    "aromer": {
+      "frukt": "Äpple, päron, jordgubbar, körsbär",
+      "ovrigt": "Blommig, kryddig, mjölig"
+    },
+    "karaktar": {
+      "syra": "Medium+ till Hög",
+      "tanniner": "Medium- till Medium",
+      "kropp": "Lätt till Medium",
+      "alkohol": "11-13%"
+    },
+    "stil": "Den tredje Champagne-druvan — bidrar med fruktig, tillgänglig karaktär och snabbare mognad jämfört med Pinot Noir och Chardonnay. Mycket viktigt i Champagne-blandningar, speciellt för Blanc de Noirs. Även stillastående röda i Württemberg (som Schwarzriesling).",
+    "regioner": ["Champagne (Vallée de la Marne)", "Württemberg (Tyskland)"],
+    "matparning": ["Skaldjur", "Lättare förrätt", "Blini med kaviar", "Aperitif"]
+  },
+  {
     "namn": "Pinotage",
     "typ": "röd",
     "ursprung": "Sydafrika",
+    "obligatorisk": true,
     "synonymer": [],
     "aromer": {
       "frukt": "Skogsbär, plommon, björnbär, körsbär",
@@ -1007,23 +1200,82 @@
     "matparning": ["Bobotie", "Grillat kött", "BBQ", "Kryddiga korvar", "Sydafrikansk braai"]
   },
   {
-    "namn": "Touriga Nacional",
+    "namn": "Mencía",
     "typ": "röd",
-    "ursprung": "Portugal",
-    "synonymer": [],
+    "ursprung": "Spanien, Galicien",
+    "obligatorisk": true,
+    "synonymer": ["Jaen (Portugal)"],
     "aromer": {
-      "frukt": "Svarta vinbär, björnbär, körsbär, blåbär",
-      "ovrigt": "Viol, lavendel, rosor, kryddor, bergamott"
+      "frukt": "Björnbär, granatäpple, röda bär, körsbär",
+      "ovrigt": "Grön paprika, jordigt, blommig, mineralitet"
+    },
+    "karaktar": {
+      "syra": "Hög",
+      "tanniner": "Medium till Medium+",
+      "kropp": "Medium",
+      "alkohol": "12.5-14%"
+    },
+    "stil": "Liknar Cabernet Franc. Terroirdrivna röda viner med enorm lagringspotential. Bierzo (skiffer och granit) är hemregionen. Renaissance på 2000-talet.",
+    "regioner": ["Bierzo", "Ribeira Sacra", "Valdeorras"],
+    "matparning": ["Grillat lamm", "Pulpo a la gallega", "Spanska grytor", "Charkuterier"]
+  },
+  {
+    "namn": "Blaufränkisch",
+    "typ": "röd",
+    "ursprung": "Österrike",
+    "obligatorisk": true,
+    "synonymer": ["Kékfrankos (Ungern)", "Lemberger (Tyskland)", "Frankovka"],
+    "aromer": {
+      "frukt": "Mörka körsbär, björnbär, blåbär",
+      "ovrigt": "Peppar, kryddor, mineralitet, choklad"
     },
     "karaktar": {
       "syra": "Medium+ till Hög",
-      "tanniner": "Hög",
+      "tanniner": "Medium till Hög",
+      "kropp": "Medium till Full",
+      "alkohol": "12.5-14%"
+    },
+    "stil": "Kraftfulla och eleganta röda viner, främst i Burgenland (Österrike). Ofta basen i Egri Bikavér (Ungern). Påminner ibland om Syrah i stil.",
+    "regioner": ["Burgenland (Österrike)", "Eger (Ungern)", "Villány (Ungern)", "Württemberg (Tyskland)"],
+    "matparning": ["Vildsvin", "Grillat nötkött", "Anka", "Svampgrytor"]
+  },
+  {
+    "namn": "Tannat",
+    "typ": "röd",
+    "ursprung": "Frankrike, Sydväst (Madiran)",
+    "synonymer": [],
+    "aromer": {
+      "frukt": "Björnbär, svarta vinbär, mörka plommon",
+      "ovrigt": "Nejlika, muskot, lakrits, tobak, choklad"
+    },
+    "karaktar": {
+      "syra": "Medium+ till Hög",
+      "tanniner": "Medium+ till Hög",
       "kropp": "Full",
       "alkohol": "13-15%"
     },
-    "stil": "Portugals finaste druva — viktig för portvin och alltmer framstående som torrt rödvin (Douro, Dão). Intensiv färg, kraftig tanninstruktur, aromatiskt komplex med blommiga toner.",
-    "regioner": ["Douro", "Dão", "Alentejo"],
-    "matparning": ["Braserat kött", "Vilt", "Lamm", "Hård ost", "Choklad (portvin)"]
+    "stil": "Torra viner, fylliga och tannindominerade, lagras ofta på fat, uttalad fatkaraktär. Uruguays nationaldruva — ger kraftfulla, tanninrika viner.",
+    "regioner": ["Madiran (Frankrike)", "Uruguay"],
+    "matparning": ["Grillat nötkött", "Vilt", "Hård ost", "Chokladdessert"]
+  },
+  {
+    "namn": "Zweigelt",
+    "typ": "röd",
+    "ursprung": "Österrike",
+    "synonymer": ["Blauer Zweigelt", "Rotburger"],
+    "aromer": {
+      "frukt": "Körsbär, hallon, plommon",
+      "ovrigt": "Kryddig, peppar, blommig"
+    },
+    "karaktar": {
+      "syra": "Medium",
+      "tanniner": "Medium- till Medium",
+      "kropp": "Lätt till Medium",
+      "alkohol": "12-13.5%"
+    },
+    "stil": "Österrikes mest odlade röda druva. Korsning av Blaufränkisch × Sankt Laurent. Fruktdriven, lättillgänglig — från enkel till komplex beroende på producent.",
+    "regioner": ["Niederösterreich", "Burgenland", "Wien"],
+    "matparning": ["Lättare kötträtter", "Grillad korv", "Kyckling", "Charkuterier"]
   },
   {
     "namn": "Aglianico",
@@ -1119,82 +1371,6 @@
     "stil": "Montepulciano d'Abruzzo — Italiens mest sålda röda DOC. Kraftiga, fruktiga rödviner till bra pris. Ej att förväxla med staden Montepulciano i Toscana (som producerar Vino Nobile av Sangiovese).",
     "regioner": ["Abruzzerna", "Marche (Rosso Conero, Rosso Piceno)"],
     "matparning": ["Pasta med köttfärssås", "Grillat lamm", "Pizza", "Charkuterier"]
-  },
-  {
-    "namn": "Mencía",
-    "typ": "röd",
-    "ursprung": "Spanien, Galicien",
-    "synonymer": ["Jaen (Portugal)"],
-    "aromer": {
-      "frukt": "Björnbär, granatäpple, röda bär, körsbär",
-      "ovrigt": "Grön paprika, jordigt, blommig, mineralitet"
-    },
-    "karaktar": {
-      "syra": "Hög",
-      "tanniner": "Medium till Medium+",
-      "kropp": "Medium",
-      "alkohol": "12.5-14%"
-    },
-    "stil": "Liknar Cabernet Franc. Terroirdrivna röda viner med enorm lagringspotential. Bierzo (skiffer och granit) är hemregionen. Renaissance på 2000-talet.",
-    "regioner": ["Bierzo", "Ribeira Sacra", "Valdeorras"],
-    "matparning": ["Grillat lamm", "Pulpo a la gallega", "Spanska grytor", "Charkuterier"]
-  },
-  {
-    "namn": "Tannat",
-    "typ": "röd",
-    "ursprung": "Frankrike, Sydväst (Madiran)",
-    "synonymer": [],
-    "aromer": {
-      "frukt": "Björnbär, svarta vinbär, mörka plommon",
-      "ovrigt": "Nejlika, muskot, lakrits, tobak, choklad"
-    },
-    "karaktar": {
-      "syra": "Medium+ till Hög",
-      "tanniner": "Medium+ till Hög",
-      "kropp": "Full",
-      "alkohol": "13-15%"
-    },
-    "stil": "Torra viner, fylliga och tannindominerade, lagras ofta på fat, uttalad fatkaraktär. Uruguays nationaldruva — ger kraftfulla, tanninrika viner.",
-    "regioner": ["Madiran (Frankrike)", "Uruguay"],
-    "matparning": ["Grillat nötkött", "Vilt", "Hård ost", "Chokladdessert"]
-  },
-  {
-    "namn": "Blaufränkisch",
-    "typ": "röd",
-    "ursprung": "Österrike",
-    "synonymer": ["Kékfrankos (Ungern)", "Lemberger (Tyskland)", "Frankovka"],
-    "aromer": {
-      "frukt": "Mörka körsbär, björnbär, blåbär",
-      "ovrigt": "Peppar, kryddor, mineralitet, choklad"
-    },
-    "karaktar": {
-      "syra": "Medium+ till Hög",
-      "tanniner": "Medium till Hög",
-      "kropp": "Medium till Full",
-      "alkohol": "12.5-14%"
-    },
-    "stil": "Kraftfulla och eleganta röda viner, främst i Burgenland (Österrike). Ofta basen i Egri Bikavér (Ungern). Påminner ibland om Syrah i stil.",
-    "regioner": ["Burgenland (Österrike)", "Eger (Ungern)", "Villány (Ungern)", "Württemberg (Tyskland)"],
-    "matparning": ["Vildsvin", "Grillat nötkött", "Anka", "Svampgrytor"]
-  },
-  {
-    "namn": "Zweigelt",
-    "typ": "röd",
-    "ursprung": "Österrike",
-    "synonymer": ["Blauer Zweigelt", "Rotburger"],
-    "aromer": {
-      "frukt": "Körsbär, hallon, plommon",
-      "ovrigt": "Kryddig, peppar, blommig"
-    },
-    "karaktar": {
-      "syra": "Medium",
-      "tanniner": "Medium- till Medium",
-      "kropp": "Lätt till Medium",
-      "alkohol": "12-13.5%"
-    },
-    "stil": "Österrikes mest odlade röda druva. Korsning av Blaufränkisch × Sankt Laurent. Fruktdriven, lättillgänglig — från enkel till komplex beroende på producent.",
-    "regioner": ["Niederösterreich", "Burgenland", "Wien"],
-    "matparning": ["Lättare kötträtter", "Grillad korv", "Kyckling", "Charkuterier"]
   },
   {
     "namn": "Xinomavro",
@@ -1309,25 +1485,6 @@
     "stil": "Torra viner, ljus färg, mediumfyllig, lagras ofta på fat, endruvsviner ökar. Viktig i rosé-produktion. Föräldradruva till Pinotage (× Pinot Noir). Populär i Sydafrika (Swartland).",
     "regioner": ["Languedoc-Roussillon", "Rhône Syd", "Provence", "Sydafrika (Swartland)"],
     "matparning": ["Grillad kyckling", "Medelhavskök", "Sallader", "Tapas"]
-  },
-  {
-    "namn": "Carignan",
-    "typ": "röd",
-    "ursprung": "Spanien (Aragonien)",
-    "synonymer": ["Cariñena (Spanien)", "Carignano (Sardinien)", "Mazuelo"],
-    "aromer": {
-      "frukt": "Hallon, blåbär, skogsbär, björnbär",
-      "ovrigt": "Kryddig, nejlika, kanel, tobak"
-    },
-    "karaktar": {
-      "syra": "Medium+ till Hög",
-      "tanniner": "Medium+ till Hög",
-      "kropp": "Medium till Full",
-      "alkohol": "13.5-14.5%"
-    },
-    "stil": "Torra viner, mjukas ofta ner genom Maceration Carbonique eller blending, ofatad och fatad. Gamla vinstockar ger utmärkta viner. Viktig i Priorat och södra Frankrike.",
-    "regioner": ["Languedoc-Roussillon", "Provence", "Priorat", "Sardinien (Carignano del Sulcis)"],
-    "matparning": ["Grillade korvar", "Lammgryta", "Cassoulet", "Kryddiga rätter"]
   },
   {
     "namn": "Trousseau",

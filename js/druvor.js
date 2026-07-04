@@ -43,6 +43,8 @@ function renderDruvor() {
   const filtered = allDruvor.filter(d => {
     if (currentFilter === 'favoriter') {
       if (!getFavorites().includes(d.namn)) return false;
+    } else if (currentFilter === 'obligatoriska') {
+      if (!d.obligatorisk) return false;
     } else if (currentFilter !== 'alla' && d.typ !== currentFilter) return false;
     if (currentSearch) {
       const q = currentSearch.toLowerCase();
@@ -78,7 +80,7 @@ function renderDruvor() {
     card.innerHTML = `
       <div class="druv-card-header">
         <span class="druv-type-dot ${druva.typ}"></span>
-        <span class="druv-card-name">${druva.namn}</span>
+        <span class="druv-card-name">${druva.namn}${druva.obligatorisk ? ' <span class="obligatorisk-badge" title="Obligatorisk druva">★</span>' : ''}</span>
         <span class="druv-card-origin">${druva.ursprung || ''}</span>
       </div>
       <div class="druv-card-aromer">${aromerText}${aromerText.length >= 80 ? '…' : ''}</div>
@@ -132,7 +134,7 @@ function openModal(druva) {
   const isFav = getFavorites().includes(druva.namn);
   content.innerHTML = `
     <button class="fav-btn${isFav ? ' active' : ''}" onclick="toggleFavorite('${druva.namn.replace(/'/g, "\\'")}')">&#9829;</button>
-    <h2 class="modal-grape-name">${druva.namn}</h2>
+    <h2 class="modal-grape-name">${druva.namn}${druva.obligatorisk ? ' <span class="obligatorisk-badge modal-badge" title="Obligatorisk druva">★ Obligatorisk</span>' : ''}</h2>
     <p class="modal-grape-type ${druva.typ}">${druva.typ === 'vit' ? '● Vit druva' : '● Röd druva'}</p>
     <p class="modal-origin">${druva.ursprung || ''}</p>
     ${synonymer}
