@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cellar-v4';
+const CACHE_NAME = 'cellar-v6';
 const ASSETS = [
   './',
   './index.html',
@@ -34,7 +34,9 @@ const ASSETS = [
   './smakprofil.html',
   './vinlista.html',
   './provningsledare.html',
-  './icons/icon-512.png'
+  './icons/icon-512.png',
+  './login.html',
+  './js/auth.js'
 ];
 
 self.addEventListener('install', (event) => {

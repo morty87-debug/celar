@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cellar — Logga in</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#8B1A2B">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <style>
+    .login-wrap {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    .login-logo {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--sand-light);
+      letter-spacing: 0.15em;
+      margin-bottom: 0.25rem;
+    }
+    .login-tagline {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+    }
+    .login-box {
+      width: 100%;
+      max-width: 360px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem 1.75rem;
+    }
+    .login-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 1.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .login-tab {
+      flex: 1;
+      background: none;
+      border: none;
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      padding: 0.6rem 0;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .login-tab.active {
+      color: var(--wine);
+      border-bottom-color: var(--wine);
+    }
+    .login-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      margin-bottom: 1rem;
+    }
+    .login-field label {
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .login-field input {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      padding: 0.7rem 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .login-field input:focus {
+      border-color: var(--wine);
+    }
+    .login-btn {
+      width: 100%;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      background: var(--wine);
+      color: var(--sand-light);
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 0.85rem;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: opacity 0.2s;
+    }
+    .login-btn:hover { opacity: 0.85; }
+    .login-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .login-error {
+      font-size: 0.78rem;
+      color: #e06060;
+      margin-top: 0.75rem;
+      text-align: center;
+      min-height: 1.2em;
+    }
+    .login-success {
+      font-size: 0.78rem;
+      color: #6abf69;
+      margin-top: 0.75rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-grain"></div>
+
+  <div class="login-wrap">
+    <div class="login-logo">Cellar</div>
+    <div class="login-tagline">Sommelier-utbildning</div>
+
+    <div class="login-box">
+      <div class="login-tabs">
+        <button class="login-tab active" id="tabLogin" onclick="showTab('login')">Logga in</button>
+        <button class="login-tab" id="tabRegister" onclick="showTab('register')">Skapa konto</button>
+      </div>
+
+      <!-- Login -->
+      <div id="formLogin">
+        <div class="login-field">
+          <label>E-post</label>
+          <input type="email" id="loginEmail" placeholder="din@email.se" autocomplete="email">
+        </div>
+        <div class="login-field">
+          <label>Lösenord</label>
+          <input type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password">
+        </div>
+        <button class="login-btn" id="btnLogin" onclick="doLogin()">Logga in</button>
+        <div class="login-error" id="loginError"></div>
+      </div>
+
+      <!-- Register -->
+      <div id="formRegister" style="display:none;">
+        <div class="login-field">
+          <label>E-post</label>
+          <input type="email" id="regEmail" placeholder="din@email.se" autocomplete="email">
+        </div>
+        <div class="login-field">
+          <label>Lösenord</label>
+          <input type="password" id="regPassword" placeholder="Minst 6 tecken" autocomplete="new-password">
+        </div>
+        <div class="login-field">
+          <label>Bekräfta lösenord</label>
+          <input type="password" id="regPassword2" placeholder="Upprepa lösenordet" autocomplete="new-password">
+        </div>
+        <button class="login-btn" id="btnRegister" onclick="doRegister()">Skapa konto</button>
+        <div class="login-error" id="registerError"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="js/auth.js"></script>
+
+  <script>
+    // Check if already logged in
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) window.location.href = 'index.html';
+    });
+
+    function showTab(tab) {
+      document.getElementById('formLogin').style.display    = tab === 'login'    ? '' : 'none';
+      document.getElementById('formRegister').style.display = tab === 'register' ? '' : 'none';
+      document.getElementById('tabLogin').classList.toggle('active', tab === 'login');
+      document.getElementById('tabRegister').classList.toggle('active', tab === 'register');
+    }
+
+    function setLoading(btnId, loading) {
+      document.getElementById(btnId).disabled = loading;
+      document.getElementById(btnId).textContent = loading ? 'Vänta...' : (btnId === 'btnLogin' ? 'Logga in' : 'Skapa konto');
+    }
+
+    function friendlyError(code) {
+      const map = {
+        'auth/user-not-found':        'Inget konto med den e-postadressen.',
+        'auth/wrong-password':        'Fel lösenord.',
+        'auth/invalid-email':         'Ogiltig e-postadress.',
+        'auth/email-already-in-use':  'Det finns redan ett konto med den e-postadressen.',
+        'auth/weak-password':         'Lösenordet måste vara minst 6 tecken.',
+        'auth/too-many-requests':     'För många försök — försök igen senare.',
+        'auth/invalid-credential':    'Fel e-post eller lösenord.',
+      };
+      return map[code] || 'Något gick fel. Försök igen.';
+    }
+
+    async function doLogin() {
+      const email = document.getElementById('loginEmail').value.trim();
+      const pass  = document.getElementById('loginPassword').value;
+      document.getElementById('loginError').textContent = '';
+      if (!email || !pass) { document.getElementById('loginError').textContent = 'Fyll i e-post och lösenord.'; return; }
+      setLoading('btnLogin', true);
+      try {
+        await firebase.auth().signInWithEmailAndPassword(email, pass);
+        window.location.href = 'index.html';
+      } catch (e) {
+        document.getElementById('loginError').textContent = friendlyError(e.code);
+        setLoading('btnLogin', false);
+      }
+    }
+
+    async function doRegister() {
+      const email = document.getElementById('regEmail').value.trim();
+      const pass  = document.getElementById('regPassword').value;
+      const pass2 = document.getElementById('regPassword2').value;
+      document.getElementById('registerError').textContent = '';
+      if (!email || !pass) { document.getElementById('registerError').textContent = 'Fyll i alla fält.'; return; }
+      if (pass !== pass2)  { document.getElementById('registerError').textContent = 'Lösenorden matchar inte.'; return; }
+      setLoading('btnRegister', true);
+      try {
+        await firebase.auth().createUserWithEmailAndPassword(email, pass);
+        window.location.href = 'index.html';
+      } catch (e) {
+        document.getElementById('registerError').textContent = friendlyError(e.code);
+        setLoading('btnRegister', false);
+      }
+    }
+
+    // Enter key triggers login
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        if (document.getElementById('formLogin').style.display !== 'none') doLogin();
+        else doRegister();
+      }
+    });
+  </script>
+</body>
+</html>
