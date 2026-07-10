@@ -1,0 +1,102 @@
+{
+  "1": [
+    { "q": "Vad kallas alla naturliga faktorer (jordmån, klimat, höjd) som påverkar vinets karaktär?", "correct": "Terroir", "wrong": ["Maceration", "Appellation", "Dosage"] },
+    { "q": "Vad heter den europeiska vinväxten som ger finviner?", "correct": "Vitis Vinifera", "wrong": ["Vitis Labrusca", "Vitis Rupestris", "Vitis Atlantica"] },
+    { "q": "Vid vilken temperatur ska rött vin serveras?", "correct": "14–18°C", "wrong": ["6–8°C", "20–24°C", "8–12°C"] }
+  ],
+  "2": [
+    { "q": "Vad innebär AOC/AOP?", "correct": "Appellation d'Origine Contrôlée/Protégée — reglerat ursprung", "wrong": ["Assemblage de qualité contrôlée", "Administration officielle des caves", "Association oenologique certifiée"] },
+    { "q": "Vilka druvor dominerar i Bourgogne?", "correct": "Pinot Noir och Chardonnay", "wrong": ["Cabernet Sauvignon och Merlot", "Syrah och Grenache", "Riesling och Gewürztraminer"] },
+    { "q": "Vilka druvor dominerar på Vänstra stranden i Bordeaux?", "correct": "Cabernet Sauvignon", "wrong": ["Merlot", "Pinot Noir", "Syrah"] }
+  ],
+  "3": [
+    { "q": "Vad är DOCG?", "correct": "Italiens högsta vinklassificering — Denominazione di Origine Controllata e Garantita", "wrong": ["Den näst högsta klassificeringen", "En regional beteckning utan krav", "En exportstämpel"] },
+    { "q": "Vilken druva dominerar i Barolo (Piemonte)?", "correct": "Nebbiolo", "wrong": ["Sangiovese", "Barbera", "Montepulciano"] },
+    { "q": "Vad är Super Toscana?", "correct": "Viner gjorda utanför DOC-reglerna, ofta med internationella druvor som Cabernet Sauvignon", "wrong": ["En DOCG-kategori för toppviner", "En region i norra Toscana", "Ett lagringskrav"] }
+  ],
+  "4": [
+    { "q": "Vad är DOCa?", "correct": "Spaniens högsta vinkvalifikation — Denominación de Origen Calificada", "wrong": ["Den vanligaste klassificeringen", "En regional beteckning", "En exportlicens"] },
+    { "q": "Vilken är Spaniens viktigaste röda druva?", "correct": "Tempranillo", "wrong": ["Garnacha", "Monastrell", "Albariño"] },
+    { "q": "Vad kallas den längsta lagringsnivån i Rioja?", "correct": "Gran Reserva", "wrong": ["Crianza", "Reserva", "Joven"] }
+  ],
+  "5": [
+    { "q": "Vad är retronasal doft?", "correct": "Arom uppfattad inifrån munnen när vi tuggar och sväljer", "wrong": ["Doften av kork i ett defekt vin", "Den primära doften av ett vin i glaset", "Lukt som försvinner snabbt vid luftning"] },
+    { "q": "Vad händer med vinets syra om maten har hög syra?", "correct": "Matens syra dämpar vinets syra — vinet smakar mjukare och rundare", "wrong": ["Matens syra förstärker vinets syra ytterligare", "Syra i mat påverkar inte vinet", "Syran gör vinet bitterare"] },
+    { "q": "Vilket vin passar klassiskt till ostron?", "correct": "Champagne eller Chablis", "wrong": ["Barolo", "Amarone", "Zinfandel"] }
+  ],
+  "6": [
+    { "q": "Vilket år skapades Bordeaux-klassificeringen?", "correct": "1855", "wrong": ["1789", "1935", "1976"] },
+    { "q": "Vad är ett Grand Cru i Bourgogne?", "correct": "Toppläge med egen appellation — 1–2% av produktionen", "wrong": ["Bästa lagringskategori", "En vinproducent med hög status", "Lägsta klassificeringen"] },
+    { "q": "Vilken druva dominerar på Höger strand i Bordeaux (Saint-Émilion, Pomerol)?", "correct": "Merlot", "wrong": ["Cabernet Sauvignon", "Pinot Noir", "Cabernet Franc"] }
+  ],
+  "7": [
+    { "q": "Vilken druva är den viktigaste för Portvin?", "correct": "Touriga Nacional", "wrong": ["Tempranillo", "Grenache", "Palomino"] },
+    { "q": "Vad är Solera-systemet?", "correct": "Gradvis blandning av årgångar genom criaderas för konsekvent stil", "wrong": ["En typ av ekfat från Spanien", "En jäsningsmetod utan syre", "En pressningsmetod"] },
+    { "q": "Hur stoppas jäsningen när man tillverkar Portvin?", "correct": "Druvsprit (77%) tillsätts för att stoppa jäsningen och bevara sötma", "wrong": ["Vinet kyls snabbt ner", "Socker tillsätts efter jäsning", "Man låter jäsningen avslutas naturligt"] }
+  ],
+  "8": [
+    { "q": "Vad mäter Oechsle?", "correct": "Druvmustens sockerhalt — avgör Prädikat-nivå i Tyskland", "wrong": ["Syranivån i vinet", "Alkoholhalten i färdigt vin", "Tanninnivån"] },
+    { "q": "Vilken druva dominerar i Mosel?", "correct": "Riesling", "wrong": ["Gewürztraminer", "Grüner Veltliner", "Pinot Gris"] },
+    { "q": "Vad är Auslese?", "correct": "Prädikatswein av utvalda, mycket mogna druvor — tydlig sötma", "wrong": ["Torraste möjliga tyska vinet", "En region i Rheingau", "En lagringsterm för ekfat"] }
+  ],
+  "9": [
+    { "q": "Vad innebär BLIK vid kvalitetsbedömning av vin?", "correct": "Balans, Längd, Intensitet, Komplexitet", "wrong": ["Bukett, Lager, Import, Kvalitet", "Bitterhet, Längd, Intensitet, Kropp", "Balans, Läge, Identitet, Klarhet"] },
+    { "q": "Hur många poäng ges totalt i provningsprotokoll?", "correct": "40 poäng (Utseende 5 + Doft 10 + Smak 16 + Slutsats 9)", "wrong": ["20 poäng", "100 poäng", "50 poäng"] },
+    { "q": "Vad indikerar hög salivproduktion vid vinprovning?", "correct": "Hög syra i vinet", "wrong": ["Höga tanniner", "Hög alkohol", "Hög restsocker"] }
+  ],
+  "10": [
+    { "q": "Vad är méthode traditionnelle (traditionell metod)?", "correct": "Andra jäsning sker i flaskan — Champagne-metoden", "wrong": ["Jäsning i stor trycktank (Charmat)", "Koldioxid tillsätts artificiellt", "Lagring i ekfat"] },
+    { "q": "Vad betyder 'Brut Nature' på en champagneflaska?", "correct": "0–3 g/L socker — torrast möjliga", "wrong": ["12–17 g/L socker", "32–50 g/L socker", "Naturvin utan tillsatser"] },
+    { "q": "Vad innebär 'Blanc de Blancs'?", "correct": "Mousserande vin gjort på enbart vita druvor (Chardonnay)", "wrong": ["Mousserande gjort på enbart röda druvor", "Blandning av vitt och rött vin", "En sötmanivå"] }
+  ],
+  "11": [
+    { "q": "Vad är Reinheitsgebot?", "correct": "Tyska renhetslagen för öl från 1516 — bara humle, malt och vatten", "wrong": ["Österrikisk vinlag från 1600-talet", "En europeisk bryggstandard", "En ölklassificering"] },
+    { "q": "Vad skiljer Ale från Lager?", "correct": "Jäsningstemperatur — Ale övre jäsning (varmt), Lager undre jäsning (kallt)", "wrong": ["Mängden humle som används", "Alkoholhalten i slutprodukten", "Om det är torkat eller rått malt"] },
+    { "q": "Vad är Lambic?", "correct": "Spontanjäst öl med vildjäst — ingen tillsats av jästkulturer", "wrong": ["Öl bryggt på äpplen", "Belgisk wheat beer med apelsin", "Stout med lakrits och kaffe"] }
+  ],
+  "12": [
+    { "q": "Vad är Tokaj-Aszú?", "correct": "Sött vin från Ungern gjort av botrytisskadade druvor (Furmint)", "wrong": ["Torrt rödvin från Ungern", "En mousserande vinmetod", "En druvsort i Rumänien"] },
+    { "q": "Vad mäter Puttonyos?", "correct": "Sockerhalten i Aszú-viner — fler Puttonyos = sötare", "wrong": ["En ungersk druvsort", "En delregion i Tokaj", "En lagringstid"] },
+    { "q": "Vilken druva dominerar i Tokaj?", "correct": "Furmint", "wrong": ["Riesling", "Grüner Veltliner", "Muscat Blanc"] }
+  ],
+  "13": [
+    { "q": "Vad är botrytis cinerea (ädelröta)?", "correct": "Mögel som koncentrerar socker och aromer i druvan — ger söta toppviner", "wrong": ["En vinsjukdom som alltid förstör skörden", "En jästkultur för sötviner", "En pressningsmetod"] },
+    { "q": "Hur tillverkas Eiswein?", "correct": "Frysta druvor pressas vid minusgrader — vattnet fryser, sockret koncentreras", "wrong": ["Vinet frysts efter jäsning", "Druvor kyls innan pressning", "Alkohol tillsätts för att bevara sötma"] },
+    { "q": "Vad är Sauternes?", "correct": "Sött vin från Bordeaux gjort på botrytisskadade druvor (Sémillon, Sauvignon Blanc)", "wrong": ["Torrt vitt vin från södra Frankrike", "Mousserande vin från Loire", "Starkvin från Bordeaux"] }
+  ],
+  "14": [
+    { "q": "Vad är destillation?", "correct": "Uppvärmning av en fermenterad vätska för att separera och koncentrera alkohol", "wrong": ["Jäsning av frukt med tillsatt jäst", "Lagring i ekfat under längre tid", "Filtrering av vin"] },
+    { "q": "Vad är Cognac?", "correct": "Druvbrandy från Cognac-regionen i Frankrike, destillerat och lagrat minst 2 år i Limousinej-ek", "wrong": ["Whisky tillverkad i Frankrike", "Äppelsprit från Normandie", "En belgisk öl"] },
+    { "q": "Vad ger vanilj- och rökton i sprit?", "correct": "Ekfatslagring", "wrong": ["Typen av humle som används", "Jästkulturen vid destillation", "Typen av frukt som fermenteras"] }
+  ],
+  "15": [
+    { "q": "Vad var 'Judgment of Paris' 1976?", "correct": "Blindprovning där kaliforniska viner slog franska toppviner", "wrong": ["Bordeaux-klassificeringen skapades", "En vinmässa i New York", "En lag om vinimport"] },
+    { "q": "Vad är en AVA?", "correct": "American Viticultural Area — avgränsat vinodlingsområde i USA", "wrong": ["En alkoholnivå för amerikanska viner", "En åldersbeteckning", "Organisk certifiering"] },
+    { "q": "Vilken druva dominerar i Napa Valley?", "correct": "Cabernet Sauvignon", "wrong": ["Merlot", "Pinot Noir", "Zinfandel"] }
+  ],
+  "16": [
+    { "q": "Vilken druva är Argentinas nationaldruva?", "correct": "Malbec", "wrong": ["Carménère", "Torrontés", "Tannat"] },
+    { "q": "Vilken druva förknippas specifikt med Chile?", "correct": "Carménère", "wrong": ["Malbec", "Tempranillo", "Nebbiolo"] },
+    { "q": "På vilka höjder ligger Mendozas högsta vingårdar?", "correct": "Upp till 2 000 meter (Valle de Uco)", "wrong": ["200–300 meter", "500–700 meter", "1 000 meter"] }
+  ],
+  "17": [
+    { "q": "Vilken är Australiens mest välkända rödvinsdruva?", "correct": "Shiraz (Syrah)", "wrong": ["Cabernet Sauvignon", "Pinot Noir", "Grenache"] },
+    { "q": "Vilken region dominerar Nya Zeelands vinproduktion?", "correct": "Marlborough (Sauvignon Blanc)", "wrong": ["Hawke's Bay", "Central Otago", "Nelson"] },
+    { "q": "Vad menas med Old Vine Charter i Barossa?", "correct": "Skydd och märkning av vinstockar äldre än 35–70+ år", "wrong": ["En klassificeringsnivå för topproducenter", "Ekologisk certifiering", "En skördeteknik med handplockning"] }
+  ],
+  "18": [
+    { "q": "Vilken är Sydafrikas unika hybridruva?", "correct": "Pinotage (korsning av Pinot Noir och Cinsault)", "wrong": ["Shiraz", "Chenin Blanc (Steen)", "Colombard"] },
+    { "q": "Vad heter den sydafrikanska ursprungsbeteckningen?", "correct": "WO — Wine of Origin", "wrong": ["AOC", "DOC", "AVA"] },
+    { "q": "Vilka tre länder dominerar vinproduktionen i Asien?", "correct": "Kina, Japan och Indien", "wrong": ["Thailand, Vietnam och Korea", "Libanon, Israel och Turkiet", "Georgien, Armenien och Azerbajdzjan"] }
+  ],
+  "19": [
+    { "q": "Vad är rätt serviseringstemperatur för mousserande vin?", "correct": "6–8°C", "wrong": ["14–18°C", "10–12°C", "18–20°C"] },
+    { "q": "Vad innebär dekantation?", "correct": "Hälla vinet i en karaff för att lufta och separera sediment", "wrong": ["Kyla vin snabbt med is", "Blanda vin med vatten", "Filtrera vin med filter"] },
+    { "q": "Hur öppnar man korrekt en champagneflaska?", "correct": "Håll tummen på korken, ta bort musselten och vrid flaskan (ej korken) sakta", "wrong": ["Dra ut korken snabbt med en korkskruv", "Skaka flaskan och låt trycket ta korken", "Vrid alltid korken, inte flaskan"] }
+  ],
+  "20": [
+    { "q": "Vad är MLF (malolaktisk jäsning)?", "correct": "Omvandlar äppelsyra till mjölksyra — ger mjukare, rundare vin", "wrong": ["En typ av ekfatslagring", "En skördeteknik", "En klassificering i Bourgogne"] },
+    { "q": "Vad är Charmat-metoden?", "correct": "Andra jäsning sker i trycktank — används för Prosecco", "wrong": ["Andra jäsning i flaskan (Champagne-metoden)", "Koldioxid tillsätts artificiellt", "Lagring av vin på jästfällning"] },
+    { "q": "Vad innebär 'sur lie' i vinproduktionen?", "correct": "Vinet lagras på sin jästfällning — ger textur, komplexitet och brödiga toner", "wrong": ["Vinet lagras uteslutande i ekfat", "Vinet filtreras extra noga för klarhet", "Vinet produceras utan svaveltillsats"] }
+  ]
+}

@@ -27,7 +27,8 @@ const lektionsFiler = {
   16: 'data/lektion-16-sydamerika.json',
   17: 'data/lektion-17-oceanien.json',
   18: 'data/lektion-18-sydafrika-asien.json',
-  19: 'data/lektion-19-somm-praktisk.json'
+  19: 'data/lektion-19-somm-praktisk.json',
+  20: 'data/lektion-20-vinterminologi.json'
 };
 
 function getLektionId() {
@@ -261,4 +262,129 @@ function setupScrollSpy() {
   sections.forEach(s => observer.observe(s));
 }
 
+// --- Pre-test ---
+
+let pretestQuestions = [];
+let pretestCurrent = 0;
+let pretestScore = 0;
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+async function startPretest(id) {
+  try {
+    const res = await fetch('data/lektion-pretest.json');
+    const all = await res.json();
+    pretestQuestions = all[String(id)] || [];
+  } catch (e) {
+    pretestQuestions = [];
+  }
+
+  if (pretestQuestions.length === 0) {
+    startLektion();
+    return;
+  }
+
+  document.getElementById('pretestWrap').style.display = 'block';
+  showPretestQuestion();
+}
+
+function showPretestQuestion() {
+  const box = document.getElementById('pretestBox');
+  if (pretestCurrent >= pretestQuestions.length) {
+    showPretestResult();
+    return;
+  }
+
+  const q = pretestQuestions[pretestCurrent];
+  const opts = shuffle([q.correct, ...q.wrong]);
+  const pct = Math.round((pretestCurrent / pretestQuestions.length) * 100);
+
+  box.innerHTML = `
+    <div style="background:var(--border);border-radius:100px;height:4px;margin-bottom:1.5rem;overflow:hidden;">
+      <div style="height:100%;width:${pct}%;background:var(--wine);border-radius:100px;transition:width 0.4s;"></div>
+    </div>
+    <div style="font-size:0.72rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.6rem;">Fråga ${pretestCurrent + 1} av ${pretestQuestions.length}</div>
+    <div style="font-family:var(--font-display);font-size:1.15rem;font-weight:400;color:var(--sand-light);line-height:1.5;margin-bottom:1.2rem;">${q.q}</div>
+    <div id="ptOpts" style="display:flex;flex-direction:column;gap:0.5rem;">
+      ${opts.map(o => `<button onclick="answerPretest(this,'${escPt(o)}','${escPt(q.correct)}')" style="font-family:var(--font-body);font-size:0.85rem;text-align:left;padding:0.75rem 1rem;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;transition:all 0.2s;">${o}</button>`).join('')}
+    </div>
+    <div id="ptExplain" style="display:none;margin-top:1rem;font-size:0.82rem;color:var(--text-muted);padding:0.75rem 1rem;background:rgba(0,0,0,0.04);border-radius:var(--radius-sm);border-left:3px solid var(--wine);"></div>
+    <button id="ptNext" onclick="nextPretestQ()" style="display:none;margin-top:1rem;width:100%;font-family:var(--font-body);font-size:0.88rem;font-weight:500;padding:0.75rem;border-radius:var(--radius-sm);background:var(--wine);color:#fff;border:none;cursor:pointer;">${pretestCurrent + 1 < pretestQuestions.length ? 'Nästa fråga →' : 'Se resultat →'}</button>
+  `;
+}
+
+function escPt(s) {
+  return s.replace(/'/g, "&#39;").replace(/"/g, '&quot;');
+}
+
+function answerPretest(btn, selected, correct) {
+  const opts = document.querySelectorAll('#ptOpts button');
+  opts.forEach(b => {
+    b.disabled = true;
+    b.style.cursor = 'default';
+    if (b.textContent === correct) {
+      b.style.background = 'rgba(74,90,58,0.15)';
+      b.style.borderColor = 'var(--moss)';
+      b.style.color = 'var(--moss)';
+    }
+  });
+  if (selected === correct) {
+    pretestScore++;
+    btn.style.background = 'rgba(74,90,58,0.15)';
+    btn.style.borderColor = 'var(--moss)';
+    btn.style.color = 'var(--moss)';
+  } else {
+    btn.style.background = 'rgba(139,26,43,0.1)';
+    btn.style.borderColor = 'var(--wine)';
+    btn.style.color = 'var(--wine)';
+    const explain = document.getElementById('ptExplain');
+    explain.style.display = 'block';
+    explain.textContent = 'Rätt svar: ' + correct;
+  }
+  document.getElementById('ptNext').style.display = 'block';
+}
+
+function nextPretestQ() {
+  pretestCurrent++;
+  showPretestQuestion();
+}
+
+function showPretestResult() {
+  const box = document.getElementById('pretestBox');
+  const pct = Math.round((pretestScore / pretestQuestions.length) * 100);
+  let msg = 'Du lär dig mycket nytt idag!';
+  if (pct >= 100) msg = 'Du kan det här redan — men repetition befäster!';
+  else if (pct >= 67) msg = 'Bra grund — nu fördjupar vi det!';
+
+  box.innerHTML = `
+    <div style="text-align:center;padding:1.5rem 1rem 2rem;">
+      <div style="font-family:var(--font-display);font-size:3rem;font-weight:300;color:var(--wine);">${pretestScore}/${pretestQuestions.length}</div>
+      <div style="color:var(--text-muted);font-size:0.9rem;margin:0.5rem 0 1.5rem;">${msg}</div>
+      <button onclick="startLektion()" style="font-family:var(--font-body);font-size:0.95rem;font-weight:500;padding:0.85rem 2rem;border-radius:var(--radius-sm);background:var(--wine);color:#fff;border:none;cursor:pointer;width:100%;">Starta lektionen →</button>
+    </div>
+  `;
+  document.getElementById('pretestSkip').style.display = 'none';
+}
+
+function skipPretest() {
+  startLektion();
+}
+
+function startLektion() {
+  document.getElementById('pretestWrap').style.display = 'none';
+  document.getElementById('lektionHeader').style.display = '';
+  document.getElementById('lektionNav').style.display = '';
+  document.getElementById('lektionContent').style.display = '';
+}
+
+// Boot: run pre-test first, then loadLektion fills in the content
+const _lektionId = getLektionId();
+startPretest(_lektionId);
 loadLektion();

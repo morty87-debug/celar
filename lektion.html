@@ -20,25 +20,38 @@
 
   <div class="bg-grain"></div>
 
-  <header class="lektion-header">
+  <!-- Pre-test overlay -->
+  <div id="pretestWrap" style="display:none;position:relative;z-index:1;max-width:640px;margin:0 auto;padding:4.5rem 1.5rem 2rem;">
+    <div style="text-align:center;margin-bottom:2rem;">
+      <div style="font-family:var(--font-display);font-size:0.8rem;letter-spacing:0.14em;color:var(--wine);text-transform:uppercase;margin-bottom:0.5rem;">Innan du börjar</div>
+      <h2 style="font-family:var(--font-display);font-size:1.8rem;font-weight:300;color:var(--sand-light);">Vad kan du redan?</h2>
+      <p style="font-size:0.82rem;color:var(--text-muted);margin-top:0.4rem;">3 snabba frågor — hjärnan lär sig bättre när den försöker först</p>
+    </div>
+    <div id="pretestBox"></div>
+    <div style="text-align:center;margin-top:1.5rem;">
+      <button id="pretestSkip" onclick="skipPretest()" style="font-family:var(--font-body);font-size:0.78rem;color:var(--text-dim);background:none;border:none;cursor:pointer;text-decoration:underline;text-underline-offset:3px;">Hoppa över förhandsfrågorna</button>
+    </div>
+  </div>
+
+  <header class="lektion-header" id="lektionHeader" style="display:none;">
     <a href="index.html" class="back-link"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Tillbaka</a>
     <div class="lektion-badge">Lektion 1 av 19</div>
     <h1 class="lektion-title">Introduktion</h1>
     <p class="lektion-subtitle">I vingården & i vineriet</p>
   </header>
 
-  <nav class="lektion-nav">
+  <nav class="lektion-nav" id="lektionNav" style="display:none;">
     <div class="lektion-nav-inner" id="sectionNav"></div>
   </nav>
 
-  <main class="lektion-content" id="lektionContent"></main>
+  <main class="lektion-content" id="lektionContent" style="display:none;"></main>
 
   <footer class="footer">
     <div class="footer-divider"><span class="divider-vine">✦</span></div>
     <p>Cellar — Byggt för sommelierer</p>
   </footer>
 
-  <script src="js/lektion.js"></script>
+  <script src="js/lektion.js?v=2"></script>
   <script src="js/mobile-nav.js"></script>
   <script>
     if ('serviceWorker' in navigator) {

@@ -30,12 +30,21 @@
     <a href="framsteg.html" id="progressLink" style="display:inline-block;margin-top:1rem;font-family:var(--font-body);font-size:0.78rem;color:var(--text-dim);text-decoration:none;letter-spacing:0.05em;transition:color 0.3s;border-bottom:1px solid var(--border);padding-bottom:2px;">
       <span id="progressCount">0</span>/19 lektioner
     </a>
+    <div id="streakBadge" style="display:none;margin-top:0.75rem;font-family:var(--font-body);font-size:0.8rem;color:var(--text-muted);letter-spacing:0.03em;"></div>
   </header>
 
   <script>
     try {
       const p = JSON.parse(localStorage.getItem('cellar-progress')) || {};
       document.getElementById('progressCount').textContent = Object.keys(p).length;
+    } catch (e) {}
+    try {
+      const s = JSON.parse(localStorage.getItem('cellar-streak')) || { count: 0 };
+      if (s.count >= 2) {
+        const badge = document.getElementById('streakBadge');
+        badge.style.display = 'block';
+        badge.textContent = '🔥 ' + s.count + ' dagars streak';
+      }
     } catch (e) {}
   </script>
 

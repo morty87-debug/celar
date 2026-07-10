@@ -289,6 +289,12 @@
       <div class="quiz-history-list" id="quizHistory"></div>
     </div>
 
+    <!-- Category stats -->
+    <div class="quiz-section" id="categorySection" style="animation:fadeUp 0.5s ease-out 0.45s backwards;">
+      <h2>Kategoriresultat</h2>
+      <div id="categoryStats"></div>
+    </div>
+
     <!-- Smakprofil link -->
     <div style="text-align:center;margin-top:1rem;animation:fadeUp 0.5s ease-out 0.5s backwards;">
       <a href="smakprofil.html" style="display:inline-flex;align-items:center;gap:0.5rem;font-family:var(--font-body);font-size:0.85rem;color:var(--wine);text-decoration:none;padding:0.6rem 1.2rem;border:1px solid rgba(139,26,43,0.2);border-radius:100px;transition:all 0.3s;">
@@ -399,7 +405,42 @@
       }
     }
 
+    function getCategoryStats() {
+      try { return JSON.parse(localStorage.getItem('cellar-category-stats')) || {}; } catch { return {}; }
+    }
+
+    function renderCategoryStats() {
+      const stats = getCategoryStats();
+      const el = document.getElementById('categoryStats');
+      const cats = Object.keys(stats);
+      if (cats.length === 0) {
+        el.innerHTML = '<p class="empty-msg">Inga quiz genomförda ännu. Gör ett quiz för att se dina svaga områden.</p>';
+        return;
+      }
+      const catLabels = { Druvor: 'Druvor', Regioner: 'Regioner', Fakta: 'Fakta', 'Mat & Vin': 'Mat & Vin', Provning: 'Provning' };
+      el.innerHTML = cats.sort().map(cat => {
+        const { right, total } = stats[cat];
+        const pct = Math.round((right / total) * 100);
+        const color = pct >= 75 ? 'var(--moss)' : pct >= 50 ? 'var(--gold, #c9a84c)' : 'var(--wine)';
+        const label = catLabels[cat] || cat;
+        const quizMode = Object.entries({ Druvor: 'druvor', Regioner: 'regioner', Fakta: 'fakta', 'Mat & Vin': 'parning', Provning: 'provning' }).find(([k]) => k === cat)?.[1] || 'blandad';
+        return `
+          <div class="quiz-history-item" style="flex-direction:column;gap:0.4rem;align-items:stretch;">
+            <div style="display:flex;align-items:center;gap:1rem;">
+              <div class="quiz-history-score" style="color:${color}">${pct}%</div>
+              <div class="quiz-history-info">
+                <div class="quiz-history-mode">${label}</div>
+                <div class="quiz-history-date">${right} av ${total} rätt totalt</div>
+              </div>
+              <div class="quiz-history-bar"><div class="quiz-history-bar-fill" style="width:${pct}%;background:${color}"></div></div>
+              ${pct < 70 ? `<a href="quiz.html?mode=${quizMode}" style="font-size:0.72rem;color:var(--wine);text-decoration:none;white-space:nowrap;">Öva →</a>` : ''}
+            </div>
+          </div>`;
+      }).join('');
+    }
+
     render();
+    renderCategoryStats();
   </script>
   <script src="js/mobile-nav.js"></script>
   <script>

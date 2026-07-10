@@ -3,6 +3,8 @@ let questions = [];
 let current = 0;
 let score = 0;
 let answered = false;
+let wrongQuestions = [];
+let results = [];
 const TOTAL_Q = 15;
 
 const params = new URLSearchParams(window.location.search);
@@ -16,8 +18,85 @@ async function init() {
   const res = await fetch('data/druvor.json');
   druvor = await res.json();
 
-  questions = generateQuestions(mode);
-  showQuestion();
+  if (mode === 'fritext') {
+    questions = generateQuestions('blandad');
+    showFritextQuestion();
+  } else {
+    questions = generateQuestions(mode);
+    showQuestion();
+  }
+}
+
+function fuzzyMatch(input, correct) {
+  const a = input.trim().toLowerCase();
+  const b = correct.trim().toLowerCase();
+  if (a === b) return true;
+  if (b.includes(a) && a.length >= 4) return true;
+  if (a.includes(b.slice(0, Math.min(6, b.length)))) return true;
+  const aWords = a.split(/[\s,\/]+/);
+  const bWords = b.split(/[\s,\/]+/);
+  const matches = aWords.filter(w => w.length >= 3 && bWords.some(bw => bw.startsWith(w) || w.startsWith(bw)));
+  return matches.length >= Math.min(2, bWords.length);
+}
+
+function showFritextQuestion() {
+  const box = document.getElementById('quizBox');
+  if (current >= questions.length) { showResults(); return; }
+
+  const q = questions[current];
+  answered = false;
+  const pct = (current / questions.length) * 100;
+
+  box.innerHTML = `
+    <div class="quiz-progress">
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:${pct}%"></div></div>
+      <span class="quiz-progress-text">${current + 1} / ${questions.length}</span>
+    </div>
+    <div class="quiz-category-label">${q.cat}</div>
+    <div class="quiz-q">${q.q}</div>
+    <div style="margin-top:1rem;">
+      <input id="fritextInput" type="text" placeholder="Skriv ditt svar…" autocomplete="off" autocorrect="off" spellcheck="false"
+        style="width:100%;font-family:var(--font-body);font-size:0.95rem;padding:0.75rem 1rem;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--surface);color:var(--text);outline:none;transition:border-color 0.2s;"
+        onkeydown="if(event.key==='Enter')checkFritext()">
+      <button onclick="checkFritext()" style="margin-top:0.75rem;width:100%;font-family:var(--font-body);font-size:0.9rem;font-weight:500;padding:0.7rem;border-radius:var(--radius-sm);background:var(--wine);color:#fff;border:none;cursor:pointer;">Kontrollera →</button>
+    </div>
+    <div class="quiz-explain" id="explain">${q.explain}</div>
+    <button class="quiz-next" id="nextBtn" onclick="nextFritextQ()">Nästa fråga →</button>
+  `;
+  setTimeout(() => { const inp = document.getElementById('fritextInput'); if (inp) inp.focus(); }, 100);
+}
+
+function checkFritext() {
+  if (answered) return;
+  const q = questions[current];
+  const input = document.getElementById('fritextInput');
+  if (!input || !input.value.trim()) return;
+  answered = true;
+
+  const isCorrect = fuzzyMatch(input.value, q.correct);
+  input.disabled = true;
+  input.style.borderColor = isCorrect ? 'var(--moss)' : 'var(--wine)';
+  input.style.color = isCorrect ? 'var(--moss)' : 'var(--wine)';
+
+  if (isCorrect) {
+    score++;
+    results.push({ cat: q.cat, correct: true });
+  } else {
+    wrongQuestions.push(q);
+    results.push({ cat: q.cat, correct: false });
+    const correctEl = document.createElement('div');
+    correctEl.style.cssText = 'margin-top:0.5rem;font-size:0.82rem;color:var(--text-muted);';
+    correctEl.textContent = 'Rätt svar: ' + q.correct;
+    input.parentNode.insertBefore(correctEl, input.nextSibling);
+  }
+
+  document.getElementById('explain').classList.add('show');
+  document.getElementById('nextBtn').classList.add('show');
+}
+
+function nextFritextQ() {
+  current++;
+  showFritextQuestion();
 }
 
 function pick(arr, n) {
@@ -281,8 +360,11 @@ function answer(btn, selected, correct) {
 
   if (selected === correct) {
     score++;
+    results.push({ cat: q.cat, correct: true });
   } else {
     btn.classList.add('wrong');
+    wrongQuestions.push(q);
+    results.push({ cat: q.cat, correct: false });
   }
 
   document.getElementById('explain').classList.add('show');
@@ -309,6 +391,13 @@ function showResults() {
     localStorage.setItem('cellar-quiz-history', JSON.stringify(history));
   } catch (e) {}
 
+  saveCategoryStats();
+  updateStreak();
+
+  const wrongBtn = wrongQuestions.length > 0
+    ? `<button class="quiz-restart" onclick="replayWrong()" style="background:var(--surface);color:var(--wine);border:1px solid rgba(139,26,43,0.4);margin-top:0.5rem;">Repetera felaktiga (${wrongQuestions.length} st) →</button>`
+    : '';
+
   box.innerHTML = `
     <div class="quiz-results">
       <div class="quiz-results-score">${pct}%</div>
@@ -319,6 +408,7 @@ function showResults() {
         <div class="quiz-rb-item"><div class="quiz-rb-num">${questions.length}</div><div class="quiz-rb-label">Totalt</div></div>
       </div>
       <button class="quiz-restart" onclick="restart()">Kör igen</button>
+      ${wrongBtn}
       <br><br>
       <a href="quiz.html" style="color:var(--text-muted);font-size:0.85rem;">← Tillbaka till quiz-menyn</a>
     </div>
@@ -329,8 +419,44 @@ function restart() {
   current = 0;
   score = 0;
   answered = false;
+  wrongQuestions = [];
+  results = [];
   questions = generateQuestions(mode);
   showQuestion();
+}
+
+function replayWrong() {
+  questions = [...wrongQuestions];
+  current = 0;
+  score = 0;
+  answered = false;
+  wrongQuestions = [];
+  results = [];
+  showQuestion();
+}
+
+function saveCategoryStats() {
+  try {
+    const stats = JSON.parse(localStorage.getItem('cellar-category-stats')) || {};
+    results.forEach(r => {
+      if (!stats[r.cat]) stats[r.cat] = { right: 0, total: 0 };
+      stats[r.cat].total++;
+      if (r.correct) stats[r.cat].right++;
+    });
+    localStorage.setItem('cellar-category-stats', JSON.stringify(stats));
+  } catch (e) {}
+}
+
+function updateStreak() {
+  try {
+    const today = new Date().toISOString().split('T')[0];
+    let s = JSON.parse(localStorage.getItem('cellar-streak')) || { count: 0, lastDate: '' };
+    if (s.lastDate === today) return;
+    const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
+    s.count = s.lastDate === yesterday ? s.count + 1 : 1;
+    s.lastDate = today;
+    localStorage.setItem('cellar-streak', JSON.stringify(s));
+  } catch (e) {}
 }
 
 init();
